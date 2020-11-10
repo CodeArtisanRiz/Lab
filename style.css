@@ -1,0 +1,15 @@
+.index {
+    margin-right: 5px;
+}
+
+.add {
+    margin-right: 5px;
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    /* -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+}
