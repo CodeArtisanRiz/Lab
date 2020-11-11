@@ -15,66 +15,80 @@
 
         <div class="container my-5">
             <div class="row">
-                <div class="col-md-2 jumbotron index">
+                <!-- <div class="col-md-2 jumbotron index">
                     <h1 class="display-7">Index</h1>
-                </div>
+                </div> -->
 
                 <div class="col-md jumbotron add">
                     <form action="#" method="POST">
 
 
-                        <h1 class="display-7">Add Doctor</h3>
+                        <h3 class="display-7">Add Doctor</h3>
 
-                            <div class="form-group">
-                                <input class="form-control" name="name" id="name" type="text" placeholder="Name*" required="required" oninvalid="this.setCustomValidity('Enter Doctor name.')" oninput="setCustomValidity('')" id="name">
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                <input type="text" id="id_name" class="form-control" placeholder="Doctor Name" name="name" required="required" oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">
+                                <label for="id_name">Doctor Name</label>
+                                <!-- <div class="validate"></div> -->
+                            </div>
+                        </div>
+
+
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                <input class="form-control" name="name" id="id_qualification" type="text" placeholder="Qualification*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
+                                <label for="id_qualification">Qualification</label>
+                                <!-- <div class="validate"></div> -->
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                <input class="form-control" name="name" id="id_specialization" type="text" placeholder="Specialization*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
+                                <label for="id_specialization">Specialization</label>
+                                <!-- <div class="validate"></div> -->
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                <input class="form-control" name="phone" id="id_phone" type="tel" placeholder="Phone*" min="999999999 " required="required" oninvalid="this.setCustomValidity('Enter Phone')" oninput="setCustomValidity('')" onkeypress="if(this.value.length==10) return false;">
+                                <label for="id_phone">Phone</label>
                                 <div class="validate"></div>
                             </div>
-                            <div class="form-group">
-                                <input class="form-control" name="name" id="qualification" type="text" placeholder="Qualification*" required="required" oninvalid="this.setCustomValidity('Enter Qualification.')" oninput="setCustomValidity('')" id="name">
-                                <div class="validate"></div>
-                            </div>
-
-                            <div class="form-group">
-                                <input class="form-control" name="name" id="specialization" type="text" placeholder="Specialization*" required="required" oninvalid="this.setCustomValidity('Enter Specialization.')" oninput="setCustomValidity('')" id="name">
-                                <div class="validate"></div>
-                            </div>
-
-
-                            <div class="form-group">
-                                <input class="form-control" id="phone" name="phone" type="tel" placeholder="Phone*" id="phone" min="999999999" required="required" oninvalid="this.setCustomValidity('Enter Specialization.')" oninput="setCustomValidity('')" onkeypress="if(this.value.length==10) return false;">
-                                <div class="validate"></div>
-                            </div>
-
-                            <button type="submit" id="addButton" class="btn btn-primary btn-xl text-uppercase center" onclick="return checkEmpty()" value="Send">Add</button>
-                            <div class="validate"></div>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit " id="addButton " class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
+                            <div class="validate "></div>
+                        </div>
                 </div>
-                <div class="col-md jumbotron doc-list">
-                    <h1 class="display-7">Available Doctors</h3>
-                        <table class="table">
+                <div class="col-md jumbotron doc-list ">
+                    <h1 class="display-7 ">Available Doctors</h3>
+                        <table class="table ">
                             <thead>
                                 <tr>
-                                    <th scope="col">Sl</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Qualification</th>
-                                    <th scope="col">Specialization</th>
+                                    <th scope="col ">Sl</th>
+                                    <th scope="col ">Name</th>
+                                    <th scope="col ">Qualification</th>
+                                    <th scope="col ">Specialization</th>
 
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row ">1</th>
                                     <td>Dr. Sandip Roy</td>
                                     <td>MBBS, MD (Derma)</td>
                                     <td>Skin Specialist</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">2</th>
+                                    <th scope="row ">2</th>
                                     <td>Dr. (Mrs) Fizza Rahman</td>
                                     <td>MBBS, MS(Gynae).</td>
                                     <td>Obstetrician & Gynaecologist</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">3</th>
+                                    <th scope="row ">3</th>
                                     <td>Dr. Anowar Hussain</td>
                                     <td>MBBS, MD (Paediatrics)</td>
                                     <td>Child Specialist</td>
@@ -86,6 +100,9 @@
             </div>
     </section>
 
+
+
+    <script src="check_phone.js"></script>
 </body>
 
 </html>
