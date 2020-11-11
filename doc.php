@@ -1,3 +1,15 @@
+<?php 
+    $con=mysqli_connect('localhost','root','','pathology');
+        
+    if(!$con)
+    {
+        die(' Please Check Your Connection'.mysqli_error($con));
+    }
+    else
+        echo " <h3> connection established.. </h3> ";
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +32,7 @@
                 </div> -->
 
                 <div class="col-md jumbotron add">
-                    <form action="" method="POST">
+                    <form action="assets\process\DocAdd.php" method="POST">
 
 
                         <h3 class="display-7">Add Doctor</h3>
@@ -67,7 +79,7 @@
                         </div>
 
                         <div class="col-12">
-                            <button type="submit " id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
+                            <button type="submit" name="submit" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
                             <div class="validate "></div>
                         </div>
                 </div>
@@ -116,26 +128,3 @@
 
 </html>
 
-
-<?php
-    $con=mysqli_connect('localhost','root','','pathology');
-    
-    if(!$con)
-    {
-        die(' Please Check Your Connection'.mysqli_error($con));
-    }
-    
-    if(isset($_POST['submit'])){
-        $name=$_POST['dname'];
-        $qualification=$_POST['qualification'];
-        $specialization=$_POST['specialization'];
-        $phone=$_POST['phone'];
-        $refcent=$_POST['refcent'];
-    
-        $insertquery = "insert into doctor(dname,mobile,quali,special,refcent) values('$dname','$mobile','$qualification','$specialization','$refcent')";
-        if(mysqli_query($con,$insertquery))
-        {
-            echo"<h3>Data Inserted</h3>";
-        }
-    }
-?>
