@@ -52,11 +52,20 @@
 
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input class="form-control" name="phone" id="id_phone" type="tel" placeholder="Phone*" min="999999999 " required="required" oninvalid="this.setCustomValidity('Enter Phone')" oninput="setCustomValidity('')" onkeypress="if(this.value.length==10) return false;">
+                                <input class="form-control" name="phone" id="id_phone" type="number" placeholder="Phone*" min="999999999 " required="required" oninvalid="this.setCustomValidity('Enter Phone')" oninput="setCustomValidity('')" onkeypress="if(this.value.length==10) return false;">
                                 <label for="id_phone">Phone</label>
                                 <div class="validate"></div>
                             </div>
                         </div>
+
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                <input class="form-control" name="phone" id="id_referral" type="number" placeholder="Referral %*" required="required" oninvalid="this.setCustomValidity('Enter Referral %')" oninput="setCustomValidity('')">
+                                <label for="id_referral">Referral %</label>
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+
                         <div class="col-12">
                             <button type="submit " id="addButton " class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
                             <div class="validate "></div>
