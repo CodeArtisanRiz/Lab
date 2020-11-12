@@ -18,7 +18,8 @@
         $insertquery = "insert into doctor(dname,mobile,quali,special,refcent) values('$dname','$mobile','$qualification','$specialization','$refcent')";
         if(mysqli_query($con,$insertquery))
         {
-            echo"<h3>Data Inserted</h3>";
+            // echo"<h3>Data Inserted</h3>";
+            header("location:../../doc.php");
         }
     }
 ?>
