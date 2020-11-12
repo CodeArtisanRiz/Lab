@@ -82,6 +82,7 @@
                             <button type="submit" name="submit" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
                             <div class="validate "></div>
                         </div>
+                    </form>
                 </div>
                 <div class="col-md jumbotron doc-list ">
                     <h3 class="display-7 ">Available Doctors</h3>
@@ -141,4 +142,3 @@
 </body>
 
 </html>
-
