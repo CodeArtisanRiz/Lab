@@ -88,6 +88,7 @@
                                 <th scope="col ">Specialization</th>
                                 <th scope="col ">Mobile</th>
                                 <th scope="col ">Referral Percentage</th>
+                                <th scope="col " colspan="2">Operations</th>
 
                             </tr>
                         </thead>
@@ -114,6 +115,8 @@
                                     <td><?php echo $res['special']; ?></td>
                                     <td><?php echo $res['mobile']; ?></td>
                                     <td><?php echo $res['refcent']; ?></td>
+                                    <td><i class="fa fa-edit" aria-hidden="true"></i></td>
+                                    <td><i class="fa fa-trash" aria-hidden="true"></i></td>
                                 </tr>
                         <?php 
 
@@ -130,7 +133,9 @@
     </section>
 
 
-
+    
+    <script src="https://use.fontawesome.com/0a050084c3.js"></script>
+                        
     <script src="check_phone.js"></script>
 </body>
 
