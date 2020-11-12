@@ -5,6 +5,6 @@
     {
         die(' Please Check Your Connection'.mysqli_error($con));
     }
-    else
-        echo '<script>alert("Welcome, Your Connection has been Established ! !");</script>' ;
+//     else
+//         echo '<script>alert("Welcome, Your Connection has been Established ! !");</script>' ;
 ?>
