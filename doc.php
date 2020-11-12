@@ -25,7 +25,7 @@
                 </div> -->
 
                 <div class="col-md jumbotron add">
-                    <form action="assets\process\DocAdd.php" method="POST">
+                    <form action="assets/process/DocAdd.php" method="POST">
 
 
                         <h3 class="display-7">Add Doctor</h3>
