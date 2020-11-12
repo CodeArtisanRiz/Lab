@@ -6,7 +6,7 @@
         die(' Please Check Your Connection'.mysqli_error($con));
     }
     else
-        echo " <h3> connection established.. </h3> ";
+        echo '<script>alert("Welcome, Your Connection has been Established ! !");</script>' ;
 ?>
 
 
@@ -92,28 +92,42 @@
                                 <th scope="col ">Name</th>
                                 <th scope="col ">Qualification</th>
                                 <th scope="col ">Specialization</th>
+                                <th scope="col ">Mobile</th>
+                                <th scope="col ">Referral Percentage</th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row ">1</th>
-                                <td>Dr. Sandip Roy</td>
-                                <td>MBBS, MD (Derma)</td>
-                                <td>Skin Specialist</td>
-                            </tr>
-                            <tr>
-                                <th scope="row ">2</th>
-                                <td>Dr. (Mrs) Fizza Rahman</td>
-                                <td>MBBS, MS(Gynae).</td>
-                                <td>Obstetrician & Gynaecologist</td>
-                            </tr>
-                            <tr>
-                                <th scope="row ">3</th>
-                                <td>Dr. Anowar Hussain</td>
-                                <td>MBBS, MD (Paediatrics)</td>
-                                <td>Child Specialist</td>
-                            </tr>
+
+                        <?php
+
+                            include 'assets\conn\conn.php';
+
+                            $selectquery = " select * from doctor ";
+
+                            $query = mysqli_query($con,$selectquery);
+
+                            $nums = mysqli_num_rows($query);
+
+                            while($res = mysqli_fetch_array($query)){
+                            
+                            ?>
+
+                                <tr>
+                                    <th scope="row "><?php echo $res['did']; ?></th>
+                                    <td><?php echo $res['dname']; ?></td>
+                                    <td><?php echo $res['quali']; ?></td>
+                                    <td><?php echo $res['special']; ?></td>
+                                    <td><?php echo $res['mobile']; ?></td>
+                                    <td><?php echo $res['refcent']; ?></td>
+                                </tr>
+                        <?php 
+
+                        }
+                            
+                        ?>
+
+                            
                         </tbody>
                     </table>
                 </div>
