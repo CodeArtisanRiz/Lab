@@ -57,7 +57,7 @@
 
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input class="form-control" name="id_phone" id="id_phone" type="number" placeholder="Phone*" min="999999999 " required="required" oninvalid="this.setCustomValidity('Enter Phone')" oninput="setCustomValidity('')" onkeypress="if(this.value.length==10) return false;">
+                                <input class="form-control" name="phone" id="id_phone" type="number" placeholder="Phone*" min="999999999 " required="required" oninvalid="this.setCustomValidity('Enter Phone')" oninput="setCustomValidity('')" onkeypress="if(this.value.length==10) return false;">
                                 <label for="id_phone">Phone</label>
                                 <div class="validate"></div>
                             </div>
