@@ -1,5 +1,5 @@
 <?php 
-   include 'assets\conn\conn.php';
+   include 'assets/conn/conn.php';
 ?>
 
 

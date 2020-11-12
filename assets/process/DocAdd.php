@@ -1,6 +1,5 @@
 <?php
-
-    include 'assets\conn\conn.php';
+    include '../conn/conn.php';
     // $con=mysqli_connect('localhost','root','','pathology');
     
     // if(!$con)
