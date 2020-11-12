@@ -1,10 +1,18 @@
-<? php include '..\conn\conn.php';
+<?php
+    $con=mysqli_connect('localhost','root','','pathology');
+    
+    if(!$con)
+    {
+        die(' Please Check Your Connection'.mysqli_error($con));
+    }
+    else
+        echo " <h3> connection established.. </h3> ";
 
     if(isset($_POST['submit'])){
-        $name=$_POST['dname'];
+        $dname=$_POST['dname'];
         $qualification=$_POST['qualification'];
         $specialization=$_POST['specialization'];
-        $phone=$_POST['phone'];
+        $mobile=$_POST['phone'];
         $refcent=$_POST['refcent'];
 
         $insertquery = "insert into doctor(dname,mobile,quali,special,refcent) values('$dname','$mobile','$qualification','$specialization','$refcent')";

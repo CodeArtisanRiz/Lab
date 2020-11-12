@@ -1,3 +1,15 @@
+<?php 
+    $con=mysqli_connect('localhost','root','','pathology');
+        
+    if(!$con)
+    {
+        die(' Please Check Your Connection'.mysqli_error($con));
+    }
+    else
+        echo '<script>alert("Welcome, Your Connection has been Established ! !");</script>' ;
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +32,7 @@
                 </div> -->
 
                 <div class="col-md jumbotron add">
-                    <form action="" method="POST">
+                    <form action="assets\process\DocAdd.php" method="POST">
 
 
                         <h3 class="display-7">Add Doctor</h3>
@@ -67,7 +79,7 @@
                         </div>
 
                         <div class="col-12">
-                            <button type="submit " id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
+                            <button type="submit" name="submit" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
                             <div class="validate "></div>
                         </div>
                 </div>
@@ -80,28 +92,42 @@
                                 <th scope="col ">Name</th>
                                 <th scope="col ">Qualification</th>
                                 <th scope="col ">Specialization</th>
+                                <th scope="col ">Mobile</th>
+                                <th scope="col ">Referral Percentage</th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row ">1</th>
-                                <td>Dr. Sandip Roy</td>
-                                <td>MBBS, MD (Derma)</td>
-                                <td>Skin Specialist</td>
-                            </tr>
-                            <tr>
-                                <th scope="row ">2</th>
-                                <td>Dr. (Mrs) Fizza Rahman</td>
-                                <td>MBBS, MS(Gynae).</td>
-                                <td>Obstetrician & Gynaecologist</td>
-                            </tr>
-                            <tr>
-                                <th scope="row ">3</th>
-                                <td>Dr. Anowar Hussain</td>
-                                <td>MBBS, MD (Paediatrics)</td>
-                                <td>Child Specialist</td>
-                            </tr>
+
+                        <?php
+
+                            include 'assets\conn\conn.php';
+
+                            $selectquery = " select * from doctor ";
+
+                            $query = mysqli_query($con,$selectquery);
+
+                            $nums = mysqli_num_rows($query);
+
+                            while($res = mysqli_fetch_array($query)){
+                            
+                            ?>
+
+                                <tr>
+                                    <th scope="row "><?php echo $res['did']; ?></th>
+                                    <td><?php echo $res['dname']; ?></td>
+                                    <td><?php echo $res['quali']; ?></td>
+                                    <td><?php echo $res['special']; ?></td>
+                                    <td><?php echo $res['mobile']; ?></td>
+                                    <td><?php echo $res['refcent']; ?></td>
+                                </tr>
+                        <?php 
+
+                        }
+                            
+                        ?>
+
+                            
                         </tbody>
                     </table>
                 </div>
@@ -116,26 +142,3 @@
 
 </html>
 
-
-<?php
-    $con=mysqli_connect('localhost','root','','pathology');
-    
-    if(!$con)
-    {
-        die(' Please Check Your Connection'.mysqli_error($con));
-    }
-    
-    if(isset($_POST['submit'])){
-        $name=$_POST['dname'];
-        $qualification=$_POST['qualification'];
-        $specialization=$_POST['specialization'];
-        $phone=$_POST['phone'];
-        $refcent=$_POST['refcent'];
-    
-        $insertquery = "insert into doctor(dname,mobile,quali,special,refcent) values('$dname','$mobile','$qualification','$specialization','$refcent')";
-        if(mysqli_query($con,$insertquery))
-        {
-            echo"<h3>Data Inserted</h3>";
-        }
-    }
-?>
