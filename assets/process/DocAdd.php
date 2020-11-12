@@ -1,10 +1,5 @@
 <?php
-    $con=mysqli_connect('localhost','root','','pathology');
-    
-    if(!$con)
-    {
-        die(' Please Check Your Connection'.mysqli_error($con));
-    }
+    include '../conn/conn.php';
 
     if(isset($_POST['submit'])){
         $dname=$_POST['dname'];
@@ -18,7 +13,6 @@
         {
             // echo"<h3>Data Inserted</h3>";
             header("location:../../doc.php");
-            exit();
         }
     }
 ?>
