@@ -1,0 +1,160 @@
+<?php 
+    include 'assets/conn/conn.php';
+
+    //$dname= $_GET['dname'];
+
+    $ids = $_GET['ids'];
+    $dn = $_GET['dn'];
+    $qu = $_GET['qu'];
+    $sp = $_GET['sp'];
+    $mb = $_GET['mb'];
+    $rc = $_GET['rc'];
+
+
+    
+
+    //$showquery = "select * from doctor where did = ' " .$ids." ' ";
+
+    //$result = mysqli_query($con,$showquery);
+
+    //$row = mysqli_fetch_assoc($result);
+
+    // if(isset($_POST['submit'])){
+    //     $dname=$_POST['dname'];
+    //     $qualification=$_POST['qualification'];
+    //     $specialization=$_POST['specialization'];
+    //     $mobile=$_POST['phone'];
+    //     $refcent=$_POST['refcent'];
+
+    //     $insertquery = "insert into doctor(dname,mobile,quali,special,refcent) values('$dname','$mobile','$qualification','$specialization','$refcent')";
+                                
+    //     $res = mysqli_query($con,$insertquery);
+
+    //     if($res){
+    //         echo ("Data Updated..!!");
+    //     }
+    //     else{
+    //         echo ("error!! not updated"); 
+    //     }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lab</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <section>
+
+
+            <div class="container my-5">
+                <div class="row">
+                    <!-- <div class="col-md-2 jumbotron index">
+                        <h1 class="display-7">Index</h1>
+                    </div> -->
+
+                    <div class="col-md jumbotron add">
+                        <form action="" method="POST">
+
+
+                            <h3 class="display-7">Add Doctor</h3>
+
+                            <div class="col-12">
+                                <div class="form-label-group">
+                                    <input type="text" id="id_name" class="form-control" name="did" value="<?php echo "$ids"; ?>" placeholder="Doctor ID" va required="required" disabled oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">
+                                    <label for="id_did">Doctor ID</label>
+                                    <div class="validate"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-label-group">
+                                    <input type="text" id="id_name" class="form-control" name="dname" value="<?php echo "$dn"; ?>" placeholder="Doctor Name" va required="required" oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">
+                                    <label for="id_name">Doctor Name</label>
+                                    <div class="validate"></div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-12">
+                                <div class="form-label-group">
+                                    <input class="form-control" name="qualification" value="<?php echo "$qu"; ?>" id="id_qualification" type="text" placeholder="Qualification*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
+                                    <label for="id_qualification">Qualification</label>
+                                    <div class="validate"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-label-group">
+                                    <input class="form-control" name="specialization" value="<?php echo "$sp"; ?>" id="id_specialization" type="text" placeholder="Specialization*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
+                                    <label for="id_specialization">Specialization</label>
+                                    <div class="validate"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-label-group">
+                                    <input class="form-control" name="phone" value="<?php echo "$mb"; ?>" id="id_phone" type="number" placeholder="Phone*" min="999999999 " required="required" oninvalid="this.setCustomValidity('Enter Phone')" oninput="setCustomValidity('')" onkeypress="if(this.value.length==10) return false;">
+                                    <label for="id_phone">Phone</label>
+                                    <div class="validate"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-label-group">
+                                    <input class="form-control" name="refcent" value="<?php echo "$rc"; ?>" id="id_referral" type="number" placeholder="Referral %*" required="required" oninvalid="this.setCustomValidity('Enter Referral %')" oninput="setCustomValidity('')">
+                                    <label for="id_referral">Referral %</label>
+                                    <div class="validate"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <button type="submit" name="update" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Update</button>
+                                <div class="validate "></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </section>
+
+
+        
+        <script src="https://use.fontawesome.com/0a050084c3.js"></script>
+                            
+        <script src="check_phone.js"></script>
+    </body>
+
+</html>
+
+<?php
+    
+    if($_POST['update']){
+        $did=$_GET['did'];
+        $dname=$_GET['dname'];
+        $qualification=$_GET['qualification'];
+        $specialization=$_GET['specialization'];
+        $mobile=$_GET['phone'];
+        $refcent=$_GET['refcent'];
+
+        $update = " UPDATE doctor set did='$did',dname='$dname',mobile='$mobile', quali='$qualification',special='$specialization',refcent='$refcent' WHERE did='$ids' ";
+                                
+        $res = mysqli_query($con,$update);
+
+        if($res){
+            echo '<script>alert("Record Updated..");</script>' ;
+        }
+        else{
+            echo '<script>alert("Error. Record Not Updated..");</script>' ;
+        }
+    }
+
+
+?>
+
+
