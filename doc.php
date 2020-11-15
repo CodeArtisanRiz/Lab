@@ -113,7 +113,7 @@
                                     <td><?php echo $res['mobile']; ?></td>
                                     <td><?php echo $res['refcent']; ?></td>
                                     <td><a href="docUpdate.php?ids=<?php echo $res['did']?>&dn=<?php echo $res['dname']?>&qu=<?php echo $res['quali']?>&sp=<?php echo $res['special']?>&mb=<?php echo $res['mobile']?>&rc=<?php echo $res['refcent'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
-                                    <td><i class="fa fa-trash" aria-hidden="true"></i></td>
+                                    <td><a href="docDel.php?ids=<?php echo $res['did']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
                             <?php 
 
