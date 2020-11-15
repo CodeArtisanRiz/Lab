@@ -35,7 +35,7 @@
                         <form action="" method="POST">
 
 
-                            <h3 class="display-7">Add Doctor</h3>
+                            <h3 class="display-7">Edit / Update Doctor</h3>
 
                             <div class="col-12">
                                 <div class="form-label-group">
@@ -80,7 +80,7 @@
 
                             <div class="col-12">
                                 <div class="form-label-group">
-                                    <input class="form-control" name="refcent" value="<?php echo "$rc"; ?>" id="id_referral" type="number" placeholder="Referral %*" required="required" oninvalid="this.setCustomValidity('Enter Referral %')" oninput="setCustomValidity('')">
+                                    <input class="form-control" name="refcent" value="<?php echo "$rc"; ?>" id="id_referral" type="number" step="any" placeholder="Referral %*" required="required" oninvalid="this.setCustomValidity('Enter Referral %')" oninput="setCustomValidity('')">
                                     <label for="id_referral">Referral %</label>
                                     <div class="validate"></div>
                                 </div>
