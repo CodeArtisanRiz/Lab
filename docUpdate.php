@@ -130,6 +130,7 @@
                 
                 // header not working look for fix
                 // header("location:doc.php");
+                ?>
                 <script>
                 window.location.replace("doc.php");
                 </script>
@@ -143,6 +144,7 @@
         
     }
     else {
+
     }
     // echo ' Not Working';
     //trim
