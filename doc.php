@@ -20,9 +20,6 @@
 
         <div class="container my-5">
             <div class="row">
-                <!-- <div class="col-md-2 jumbotron index">
-                    <h1 class="display-7">Index</h1>
-                </div> -->
 
                 <div class="col-md jumbotron add">
                     <form action="assets/process/DocAdd.php" method="POST">
@@ -118,11 +115,11 @@
                                     <td><a href="docUpdate.php?ids=<?php echo $res['did']?>&dn=<?php echo $res['dname']?>&qu=<?php echo $res['quali']?>&sp=<?php echo $res['special']?>&mb=<?php echo $res['mobile']?>&rc=<?php echo $res['refcent'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                                     <td><i class="fa fa-trash" aria-hidden="true"></i></td>
                                 </tr>
-                        <?php 
+                            <?php 
 
-                        }
-                            
-                        ?>
+                            }
+                                
+                            ?>
 
                             
                         </tbody>

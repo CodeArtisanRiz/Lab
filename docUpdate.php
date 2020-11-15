@@ -1,41 +1,13 @@
 <?php 
     include 'assets/conn/conn.php';
 
-    //$dname= $_GET['dname'];
-
     $ids = $_GET['ids'];
     $dn = $_GET['dn'];
     $qu = $_GET['qu'];
     $sp = $_GET['sp'];
     $mb = $_GET['mb'];
     $rc = $_GET['rc'];
-
-
     
-
-    //$showquery = "select * from doctor where did = ' " .$ids." ' ";
-
-    //$result = mysqli_query($con,$showquery);
-
-    //$row = mysqli_fetch_assoc($result);
-
-    // if(isset($_POST['submit'])){
-    //     $dname=$_POST['dname'];
-    //     $qualification=$_POST['qualification'];
-    //     $specialization=$_POST['specialization'];
-    //     $mobile=$_POST['phone'];
-    //     $refcent=$_POST['refcent'];
-
-    //     $insertquery = "insert into doctor(dname,mobile,quali,special,refcent) values('$dname','$mobile','$qualification','$specialization','$refcent')";
-                                
-    //     $res = mysqli_query($con,$insertquery);
-
-    //     if($res){
-    //         echo ("Data Updated..!!");
-    //     }
-    //     else{
-    //         echo ("error!! not updated"); 
-    //     }
 ?>
 
 <!DOCTYPE html>
@@ -134,27 +106,39 @@
 
 <?php
     
-    if($_POST['update']){
-        $did=$_GET['did'];
-        $dname=$_GET['dname'];
-        $qualification=$_GET['qualification'];
-        $specialization=$_GET['specialization'];
-        $mobile=$_GET['phone'];
-        $refcent=$_GET['refcent'];
+    if(isset($_POST['update'])){
+      
+        $did=$ids;
+        $dname=trim($_POST['dname']);                       //trim is used to omitt white space at first and last
+        $qualification=trim($_POST['qualification']);
+        $specialization=trim($_POST['specialization']);
+        $mobile=trim($_POST['phone']);
+        $refcent=trim($_POST['refcent']);
 
-        $update = " UPDATE doctor set did='$did',dname='$dname',mobile='$mobile', quali='$qualification',special='$specialization',refcent='$refcent' WHERE did='$ids' ";
-                                
-        $res = mysqli_query($con,$update);
+        if(empty($dname) || empty($qualification) || empty($specialization) || empty($mobile) || empty($refcent))
+        {
+            echo '<script>alert("Please fill up the empty fields..");</script>' ;
 
-        if($res){
-            echo '<script>alert("Record Updated..");</script>' ;
         }
         else{
-            echo '<script>alert("Error. Record Not Updated..");</script>' ;
+            $update = " UPDATE doctor set did='$did',dname='$dname',mobile='$mobile', quali='$qualification',special='$specialization',refcent='$refcent' WHERE did='$ids' ";
+                                    
+            $res = mysqli_query($con,$update);
+
+            if($res){
+                echo '<script>alert("Record Updated..");</script>' ;
+                header("location:doc.php");
+            }
+            else{
+                echo '<script>alert("Error. Record Not Updated..");</script>' ;
+            }
+
         }
+        
     }
-
-
+    else echo ' Not Working';
+    //trim
+    //htmlentities
 ?>
 
 
