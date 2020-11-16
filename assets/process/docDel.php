@@ -10,5 +10,3 @@
 
     header("location:../../doc.php");
 ?>
-
-//Code here is not functional, it is to understand listing moudule.
