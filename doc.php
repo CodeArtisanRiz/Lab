@@ -25,7 +25,7 @@
                     <form action="assets/process/DocAdd.php" method="POST">
 
 
-                        <h3 class="display-7">Add Doctor</h3>
+                        <!-- <h3 class="display-7">Add Doctor</h3> -->
 
                         <div class="col-12">
                             <div class="form-label-group">
@@ -75,7 +75,7 @@
                     </form>
                 </div>
                 <div class="col-md jumbotron doc-list ">
-                    <h3 class="display-7 ">Available Doctors</h3>
+                    <!-- <h3 class="display-7 ">Available Doctors</h3> -->
                     <table class="table ">
                         <thead>
                             <tr>
@@ -92,9 +92,6 @@
                         <tbody>
 
                         <?php
-
-                            // include 'assets\conn\conn.php';
-
                             $selectquery = " select * from doctor ";
 
                             $query = mysqli_query($con,$selectquery);
@@ -102,9 +99,7 @@
                             $nums = mysqli_num_rows($query);
 
                             while($res = mysqli_fetch_assoc($query)){
-                            
                             ?>
-
                                 <tr>
                                     <th scope="row "><?php echo $res['did']; ?></th>
                                     <td><?php echo $res['dname']; ?></td>
@@ -115,13 +110,9 @@
                                     <td><a href="docUpdate.php?ids=<?php echo $res['did']?>&dn=<?php echo $res['dname']?>&qu=<?php echo $res['quali']?>&sp=<?php echo $res['special']?>&mb=<?php echo $res['mobile']?>&rc=<?php echo $res['refcent'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                                     <td><a href="assets/process/docDel.php?ids=<?php echo $res['did']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
-                            <?php 
-
+                            <?php
                             }
-                                
                             ?>
-
-                            
                         </tbody>
                     </table>
                 </div>
