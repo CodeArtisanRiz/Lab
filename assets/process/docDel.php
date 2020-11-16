@@ -1,6 +1,6 @@
 <?php
 
-    include 'assets/conn/conn.php';
+    include '../conn/conn.php';
 
     $ids = $_REQUEST['ids'];
 
@@ -8,5 +8,5 @@
 
     $result = mysqli_query($con,$query) or die ( mysqli_error());
 
-    header("location:doc.php");
+    header("location:../../doc.php");
 ?>
