@@ -12,3 +12,6 @@ while($res = mysqli_fetch_array($query)){
     echo $res['dname'] . "<br>";
 }
 ?>
+
+//This page is to under how listing module works.
+//This page is not functional.
