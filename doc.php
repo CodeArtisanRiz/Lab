@@ -62,7 +62,7 @@
 
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input class="form-control" name="refcent" id="id_referral" type="number" placeholder="Referral %*" required="required" oninvalid="this.setCustomValidity('Enter Referral %')" oninput="setCustomValidity('')">
+                                <input class="form-control" name="refcent" id="id_referral" type="number" step="any" placeholder="Referral %*" required="required" oninvalid="this.setCustomValidity('Enter Referral %')" oninput="setCustomValidity('')">
                                 <label for="id_referral">Referral %</label>
                                 <div class="validate"></div>
                             </div>
