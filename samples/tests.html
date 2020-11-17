@@ -19,7 +19,7 @@
                     <h1 class="display-7">Index</h1>
                 </div> -->
 
-                <div class="col-md jumbotron add">
+                <div class="col-4 jumbotron add">
                     <form action="" method="POST">
 
 
@@ -44,9 +44,16 @@
 
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input class="form-control" name="specialization" id="id_specialization" type="text" placeholder="Specialization*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
-                                <label for="id_specialization">Vial type</label>
-                                <div class="validate"></div>
+                                <select name="vial" id="id_vial" class="custom-select">
+                                    <option value="" selected="">---------</option>
+                                    <option value="id_yellow_vial">Yellow Vial</option>
+                                    <option value="id_red_vial">Red Vial</option>
+                                    <option value="id_purple_vial">Purple Vial (EDTA)</option>
+                                    <option value="id_grey_vial">Grey Vial</option>
+                                    <option value="id_black_vial">Black Vial</option>
+                                    <option value="id_blue_vial">Blue Vial</option>
+                                    <option value="id_urine_container">Urine Container</option>
+                                </select>
                             </div>
                         </div>
 
@@ -79,7 +86,7 @@
                             <div class="validate "></div>
                         </div>
                 </div>
-                <div class="col-md jumbotron doc-list ">
+                <div class="col-8 jumbotron doc-list ">
                     <h3 class="display-7 ">List of Tests</h3>
                     <table class="table ">
                         <thead>
