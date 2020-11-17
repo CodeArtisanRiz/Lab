@@ -43,17 +43,35 @@
                         </div>
 
                         <div class="col-12">
-                            <div class="form-label-group">
-                                <select name="vial" id="id_vial" class="custom-select">
-                                    <option value="" disabled selected="">Vial type</option>
-                                    <option value="id_yellow_vial">Yellow Vial</option>
-                                    <option value="id_red_vial">Red Vial</option>
-                                    <option value="id_purple_vial">Purple Vial (EDTA)</option>
-                                    <option value="id_grey_vial">Grey Vial</option>
-                                    <option value="id_black_vial">Black Vial</option>
-                                    <option value="id_blue_vial">Blue Vial</option>
-                                    <option value="id_urine_container">Urine Container</option>
+                            <!-- <div class="form-group">
+                                <div class="">
+                                    <input list="abc" name="abc">
+                                    <datalist id="abc">
+                                    <option value="" disabled>Vial Type</option>
+                                    <option value="Yellow Vial">Yellow Vial</option>
+                                    <option value="Red Vial">Red Vial</option>
+                                    <option value="Purple Vial (EDTA)">Purple Vial (EDTA)</option>
+                                    <option value="Grey Vial">Grey Vial</option>
+                                    <option value="Black Vial">Black Vial</option>
+                                    <option value="Blue Vial">Blue Vial</option>
+                                    <option value="Urine Container">Urine Container</option>
+                                    </datalist>
+                                </div>
+                            </div> -->
+                            <div class="form-group">
+                                <div class="select-menu">
+                                    <label for="id_vial">Vial</label>
+                                    <select name="vial" id="id_vial" name="vial" class="custom-select">
+                                    <option value="" disabled selected="">Vial Type</option>
+                                    <option value="Yellow Vial">Yellow Vial</option>
+                                    <option value="Red Vial">Red Vial</option>
+                                    <option value="Purple Vial (EDTA)">Purple Vial (EDTA)</option>
+                                    <option value="Grey Vial">Grey Vial</option>
+                                    <option value="Black Vial">Black Vial</option>
+                                    <option value="Blue Vial">Blue Vial</option>
+                                    <option value="Urine Container">Urine Container</option>
                                 </select>
+                                </div>
                             </div>
                         </div>
 
@@ -130,6 +148,7 @@
 
 
     <script src="check_phone.js"></script>
+    <script src="../dropdown.js"></script>
 </body>
 
 </html>
