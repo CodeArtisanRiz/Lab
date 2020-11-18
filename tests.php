@@ -15,15 +15,9 @@
 
         <div class="container my-5">
             <div class="row">
-                <!-- <div class="col-md-2 jumbotron index">
-                    <h1 class="display-7">Index</h1>
-                </div> -->
 
                 <div class="col-4 jumbotron add">
                     <form action="" method="POST">
-
-
-                        <!-- <h3 class="display-7">Add Tests</h3> -->
 
                         <div class="col-12">
                             <div class="form-label-group">
@@ -43,25 +37,10 @@
                         </div>
 
                         <div class="col-12">
-                            <!-- <div class="form-group">
-                                <div class="">
-                                    <input list="abc" name="abc">
-                                    <datalist id="abc">
-                                    <option value="" disabled>Vial Type</option>
-                                    <option value="Yellow Vial">Yellow Vial</option>
-                                    <option value="Red Vial">Red Vial</option>
-                                    <option value="Purple Vial (EDTA)">Purple Vial (EDTA)</option>
-                                    <option value="Grey Vial">Grey Vial</option>
-                                    <option value="Black Vial">Black Vial</option>
-                                    <option value="Blue Vial">Blue Vial</option>
-                                    <option value="Urine Container">Urine Container</option>
-                                    </datalist>
-                                </div>
-                            </div> -->
                             <div class="form-group">
                                 <div class="select-menu">
                                     <label for="id_vial">Vial</label>
-                                    <select name="vial" id="id_vial" name="vial" class="custom-select">
+                                    <select name="vial" id="id_vial" class="custom-select">
                                     <option value="" disabled selected="">Select Vial Type</option>
                                     <option value="Yellow Vial">Yellow Vial</option>
                                     <option value="Red Vial">Red Vial</option>
@@ -91,14 +70,6 @@
                             </div>
                         </div>
 
-                        <!-- <div class="col-12">
-                            <div class="form-label-group">
-                                <input class="form-control" name="refcent" id="id_referral" type="number" placeholder="Referral %*" required="required" oninvalid="this.setCustomValidity('Enter Referral %')" oninput="setCustomValidity('')">
-                                <label for="id_referral">Referral %</label>
-                                <div class="validate"></div>
-                            </div>
-                        </div> -->
-
                         <div class="col-12">
                             <button type="submit " id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
                             <div class="validate "></div>
@@ -120,24 +91,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- <tr>
-                                <th scope="row ">1</th>
-                                <td>Dr. Sandip Roy</td>
-                                <td>MBBS, MD (Derma)</td>
-                                <td>Skin Specialist</td>
-                            </tr>
-                            <tr>
-                                <th scope="row ">2</th>
-                                <td>Dr. (Mrs) Fizza Rahman</td>
-                                <td>MBBS, MS(Gynae).</td>
-                                <td>Obstetrician & Gynaecologist</td>
-                            </tr>
-                            <tr>
-                                <th scope="row ">3</th>
-                                <td>Dr. Anowar Hussain</td>
-                                <td>MBBS, MD (Paediatrics)</td>
-                                <td>Child Specialist</td>
-                            </tr> -->
                         </tbody>
                     </table>
                 </div>
