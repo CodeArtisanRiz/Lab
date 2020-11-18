@@ -62,7 +62,7 @@
                                 <div class="select-menu">
                                     <label for="id_vial">Vial</label>
                                     <select name="vial" id="id_vial" name="vial" class="custom-select">
-                                    <option value="" disabled selected="">Vial Type</option>
+                                    <option value="" disabled selected="">Select Vial Type</option>
                                     <option value="Yellow Vial">Yellow Vial</option>
                                     <option value="Red Vial">Red Vial</option>
                                     <option value="Purple Vial (EDTA)">Purple Vial (EDTA)</option>
