@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     
-    <link rel="stylesheet" href="samples/select2.min.css" />
+    <link rel="stylesheet" href="assets/select2.min.css" />
 </head>
 
 <body>
@@ -134,7 +134,7 @@
     <script src="https://use.fontawesome.com/0a050084c3.js"></script>
     <!-- <script src="dropdown.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="samples/select2.min.js"></script>
+    <script src="assets/select2.min.js"></script>
     <script>
         $("#id_vial").select2({
             placeholder: "Select Vial",
