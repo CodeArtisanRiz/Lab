@@ -43,27 +43,7 @@
                         </div>
 
                         <div class="col-12">
-                            
-                         <div class="form-group">
-                                <!-- <div class=""> -->
-                                    <!-- <input list="abc" name="abc"> -->
-                                    <!-- <datalist id="abc"> -->
-                                    <select class="form-control select-menu">
-                                    <option value="" disabled selected >Vial Type</option>
-                                    <option value="Yellow Vial">Yellow Vial</option>
-                                    <option value="Red Vial">Red Vial</option>
-                                    <option value="Purple Vial (EDTA)">Purple Vial (EDTA)</option>
-                                    <option value="Grey Vial">Grey Vial</option>
-                                    <option value="Black Vial">Black Vial</option>
-                                    <option value="Blue Vial">Blue Vial</option>
-                                    <option value="Urine Container">Urine Container</option>
-                                    </select>
-                                    <!-- </datalist> -->
-                                <!-- </div> -->
-                                
-                            </div>
-                        
-                        <!-- <div class="form-group">
+                            <div class="form-group">
                                 <div class="select-menu">
                                     <label for="id_vial">Vial</label>
                                     <select name="vial" id="id_vial" class="custom-select">
@@ -77,8 +57,8 @@
                                         <option value="Urine Container">Urine Container</option>
                                     </select>
                                 </div>
-                            </div>-->
-                        </div> 
+                            </div>
+                        </div>
 
                         <div class="col-12">
                             <div class="form-label-group">
