@@ -67,7 +67,10 @@
                                     <div class="select-menu">
                                         <!-- <label for="id_vial">Vial</label> -->
                                         <select name="vial" id="id_vial" value="<?php echo "$vial"; ?>" class="custom-select">
+
                                             <option value="<?php echo "$vial"; ?>" disabled selected><?php echo "$vial"; ?></option>
+
+                                            <option value="" disabled>Select Vial Type</option>
                                             <option value="Yellow Vial">Yellow Vial</option>
                                             <option value="Red Vial">Red Vial</option>
                                             <option value="Purple Vial (EDTA)">Purple Vial (EDTA)</option>
