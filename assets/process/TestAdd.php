@@ -29,8 +29,8 @@
         $insertquery = "insert into tests(tcode,tname,vial_type,c_price,s_price) values('$tcode','$tname','$vial','$tcp','$trate')";
             if(mysqli_query($con,$insertquery))
             {
-                echo"<h3>Data Inserted</h3>";
-                //header("location:../../tests.php");
+                // echo"<h3>Data Inserted</h3>";
+                header("location:../../tests.php");
             }
     }
 ?>
