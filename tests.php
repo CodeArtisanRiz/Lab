@@ -1,3 +1,7 @@
+<?php 
+   include 'assets/conn/conn.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,11 +21,13 @@
             <div class="row">
 
                 <div class="col-4 jumbotron add">
-                    <form action="" method="POST">
+                    <form action="assets/process/TestAdd.php" method="POST">
+
+                        <h3 class="display-7">Add Test</h3>
 
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" id="id_t_code" class="form-control" name="t_code" placeholder="Test code" required="required" oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">
+                                <input type="text" id="id_t_code" class="form-control" name="tcode" placeholder="Test code" required="required" oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">
                                 <label for="t_code">Test code</label>
                                 <div class="validate"></div>
                             </div>
@@ -30,7 +36,7 @@
 
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input class="form-control" name="t_name" id="t_name" type="text" placeholder="Test name*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
+                                <input class="form-control" name="tname" id="t_name" type="text" placeholder="Test name*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
                                 <label for="t_name">Test name</label>
                                 <div class="validate"></div>
                             </div>
@@ -41,22 +47,22 @@
                                 <div class="select-menu">
                                     <label for="id_vial">Vial</label>
                                     <select name="vial" id="id_vial" class="custom-select">
-                                    <option value="" disabled selected="">Select Vial Type</option>
-                                    <option value="Yellow Vial">Yellow Vial</option>
-                                    <option value="Red Vial">Red Vial</option>
-                                    <option value="Purple Vial (EDTA)">Purple Vial (EDTA)</option>
-                                    <option value="Grey Vial">Grey Vial</option>
-                                    <option value="Black Vial">Black Vial</option>
-                                    <option value="Blue Vial">Blue Vial</option>
-                                    <option value="Urine Container">Urine Container</option>
-                                </select>
+                                        <option value="" disabled selected="">Select Vial Type</option>
+                                        <option value="Yellow Vial">Yellow Vial</option>
+                                        <option value="Red Vial">Red Vial</option>
+                                        <option value="Purple Vial (EDTA)">Purple Vial (EDTA)</option>
+                                        <option value="Grey Vial">Grey Vial</option>
+                                        <option value="Black Vial">Black Vial</option>
+                                        <option value="Blue Vial">Blue Vial</option>
+                                        <option value="Urine Container">Urine Container</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input class="form-control" name="t_cp" id="t_cp" type="number" placeholder="Phone*" required="required" oninvalid="this.setCustomValidity('Enter CP')" oninput="setCustomValidity('')">
+                                <input class="form-control" name="tcp" id="t_cp" type="number" placeholder="Phone*" required="required" oninvalid="this.setCustomValidity('Enter CP')" oninput="setCustomValidity('')">
                                 <label for="t_cp">Cost</label>
                                 <div class="validate"></div>
                             </div>
@@ -64,14 +70,14 @@
 
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input class="form-control" name="t_rate" id="t_rate" type="number" placeholder="Rate*" required="required" oninvalid="this.setCustomValidity('Enter Rate')" oninput="setCustomValidity('')">
+                                <input class="form-control" name="trate" id="t_rate" type="number" placeholder="Rate*" required="required" oninvalid="this.setCustomValidity('Enter Rate')" oninput="setCustomValidity('')">
                                 <label for="t_rate">Rate</label>
                                 <div class="validate"></div>
                             </div>
                         </div>
 
                         <div class="col-12">
-                            <button type="submit " id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
+                            <button type="submit " id="id_addBtn" name= "submit" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
                             <div class="validate "></div>
                         </div>
                 </div>

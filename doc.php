@@ -25,7 +25,7 @@
                     <form action="assets/process/DocAdd.php" method="POST">
 
 
-                        <!-- <h3 class="display-7">Add Doctor</h3> -->
+                        <h3 class="display-7">Add Doctor</h3>
 
                         <div class="col-12">
                             <div class="form-label-group">
@@ -75,7 +75,7 @@
                     </form>
                 </div>
                 <div class="col-md jumbotron doc-list ">
-                    <!-- <h3 class="display-7 ">Available Doctors</h3> -->
+                    <h3 class="display-7 ">Available Doctors</h3>
                     <table class="table ">
                         <thead>
                             <tr>
