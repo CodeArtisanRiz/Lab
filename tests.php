@@ -45,7 +45,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <div class="select-menu">
-                                    <label for="id_vial">Vial</label>
+                                    <!-- <label for="id_vial">Vial</label> -->
                                     <select name="vial" id="id_vial" class="custom-select">
                                         <option value="" disabled selected="">Select Vial Type</option>
                                         <option value="Yellow Vial">Yellow Vial</option>
