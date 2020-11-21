@@ -97,6 +97,28 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <?php
+                            $selectquery = " select * from tests ";
+
+                            $query = mysqli_query($con,$selectquery);
+
+                            $nums = mysqli_num_rows($query);
+
+                            while($res = mysqli_fetch_assoc($query)){
+                            ?>
+                                <tr>
+                                    <th scope="row "><?php echo $res['tid']; ?></th>
+                                    <td><?php echo $res['tcode']; ?></td>
+                                    <td><?php echo $res['tname']; ?></td>
+                                    <td><?php echo $res['vial_type']; ?></td>
+                                    <td><?php echo $res['c_price']; ?></td>
+                                    <td><?php echo $res['s_price']; ?></td>
+                                    <td><a href="testUpdate.php?ids=<?php echo $res['tid']?>&tc=<?php echo $res['tcode']?>&tn=<?php echo $res['tname']?>&vt=<?php echo $res['vial_type']?>&cp=<?php echo $res['c_price']?>&sp=<?php echo $res['s_price'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+                                    <td><a href="assets/process/testDel.php?ids=<?php echo $res['tid']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -107,6 +129,7 @@
 
 
     <script src="check_phone.js"></script>
+    <script src="https://use.fontawesome.com/0a050084c3.js"></script>
     <!-- <script src="dropdown.js"></script> -->
 </body>
 
