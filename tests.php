@@ -107,7 +107,7 @@
 
 
     <script src="check_phone.js"></script>
-    <script src="dropdown.js"></script>
+    <!-- <script src="dropdown.js"></script> -->
 </body>
 
 </html>
