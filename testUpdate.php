@@ -1,7 +1,7 @@
 <?php 
     include 'assets/conn/conn.php';
 
-    $tid = $_GET['ids'];
+    $tids = $_GET['ids'];
     $tcode = $_GET['tc'];
     $tname = $_GET['tn'];
     $vial = $_GET['vt'];
@@ -39,7 +39,7 @@
 
                             <div class="col-12">
                                 <div class="form-label-group">
-                                    <input type="text" id="id_t_id" class="form-control" name="tid" value="<?php echo "$tid"; ?>" disabled placeholder="Test code" required="required" oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">
+                                    <input type="text" id="id_t_id" class="form-control" name="tid" value="<?php echo "$tids"; ?>" disabled placeholder="Test code" required="required" oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">
                                     <label for="t_code">Test ID</label>
                                     <div class="validate"></div>
                                 </div>
@@ -97,7 +97,7 @@
                             </div>
 
                             <div class="col-12">
-                                <button type="submit " id="id_addBtn" name= "submit" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
+                                <button type="submit " id="id_addBtn" name= "update" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
                                 <div class="validate "></div>
                             </div>
                         </form>
@@ -118,7 +118,7 @@
     
     if(isset($_POST['update'])){
       
-        $tid=$ids;
+        $tid=$tids;
         $tcode=trim($_POST['tcode']);                       //trim is used to omitt white space at first and last
         $tname=trim($_POST['tname']);
         $vial=trim($_POST['vial']);
@@ -142,7 +142,7 @@
                 // header("location:doc.php");
                 ?>
                 <script>
-                window.location.replace("test.php");
+                window.location.replace("tests.php");
                 </script>
                 <?php
             }
