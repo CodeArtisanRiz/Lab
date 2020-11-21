@@ -97,7 +97,7 @@
                             </div>
 
                             <div class="col-12">
-                                <button type="submit " id="id_addBtn" name= "update" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
+                                <button type="submit " id="id_addBtn" name= "update" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Update</button>
                                 <div class="validate "></div>
                             </div>
                         </form>
