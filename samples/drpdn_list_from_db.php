@@ -12,10 +12,10 @@
     <option disabled selected> Select option</option>
     <?php
     include "../assets/conn/conn.php";
-    $records = mysqli_query($con, "SELECT dName From doctor");
+    $records = mysqli_query($con, "SELECT tcode From tests");
     while ($data = mysqli_fetch_array($records))
     {
-        echo "<option value'". $data['dName']."'>".$data['dName']."</option>";
+        echo "<option value'". $data['tcode']."'>".$data['tcode']."</option>";
 
     }
     ?>

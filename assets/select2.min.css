@@ -3,7 +3,7 @@
     display: inline-block;
     margin: 0;
     position: relative;
-    vertical-align: middle; 
+    vertical-align: middle;
 }
 
 .select2-container .select2-selection--single {
@@ -635,7 +635,6 @@
     border-color: #5897fb
 }
 
-
 .select2-search {
     position: relative;
 }
@@ -646,83 +645,87 @@
     padding: .75rem !important;
 }
 
-.select2-search input{
+.select2-search input {
     padding-top: 1px !important;
     padding-left: 7px !important;
 }
-  
+
 .select2-search label {
     position: absolute;
     top: 0;
     left: 0;
     display: block;
     width: 100%;
-    margin-bottom: 0; /* Override default `<label>` margin */
+    margin-bottom: 0;
+    /* Override default `<label>` margin */
     line-height: 1.5;
     color: #495057;
     pointer-events: none;
-    cursor: text; /* Match the input under the label */
+    cursor: text;
+    /* Match the input under the label */
     transition: all .1s ease-in-out;
 }
-  
+
 .select2-search input::-webkit-input-placeholder {
     color: transparent;
 }
-  
+
 .select2-search input::-moz-placeholder {
     color: transparent;
 }
-  
+
 .select2-search input:-ms-input-placeholder {
     color: transparent;
 }
-  
+
 .select2-search input::-ms-input-placeholder {
     color: transparent;
 }
-  
+
 .select2-search input::placeholder {
     color: transparent;
 }
-  
+
 .select2-search input:not(:-moz-placeholder-shown) {
     padding-top: 1.5rem !important;
     padding-bottom: .25rem !important;
 }
-  
+
 .select2-search input:not(:-ms-input-placeholder) {
     padding-top: 1.25rem !important;
     padding-bottom: .25rem;
 }
-  
+
 .select2-search input:not(:placeholder-shown) {
     padding-top: 1.25rem !important;
     padding-bottom: .25rem !important;
 }
-  
-.select2-search input:not(:-moz-placeholder-shown) ~ label {
+
+.select2-search input:not(:-moz-placeholder-shown)~label {
     padding-top: .25rem;
     padding-bottom: .25rem;
     font-size: 12px;
     color: var(--secondary) !important;
 }
-  
-.select2-search input:not(:-ms-input-placeholder) ~ label {
+
+.select2-search input:not(:-ms-input-placeholder)~label {
     padding-top: .25rem;
     padding-bottom: .25rem;
     font-size: 12px;
     color: var(--secondary) !important;
 }
-  
-.select2-search input:not(:placeholder-shown) ~ label {
+
+.select2-search input:not(:placeholder-shown)~label {
     padding-top: .25rem;
     padding-bottom: .25rem;
     font-size: 12px;
     color: var(--secondary) !important;
 }
-  
-  /* Fallback for Edge
+
+
+/* Fallback for Edge
     -------------------------------------------------- */
+
 @supports (-ms-ime-align: auto) {
     .select2-search {
         display: -ms-flexbox;
@@ -730,11 +733,9 @@
         -ms-flex-direction: column-reverse;
         flex-direction: column-reverse;
     }
-  
     .select2-search label {
         position: static;
     }
-  
     .select2-search input::-ms-input-placeholder {
         color: var(--secondary);
     }

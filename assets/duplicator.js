@@ -1,9 +1,20 @@
-var i = 0;
+$(document).ready(function() {
 
-function duplicate() {
-    var original = document.getElementById('duplicator' + i);
-    var clone = original.cloneNode(true);
-    clone.id = "duplicator" + ++i;
-    clone.onclick = duplicate;
-    original.parentNode.appendChild(clone);
-}
+    $('#but_add').click(function() {
+
+        // Create clone of <div class='input-form'>
+        var newel = $('.input-form:last').clone();
+
+        // Add after last <div class='input-form'>
+        $(newel).insertAfter(".input-form:last");
+    });
+
+    $('.txt').focus(function() {
+        $(this).css('border-color', 'red');
+    });
+
+    $('.txt').focusout(function() {
+        $(this).css('border-color', 'initial');
+    });
+
+});
