@@ -12,6 +12,7 @@ $t_records = mysqli_query($con, "SELECT * From tests");
         <title>Lab</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="assets/select2.min.css" />
 
     </head>
 
@@ -100,7 +101,7 @@ $t_records = mysqli_query($con, "SELECT * From tests");
                         <div class="form-label-group">
                             <!-- <input type="text" class="form-control" name="test_name" id="id_test_name" placeholder="Test Name">
                         <label for="id_test_name">Test Name</label> -->
-                            <select class="form-control">
+                            <select class="form-control" id="test_name">
                             <option disabled selected> Test Name</option>
                             <?php
                             while ($data = mysqli_fetch_array($t_records))
@@ -189,6 +190,15 @@ $t_records = mysqli_query($con, "SELECT * From tests");
         <script src="assets/duplicator.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
+
+        
+        <script src="assets/select2.min.js"></script>
+        <script>
+            $("#test_name").select2({
+                placeholder: "Select Test",
+                allowClear: true
+            });
+        </script>
     </body>
 
     </html>
