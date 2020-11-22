@@ -642,8 +642,13 @@
 
 .select2-search input,
 .select2-search label {
-    height: 3.125rem;
+    height: 3.125rem !important;
     padding: .75rem !important;
+}
+
+.select2-search input{
+    padding-top: 1px !important;
+    padding-left: 7px !important;
 }
   
 .select2-search label {
