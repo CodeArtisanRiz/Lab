@@ -159,9 +159,6 @@
     else {
 
     }
-    // echo ' Not Working';
-    //trim
-    //htmlentities
 ?>
 
 

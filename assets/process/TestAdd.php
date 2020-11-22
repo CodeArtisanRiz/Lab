@@ -8,29 +8,22 @@
         $tcp=trim($_POST['tcp']);
         $trate=trim($_POST['trate']);
 
-        echo $vial;
-        echo $tname;
+        // echo $vial;
+        // echo $tname;
 
-        // if(empty($tcode) || empty($tname) || empty($vial) || empty($tcp) || empty($trate))
-        // {
-        //     echo '<script>alert("Please fill up the empty fields..");</script>' ;
-        //     //header("location:../../doc.php");
-        // }
-        // else{
+        if(empty($tcode) || empty($tname) || empty($vial) || empty($tcp) || empty($trate))
+        {
+            echo '<script>alert("Please fill up the empty fields..");</script>' ;
+            header("location:../../tests.php");
+        }
+        else{
 
-        //     $insertquery = "insert into tests(tcode,tname,vial_type,c_price,s_price) values('$tcode','$tname','$vial','$tcp','$trate')";
-        //     if(mysqli_query($con,$insertquery))
-        //     {
-        //         echo"<h3>Data Inserted</h3>";
-        //         //header("location:../../tests.php");
-        //     }
-        // }
-
-        $insertquery = "insert into tests(tcode,tname,vial_type,c_price,s_price) values('$tcode','$tname','$vial','$tcp','$trate')";
+            $insertquery = "insert into tests(tcode,tname,vial_type,c_price,s_price) values('$tcode','$tname','$vial','$tcp','$trate')";
             if(mysqli_query($con,$insertquery))
             {
-                // echo"<h3>Data Inserted</h3>";
+                echo"<h3>Data Inserted</h3>";
                 header("location:../../tests.php");
             }
+        }
     }
 ?>
