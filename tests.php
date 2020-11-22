@@ -64,7 +64,7 @@
 
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input class="form-control" name="tcp" id="t_cp" type="number" placeholder="Phone*" required="required" oninvalid="this.setCustomValidity('Enter CP')" oninput="setCustomValidity('')">
+                                <input class="form-control" name="tcp" id="t_cp" type="number" placeholder="Cost*" required="required" oninvalid="this.setCustomValidity('Enter CP')" oninput="setCustomValidity('')">
                                 <label for="t_cp">Cost</label>
                                 <div class="validate"></div>
                             </div>
