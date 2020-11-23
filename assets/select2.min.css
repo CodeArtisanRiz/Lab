@@ -298,7 +298,7 @@
 }
 
 .select2-container--default.select2-container--focus .select2-selection--multiple {
-    border: solid #000 1px;
+    border: solid rgb(236, 21, 21) 1px;
     outline: 0
 }
 

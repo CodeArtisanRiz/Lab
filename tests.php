@@ -138,7 +138,7 @@
     <script>
         $("#id_vial").select2({
             placeholder: "Select Vial",
-            allowClear: true
+            allowClear: false,
         });
     </script>
 </body>
