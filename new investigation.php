@@ -98,7 +98,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     </div>
                 </div>
                 </div>
-                <div class="row input-form">
+                <div class="row input-form" id="inputf">
                     <div class="col-2">
                         <div class="form-label-group">
                             <input type="number" name="sl_no" id="id_sl_no" class="form-control" disabled placeholder="Serial." value="1">
@@ -201,7 +201,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 
         
         <script src="assets/select2.min.js"></script>
-        <script src="assets/js/ni_autofill.js"></script>
+        <script src="assets/js/addItems.js"></script>
         <script>
             $("#test_name").select2({
                 placeholder: "Select Test",
