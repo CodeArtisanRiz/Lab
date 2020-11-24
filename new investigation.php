@@ -148,7 +148,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     </div>
                 </div>
                 <div class="col-1">
-                    <input type='button' id='but_add' value='Add new' class="btn">
+                    <input type='button' id='but_add' value='Add new' class="btn" onclick="change()">
                 </div>
 
                 <div class="col-4">

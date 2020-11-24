@@ -1,3 +1,6 @@
+var a = 0;
+
 function change() {
-    alert("selected");
+    a = a + 1;
+    alert(a);
 }
