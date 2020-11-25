@@ -109,7 +109,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                         <div class="form-label-group">
                             <!-- <input type="text" class="form-control" name="test_name" id="id_test_name" placeholder="Test Name">
                         <label for="id_test_name">Test Name</label> -->
-                            <select class="form-control" id="test_name" onchange="change()">
+                            <select class="form-control test_name" id="test_name">
                             <option disabled selected>Test Name</option>
                             <?php
                             while ($data = mysqli_fetch_array($t_records))
@@ -124,7 +124,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     </div>
                     <div class="col-3">
                         <div class="form-label-group">
-                            <input type="text" disabled class="form-control" name="test_code" id="id_test_code" placeholder="Test Code">
+                            <input type="text"  class="form-control" name="test_code" id="tCode" placeholder="Test Code">
                             <label for="id_test_name">Test Code</label>
 
                         </div>
@@ -132,7 +132,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 
                     <div class="col-3">
                         <div class="form-label-group">
-                            <input type="text" disabled name="price" id="id_price" placeholder="Price" class="form-control">
+                            <input type="number" name="price" id="id_price" placeholder="Price" class="form-control">
                             <label for="id_price">Price</label>
                             <!-- <select class="form-control"> -->
                             <!-- <option disabled selected> Rate</option> -->
