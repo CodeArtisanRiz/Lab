@@ -103,8 +103,8 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                         <div class="row form-type">
                             <div class="col-2">
                                 <div class="form-label-group">
-                                    <input type="number" name="sl_no" id="id_sl_no" class="form-control" disabled placeholder="Serial." value="1">
-                                    <label for="id_sl_no">Serial</label>
+                                    <input type="number" name="sl" id="1" class="form-control" disabled placeholder="Serial." >
+                                    <label for="sl">Serial</label>
                                 </div>
                             </div>
                             <div class="col-3">
@@ -126,15 +126,15 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                             </div>
                             <div class="col-3">
                                 <div class="form-label-group">
-                                    <input type="text"  class="form-control" name="test_code" id="tCode" placeholder="Test Code">
-                                    <label for="id_test_name">Test Code</label>
+                                    <input type="text"  class="form-control" name="test_code" id="tCode1" placeholder="Test Code">
+                                    <label for="tCode">Test Code</label>
 
                                 </div>
                             </div>
 
                             <div class="col-3">
                                 <div class="form-label-group">
-                                    <input type="number" name="price" id="tPrice" placeholder="Price" class="form-control">
+                                    <input type="text" name="tPrice" id="tPrice_1" placeholder="Price" class="form-control">
                                     <label for="test_price">Price</label>
                                 </div>
                             </div>
