@@ -126,19 +126,16 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                             </div>
                             <div class="col-3">
                                 <div class="form-label-group">
-                                    <input type="text"  class="form-control" name="test_code" id="tCode" placeholder="Test Code">
-                                    <label for="id_test_name">Test Code</label>
+                                    <input type="text"  class="form-control" name="test_code" id="id_test_code" placeholder="Test Code">
+                                    <label for="id_test_code">Test Code</label>
 
                                 </div>
                             </div>
 
                             <div class="col-3">
                                 <div class="form-label-group">
-                                    <input type="text" name="price" id="tPrice" placeholder="Price" class="form-control">
-                                    <label for="test_price">Price</label>
-                                    <!-- <select class="form-control"> -->
-                                    <!-- <option disabled selected> Rate</option> -->
-                                        <!-- </select> -->
+                                    <input type="number" name="price" id="id_test_price" placeholder="Price" class="form-control">
+                                    <label for="id_test_price">Price</label>
                                 </div>
                             </div>
                         </div>
