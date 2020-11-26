@@ -1,6 +1,6 @@
 var index = 1;
 
-function change() {
+function addColumn() {
     index = index + 1;
     // Selecting last id 
     // var lastname_id = $('.input-form input[type=text]:nth-child(1)').last().attr('id');
@@ -33,8 +33,8 @@ function change() {
     // document.getElementById("sl").value = index;
     // Insert element
     $(newel).insertAfter(".input-form:last");
+}
 
-
-
-
+function changeVal() {
+    alert("changeVal  function called");
 }
