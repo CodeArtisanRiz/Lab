@@ -132,17 +132,10 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 
                     <div class="col-3">
                         <div class="form-label-group">
-                            <input type="number" name="price" id="id_price" placeholder="Price" class="form-control">
-                            <label for="id_price">Price</label>
+                            <input type="text" name="price" id="test_price" placeholder="Price" class="form-control">
+                            <label for="test_price">Price</label>
                             <!-- <select class="form-control"> -->
                             <!-- <option disabled selected> Rate</option> -->
-                            <?php
-                            while ($data = mysqli_fetch_array($t_records))
-                            {
-                                // echo "<option value'". $data['s_price']."'>".$data['s_price']."</option>";
-                        
-                            }
-                            ?>
                                 <!-- </select> -->
                         </div>
                     </div>
