@@ -103,7 +103,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                         <div class="row form-type">
                             <div class="col-2">
                                 <div class="form-label-group">
-                                    <input type="number" name="sl" id="1" class="form-control" disabled placeholder="Serial." >
+                                    <input type="number" name="sl" id="1" class="form-control" disabled placeholder="Serial." value="1" >
                                     <label for="sl">Serial</label>
                                 </div>
                             </div>
