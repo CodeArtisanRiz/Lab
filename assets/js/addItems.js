@@ -19,14 +19,14 @@ function change() {
     var newel = $('.input-form:last').clone(true);
 
     // Set id of new element
-    $(newel).find('input[type=text]:nth-child(1)').attr("id", "tCode_" + index);
+    $(newel).find('input[name=test_code]').attr("id", "tCode_" + index);
     // $(newel).find('input[type=number]:nth-child(2)').attr("id", "email_" + index);
-    $(newel).find('input[type=text]:nth-child(2)').attr("id", "email_" + index);
+    $(newel).find('input[name=price]').attr("id", "tPrice_" + index);
 
     // Set value
-    $(newel).find('input[type=text]:nth-child(1)').val("tCode_" + index);
+    $(newel).find('.input[name=test_code]').val("tCode_" + index);
     // $(newel).find('input[type=number]:nth-child(2)').val("email_" + index);
-    $(newel).find('input[type=text]:nth-child(2)').val("email_" + index);
+    $(newel).find('input[name=price]').val("tPrice_" + index);
 
     // Insert element
     $(newel).insertAfter(".input-form:last");
