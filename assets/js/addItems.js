@@ -36,5 +36,12 @@ function addColumn() {
 }
 
 function changeVal() {
-    alert("changeVal  function called");
+    // var newV = $('.input-form:last').clone(true);
+    // var a = $(newV).find('input[name=price]');
+    // document.getElementById("tCode" + index).val("abc");
+    // alert(abc);
+
+
+    $("#tCode" + index).val("You new value");
+
 }
