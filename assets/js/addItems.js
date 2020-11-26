@@ -65,5 +65,15 @@ $(document).ready(function() {
         // console.log(rowNO);
         $("#tCode" + rowNo).val("testCode_" + rowNo);
         $("#tPrice" + rowNo).val("testPrice_" + rowNo);
+        // $("#tPrice" + rowNo).val(fillPrice());
     });
 });
+
+// function fillPrice() {
+//     $.ajax({
+//         url: 'assets/process/dataDb.php',
+//         success: function(data) {
+//             $('.result').html(data);
+//         }
+//     });
+// }
