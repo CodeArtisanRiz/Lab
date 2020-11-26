@@ -39,9 +39,9 @@ function changeVal() {
     // var newV = $('.input-form:last').clone(true);
     // var a = $(newV).find('input[name=price]');
     // var abc =document.getElementById("tCode").val("abc");
-    // alert(abc);
+    alert("changeVal triggered");
 
 
-    $("#tCode" + index).val("You new value");
+    $("#tCode").val("You new value");
 
 }

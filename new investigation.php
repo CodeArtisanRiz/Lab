@@ -128,7 +128,6 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                                 <div class="form-label-group">
                                     <input type="text"  class="form-control" name="test_code" id="tCode" placeholder="Test Code">
                                     <label for="tCode">Test Code</label>
-
                                 </div>
                             </div>
 
