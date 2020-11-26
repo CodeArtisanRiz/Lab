@@ -38,7 +38,7 @@ function addColumn() {
 function changeVal() {
     // var newV = $('.input-form:last').clone(true);
     // var a = $(newV).find('input[name=price]');
-    // document.getElementById("tCode" + index).val("abc");
+    document.getElementById("tCode").val("abc");
     // alert(abc);
 
 
