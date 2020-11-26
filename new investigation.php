@@ -20,7 +20,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
     <body>
 
         <section class="container my-5 investigation">
-            <form action="" class="" method="">
+            <form class="" method=""  id="formid">
                 <div class="row">
                     <div class="col">
                         <div class="row">
@@ -111,7 +111,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                                 <div class="form-label-group">
                                     <!-- <input type="text" class="form-control" name="test_name" id="id_test_name" placeholder="Test Name">
                                 <label for="id_test_name">Test Name</label> -->
-                                    <select class="form-control test_name" id="test_name" onchange="changeVal()">
+                                    <select class="form-control test_name" id="1" onchange="changeVal()">
                                     <option disabled selected>Test Name</option>
                                     <?php
                                     while ($data = mysqli_fetch_array($t_records))
@@ -126,14 +126,14 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                             </div>
                             <div class="col-3">
                                 <div class="form-label-group">
-                                    <input type="text"  class="form-control" name="test_code" id="tCode" placeholder="Test Code">
+                                    <input type="text"  class="form-control" name="test_code" id="tCode1" placeholder="Test Code">
                                     <label for="tCode">Test Code</label>
                                 </div>
                             </div>
 
                             <div class="col-3">
                                 <div class="form-label-group">
-                                    <input type="text" name="tPrice" id="tPrice" placeholder="Price" class="form-control">
+                                    <input type="text" name="price" id="tPrice1" placeholder="Price" class="form-control">
                                     <label for="test_price">Price</label>
                                 </div>
                             </div>
