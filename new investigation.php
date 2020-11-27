@@ -217,9 +217,9 @@ $z = "hello";
                 $("#tCode" + rowNo).val("<?php echo $z ?>" + "_tcode_" + rowNo);
                 $("#tPrice" + rowNo).val("testPrice_" + rowNo);
                 // $("#tPrice" + rowNo).val(fillPrice());
+                });
             });
-        });
-</script>
+        </script>
     </body>
 
     </html>
