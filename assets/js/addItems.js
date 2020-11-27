@@ -60,17 +60,17 @@ function changeVal(id) {
 
 }
 
-$(document).ready(function() {
-    $("#formid").find("input,textarea,select").on('input', function() {
+// $(document).ready(function() {
+//     $("#formid").find("input,textarea,select").on('input', function() {
 
-        var rowNo = (this.id);
-        alert(rowNo);
-        // console.log(rowNO);
-        $("#tCode" + rowNo).val("testCode_" + rowNo);
-        $("#tPrice" + rowNo).val("testPrice_" + rowNo);
-        // $("#tPrice" + rowNo).val(fillPrice());
-    });
-});
+//         var rowNo = (this.id);
+//         alert(rowNo);
+//         // console.log(rowNO);
+//         $("#tCode" + rowNo).val("testCode_" + rowNo);
+//         $("#tPrice" + rowNo).val("testPrice_" + rowNo);
+//         // $("#tPrice" + rowNo).val(fillPrice());
+//     });
+// });
 
 // function fillPrice() {
 //     $.ajax({

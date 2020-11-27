@@ -2,6 +2,7 @@
 include "assets/conn/conn.php";
 $t_records = mysqli_query($con, "SELECT * From tests");
 $d_records = mysqli_query($con, "SELECT * From doctor");
+$z = "hello";
 ?>
 
     <!DOCTYPE html>
@@ -111,7 +112,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                                 <div class="form-label-group">
                                     <!-- <input type="text" class="form-control" name="test_name" id="id_test_name" placeholder="Test Name">
                                 <label for="id_test_name">Test Name</label> -->
-                                    <select class="form-control test_name" id="1" onchange="changeVal()">
+                                    <select class="form-control test_name" id="1">
                                     <option disabled selected>Test Name</option>
                                     <?php
                                     while ($data = mysqli_fetch_array($t_records))
@@ -205,6 +206,20 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                 allowClear: false
             });
         </script>
+
+        <script>
+            $(document).ready(function() {
+            $("#formid").find("input,textarea,select").on('input', function() {
+
+                var rowNo = (this.id);
+                // alert(rowNo);
+                // console.log(rowNO);
+                $("#tCode" + rowNo).val("<?php echo $z ?>" + "_tcode_" + rowNo);
+                $("#tPrice" + rowNo).val("testPrice_" + rowNo);
+                // $("#tPrice" + rowNo).val(fillPrice());
+            });
+        });
+</script>
     </body>
 
     </html>
