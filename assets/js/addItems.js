@@ -28,8 +28,11 @@ function addColumn() {
 
     // Set value
     $(newel).find('input[type=number]').val(index); // serial
-    $(newel).find('input[type=text]:nth-child(1)').val("tCode_" + index);
-    $(newel).find('input[name=price]').val("tPrice_" + index); //test price
+    // $(newel).find('input[type=text]:nth-child(1)').val("tCode_" + index); // test code
+    // $(newel).find('input[name=price]').val("tPrice_" + index); //test price
+
+    $(newel).find('input[type=text]:nth-child(1)').val(""); // test code
+    $(newel).find('input[name=price]').val(""); //test price
 
 
     // document.getElementById("sl").value = index;
