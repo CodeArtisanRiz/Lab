@@ -16,7 +16,7 @@ include "assets/conn/conn.php";
         <div class="row">
             <div class="col-md-7">
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form id="form-id" action="" method="POST">
                         <div class="row">
                             <div class="form-group">
                                 <!-- <input type="text" name="get_id" class="form-control" placeholder="enter id"> -->
@@ -46,10 +46,9 @@ include "assets/conn/conn.php";
                                     
                                     ?>
                                     <div class="form-group">
-                                        <input type="text" name="get_id" value="<?php echo $row['tcode']; ?>" class="form-control" placeholder="tc">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" name="get_id" value="<?php echo $row['s_price']; ?>" class="form-control" placeholder="tr">
+                                        <input type="text" id="tCode" name="get_id" value="<?php echo $row['tcode']; ?>" class="form-control" placeholder="tc">
+                                        <input type="text" id="tPrice"name="get_id" value="<?php echo $row['s_price']; ?>" class="form-control" placeholder="tr">
+                                    
                                     </div>
                                     <?php
                                 }
@@ -64,6 +63,19 @@ include "assets/conn/conn.php";
         </div>
     </div>
 </body>
+<script>
+            $(document).ready(function() {
+            $("#formid").find("input,textarea,select").on('input', function() {
+
+                var rowNo = (this.id);
+                // alert(rowNo);
+                // console.log(rowNO);
+                $("#tCode" + rowNo).val("<?php echo $z ?>" + "_tcode_" + rowNo);
+                $("#tPrice" + rowNo).val("testPrice_" + rowNo);
+                // $("#tPrice" + rowNo).val(fillPrice());
+                });
+            });
+        </script>
 
 </html>
 

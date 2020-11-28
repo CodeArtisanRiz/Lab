@@ -209,7 +209,7 @@ $z = "hello";
 
         <script>
             $(document).ready(function() {
-            $("#formid").find("input,textarea,select").on('input', function() {
+            $("#formid").find("select").on('input', function() {
 
                 var rowNo = (this.id);
                 // alert(rowNo);
