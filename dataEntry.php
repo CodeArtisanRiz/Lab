@@ -19,7 +19,11 @@ include "assets/conn/conn.php";
                     <form action="" method="POST">
                         <div class="row">
                             <div class="form-group">
-                                <input type="text" name="get_id" class="form-control" placeholder="enter id">
+                                <!-- <input type="text" name="get_id" class="form-control" placeholder="enter id"> -->
+                                <select name="get_id" type="submit">
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                </select>
                                 <button type="submit" name="fetch_btn" class="btn btn-primary">Get tcode n rate</button>
                             </div>
                         </div>
