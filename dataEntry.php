@@ -31,7 +31,9 @@ include "assets/conn/conn.php";
                 </div>
             </div>
 
-            
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
                         <?php
                         if(isset($_POST['fetch_btn'])){
                             $id= $_POST['get_id'];
@@ -39,23 +41,25 @@ include "assets/conn/conn.php";
                             $query = "SELECT * FROM tests WHERE tid='$id'";
                             $quer_run = mysqli_query($con, $query);
 
-                            
+                            if(mysqli_num_rows($quer_run) >0){
                                 while($row = mysqli_fetch_array($quer_run)){
                                     
                                     ?>
-                                    <script>
-                                     alert (<?php echo $a ?>)
-                                     </script>  
-                                     <!-- <input type="text" id="tCode" name="get_id" value="<?php echo $row['tcode']; ?>" class="form-control" placeholder="tc">
+                                    <div class="form-group">
+                                        <input type="text" id="tCode" name="get_id" value="<?php echo $row['tcode']; ?>" class="form-control" placeholder="tc">
                                         <input type="text" id="tPrice"name="get_id" value="<?php echo $row['s_price']; ?>" class="form-control" placeholder="tr">
                                     
-                                     -->
+                                    </div>
                                     <?php
                                 }
-                            
+                            }else{
+                                echo "nothing found";
+                            }
                         }
                         ?>
-                    
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
