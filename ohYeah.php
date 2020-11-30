@@ -84,41 +84,40 @@ $z = "hello";
         </script>
 
 
+            <script>
+            fun extract(){
+                <?php 
 
-            <!-- <script>
-                
-            </script> -->
+                    $selectquery = "SELECT tcode from tests WHERE tname = "A2";
+
+                    $query = mysqli_query($con,$selectquery);
+
+                    $nums = mysqli_num_rows($query);
+
+                    while($res = mysqli_fetch_assoc($query)){
+                    echo $res['tcode'];
+                    break;
+                    }
+
+
+                ?>
+            }
+            </script>
+
 
         <script>
             $(document).ready(function() {
-                $("#formid").find("select").on('input', function() {
-                    var rowNo = (this.id);
-                    var tInput = ("#tCode" + rowNo);
+            $("#formid").find("select").on('input', function() {
+
+                var rowNo = (this.id);
+                // alert(rowNo);
+                // console.log(rowNO);
+                $("#tCode" + rowNo).val("");
+                $("#tPrice" + rowNo).val("testPrice_" + rowNo);
+                // $("#tPrice" + rowNo).val(fillPrice());
                 });
             });
-        
-                    // send data to php file & query thn return the value;
-                    function mylang(data){
-                        alert(data);
-
-                    const ajaxreq = new XMLHttpRequest();
-                    ajaxreq.open('GET','http://localhost/Github/lab/getdata.php?selectedvalue='+data,'TRUE');
-                    ajaxreq.send();
-                    ajaxreq.onreadystatechage = function(){
-                        if(ajaxreq.readyState == 4 && ajaxreq.status == 200){
-                            $("#tPrice" + rowNo).val(ajaxreq.responseText);
-                        }
-                    }
-
-                    // $(document).ready(function() {
-                    // $('[data-toggle="tooltip"]').tooltip();
-                    // });
-                    // }
-                    </script>
-
-                    // $("#tCode" + rowNo).val(tInput);
-                    // $("#tPrice" + rowNo).val("testPrice_" + rowNo);
-                    // $("#tPrice" + rowNo).val(fillPrice());
+        </script>
                 
         
     </body>

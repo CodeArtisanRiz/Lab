@@ -208,18 +208,18 @@ $z = "hello";
         </script>
 
         <script>
-            $(document).ready(function() {
+            // $(document).ready(function() {
             $("#formid").find("select").on('input', function() {
 
+
                 var rowNo = (this.id);
-                // alert(rowNo);
-                // console.log(rowNO);
-                $("#tCode" + rowNo).val("<?php echo $z ?>" + "_tcode_" + rowNo);
-                $("#tPrice" + rowNo).val("testPrice_" + rowNo);
-                // $("#tPrice" + rowNo).val(fillPrice());
-                });
+                // $("#tCode" + rowNo).val("testCode_" + rowNo);
+                // $("#tPrice" + rowNo).val("testPrice_" + rowNo);
+
             });
+            // });
         </script>
+
     </body>
 
     </html>
