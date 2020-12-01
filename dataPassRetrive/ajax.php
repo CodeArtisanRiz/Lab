@@ -43,15 +43,16 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                             </div>
                             <div class="col-3">
                                 <div class="form-label-group">
-                                    <input type="text" class="form-control test_code" id="tcode1" value="zz">
+                                    <input type="text" class="form-control test_code" id="tCode1">
                                 </div>
                             </div>
                         </div>
                         
                     </div>
-                    <div class="col-1">
-                    <input type='button' id='but_add' value='Add new' class="btn" onclick="addColumn()">
+                    
                 </div>
+                <div class="col-1">
+                    <input type='button' id='but_add' value='Add new' class="btn" onclick="addColumn()">
                 </div>
             </form>
 
@@ -85,12 +86,27 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     ajaxreq.onreadystatechange = function(){
                         if(ajaxreq.readyState == 4 && ajaxreq.status == 200){
                             var returnText = ajaxreq.responseText;
-                            $("#tCode" + tid).val(returnText);
+                            $("#tCode"+tid).val(returnText);
                             // document.getElementById('tcode').innerHTML = ajaxreq.responseText;
                         }
                     }
                 }
             </script>
+            <script>
+            // $(document).ready(function() {
+            $("#formid").find("select").on('input', function() {
+
+
+                var rowNo = (this.id);
+                // alert(rowNo);
+
+                mylang(data, tid);
+                // $("#tCode" + rowNo).val("testCode_" + rowNo);
+                // $("#tPrice" + rowNo).val("testPrice_" + rowNo);
+
+            });
+            // });
+        </script>
 
 
     </body>

@@ -22,7 +22,7 @@ function addColumn() {
     $(newel).find('input[type=number]').val(index); // serial
 
 
-    // $(newel).find('input[type=text]:nth-child(1)').val(""); // test code
+    $(newel).find('input[type=text]:nth-child(1)').val(""); // test code
     // $(newel).find('input[name=price]').val(""); //test price
 
     // Insert element
