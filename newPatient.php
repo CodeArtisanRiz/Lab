@@ -204,7 +204,7 @@ $z = "hello";
             <script>
                 function mylang(data, tid){
                     const ajaxreq = new XMLHttpRequest();
-                    ajaxreq.open('GET','assets/process/getdata.php?selectvalue='+data, 'TRUE');
+                    ajaxreq.open('GET','assets/process/getData.php?selectvalue='+data, 'TRUE');
                     ajaxreq.send();
                     ajaxreq.onreadystatechange = function(){
                         if(ajaxreq.readyState == 4 && ajaxreq.status == 200){
