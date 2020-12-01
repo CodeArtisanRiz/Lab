@@ -209,9 +209,10 @@ $z = "hello";
                     ajaxreq.onreadystatechange = function(){
                         if(ajaxreq.readyState == 4 && ajaxreq.status == 200){
                             var returnText = ajaxreq.responseText;
-                            $("#tCode"+tid).val(returnText + " Code");
-                            $("#tPrice"+tid).val(returnText + " Price");
-                            // document.getElementById('tcode').innerHTML = ajaxreq.responseText;
+                            // alert (returnText);
+                            var rT = returnText.split("~"), a = rT[0], b = rT[1];
+                            $("#tCode"+tid).val(a);
+                            $("#tPrice"+tid).val(b);
                         }
                     }
                 }

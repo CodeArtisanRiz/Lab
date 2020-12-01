@@ -85,10 +85,10 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     ajaxreq.onreadystatechange = function(){
                         if(ajaxreq.readyState == 4 && ajaxreq.status == 200){
                             var returnText = ajaxreq.responseText;
-                            alert (returnText);
-                            var rT = returnText.split("~");
-                            $("#tCode"+tid).val(rT[0]);
-                            $("#tCode"+tid).val(rT[1]);
+                            // alert (returnText);
+                            var rT = returnText.split("~"), a = rT[0], b = rT[1];
+                            $("#tCode"+tid).val(a);
+                            $("#tPrice"+tid).val(b);
                             
                             // document.getElementById('tcode').innerHTML = ajaxreq.responseText;
                         }
