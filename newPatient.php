@@ -188,7 +188,7 @@ $z = "hello";
 
         
         <script src="assets/js/select2.min.js"></script>
-        <script src="dataPassRetrive/addItems.js"></script>
+        <script src="assets/js/addItems.js"></script>
         <script>
             $("#test_name").select2({
                 placeholder: "Select Test",
