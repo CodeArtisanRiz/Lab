@@ -1,6 +1,6 @@
 <?php
 
-    include 'assets\conn\conn.php';
+    include '..\conn\conn.php';
 
     $selectquery = " select * from doctor ";
 
