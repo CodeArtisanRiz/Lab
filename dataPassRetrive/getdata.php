@@ -19,10 +19,14 @@ $nums = mysqli_num_rows($query);
         $returnPrice = $res['s_price'];
     }
 
-    
-echo $returnCode;
 
-echo $returnPrice;
+$returnval = $returnCode. '+' .$returnPrice;   //concatenating two variables in single variable.
+
+echo $returnval;
+
+//echo $returnCode;
+
+//echo $returnPrice;
    
 
 // $frame1 = array('1','2','3');
