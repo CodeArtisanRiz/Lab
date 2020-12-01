@@ -20,7 +20,7 @@ $nums = mysqli_num_rows($query);
     }
 
 
-$returnval = $returnCode. '~' .$returnPrice;   //concatenating two variables in single variable.
+$returnval =$returnCode. "~" .$returnPrice;   //concatenating two variables in single variable.
 
 echo $returnval;
 
