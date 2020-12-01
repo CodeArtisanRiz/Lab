@@ -46,6 +46,11 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                                     <input type="text" class="form-control test_code" id="tCode1">
                                 </div>
                             </div>
+                            <div class="col-3">
+                                <div class="form-label-group">
+                                    <input type="number" class="form-control test_price" id="tPrice1">
+                                </div>
+                            </div>
                         </div>
                         
                     </div>
