@@ -74,15 +74,9 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 
             <script>
                 function mylang(data, tid){
-                    //var data = (this.value);
-                    //var tid = (this.id);
-
-                    // alert (tid);
-                    // alert (data);
                     const ajaxreq = new XMLHttpRequest();
                     ajaxreq.open('GET','getdata.php?selectvalue='+data, 'TRUE');
                     ajaxreq.send();
-
                     ajaxreq.onreadystatechange = function(){
                         if(ajaxreq.readyState == 4 && ajaxreq.status == 200){
                             var returnText = ajaxreq.responseText;
@@ -93,19 +87,9 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                 }
             </script>
             <script>
-            // $(document).ready(function() {
             $("#formid").find("select").on('input', function() {
-
-
-                var rowNo = (this.id);
-                // alert(rowNo);
-
                 mylang(data, tid);
-                // $("#tCode" + rowNo).val("testCode_" + rowNo);
-                // $("#tPrice" + rowNo).val("testPrice_" + rowNo);
-
             });
-            // });
         </script>
 
 
