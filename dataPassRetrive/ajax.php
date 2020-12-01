@@ -25,7 +25,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                         <div class="row form-type">
                             <div class="col-3">
                                 <div class="form-label-group">
-                                    <select class="form-control test_name" id="1" onchange="mylang(this.value)">
+                                    <select class="form-control test_name" id="1" onchange="mylang(this.id)">
                                     <option disabled selected>Test Name</option>
                                     <?php
                                     while ($data = mysqli_fetch_array($t_records))
@@ -72,6 +72,8 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
             <script>
                 function mylang(data){
                     // alert (data);
+                    alert (data);
+                    var zax = document.getElementById(data)
                     const ajaxreq = new XMLHttpRequest();
                     ajaxreq.open('GET','getdata.php?selectvalue='+data, 'TRUE');
                     ajaxreq.send();
