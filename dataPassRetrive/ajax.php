@@ -23,6 +23,11 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                 <div class="row input-form" id="inputf">
                     <div class="col-12">
                         <div class="row form-type">
+                        <div class="col-3">
+                                <div class="form-label-group">
+                                <input type="number" name="sl" id="1" class="form-control" disabled placeholder="Serial." value="1" >
+                                </div>
+                            </div>
                             <div class="col-3">
                                 <div class="form-label-group">
                                     <select class="form-control test_name" id="1" onchange="mylang(this.value, this.id)">
@@ -39,9 +44,6 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                             <div class="col-3">
                                 <div class="form-label-group">
                                     <input type="text" class="form-control test_code" id="tcode1" value="zz">
-                                <!-- <select class="form-control test_name" id="tcode" disabled>
-                                    <option>Test Name</option>
-                                </select> -->
                                 </div>
                             </div>
                         </div>
@@ -74,8 +76,8 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     //var data = (this.value);
                     //var tid = (this.id);
 
-                    alert (tid);
-                    alert (data);
+                    // alert (tid);
+                    // alert (data);
                     const ajaxreq = new XMLHttpRequest();
                     ajaxreq.open('GET','getdata.php?selectvalue='+data, 'TRUE');
                     ajaxreq.send();
@@ -83,7 +85,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     ajaxreq.onreadystatechange = function(){
                         if(ajaxreq.readyState == 4 && ajaxreq.status == 200){
                             var returnText = ajaxreq.responseText;
-                            $("#tcode1").val(returnText);
+                            $("#tCode" + tid).val(returnText);
                             // document.getElementById('tcode').innerHTML = ajaxreq.responseText;
                         }
                     }
