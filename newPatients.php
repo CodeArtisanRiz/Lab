@@ -110,16 +110,12 @@ $z = "hello";
                             </div>
                             <div class="col-3">
                                 <div class="form-label-group">
-                                    <!-- <input type="text" class="form-control" name="test_name" id="id_test_name" placeholder="Test Name">
-                                <label for="id_test_name">Test Name</label> -->
-                                    <select class="form-control test_name" id="1">
+                                    <select class="form-control test_name" id="1" onchange="mylang(this.value, this.id)">
                                     <option disabled selected>Test Name</option>
                                     <?php
                                     while ($data = mysqli_fetch_array($t_records))
                                     {
                                         echo "<option value'". $data['tname']."'>".$data['tname']."</option>";
-                                        // $query="select * from tests where tname='".$_POST['tname'];
-                                        // echo "<option value'". $data['tcode']."'>".$data['tcode']."</option>";
                                     }
                                     ?>
                                     </select>
@@ -127,15 +123,13 @@ $z = "hello";
                             </div>
                             <div class="col-3">
                                 <div class="form-label-group">
-                                    <input type="text"  class="form-control" name="test_code" id="tCode1" placeholder="Test Code">
-                                    <label for="tCode">Test Code</label>
+                                    <input type="text" class="form-control test_code" id="tCode1" placeholder="Test Code">
                                 </div>
                             </div>
 
                             <div class="col-3">
                                 <div class="form-label-group">
-                                    <input type="text" name="price" id="tPrice1" placeholder="Price" class="form-control">
-                                    <label for="test_price">Price</label>
+                                    <input type="tel" name="price" id="tPrice1" placeholder="Price" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -187,7 +181,6 @@ $z = "hello";
         </section>
 
 
-        <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
         <script src="assets/js/jquery-3.1.1.min.js" type="text/javascript"></script>
         <script src="assets/js/duplicator.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
@@ -195,7 +188,7 @@ $z = "hello";
 
         
         <script src="assets/js/select2.min.js"></script>
-        <script src="assets/js/addItems.js"></script>
+        <script src="dataPassRetrive/addItems.js"></script>
         <script>
             $("#test_name").select2({
                 placeholder: "Select Test",
@@ -207,17 +200,26 @@ $z = "hello";
             });
         </script>
 
-        <script>
-            // $(document).ready(function() {
+
+            <script>
+                function mylang(data, tid){
+                    const ajaxreq = new XMLHttpRequest();
+                    ajaxreq.open('GET','assets/process/getdata.php?selectvalue='+data, 'TRUE');
+                    ajaxreq.send();
+                    ajaxreq.onreadystatechange = function(){
+                        if(ajaxreq.readyState == 4 && ajaxreq.status == 200){
+                            var returnText = ajaxreq.responseText;
+                            $("#tCode"+tid).val(returnText + " Code");
+                            $("#tPrice"+tid).val(returnText + " Price");
+                            // document.getElementById('tcode').innerHTML = ajaxreq.responseText;
+                        }
+                    }
+                }
+            </script>
+            <script>
             $("#formid").find("select").on('input', function() {
-
-
-                var rowNo = (this.id);
-                // $("#tCode" + rowNo).val("testCode_" + rowNo);
-                // $("#tPrice" + rowNo).val("testPrice_" + rowNo);
-
+                mylang(data, tid);
             });
-            // });
         </script>
 
     </body>

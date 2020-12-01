@@ -15,6 +15,8 @@ function addColumn() {
     $(newel).find('input[type=number]').attr("id", index); //serial no
     $(newel).find('select:nth-child(1)').attr("id", index); //test name
     $(newel).find('input[type=text]:nth-child(1)').attr("id", "tCode" + index); //test code
+    $(newel).find('input[type=tel]:nth-child(1)').attr("id", "tPrice" + index); //test code
+
 
 
 
@@ -23,7 +25,7 @@ function addColumn() {
 
 
     $(newel).find('input[type=text]:nth-child(1)').val(""); // test code
-    // $(newel).find('input[name=price]').val(""); //test price
+    $(newel).find('input[type=tel]:nth-child(1)').val(""); //test price
 
     // Insert element
     $(newel).insertAfter(".input-form:last");
