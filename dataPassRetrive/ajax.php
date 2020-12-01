@@ -85,7 +85,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     ajaxreq.onreadystatechange = function(){
                         if(ajaxreq.readyState == 4 && ajaxreq.status == 200){
                             var returnText = ajaxreq.responseText;
-                            var array = str.split('~'),a=array[0], b=array[1];
+                            var returnText = str.split('~'),a=array[0], b=array[1];
                             $("#tCode"+tid).val(a);
                             $("#tCode"+tid).val(b);
                             
