@@ -218,8 +218,7 @@ $z = "hello";
                         }
                     }
                 }
-            </script>
-            <script>
+
             // Works for first row of adding tests.
             $("#formid").find("select").on('input', function() {
                 mylang(data, tid);

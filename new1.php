@@ -203,6 +203,7 @@ $z = "hello";
 
 
             <script>
+            
                 // Onchange function for selecting option from test name.
                 function mylang(data, tid){
                     const ajaxreq = new XMLHttpRequest();
@@ -219,8 +220,15 @@ $z = "hello";
                             var total = 5;
                             var total = total + parseInt(b);
                             var netT = total;
-                            $("#id_total").val(total);
+                            // $("#id_total").val(total);
                             $("#id_net_total").val(netT);
+                            var total_tests ="Total tests = " + index;
+                            alert (total_tests);
+
+                            // for (n=1; n>=total_tests; n++){
+                            //     document.getElementById("tCode" + n)
+                            //     $("#id_total").val();
+                            // }
                         }
                     }
 
@@ -229,13 +237,7 @@ $z = "hello";
                     // $("#id_total").val(total);
                     // $("#id_net_total").val(netT);
                 }
-            </script>
             
-            <script>
-            
-            </script>
-
-            <script>
             // Works for first row of adding tests.
             $("#formid").find("select").on('input', function() {
                 mylang(data, tid);
