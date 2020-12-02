@@ -217,7 +217,7 @@ $z = "hello";
                             $("#tPrice"+tid).val(b);
 
                             var total = 5;
-                            var total = total + b;
+                            var total = total + parseInt(b);
                             var netT = total;
                             $("#id_total").val(total);
                             $("#id_net_total").val(netT);
