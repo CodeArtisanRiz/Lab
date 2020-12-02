@@ -190,6 +190,7 @@ $z = "hello";
         <script src="assets/js/select2.min.js"></script>
         <script src="assets/js/addItems.js"></script>
         <script>
+        // For fetching data from database table for dropdown.
             $("#test_name").select2({
                 placeholder: "Select Test",
                 allowClear: false
@@ -202,6 +203,7 @@ $z = "hello";
 
 
             <script>
+                // Onchange function for selecting option from test name.
                 function mylang(data, tid){
                     const ajaxreq = new XMLHttpRequest();
                     ajaxreq.open('GET','assets/process/getData.php?selectvalue='+data, 'TRUE');
@@ -210,7 +212,7 @@ $z = "hello";
                         if(ajaxreq.readyState == 4 && ajaxreq.status == 200){
                             var returnText = ajaxreq.responseText;
                             // alert (returnText);
-                            var rT = returnText.split("~"), a = rT[0], b = rT[1];
+                            var rT = returnText.split("~"), a = rT[0], b = rT[1];  //a = tcode, b = tprice
                             $("#tCode"+tid).val(a);
                             $("#tPrice"+tid).val(b);
                         }
@@ -218,6 +220,7 @@ $z = "hello";
                 }
             </script>
             <script>
+            // Works for first row of adding tests.
             $("#formid").find("select").on('input', function() {
                 mylang(data, tid);
             });
