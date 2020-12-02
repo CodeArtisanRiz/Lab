@@ -1,5 +1,7 @@
+<!-- This file performs adding new Doctor Records and shows the lists of added Doctors from Database. -->
+
 <?php 
-   include 'assets/conn/conn.php';
+   include 'assets/conn/conn.php';  // This file setsup connection from database.
 ?>
 
 
@@ -17,14 +19,13 @@
 <body>
     <section>
 
-
         <div class="container my-5">
             <div class="row">
 
                 <div class="col-md jumbotron add">
                     <form action="assets/process/DocAdd.php" method="POST">
 
-
+<!-- A Div for adding new Doctor Records into Database. -->
                         <h3 class="display-7">Add Doctor</h3>
 
                         <div class="col-12">
@@ -74,6 +75,8 @@
                         </div>
                     </form>
                 </div>
+
+<!-- A Div for displaying added Doctor's Records from Database after adding. -->
                 <div class="col-md jumbotron doc-list ">
                     <h3 class="display-7 ">Available Doctors</h3>
                     <table class="table ">
@@ -91,6 +94,7 @@
                         </thead>
                         <tbody>
 
+<!-- PHP Query for fetching Doctor's data from database and displaying in the <table> format. -->
                         <?php
                             $selectquery = " select * from doctor ";
 
@@ -107,7 +111,9 @@
                                     <td><?php echo $res['special']; ?></td>
                                     <td><?php echo $res['mobile']; ?></td>
                                     <td><?php echo $res['refcent']; ?></td>
+                                    <!--HyperLink for Edditing/Updating data in database, by passing every data in a variable. -->
                                     <td><a href="docUpdate.php?ids=<?php echo $res['did']?>&dn=<?php echo $res['dname']?>&qu=<?php echo $res['quali']?>&sp=<?php echo $res['special']?>&mb=<?php echo $res['mobile']?>&rc=<?php echo $res['refcent'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+                                    <!--HyperLink for Deleting data in database through Doctor's ID (did). -->
                                     <td><a href="assets/process/docDel.php?ids=<?php echo $res['did']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
                             <?php

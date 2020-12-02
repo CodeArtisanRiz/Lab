@@ -1,5 +1,7 @@
+<!-- This file performs adding new Test Records and shows the lists of added Tests from Database. -->
+
 <?php 
-   include 'assets/conn/conn.php';
+   include 'assets/conn/conn.php';  // This file setsup connection from database.
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +27,8 @@
                 <div class="col-4 jumbotron add">
                     <form action="assets/process/TestAdd.php" method="POST">
 
+
+<!-- A Div for adding new Test Records into Database. -->
                         <h3 class="display-7">Add Test</h3>
 
                         <div class="col-12">
@@ -83,6 +87,8 @@
                             <div class="validate "></div>
                         </div>
                 </div>
+
+<!-- A Div for displaying added Test's Records from Database after adding. -->               
                 <div class="col-8 jumbotron doc-list ">
                     <h3 class="display-7 ">List of Tests</h3>
                     <table class="table ">
@@ -99,6 +105,8 @@
                             </tr>
                         </thead>
                         <tbody>
+
+<!-- PHP Query for fetching Test's data from database and displaying in the <table> format. -->
                         <?php
                             $selectquery = " select * from tests ";
 
@@ -115,7 +123,9 @@
                                     <td><?php echo $res['vial_type']; ?></td>
                                     <td><?php echo $res['c_price']; ?></td>
                                     <td><?php echo $res['s_price']; ?></td>
+                                    <!--HyperLink for Edditing/Updating data in database, by passing every data in a variable. -->
                                     <td><a href="testUpdate.php?ids=<?php echo $res['tid']?>&tc=<?php echo $res['tcode']?>&tn=<?php echo $res['tname']?>&vt=<?php echo $res['vial_type']?>&cp=<?php echo $res['c_price']?>&sp=<?php echo $res['s_price'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+                                    <!--HyperLink for Deleting data in database through Doctor's ID (did). -->
                                     <td><a href="assets/process/testDel.php?ids=<?php echo $res['tid']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
                             <?php
