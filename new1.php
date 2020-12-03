@@ -26,10 +26,10 @@ $z = "hello";
                     <div class="col">
                         <div class="row">
                             <div class="col-12">
-                                <div class="form-label-group">
+                                <!-- <div class="form-label-group">
                                     <input type="number" id="id_id" class="form-control" placeholder="ID" name="id">
                                     <label for="id_id">ID</label>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-12">
                                 <div class="form-label-group">
@@ -49,10 +49,10 @@ $z = "hello";
                     <div class="col">
                         <div class="row">
                             <div class="col-12">
-                                <div class="form-label-group">
+                                <!-- <div class="form-label-group">
                                     <input type="date" name="date" id="id_date" class="form-control">
                                     <label for="id_date">Date</label>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-12">
                                 <div class="form-label-group">
@@ -71,10 +71,10 @@ $z = "hello";
                     <div class="col">
                         <div class="row">
                             <div class="col-12">
-                                <div class="form-label-group">
+                                <!-- <div class="form-label-group">
                                     <input type="time" name="time" id="id_time" class="form-control">
                                     <label for="id_time">Time</label>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-12">
                                 <div class="form-label-group">
@@ -123,7 +123,7 @@ $z = "hello";
                             </div>
                             <div class="col-3">
                                 <div class="form-label-group">
-                                    <input type="text" class="form-control test_code" id="tCode1" placeholder="Test Code">
+                                    <input type="text" name="testcode" class="form-control test_code" id="tCode1" placeholder="Test Code">
                                 </div>
                             </div>
 
@@ -174,7 +174,7 @@ $z = "hello";
                     </div>
                 </div>
 
-                <input type="submit" value="Save & Print" class="btn float-right my-2">
+                <input type="submit" id= "calc" value="Calculate" class="btn float-right my-2">
             </form>
 
 
@@ -242,6 +242,19 @@ $z = "hello";
             $("#formid").find("select").on('input', function() {
                 mylang(data, tid);
             });
+            
+            $("#formid").bind("click", function(){
+                var x = 0;
+                $(":input").each(function(){
+                    if(this.value.length > 0){
+                        x++;
+                    };
+                });
+                // $()
+                alert (x);
+            })
+            
+
         </script>
 
     </body>
