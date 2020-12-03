@@ -129,7 +129,7 @@ $z = "hello";
 
                             <div class="col-3">
                                 <div class="form-label-group">
-                                    <input type="tel" name="price" id="tPrice1" placeholder="Price" class="form-control" onchange="cal()">
+                                    <input type="tel" name="price" id="tPrice1" placeholder="Price" class="form-control price" onchange="cal()">
                                 </div>
                             </div>
                         </div>
@@ -217,12 +217,12 @@ $z = "hello";
                             $("#tCode"+tid).val(a);
                             $("#tPrice"+tid).val(b);
 
-                            var total = 5;
-                            var total = total + parseInt(b);
-                            var netT = total;
+                            // var total = 5;
+                            // var total = total + parseInt(b);
+                            // var netT = total;
                             // $("#id_total").val(total);
                             $("#id_net_total").val(netT);
-                            var total_tests ="Total tests = " + index;
+                            // var total_tests ="Total tests = " + index;
                             // alert (total_tests);
 
                             // for (n=1; n>=total_tests; n++){
@@ -257,6 +257,7 @@ $z = "hello";
             console.log(Number($(this).val()));
         });
         alert(amount_sum);
+        $("#id_total").val(amount_sum);
         }
             // })
             
