@@ -223,7 +223,7 @@ $z = "hello";
                             // $("#id_total").val(total);
                             $("#id_net_total").val(netT);
                             var total_tests ="Total tests = " + index;
-                            alert (total_tests);
+                            // alert (total_tests);
 
                             // for (n=1; n>=total_tests; n++){
                             //     document.getElementById("tCode" + n)
@@ -243,7 +243,7 @@ $z = "hello";
                 mylang(data, tid);
             });
             
-            $("#formid").bind("click", function(){
+            $("#calc").bind("click", function(){
                 var x = 0;
                 $(":input").each(function(){
                     if(this.value.length > 0){
