@@ -174,7 +174,7 @@ $z = "hello";
                     </div>
                 </div>
 
-                <input type="submit" id= "calc" value="Calculate" class="btn float-right my-2">
+                <input id= "calc" value="Calculate" class="btn float-right my-2" onclick="sum();">
             </form>
 
 
@@ -243,16 +243,22 @@ $z = "hello";
                 mylang(data, tid);
             });
             
-            $("#calc").bind("click", function(){
-                var x = 0;
-                $(":input").each(function(){
-                    if(this.value.length > 0){
-                        x++;
-                    };
-                });
-                // $()
-                alert (x);
-            })
+            // $("#calc").bind("click", function(){
+                function sum() {
+            var amount_sum = 0;
+        //calculate total worth of money
+        $('.price').each(function(){
+        //console.log($(this));
+        //checks whether the DOM element is an input element or a div
+            if(this.tagName.toLowerCase() == "input")
+            {
+                amount_sum += Number($(this).val());
+            }
+            console.log(Number($(this).val()));
+        });
+        alert(amount_sum);
+        }
+            // })
             
 
         </script>
