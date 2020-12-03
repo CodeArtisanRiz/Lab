@@ -221,7 +221,7 @@ $z = "hello";
                             // var total = total + parseInt(b);
                             // var netT = total;
                             // $("#id_total").val(total);
-                            $("#id_net_total").val(netT);
+                            // $("#id_net_total").val(netT);
                             // var total_tests ="Total tests = " + index;
                             // alert (total_tests);
 
