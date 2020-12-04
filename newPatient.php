@@ -2,7 +2,6 @@
 include "assets/conn/conn.php";
 $t_records = mysqli_query($con, "SELECT * From tests");
 $d_records = mysqli_query($con, "SELECT * From doctor");
-$z = "hello";
 ?>
 
     <!DOCTYPE html>
@@ -13,8 +12,8 @@ $z = "hello";
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Lab - New Patient</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/select2.min.css" />
+        <link rel="stylesheet" href="assets/css/style.css">
 
     </head>
 
@@ -26,10 +25,10 @@ $z = "hello";
                     <div class="col">
                         <div class="row">
                             <div class="col-12">
-                                <div class="form-label-group">
+                                <!-- <div class="form-label-group">
                                     <input type="number" id="id_id" class="form-control" placeholder="ID" name="id">
                                     <label for="id_id">ID</label>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-12">
                                 <div class="form-label-group">
@@ -49,10 +48,10 @@ $z = "hello";
                     <div class="col">
                         <div class="row">
                             <div class="col-12">
-                                <div class="form-label-group">
+                                <!-- <div class="form-label-group">
                                     <input type="date" name="date" id="id_date" class="form-control">
                                     <label for="id_date">Date</label>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-12">
                                 <div class="form-label-group">
@@ -71,15 +70,21 @@ $z = "hello";
                     <div class="col">
                         <div class="row">
                             <div class="col-12">
-                                <div class="form-label-group">
+                                <!-- <div class="form-label-group">
                                     <input type="time" name="time" id="id_time" class="form-control">
                                     <label for="id_time">Time</label>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-12">
                                 <div class="form-label-group">
-                                    <input type="text" name="sex" id="id_sex" placeholder="Sex" class="form-control">
-                                    <label for="">Sex</label>
+                                <select class="form-control" id="id_sex">
+                                    <option disabled selected>Sex</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Other</option>
+                                </select>
+                                    <!-- <input type="text" name="sex" id="" placeholder="Sex" class="form-control">
+                                    <label for="">Sex</label> -->
                                 </div>
                             </div>
                             <div class="col-12">
@@ -123,14 +128,13 @@ $z = "hello";
                             </div>
                             <div class="col-3">
                                 <div class="form-label-group">
-                                    <input type="text" class="form-control test_code" id="tCode1" placeholder="Test Code">
+                                    <input type="text" name="testcode" class="form-control test_code" id="tCode1" placeholder="Test Code">
                                 </div>
                             </div>
 
                             <div class="col-3">
                                 <div class="form-label-group">
-                                    <input type="tel" class="form-control price" name="price" id="tPrice1" placeholder="Price">
-                                    
+                                    <input type="tel" name="price" id="tPrice1" placeholder="Price" class="form-control price" onchange="cal()">
                                 </div>
                             </div>
                         </div>
@@ -150,7 +154,7 @@ $z = "hello";
                         </div>
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" name="discount" id="id_discount" placeholder="Discount" class="form-control">
+                                <input type="text" name="discount" id="id_discount" placeholder="Discount" class="form-control" onchange="disc()"> 
                                 <label for="id_discount">Discount</label>
                             </div>
                         </div>
@@ -162,7 +166,7 @@ $z = "hello";
                         </div>
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" name="advance" id="id_advance" placeholder="Advance" class="form-control">
+                                <input type="text" name="advance" id="id_advance" placeholder="Advance" class="form-control" onchange="rb()">
                                 <label for="id_advance">Advance</label>
                             </div>
                         </div>
@@ -175,7 +179,7 @@ $z = "hello";
                     </div>
                 </div>
 
-                <input type="submit" value="Save & Print" class="btn float-right my-2">
+                <input id= "calc" value="Calculate" class="btn float-right my-2" onclick="sum();">
             </form>
 
 
@@ -204,6 +208,7 @@ $z = "hello";
 
 
             <script>
+            
                 // Onchange function for selecting option from test name.
                 function mylang(data, tid){
                     const ajaxreq = new XMLHttpRequest();
@@ -216,16 +221,38 @@ $z = "hello";
                             var rT = returnText.split("~"), a = rT[0], b = rT[1];  //a = tcode, b = tprice
                             $("#tCode"+tid).val(a);
                             $("#tPrice"+tid).val(b);
+
+                            // var total = 5;
+                            // var total = total + parseInt(b);
+                            // var netT = total;
+                            // $("#id_total").val(total);
+                            // $("#id_net_total").val(netT);
+                            // var total_tests ="Total tests = " + index;
+                            // alert (total_tests);
+
+                            // for (n=1; n>=total_tests; n++){
+                            //     document.getElementById("tCode" + n)
+                            //     $("#id_total").val();
+                            // }
                         }
                         sum();
+                        disc();
+                        
+                        // mergeTCode();
                     }
-                }
 
+                    // var total = b;
+                    // var netT = total;
+                    // $("#id_total").val(total);
+                    // $("#id_net_total").val(netT);
+                }
+            
             // Works for first row of adding tests.
             $("#formid").find("select").on('input', function() {
                 mylang(data, tid);
+                
             });
-
+            
             // $("#calc").bind("click", function(){
                 function sum() {
                 var amount_sum = 0;
@@ -233,8 +260,7 @@ $z = "hello";
                 $('.price').each(function(){
                 //console.log($(this));
                 //checks whether the DOM element is an input element or a div
-                    if(this.tagName.toLowerCase() == "input")
-                    {
+                    if(this.tagName.toLowerCase() == "input"){
                         amount_sum += Number($(this).val());
                     }
                     console.log(Number($(this).val()));
@@ -242,7 +268,42 @@ $z = "hello";
                 // alert(amount_sum);
                 $("#id_total").val(amount_sum);
                 }
+
+                function disc(){
+                    var discount = document.getElementById("id_discount").value;
+                    var total = document.getElementById("id_total").value;
+                    var nT = total - discount;
+                    // alert (nT);
+                    // var netTotal = amount_sum -document.getElementById("id_discount");
+                    $("#id_net_total").val(nT);
+                    rb();
+                }
+                function rb(){
+                    var adv = document.getElementById("id_advance").value;
+                    var nT = document.getElementById("id_net_total").value;
+                    var rB = nT - adv;
+                    // alert (nT);
+                    // var netTotal = amount_sum -document.getElementById("id_discount");
+                    $("#id_remaining_balance").val(rB);
+                }
+
+                function mergeTCode() {
+                var mT;
+                //calculate total worth of money
+                $('.test_code').each(function(){
+                //console.log($(this));
+                //checks whether the DOM element is an input element or a div
+                    if(this == "input")
+                    {
+                        mT += ($concat(this).val());
+                    }
+                    console.log(($(this).val()));
+                });
+                alert(mT);
+                // $("#id_total").val(amount_sum);
+                }
             // })
+            
 
         </script>
 
