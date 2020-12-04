@@ -173,7 +173,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     </div>
                 </div>
 
-                <input id= "calc" value="Calculate" class="btn float-right my-2" onclick="sum();">
+                <input type= "button" id= "calc" value="Calculate" class="btn float-right my-2" onclick="sum();">
             </form>
 
 
