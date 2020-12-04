@@ -154,7 +154,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                         </div>
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" name="discount" id="id_discount" placeholder="Discount" class="form-control" value="0" onchange="disc()"> 
+                                <input type="text" name="discount" id="id_discount" placeholder="Discount" class="form-control" onchange="disc()"> 
                                 <label for="id_discount">Discount</label>
                             </div>
                         </div>
@@ -166,7 +166,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                         </div>
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" name="advance" id="id_advance" placeholder="Advance" class="form-control">
+                                <input type="text" name="advance" id="id_advance" placeholder="Advance" class="form-control" onchange="rb()">
                                 <label for="id_advance">Advance</label>
                             </div>
                         </div>
@@ -236,6 +236,8 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                             // }
                         }
                         sum();
+                        disc();
+                        
                         // mergeTCode();
                     }
 
@@ -268,9 +270,21 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                 }
 
                 function disc(){
-                    alert ("helloo");
+                    var discount = document.getElementById("id_discount").value;
+                    var total = document.getElementById("id_total").value;
+                    var nT = total - discount;
+                    // alert (nT);
                     // var netTotal = amount_sum -document.getElementById("id_discount");
-                    // $("id_net_total").val(amount_sum);
+                    $("#id_net_total").val(nT);
+                    rb();
+                }
+                function rb(){
+                    var adv = document.getElementById("id_advance").value;
+                    var nT = document.getElementById("id_net_total").value;
+                    var rB = nT - adv;
+                    // alert (nT);
+                    // var netTotal = amount_sum -document.getElementById("id_discount");
+                    $("#id_remaining_balance").val(rB);
                 }
 
                 function mergeTCode() {
