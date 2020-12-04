@@ -2,7 +2,6 @@
 include "assets/conn/conn.php";
 $t_records = mysqli_query($con, "SELECT * From tests");
 $d_records = mysqli_query($con, "SELECT * From doctor");
-$z = "hello";
 ?>
 
     <!DOCTYPE html>
@@ -13,8 +12,8 @@ $z = "hello";
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Lab - New Patient</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/select2.min.css" />
+        <link rel="stylesheet" href="assets/css/style.css">
 
     </head>
 
@@ -230,6 +229,8 @@ $z = "hello";
                             //     $("#id_total").val();
                             // }
                         }
+                        sum();
+                        mergeTCode();
                     }
 
                     // var total = b;
@@ -241,24 +242,40 @@ $z = "hello";
             // Works for first row of adding tests.
             $("#formid").find("select").on('input', function() {
                 mylang(data, tid);
+                
             });
             
             // $("#calc").bind("click", function(){
                 function sum() {
-            var amount_sum = 0;
-        //calculate total worth of money
-        $('.price').each(function(){
-        //console.log($(this));
-        //checks whether the DOM element is an input element or a div
-            if(this.tagName.toLowerCase() == "input")
-            {
-                amount_sum += Number($(this).val());
-            }
-            console.log(Number($(this).val()));
-        });
-        alert(amount_sum);
-        $("#id_total").val(amount_sum);
-        }
+                var amount_sum = 0;
+                //calculate total worth of money
+                $('.price').each(function(){
+                //console.log($(this));
+                //checks whether the DOM element is an input element or a div
+                    if(this.tagName.toLowerCase() == "input"){
+                        amount_sum += Number($(this).val());
+                    }
+                    console.log(Number($(this).val()));
+                });
+                // alert(amount_sum);
+                $("#id_total").val(amount_sum);
+                }
+
+                function mergeTCode() {
+                var mT;
+                //calculate total worth of money
+                $('.test_code').each(function(){
+                //console.log($(this));
+                //checks whether the DOM element is an input element or a div
+                    if(this == "input")
+                    {
+                        mT += ($(this).val());
+                    }
+                    console.log(($(this).val()));
+                });
+                alert(mT);
+                // $("#id_total").val(amount_sum);
+                }
             // })
             
 

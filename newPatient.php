@@ -129,7 +129,8 @@ $z = "hello";
 
                             <div class="col-3">
                                 <div class="form-label-group">
-                                    <input type="tel" name="price" id="tPrice1" placeholder="Price" class="form-control">
+                                    <input type="tel" class="form-control price" name="price" id="tPrice1" placeholder="Price">
+                                    
                                 </div>
                             </div>
                         </div>
@@ -216,6 +217,7 @@ $z = "hello";
                             $("#tCode"+tid).val(a);
                             $("#tPrice"+tid).val(b);
                         }
+                        sum();
                     }
                 }
 
@@ -223,6 +225,25 @@ $z = "hello";
             $("#formid").find("select").on('input', function() {
                 mylang(data, tid);
             });
+
+            // $("#calc").bind("click", function(){
+                function sum() {
+                var amount_sum = 0;
+                //calculate total worth of money
+                $('.price').each(function(){
+                //console.log($(this));
+                //checks whether the DOM element is an input element or a div
+                    if(this.tagName.toLowerCase() == "input")
+                    {
+                        amount_sum += Number($(this).val());
+                    }
+                    console.log(Number($(this).val()));
+                });
+                // alert(amount_sum);
+                $("#id_total").val(amount_sum);
+                }
+            // })
+
         </script>
 
     </body>
