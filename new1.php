@@ -77,8 +77,14 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                             </div>
                             <div class="col-12">
                                 <div class="form-label-group">
-                                    <input type="text" name="sex" id="id_sex" placeholder="Sex" class="form-control">
-                                    <label for="">Sex</label>
+                                <select class="form-control" id="id_sex">
+                                    <option disabled selected>Sex</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Other</option>
+                                </select>
+                                    <!-- <input type="text" name="sex" id="" placeholder="Sex" class="form-control">
+                                    <label for="">Sex</label> -->
                                 </div>
                             </div>
                             <div class="col-12">
@@ -148,7 +154,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                         </div>
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" name="discount" id="id_discount" placeholder="Discount" class="form-control">
+                                <input type="text" name="discount" id="id_discount" placeholder="Discount" class="form-control" value="0" onchange="disc()"> 
                                 <label for="id_discount">Discount</label>
                             </div>
                         </div>
@@ -259,6 +265,12 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                 });
                 // alert(amount_sum);
                 $("#id_total").val(amount_sum);
+                }
+
+                function disc(){
+                    alert ("helloo");
+                    // var netTotal = amount_sum -document.getElementById("id_discount");
+                    // $("id_net_total").val(amount_sum);
                 }
 
                 function mergeTCode() {
