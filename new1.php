@@ -230,7 +230,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                             // }
                         }
                         sum();
-                        mergeTCode();
+                        // mergeTCode();
                     }
 
                     // var total = b;
