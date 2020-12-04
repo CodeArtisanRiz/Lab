@@ -269,7 +269,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                 //checks whether the DOM element is an input element or a div
                     if(this == "input")
                     {
-                        mT += ($(this).val());
+                        mT += ($concat(this).val());
                     }
                     console.log(($(this).val()));
                 });
