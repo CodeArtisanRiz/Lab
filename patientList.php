@@ -39,14 +39,14 @@
                                 <th scope="col ">Sex</th>
                                 <th scope="col ">Address</th>
                                 <th scope="col ">Mobile</th>
-                                <th scope="col ">Reffered By</th>
+                                <th scope="col ">Referred by</th>
                                 <th scope="col ">Total</th>
-                                <th scope="col ">Discount</th>
+                                <!-- <th scope="col ">Discount</th>
                                 <th scope="col ">Net Total</th>
-                                <th scope="col ">Advance</th>
-                                <th scope="col ">Remaining Amount</th>
+                                <th scope="col ">Advance</th> -->
+                                <th scope="col ">Remaining amount</th>
                                 
-                                <!-- <th scope="col " colspan="2">Operations</th> -->
+                                <th scope="col ">Details</th>
 
                             </tr>
                         </thead>
@@ -71,17 +71,16 @@
                                     <td><?php echo $res['sex']; ?></td>
                                     <td><?php echo $res['address']; ?></td>
                                     <td><?php echo $res['mobile']; ?></td>
-                                    <td><?php echo $res['refferedBy']; ?></td>
+                                    <td><?php echo $res['referredBy']; ?></td>
                                     <td><?php echo $res['total']; ?></td>
-                                    <td><?php echo $res['discount']; ?></td>
-                                    <td><?php echo $res['netTotal']; ?></td>
-                                    <td><?php echo $res['advance']; ?></td>
+                                    
                                     <td><?php echo $res['remainingAmt']; ?></td>
 
                                     <!--HyperLink for Edditing/Updating data in database, by passing every data in a variable. -->
                                     <!-- <td><a href="docUpdate.php?ids=<?php echo $res['did']?>&dn=<?php echo $res['dname']?>&qu=<?php echo $res['quali']?>&sp=<?php echo $res['special']?>&mb=<?php echo $res['mobile']?>&rc=<?php echo $res['refcent'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td> -->
                                     <!--HyperLink for Deleting data in database through Doctor's ID (did). -->
-                                    <!-- <td><a href="assets/process/docDel.php?ids=<?php echo $res['did']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td> -->
+                                    <!-- <button id="myBtn">View Details</button> -->
+                                    <td><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
                             <?php
                             }
