@@ -77,7 +77,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                             </div>
                             <div class="col-12">
                                 <div class="form-label-group">
-                                <select class="form-control" id="id_sex">
+                                <select class="form-control custom-select" id="id_sex">
                                     <option disabled selected>Sex</option>
                                     <option>Male</option>
                                     <option>Female</option>
@@ -89,7 +89,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                             </div>
                             <div class="col-12">
                                 <div class="form-label-group">
-                                <select class="form-control" id="ref_doc">
+                                <select class="form-control custom-select" id="ref_doc">
                             <option disabled selected>Referred by</option>
                             <?php
                             while ($data = mysqli_fetch_array($d_records))
