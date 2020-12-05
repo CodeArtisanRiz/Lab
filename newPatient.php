@@ -14,6 +14,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/css/select2.min.css" />
         <link rel="stylesheet" href="assets/css/style.css">
+        
 
     </head>
 
@@ -77,7 +78,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                             </div>
                             <div class="col-12">
                                 <div class="form-label-group">
-                                <select class="form-control" id="id_sex">
+                                <select class="form-control custom-select" id="id_sex">
                                     <option disabled selected>Sex</option>
                                     <option>Male</option>
                                     <option>Female</option>
@@ -89,7 +90,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                             </div>
                             <div class="col-12">
                                 <div class="form-label-group">
-                                <select class="form-control" id="ref_doc">
+                                <select class="form-control custom-select" id="ref_doc">
                             <option disabled selected>Referred by</option>
                             <?php
                             while ($data = mysqli_fetch_array($d_records))
@@ -113,9 +114,9 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                                     <label for="sl">Serial</label>
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-6">
                                 <div class="form-label-group">
-                                    <select class="form-control test_name" id="1" onchange="mylang(this.value, this.id)">
+                                    <select class="form-control test_name custom-select" id="1" onchange="putVal(this.value, this.id)">
                                     <option disabled selected>Test Name</option>
                                     <?php
                                     while ($data = mysqli_fetch_array($t_records))
@@ -126,13 +127,13 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-2">
                                 <div class="form-label-group">
                                     <input type="text" name="testcode" class="form-control test_code" id="tCode1" placeholder="Test Code">
                                 </div>
                             </div>
 
-                            <div class="col-3">
+                            <div class="col-2">
                                 <div class="form-label-group">
                                     <input type="tel" name="price" id="tPrice1" placeholder="Price" class="form-control price" onchange="cal()">
                                 </div>
@@ -179,7 +180,8 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     </div>
                 </div>
 
-                <input id= "calc" value="Calculate" class="btn float-right my-2" onclick="sum();">
+                <button id = "id_save"class="btn float-right my-2" onclick="mergeTCode()">Save</button>
+                <!-- <input id= "id_save" value="Save" > -->
             </form>
 
 
@@ -194,23 +196,12 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
         
         <script src="assets/js/select2.min.js"></script>
         <script src="assets/js/addItems.js"></script>
-        <script>
-        // For fetching data from database table for dropdown.
-            $("#test_name").select2({
-                placeholder: "Select Test",
-                allowClear: false
-            });
-            $("#ref_doc").select2({
-                placeholder: "Referred by",
-                allowClear: false
-            });
-        </script>
 
 
             <script>
             
                 // Onchange function for selecting option from test name.
-                function mylang(data, tid){
+                function putVal(data, tid){
                     const ajaxreq = new XMLHttpRequest();
                     ajaxreq.open('GET','assets/process/getData.php?selectvalue='+data, 'TRUE');
                     ajaxreq.send();
@@ -249,7 +240,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
             
             // Works for first row of adding tests.
             $("#formid").find("select").on('input', function() {
-                mylang(data, tid);
+                putVal(data, tid);
                 
             });
             
@@ -263,7 +254,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     if(this.tagName.toLowerCase() == "input"){
                         amount_sum += Number($(this).val());
                     }
-                    console.log(Number($(this).val()));
+                    // console.log(Number($(this).val()));
                 });
                 // alert(amount_sum);
                 $("#id_total").val(amount_sum);
@@ -288,20 +279,20 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                 }
 
                 function mergeTCode() {
-                var mT;
-                //calculate total worth of money
+                var a = []
                 $('.test_code').each(function(){
-                //console.log($(this));
-                //checks whether the DOM element is an input element or a div
-                    if(this == "input")
-                    {
-                        mT += ($concat(this).val());
+                    //console.log($(this));
+                    //checks whether the DOM element is an input element or a div
+                    if(this.tagName.toLowerCase() == "input"){
+                        a += $(this).val() + ", ";
                     }
-                    console.log(($(this).val()));
+                    // console.log(Number($(this).val()));
+
                 });
-                alert(mT);
-                // $("#id_total").val(amount_sum);
-                }
+                console.log(a);
+                // alert (a);
+        }
+                
             // })
             
 
