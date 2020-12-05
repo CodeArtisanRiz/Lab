@@ -14,6 +14,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/css/select2.min.css" />
         <link rel="stylesheet" href="assets/css/style.css">
+        
 
     </head>
 
@@ -115,7 +116,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                             </div>
                             <div class="col-3">
                                 <div class="form-label-group">
-                                    <select class="form-control test_name" id="1" onchange="mylang(this.value, this.id)">
+                                    <select class="form-control test_name custom-select" id="1" onchange="mylang(this.value, this.id)">
                                     <option disabled selected>Test Name</option>
                                     <?php
                                     while ($data = mysqli_fetch_array($t_records))
@@ -179,7 +180,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     </div>
                 </div>
 
-                <input id= "calc" value="Calculate" class="btn float-right my-2" onclick="sum();">
+                <input id= "calc" value="Calculate" class="btn float-right my-2" onclick="mergeTCode()">
             </form>
 
 
@@ -194,17 +195,6 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
         
         <script src="assets/js/select2.min.js"></script>
         <script src="assets/js/addItems.js"></script>
-        <script>
-        // For fetching data from database table for dropdown.
-            $("#test_name").select2({
-                placeholder: "Select Test",
-                allowClear: false
-            });
-            $("#ref_doc").select2({
-                placeholder: "Referred by",
-                allowClear: false
-            });
-        </script>
 
 
             <script>
@@ -263,7 +253,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     if(this.tagName.toLowerCase() == "input"){
                         amount_sum += Number($(this).val());
                     }
-                    console.log(Number($(this).val()));
+                    // console.log(Number($(this).val()));
                 });
                 // alert(amount_sum);
                 $("#id_total").val(amount_sum);
@@ -288,20 +278,20 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                 }
 
                 function mergeTCode() {
-                    function join_ym(){
-            var a = []
-            $('.price').each(function(){
-                //console.log($(this));
-                //checks whether the DOM element is an input element or a div
-                if(this.tagName.toLowerCase() == "input"){
-                    a += $(this).val() + ", ";
-                }
-                // console.log(Number($(this).val()));
-                
-            });
-            console.log(a);
+                var a = []
+                $('.test_code').each(function(){
+                    //console.log($(this));
+                    //checks whether the DOM element is an input element or a div
+                    if(this.tagName.toLowerCase() == "input"){
+                        a += $(this).val() + ", ";
+                    }
+                    // console.log(Number($(this).val()));
+
+                });
+                console.log(a);
+                // alert (a);
         }
-                }
+                
             // })
             
 
