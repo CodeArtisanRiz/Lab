@@ -180,7 +180,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     </div>
                 </div>
 
-                <button id = "id_save"class="btn float-right my-2" onclick="mergeTCode()">Save</button>
+                <input id = "id_save"class="btn float-right my-2" value="Save" onclick="mergeTCode()">
                 <!-- <input id= "id_save" value="Save" > -->
             </form>
 
