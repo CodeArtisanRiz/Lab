@@ -288,19 +288,19 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                 }
 
                 function mergeTCode() {
-                var mT;
-                //calculate total worth of money
-                $('.test_code').each(function(){
+                    function join_ym(){
+            var a = []
+            $('.price').each(function(){
                 //console.log($(this));
                 //checks whether the DOM element is an input element or a div
-                    if(this == "input")
-                    {
-                        mT += ($concat(this).val());
-                    }
-                    console.log(($(this).val()));
-                });
-                alert(mT);
-                // $("#id_total").val(amount_sum);
+                if(this.tagName.toLowerCase() == "input"){
+                    a += $(this).val() + ", ";
+                }
+                // console.log(Number($(this).val()));
+                
+            });
+            console.log(a);
+        }
                 }
             // })
             
