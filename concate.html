@@ -8,12 +8,11 @@
 <body>
     <script src="assets/js/jquery-3.1.1.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-        function join_ym()
-        {
-        var a = []
-        $('.price').each(function(){
-            //console.log($(this));
-            //checks whether the DOM element is an input element or a div
+        function join_ym(){
+            var a = []
+            $('.price').each(function(){
+                //console.log($(this));
+                //checks whether the DOM element is an input element or a div
                 if(this.tagName.toLowerCase() == "input"){
                     a += $(this).val() + ", ";
                 }
@@ -23,17 +22,12 @@
             console.log(a);
         }
         
-
-
+    </script>
         
-        </script>
-        
-        <input class="price" type="text" id="yy" />
-        <input class="price" type="text" id="mm" />
-        <input type="hidden" id="joint">
-        <input type="button" value="Join!" onclick="join_ym();">
-
-
+    <input class="price" type="text" id="yy" />
+    <input class="price" type="text" id="mm" />
+    <input type="hidden" id="joint">
+    <input type="button" value="Join!" onclick="join_ym();">
         
 </body>
 </html>
