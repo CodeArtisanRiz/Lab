@@ -114,9 +114,9 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                                     <label for="sl">Serial</label>
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-6">
                                 <div class="form-label-group">
-                                    <select class="form-control test_name custom-select" id="1" onchange="mylang(this.value, this.id)">
+                                    <select class="form-control test_name custom-select" id="1" onchange="putVal(this.value, this.id)">
                                     <option disabled selected>Test Name</option>
                                     <?php
                                     while ($data = mysqli_fetch_array($t_records))
@@ -127,13 +127,13 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-2">
                                 <div class="form-label-group">
                                     <input type="text" name="testcode" class="form-control test_code" id="tCode1" placeholder="Test Code">
                                 </div>
                             </div>
 
-                            <div class="col-3">
+                            <div class="col-2">
                                 <div class="form-label-group">
                                     <input type="tel" name="price" id="tPrice1" placeholder="Price" class="form-control price" onchange="cal()">
                                 </div>
@@ -180,7 +180,8 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     </div>
                 </div>
 
-                <input id= "calc" value="Calculate" class="btn float-right my-2" onclick="mergeTCode()">
+                <input id = "id_save"class="btn float-right my-2" value="Save" onclick="mergeTCode()">
+                <!-- <input id= "id_save" value="Save" > -->
             </form>
 
 
@@ -200,7 +201,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
             <script>
             
                 // Onchange function for selecting option from test name.
-                function mylang(data, tid){
+                function putVal(data, tid){
                     const ajaxreq = new XMLHttpRequest();
                     ajaxreq.open('GET','assets/process/getData.php?selectvalue='+data, 'TRUE');
                     ajaxreq.send();
@@ -239,7 +240,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
             
             // Works for first row of adding tests.
             $("#formid").find("select").on('input', function() {
-                mylang(data, tid);
+                putVal(data, tid);
                 
             });
             
