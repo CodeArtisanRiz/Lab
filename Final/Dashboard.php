@@ -84,16 +84,16 @@
                             <span>Main</span>
                         </li>
                         <li class="active">
-                            <a href="Dashboard.html"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+                            <a href="Dashboard.php"><i class="fe fe-home"></i> <span>Dashboard</span></a>
                         </li>
                         <li>
                             <a href="doc.php"><i class="fe fe-user-plus"></i> <span>Doctors</span></a>
                         </li>
                         <li>
-                            <a href="patient-list.html"><i class="fe fe-user"></i> <span>Patients</span></a>
+                            <a href="patients.html"><i class="fe fe-user"></i> <span>Patients</span></a>
                         </li>
                         <li>
-                            <a href="test-list.php"><i class="fe fe-user"></i> <span>Tests</span></a>
+                            <a href="tests.php"><i class="fe fe-user"></i> <span>Tests</span></a>
                         </li>
                         <li>
                             <a href="profile.html"><i class="fe fe-user-plus"></i> <span>Profile</span></a>

@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Lab - Doctor List</title>
+    <title>Lab - Test List</title>
 
     <!-- Favicon -->
     <!-- <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png"> -->
@@ -90,13 +90,13 @@
                         <li>
                             <a href="Dashboard.php"><i class="fe fe-home"></i> <span>Dashboard</span></a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="doc.php"><i class="fe fe-user-plus"></i> <span>Doctors</span></a>
                         </li>
                         <li>
                             <a href="patients.html"><i class="fe fe-user"></i> <span>Patients</span></a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="tests.php"><i class="fe fe-user"></i> <span>Tests</span></a>
                         </li>
                         <!-- <li>
@@ -157,47 +157,33 @@
                                 <div class="table-responsive">
                                     <div class="table-responsive">
                                     <table class="table ">
-                        <thead>
-                            <tr>
-                                <th scope="col ">Sl</th>
-                                <th scope="col ">Name</th>
-                                <th scope="col ">Qualification</th>
-                                <th scope="col ">Specialization</th>
-                                <th scope="col ">Mobile</th>
-                                <th scope="col ">Referral Percentage</th>
-                                <th scope="col " colspan="2">Operations</th>
+                                    
 
-                            </tr>
-                        </thead>
-                        <tbody>
 
-<!-- PHP Query for fetching Doctor's data from database and displaying in the <table> format. -->
-                        <?php
-                            $selectquery = " select * from doctor ";
 
-                            $query = mysqli_query($con,$selectquery);
 
-                            $nums = mysqli_num_rows($query);
 
-                            while($res = mysqli_fetch_assoc($query)){
-                            ?>
-                                <tr>
-                                    <th scope="row "><?php echo $res['did']; ?></th>
-                                    <td><?php echo $res['dname']; ?></td>
-                                    <td><?php echo $res['quali']; ?></td>
-                                    <td><?php echo $res['special']; ?></td>
-                                    <td><?php echo $res['mobile']; ?></td>
-                                    <td><?php echo $res['refcent']; ?></td>
-                                    <!--HyperLink for Edditing/Updating data in database, by passing every data in a variable. -->
-                                    <td><a href="assets/process/docUpdate.php?ids=<?php echo $res['did']?>&dn=<?php echo $res['dname']?>&qu=<?php echo $res['quali']?>&sp=<?php echo $res['special']?>&mb=<?php echo $res['mobile']?>&rc=<?php echo $res['refcent'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
-                                    <!--HyperLink for Deleting data in database through Doctor's ID (did). -->
-                                    <td><a href="assets/process/docDel.php?ids=<?php echo $res['did']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
-                    </table>
+
+
+
+                                            Data here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    </table>
                                     </div>
                                 </div>
                             </div>
