@@ -135,7 +135,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 
                             <div class="col-2">
                                 <div class="form-label-group">
-                                    <input type="tel" name="price" id="tPrice1" placeholder="Price" class="form-control price" onchange="cal()">
+                                    <input type="tel" name="price" id="tPrice1" placeholder="Price" class="form-control price test_price" onchange="cal()">
                                 </div>
                             </div>
                         </div>
@@ -279,18 +279,37 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                 }
 
                 function mergeTCode() {
-                var a = []
-                $('.test_code').each(function(){
+
+                var tN = []
+                $('.test_name').each(function(){
                     //console.log($(this));
                     //checks whether the DOM element is an input element or a div
-                    if(this.tagName.toLowerCase() == "input"){
-                        a += $(this).val() + ", ";
+                    if(this.tagName.toLowerCase() == "select"){
+                        tN += $(this).val() + ", ";
                     }
                     // console.log(Number($(this).val()));
 
                 });
-                console.log(a);
-                // alert (a);
+                console.log(tN);
+                // alert (tN);
+
+                var tC = []
+                $('.test_code').each(function(){
+                    if(this.tagName.toLowerCase() == "input"){
+                        tC += $(this).val() + ", ";
+                    }
+                });
+                console.log(tC);
+                // alert (tC);
+
+                var tP = []
+                $('.test_price').each(function(){
+                    if(this.tagName.toLowerCase() == "input"){
+                        tP += $(this).val() + ", ";
+                    }
+                });
+                console.log(tP);
+                // alert (tN);
         }
                 
             // })
