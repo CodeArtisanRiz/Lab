@@ -1,14 +1,13 @@
 <?php 
-   include 'assets/conn/conn.php';  // This file setsup connection from database.
+   include 'assets/conn/conn.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
     
-<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/doctor-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:51 GMT -->
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Doccure - Doctor List Page</title>
+        <title>Lab - Doctor List Page</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
@@ -45,10 +44,10 @@
 				<!-- Logo -->
                 <div class="header-left">
                     <a href="index.html" class="logo">
-						<img src="assets/img/logo.png" alt="Logo">
+						<!-- <img src="assets/img/logo.png" alt="Logo"> -->
 					</a>
 					<a href="index.html" class="logo logo-small">
-						<img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
+						<!-- <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30"> -->
 					</a>
                 </div>
 				<!-- /Logo -->
@@ -250,12 +249,8 @@
                                 <label for="id_referral">Referral %</label>
                                 <div class="validate"></div>
                             </div>
-                        </div>
-
-                        <!-- <div class="col-12"> -->
-                            <!-- <button type="submit" name="submit" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button> -->
-                            <!-- <div class="validate "></div> -->
-                        <!-- </div> -->
+						</div>
+						
                         <div class="col-12">
                             <button type="submit" name="submit" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
                             <div class="validate "></div>
@@ -287,5 +282,4 @@
 		
     </body>
 
-<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/doctor-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:51 GMT -->
 </html>
