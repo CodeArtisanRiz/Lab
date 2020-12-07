@@ -133,17 +133,17 @@
         <div class="page-wrapper">
             <div class="content container-fluid">
             <div class="col-sm-12 col">
-			    <a href="#Add_Doctors" data-toggle="modal" class="btn btn-primary float-right mt-2">Add</a>
+			    <a href="#Add_Tests" data-toggle="modal" class="btn btn-primary float-right mt-2">Add</a>
 			</div>
                 <!-- Page Header -->
                 <div class="page-header">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h3 class="page-title">List of Doctors</h3>
+                            <h3 class="page-title">List of Tests</h3>
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="Dashboard.php">Dashboard</a></li>
                                 <!-- <li class="breadcrumb-item"><a href="javascript:(0);">Users</a></li> -->
-                                <li class="breadcrumb-item active">Doctors</li>
+                                <li class="breadcrumb-item active">Tests</li>
                             </ul>
                         </div>
                     </div>
@@ -197,11 +197,11 @@
 
     </div>
     <!-- Add Modal -->
-			<div class="modal fade" id="Add_Doctors" aria-hidden="true" role="dialog">
+			<div class="modal fade" id="Add_Tests" aria-hidden="true" role="dialog">
 				<div class="modal-dialog modal-dialog-centered" role="document" >
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title">Add Doctor</h5>
+							<h5 class="modal-title">Add Tests</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
@@ -209,58 +209,9 @@
 						<div class="modal-body">
                         <form action="assets/process/DocAdd.php" method="POST">
 
-<!-- A Div for adding new Doctor Records into Database. -->
-                        <!-- <h3 class="display-7">Add Doctor</h3> -->
-
-                        <div class="col-12">
-                            <div class="form-label-group">
-                                <input type="text" id="id_name" class="form-control" name="dname" placeholder="Doctor Name" required="required" oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">
-                                <label for="id_name">Doctor Name</label>
-                                <div class="validate"></div>
-                            </div>
-                        </div>
+    modal here
 
 
-                        <div class="col-12">
-                            <div class="form-label-group">
-                                <input class="form-control" name="qualification" id="id_qualification" type="text" placeholder="Qualification*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
-                                <label for="id_qualification">Qualification</label>
-                                <div class="validate"></div>
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="form-label-group">
-                                <input class="form-control" name="specialization" id="id_specialization" type="text" placeholder="Specialization*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
-                                <label for="id_specialization">Specialization</label>
-                                <div class="validate"></div>
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="form-label-group">
-                                <input class="form-control" name="phone" id="id_phone" type="number" placeholder="Phone*" min="999999999 " required="required" oninvalid="this.setCustomValidity('Enter Phone')" oninput="setCustomValidity('')" onkeypress="if(this.value.length==10) return false;">
-                                <label for="id_phone">Phone</label>
-                                <div class="validate"></div>
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="form-label-group">
-                                <input class="form-control" name="refcent" id="id_referral" type="number" step="any" placeholder="Referral %*" required="required" oninvalid="this.setCustomValidity('Enter Referral %')" oninput="setCustomValidity('')">
-                                <label for="id_referral">Referral %</label>
-                                <div class="validate"></div>
-                            </div>
-                        </div>
-
-                        <!-- <div class="col-12"> -->
-                            <!-- <button type="submit" name="submit" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button> -->
-                            <!-- <div class="validate "></div> -->
-                        <!-- </div> -->
-                        <div class="col-12">
-                            <button type="submit" name="submit" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
-                            <div class="validate "></div>
-                        </div>
                     </form>
 						</div>
 					</div>
