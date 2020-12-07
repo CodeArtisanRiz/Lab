@@ -1,5 +1,5 @@
 <?php 
-    include 'assets/conn/conn.php';
+    include '../../assets/conn/conn.php';
 
     $tids = $_GET['ids'];
     $tcode = $_GET['tc'];
@@ -18,7 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Lab</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="../../assets/css/style.css">
     </head>
 
     <body>
@@ -112,7 +112,7 @@
         
         <script src="https://use.fontawesome.com/0a050084c3.js"></script>
                             
-        <script src="assets/js/check_phone.js"></script>
+        <script src="../../assets/js/check_phone.js"></script>
     </body>
 
 </html>
@@ -145,7 +145,7 @@
                 // header("location:doc.php");
                 ?>
                 <script>
-                window.location.replace("tests.php");
+                window.location.replace("../../tests.php");
                 </script>
                 <?php
             }

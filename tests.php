@@ -124,7 +124,7 @@
                                     <td><?php echo $res['c_price']; ?></td>
                                     <td><?php echo $res['s_price']; ?></td>
                                     <!--HyperLink for Edditing/Updating data in database, by passing every data in a variable. -->
-                                    <td><a href="testUpdate.php?ids=<?php echo $res['tid']?>&tc=<?php echo $res['tcode']?>&tn=<?php echo $res['tname']?>&vt=<?php echo $res['vial_type']?>&cp=<?php echo $res['c_price']?>&sp=<?php echo $res['s_price'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+                                    <td><a href="assets/process/testUpdate.php?ids=<?php echo $res['tid']?>&tc=<?php echo $res['tcode']?>&tn=<?php echo $res['tname']?>&vt=<?php echo $res['vial_type']?>&cp=<?php echo $res['c_price']?>&sp=<?php echo $res['s_price'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                                     <!--HyperLink for Deleting data in database through Doctor's ID (did). -->
                                     <td><a href="assets/process/testDel.php?ids=<?php echo $res['tid']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
