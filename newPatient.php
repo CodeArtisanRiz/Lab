@@ -21,7 +21,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
     <body>
 
         <section class="container my-5 investigation">
-            <form class="" method=""  id="formid">
+            <form class="" method="POST"  id="formid">
                 <div class="row">
                     <div class="col">
                         <div class="row">
@@ -78,7 +78,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                             </div>
                             <div class="col-12">
                                 <div class="form-label-group">
-                                <select class="form-control custom-select" id="id_sex">
+                                <select class="form-control custom-select" id="id_sex" name="sex">
                                     <option disabled selected>Sex</option>
                                     <option>Male</option>
                                     <option>Female</option>
@@ -90,7 +90,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                             </div>
                             <div class="col-12">
                                 <div class="form-label-group">
-                                <select class="form-control custom-select" id="ref_doc">
+                                <select class="form-control custom-select" id="ref_doc" name="referredby">
                             <option disabled selected>Referred by</option>
                             <?php
                             while ($data = mysqli_fetch_array($d_records))
@@ -180,7 +180,10 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     </div>
                 </div>
 
-                <input id = "id_save"class="btn float-right my-2" value="Save" onclick="mergeTCode()">
+                <!-- <a href=""><input id = "id_save"class="btn float-right my-2" name="save" value="Save" onclick="mergeTCode()"></a> -->
+
+                <button type="submit " id="id_addBtn" name= "save" class="btn btn-primary btn-xl text-uppercase center " onclick="mergeTCode()">Submit</button>
+                
                 <!-- <input id= "id_save" value="Save" > -->
 
                 <input type="text" class="hidden" id="tNh">
@@ -289,7 +292,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     //console.log($(this));
                     //checks whether the DOM element is an input element or a div
                     if(this.tagName.toLowerCase() == "select"){
-                        tN += $(this).val() + ", ";
+                        tN += $(this).val() + "~";
                     }
                     // console.log(Number($(this).val()));
 
@@ -301,7 +304,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                 var tC = []
                 $('.test_code').each(function(){
                     if(this.tagName.toLowerCase() == "input"){
-                        tC += $(this).val() + ", ";
+                        tC += $(this).val() + "~";
                     }
                 });
                 console.log(tC);
@@ -311,7 +314,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                 var tP = []
                 $('.test_price').each(function(){
                     if(this.tagName.toLowerCase() == "input"){
-                        tP += $(this).val() + ", ";
+                        tP += $(this).val() + "~";
                     }
                 });
                 console.log(tP);
@@ -330,4 +333,56 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 
     </body>
 
-    </html>
+</html>
+
+<?php
+
+// $testNameConca = $_GET["tN"];
+// $testCodeConca = $_GET["tC"];
+// $testPriceConca = $_GET["tP"];
+
+    if(isset($_POST['save'])){
+
+        $name=$_POST['name']; 
+        $address=$_POST['address'];
+        $age=$_POST['age']; 
+        $mobile=$_POST['mobile'];
+        $sex=$_POST['sex']; 
+        $referredby=$_POST['referredby'];
+
+        $testName = abcd;
+        $testCode = efgh;
+        $testPrice = ijkl;
+
+        $total=$_POST['total'];
+        $disc=$_POST['discount'];
+        $netTotal=$_POST['net_total'];
+        $advance=$_POST['advance'];
+        $remainingAmt=$_POST['remaining_balance'];
+
+        //$testNameConca = 
+        //$testCodeConca = $_GET["tC"];
+        //$testPriceConca = $_GET["tP"];
+
+        
+
+
+        echo $name;
+        echo $age;
+        echo $sex;
+        echo $address;
+        echo $mobile;
+        echo $referredby;
+        //echo $testNameConca;
+
+        $insertquery = "INSERT into patients (pname,age,sex,paddress,mobile,referredBy,tName,tCode,tPrice,total,discount,netTotal,advance,remainingAmt) values('$name','$age','$sex','$address','$mobile','$referredby','$testName','$testCode','$testPrice','$total','$disc','$netTotal','$advance','$remainingAmt')";
+            if(mysqli_query($con,$insertquery))
+            {
+                echo"<h3>Data Inserted</h3>";
+                //header("location:../../tests.php");
+            }
+        
+        //echo <script>alert('Hello Name');</script>;
+    }
+
+?>
