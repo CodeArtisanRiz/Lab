@@ -23,13 +23,7 @@
               }
     }
 //    Count no of patients in patient table
-    $totalCount = mysqli_query($con, $patientQuery);
-    if ($totalCount) {
-        $row = mysqli_fetch_assoc($totalCount);
-        if ($row) {
-            $totalRevenue = $row['value_sum'];
-        }
-    }
+
     // if ($patientCount) {
     //     $row = mysqli_num_rows($patientCount);
     //         if ($row) {
