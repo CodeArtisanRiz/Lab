@@ -179,7 +179,7 @@
                             ?>
                                 <tr>
                                     <th scope="row "><?php echo $res['did']; ?></th>
-                                    <td><?php echo $res['dname']; ?></td>
+                                    <td>Dr. <?php echo $res['dname']; ?></td>
                                     <td><?php echo $res['quali']; ?></td>
                                     <td><?php echo $res['special']; ?></td>
                                     <td><?php echo $res['mobile']; ?></td>
