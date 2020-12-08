@@ -108,7 +108,7 @@
 
 <!-- PHP Query for fetching Test's data from database and displaying in the <table> format. -->
                         <?php
-                            $selectquery = " select * from tests ";
+                            $selectquery = "select * from tests ";
 
                             $query = mysqli_query($con,$selectquery);
 

@@ -59,10 +59,6 @@
             </div>
             <!-- /Logo -->
 
-            
-
-
-
             <!-- Mobile Menu Toggle -->
             <a class="mobile_btn" id="mobile_btn">
                 <i class="fa fa-bars"></i>
@@ -173,7 +169,7 @@
 
 <!-- PHP Query for fetching Doctor's data from database and displaying in the <table> format. -->
                         <?php
-                            $selectquery = " select * from doctor ";
+                            $selectquery = "SELECT * FROM doctor ";
 
                             $query = mysqli_query($con,$selectquery);
 

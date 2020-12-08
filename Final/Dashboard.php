@@ -1,3 +1,26 @@
+<?php 
+   include 'assets/conn/conn.php';
+   $docQuery = "SELECT * FROM doctor";
+   $testQuery = "SELECT * FROM tests"; 
+
+
+//    Count no of doctors in doctor table
+    $docCount = mysqli_query($con, $docQuery);
+    if ($docCount) {
+        $row = mysqli_num_rows($docCount);
+            if ($row) {
+                $docs = $row;
+              }
+    }
+    //    Count no of tests in tests table
+    $testCount = mysqli_query($con, $testQuery);
+    if ($testCount) {
+        $row = mysqli_num_rows($testCount);
+            if ($row) {
+                $tests = $row;
+              }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -141,7 +164,7 @@
 											<i class="fe fe-users"></i>
 										</span>
                                     <div class="dash-count">
-                                        <h1>168</h1>
+                                        <h1><?php echo $docs; ?></h1>
                                     </div>
                                 </div>
                                 <div class="dash-widget-info">
@@ -153,6 +176,29 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="dash-widget-header">
+                                    <span class="dash-widget-icon text-danger border-danger">
+											<i class="fe fe-money"></i>
+										</span>
+                                    <div class="dash-count">
+                                        <h3><?php echo $tests; ?></h3>
+                                    </div>
+                                </div>
+                                <div class="dash-widget-info">
+
+                                    <h6 class="text-muted">Tests</h6>
+                                    <div class="progress progress-sm">
+                                        <div class="progress-bar bg-danger w-50"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="col-xl-3 col-sm-6 col-12">
                         <div class="card">
                             <div class="card-body">
@@ -174,27 +220,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="dash-widget-header">
-                                    <span class="dash-widget-icon text-danger border-danger">
-											<i class="fe fe-money"></i>
-										</span>
-                                    <div class="dash-count">
-                                        <h3>485</h3>
-                                    </div>
-                                </div>
-                                <div class="dash-widget-info">
 
-                                    <h6 class="text-muted">Tests</h6>
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-danger w-50"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-xl-3 col-sm-6 col-12">
                         <div class="card">
                             <div class="card-body">
