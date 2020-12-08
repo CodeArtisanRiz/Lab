@@ -86,6 +86,7 @@
                             <button type="submit " id="id_addBtn" name= "submit" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
                             <div class="validate "></div>
                         </div>
+                    </form>
                 </div>
 
 <!-- A Div for displaying added Test's Records from Database after adding. -->               

@@ -160,7 +160,7 @@
                                 <th scope="col ">Qualification</th>
                                 <th scope="col ">Specialization</th>
                                 <th scope="col ">Mobile</th>
-                                <th scope="col ">Referral Percentage</th>
+                                <th scope="col ">Referral %</th>
                                 <th scope="col " colspan="2">Operations</th>
 
                             </tr>
@@ -183,10 +183,10 @@
                                     <td><?php echo $res['quali']; ?></td>
                                     <td><?php echo $res['special']; ?></td>
                                     <td><?php echo $res['mobile']; ?></td>
-                                    <td><?php echo $res['refcent']; ?></td>
-                                    <!--HyperLink for Edditing/Updating data in database, by passing every data in a variable. -->
+                                    <td><?php echo $res['refcent']; ?> %</td>
+<!--HyperLink for Editing/Updating data in database, by passing every data in a variable. -->
                                     <td><a href="assets/process/docUpdate.php?ids=<?php echo $res['did']?>&dn=<?php echo $res['dname']?>&qu=<?php echo $res['quali']?>&sp=<?php echo $res['special']?>&mb=<?php echo $res['mobile']?>&rc=<?php echo $res['refcent'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
-                                    <!--HyperLink for Deleting data in database through Doctor's ID (did). -->
+<!--HyperLink for Deleting data in database through Doctor's ID (did). -->
                                     <td><a href="assets/process/docDel.php?ids=<?php echo $res['did']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
                             <?php
@@ -282,15 +282,15 @@
     <script src="assets/js/jquery-3.2.1.min.js"></script>
 
     <!-- Bootstrap Core JS -->
-    <script src="assets/js/popper.min.js"></script>
+    <!-- <script src="assets/js/popper.min.js"></script> -->
     <script src="assets/js/bootstrap.min.js"></script>
 
     <!-- Slimscroll JS -->
     <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-    <!-- Datatables JS -->
-    <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="assets/plugins/datatables/datatables.min.js"></script>
+    <!-- DataTables JS -->
+    <!-- <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="assets/plugins/datatables/datatables.min.js"></script> -->
 
     <!-- Custom JS -->
     <script src="assets/js/script.js"></script>

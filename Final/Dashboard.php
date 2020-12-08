@@ -1,7 +1,9 @@
 <?php 
    include 'assets/conn/conn.php';
    $docQuery = "SELECT * FROM doctor";
-   $testQuery = "SELECT * FROM tests"; 
+   $testQuery = "SELECT * FROM tests";
+   $patientQuery = "SELECT * FROM tests";
+
 
 
 //    Count no of doctors in doctor table
@@ -12,7 +14,7 @@
                 $docs = $row;
               }
     }
-    //    Count no of tests in tests table
+//    Count no of tests in tests table
     $testCount = mysqli_query($con, $testQuery);
     if ($testCount) {
         $row = mysqli_num_rows($testCount);
@@ -20,6 +22,28 @@
                 $tests = $row;
               }
     }
+//    Count no of patients in patient table
+    $totalCount = mysqli_query($con, $patientQuery);
+    if ($totalCount) {
+        $row = mysqli_fetch_assoc($totalCount);
+        if ($row) {
+            $totalRevenue = $row['value_sum'];
+        }
+    }
+    // if ($patientCount) {
+    //     $row = mysqli_num_rows($patientCount);
+    //         if ($row) {
+    //             $patients = $row;
+    //         }
+    // }
+//    Calculate total sp in patient table
+    $totalCount = mysqli_query($con, $patientQuery);
+        $totalRevenue = 0;
+        while ($num = mysqli_fetch_assoc ($totalCount)){
+            $totalRevenue += $num['s_price'];
+        }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -185,7 +209,7 @@
 											<i class="fe fe-money"></i>
 										</span>
                                     <div class="dash-count">
-                                        <h3><?php echo $tests; ?></h3>
+                                        <h1><?php echo $tests; ?></h1>
                                     </div>
                                 </div>
                                 <div class="dash-widget-info">
@@ -198,7 +222,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-xl-3 col-sm-6 col-12">
                         <div class="card">
                             <div class="card-body">
@@ -207,7 +231,8 @@
 											<i class="fe fe-credit-card"></i>
 										</span>
                                     <div class="dash-count">
-                                        <h3>487</h3>
+                                    <!-- change h6 to h1 -->
+                                        <h6>add patients table uncomment the patient count fn then echo patients</h6>
                                     </div>
                                 </div>
                                 <div class="dash-widget-info">
@@ -229,7 +254,7 @@
 											<i class="fe fe-folder"></i>
 										</span>
                                     <div class="dash-count">
-                                        <h3>₹6252</h3>
+                                        <h1><?php echo $totalRevenue; ?></h1>
                                     </div>
                                 </div>
                                 <div class="dash-widget-info">
