@@ -343,6 +343,9 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
         $sex=$_POST['sex']; 
         $referredby=$_POST['referredby'];
 
+        $testName = abcd;
+        $testCode = efgh;
+        $testPrice = ijkl ;
 
         $total=$_POST['total'];
         $disc=$_POST['discount'];
@@ -354,9 +357,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
         //$testCodeConca = $_GET["tC"];
         //$testPriceConca = $_GET["tP"];
 
-        $testName = abcd;
-        $testCode = efgh;
-        $testPrice = ijkl ;
+        
 
 
         echo $name;
