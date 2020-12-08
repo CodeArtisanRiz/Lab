@@ -186,9 +186,9 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                 
                 <!-- <input id= "id_save" value="Save" > -->
 
-                <input type="text" class="hidden" id="tNh">
-                <input type="text" class="hidden" id="tCh">
-                <input type="text" class="hidden" id="tPh">
+                <input type="text" name="tName" class="hidden" id="tNh">
+                <input type="text" name="tCode" class="hidden" id="tCh">
+                <input type="text" name="tPrice" class="hidden" id="tPh">
             </form>
 
 
@@ -349,11 +349,9 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
         $mobile=$_POST['mobile'];
         $sex=$_POST['sex']; 
         $referredby=$_POST['referredby'];
-
-        $testName = abcd;
-        $testCode = efgh;
-        $testPrice = ijkl;
-
+        $testName = $_POST['tName'];
+        $testCode = $_POST['tCode'];;
+        $testPrice = $_POST['tPrice'];;
         $total=$_POST['total'];
         $disc=$_POST['discount'];
         $netTotal=$_POST['net_total'];
@@ -367,12 +365,12 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
         
 
 
-        echo $name;
-        echo $age;
-        echo $sex;
-        echo $address;
-        echo $mobile;
-        echo $referredby;
+        // echo $name;
+        // echo $age;
+        // echo $sex;
+        // echo $address;
+        // echo $mobile;
+        // echo $referredby;
         //echo $testNameConca;
 
         $insertquery = "INSERT into patients (pname,age,sex,paddress,mobile,referredBy,tName,tCode,tPrice,total,discount,netTotal,advance,remainingAmt) values('$name','$age','$sex','$address','$mobile','$referredby','$testName','$testCode','$testPrice','$total','$disc','$netTotal','$advance','$remainingAmt')";
