@@ -155,7 +155,7 @@
                                     <table class="table ">
                         <thead>
                             <tr>
-                                <th scope="col ">Sl</th>
+                                <th scope="col ">ID</th>
                                 <th scope="col ">Name</th>
                                 <th scope="col ">Qualification</th>
                                 <th scope="col ">Specialization</th>
@@ -178,7 +178,7 @@
                             while($res = mysqli_fetch_assoc($query)){
                             ?>
                                 <tr>
-                                    <th scope="row "><?php echo $res['did']; ?></th>
+                                    <th scope="row ">DOC<?php echo $res['did']; ?></th>
                                     <td>Dr. <?php echo $res['dname']; ?></td>
                                     <td><?php echo $res['quali']; ?></td>
                                     <td><?php echo $res['special']; ?></td>

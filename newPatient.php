@@ -316,6 +316,10 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
             
 
         </script>
+        <?php
+
+
+        ?>
 
     </body>
 

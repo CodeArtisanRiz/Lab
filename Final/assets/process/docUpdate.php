@@ -18,7 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Lab</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <link rel="stylesheet" href="../../assets/css/style.css">
+        <link rel="stylesheet" href="../../assets/css/style2.css">
     </head>
 
     <body>
@@ -39,7 +39,7 @@
 
                             <div class="col-12">
                                 <div class="form-label-group">
-                                    <input type="text" id="id_name" class="form-control" name="did" value="<?php echo "$ids"; ?>" placeholder="Doctor ID" va required="required" disabled oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">
+                                    <input type="text" id="id_name" class="form-control" name="did" value="DOC<?php echo "$ids"; ?>" placeholder="Doctor ID" va required="required" disabled oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">
                                     <label for="id_did">Doctor ID</label>
                                     <div class="validate"></div>
                                 </div>

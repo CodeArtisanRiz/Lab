@@ -159,7 +159,7 @@
                                     <table class="table ">
                         <thead>
                             <tr>
-                                <th scope="col ">Sl</th>
+                                <th scope="col ">ID</th>
                                 <th scope="col ">Test code</th>
                                 <th scope="col ">Test name</th>
                                 <th scope="col ">Vial type</th>
@@ -182,7 +182,7 @@
                             while($res = mysqli_fetch_assoc($query)){
                             ?>
                                 <tr>
-                                    <th scope="row "><?php echo $res['tid']; ?></th>
+                                    <th scope="row ">TEST<?php echo $res['tid']; ?></th>
                                     <td><?php echo $res['tcode']; ?></td>
                                     <td><?php echo $res['tname']; ?></td>
                                     <td><?php echo $res['vial_type']; ?></td>
