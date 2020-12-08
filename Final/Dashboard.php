@@ -184,7 +184,7 @@
 											<i class="fe fe-users"></i>
 										</span>
                                     <div class="dash-count">
-                                        <h1><?php echo $docs; ?></h1>
+                                        <h4><?php echo $docs; ?></h4>
                                     </div>
                                 </div>
                                 <div class="dash-widget-info">
@@ -205,7 +205,7 @@
 											<i class="fe fe-money"></i>
 										</span>
                                     <div class="dash-count">
-                                        <h1><?php echo $tests; ?></h1>
+                                        <h4><?php echo $tests; ?></h4>
                                     </div>
                                 </div>
                                 <div class="dash-widget-info">
@@ -228,7 +228,8 @@
 										</span>
                                     <div class="dash-count">
                                     <!-- change h6 to h1 -->
-                                        <h6>add patients table uncomment the patient count fn then echo patients</h6>
+                                    <!-- <h4></h4> -->
+                                        <h6>add patients table uncomment the pcount fn then echo no of pat..</h6>
                                     </div>
                                 </div>
                                 <div class="dash-widget-info">
@@ -250,7 +251,7 @@
 											<i class="fe fe-folder"></i>
 										</span>
                                     <div class="dash-count">
-                                        <h1><?php echo $totalRevenue; ?></h1>
+                                        <h4>₹<?php echo $totalRevenue; ?></h4>
                                     </div>
                                 </div>
                                 <div class="dash-widget-info">
