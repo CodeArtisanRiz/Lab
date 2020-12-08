@@ -345,7 +345,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 
         $testName = abcd;
         $testCode = efgh;
-        $testPrice = ijkl ;
+        $testPrice = ijkl;
 
         $total=$_POST['total'];
         $disc=$_POST['discount'];
