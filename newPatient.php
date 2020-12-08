@@ -182,6 +182,10 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 
                 <input id = "id_save"class="btn float-right my-2" value="Save" onclick="mergeTCode()">
                 <!-- <input id= "id_save" value="Save" > -->
+
+                <input type="text" class="hidden" id="tNh">
+                <input type="text" class="hidden" id="tCh">
+                <input type="text" class="hidden" id="tPh">
             </form>
 
 
@@ -291,6 +295,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 
                 });
                 console.log(tN);
+                $("#tNh").val(tN);
                 // alert (tN);
 
                 var tC = []
@@ -300,6 +305,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     }
                 });
                 console.log(tC);
+                $("#tCh").val(tC);
                 // alert (tC);
 
                 var tP = []
@@ -309,6 +315,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     }
                 });
                 console.log(tP);
+                $("#tPh").val(tP);
                 // alert (tN);
         }
                 

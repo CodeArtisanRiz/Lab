@@ -2,6 +2,8 @@
    include 'assets/conn/conn.php';
    $docQuery = "SELECT * FROM doctor";
    $testQuery = "SELECT * FROM tests";
+//    $patientQuery = "SELECT * FROM patients";
+// until patient table is not done
    $patientQuery = "SELECT * FROM tests";
 
 
