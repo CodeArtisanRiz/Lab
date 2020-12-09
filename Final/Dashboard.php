@@ -2,10 +2,7 @@
    include 'assets/conn/conn.php';
    $docQuery = "SELECT * FROM doctor";
    $testQuery = "SELECT * FROM tests";
-//    $patientQuery = "SELECT * FROM patients";
-// until patient table is not done
-   $patientQuery = "SELECT * FROM tests";
-
+   $patientQuery = "SELECT * FROM patients";
 
 
 //    Count no of doctors in doctor table
@@ -25,22 +22,21 @@
               }
     }
 //    Count no of patients in patient table
-
-    // if ($patientCount) {
-    //     $row = mysqli_num_rows($patientCount);
-    //         if ($row) {
-    //             $patients = $row;
-    //         }
-    // }
+    $patientCount = mysqli_query($con, $patientQuery);
+    if ($patientCount) {
+        $row = mysqli_num_rows($patientCount);
+            if ($row) {
+                $patients = $row;
+              }
+    }
 //    Calculate total sp in patient table
     $totalCount = mysqli_query($con, $patientQuery);
         $totalRevenue = 0;
         while ($num = mysqli_fetch_assoc ($totalCount)){
-            $totalRevenue += $num['s_price'];
+            $totalRevenue += $num['total'];
         }
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -132,8 +128,12 @@
                         <li>
                             <a href="doc.php"><i class="fe fe-user-plus"></i> <span>Doctors</span></a>
                         </li>
-                        <li>
-                            <a href="patients.html"><i class="fe fe-user"></i> <span>Patients</span></a>
+                        <li class="submenu">
+                            <a href="#"><i class="fe fe-user"></i> <span> Patients</span> <span class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a href="invoice-report.html"><i class="fe fe-user-plus"></i> New Patient</a></li>
+                                <li><a href="invoice-report.html"><i class="fe fe-user-plus"></i> All Patients</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="tests.php"><i class="fe fe-user"></i> <span>Tests</span></a>
@@ -228,8 +228,8 @@
 										</span>
                                     <div class="dash-count">
                                     <!-- change h6 to h1 -->
-                                    <!-- <h4></h4> -->
-                                        <h6>add patients table uncomment the pcount fn then echo no of pat..</h6>
+                                    <h4><?php echo $patients; ?></h4>
+                                        <!-- <h6>add patients table uncomment the pcount fn then echo no of pat..</h6> -->
                                     </div>
                                 </div>
                                 <div class="dash-widget-info">
@@ -321,6 +321,9 @@
 
     <!-- Custom JS -->
     <script src="assets/js/script.js"></script>
+    <!-- <script>
+        $("#sidebar-menu").load("sidebar.html");
+    </script> -->
 
 </body>
 

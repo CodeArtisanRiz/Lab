@@ -243,3 +243,7 @@ body {
     background: var(--bhover);
     color: #fff;
 }
+
+.hidden {
+    visibility: hidden;
+}

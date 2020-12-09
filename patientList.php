@@ -66,21 +66,21 @@
                                     <th scope="row "><?php echo $res['pid']; ?></th>
                                     <td><?php echo $res['date']; ?></td>
                                     <td><?php echo $res['time']; ?></td>
-                                    <td><?php echo $res['name']; ?></td>
+                                    <td><?php echo $res['pname']; ?></td>
                                     <td><?php echo $res['age']; ?></td>
                                     <td><?php echo $res['sex']; ?></td>
-                                    <td><?php echo $res['address']; ?></td>
+                                    <td><?php echo $res['paddress']; ?></td>
                                     <td><?php echo $res['mobile']; ?></td>
                                     <td><?php echo $res['referredBy']; ?></td>
                                     <td><?php echo $res['total']; ?></td>
                                     
                                     <td><?php echo $res['remainingAmt']; ?></td>
 
-                                    <!--HyperLink for Edditing/Updating data in database, by passing every data in a variable. -->
-                                    <!-- <td><a href="docUpdate.php?ids=<?php echo $res['did']?>&dn=<?php echo $res['dname']?>&qu=<?php echo $res['quali']?>&sp=<?php echo $res['special']?>&mb=<?php echo $res['mobile']?>&rc=<?php echo $res['refcent'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td> -->
+                                    <!-- HyperLink for Editing/Updating data in database, by passing every data in a variable. -->
+                                    <td><a href="docUpdate.php?ids=<?php echo $res['pid']?>&dn=<?php echo $res['pname']?>&qu=<?php echo $res['quali']?>&sp=<?php echo $res['special']?>&mb=<?php echo $res['mobile']?>&rc=<?php echo $res['refcent'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                                     <!--HyperLink for Deleting data in database through Doctor's ID (did). -->
-                                    <!-- <button id="myBtn">View Details</button> -->
-                                    <td><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                    <td><a href="assets/process/docDel.php?ids=<?php echo $res['pid']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                
                                 </tr>
                             <?php
                             }
