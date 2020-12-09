@@ -149,7 +149,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     <div class="row">
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" name="total" id="id_total" placeholder="Total" class="form-control">
+                                <input type="text" name="total" id="id_total" placeholder="Total" class="form-control" disabled>
                                 <label for="id_total">Total</label>
                             </div>
                         </div>
@@ -161,7 +161,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                         </div>
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" name="net_total" id="id_net_total" placeholder="Net Total" class="form-control">
+                                <input type="text" name="net_total" id="id_net_total" placeholder="Net Total" class="form-control" disabled>
                                 <label for="id_net_total">Net Total</label>
                             </div>
                         </div>
@@ -173,7 +173,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                         </div>
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" name="remaining_balance" id="id_remaining_balance" placeholder="Remaining Balance" class="form-control">
+                                <input type="text" name="remaining_balance" id="id_remaining_balance" placeholder="Remaining Balance" class="form-control" disabled>
                                 <label for="id_remaining_balance">Remaining Amount</label>
                             </div>
                         </div>
