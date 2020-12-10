@@ -380,7 +380,8 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                 //header("location:../../tests.php");
             }
         
-        //echo <script>alert('Hello Name');</script>;
+        //echo <script>alert('Hello Name');</script>; Hello Testing 1 2 3 4...
     }
 
 ?>
+
