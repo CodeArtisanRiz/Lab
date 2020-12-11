@@ -105,6 +105,8 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     </div>
                 </div>
                 </div>
+
+                </div>
                 <div class="row input-form" id="inputf">
                     <div class="col-12">
                         <div class="row form-type">
@@ -129,13 +131,13 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                             </div>
                             <div class="col-2">
                                 <div class="form-label-group">
-                                    <input type="text" name="testcode" class="form-control test_code" id="tCode1" placeholder="Test Code">
+                                    <input type="text" name="testcode" class="form-control test_code" id="tCode1" placeholder="Test Code" disabled>
                                 </div>
                             </div>
 
                             <div class="col-2">
                                 <div class="form-label-group">
-                                    <input type="tel" name="price" id="tPrice1" placeholder="Price" class="form-control price test_price" onchange="cal()">
+                                    <input type="tel" name="price" id="tPrice1" placeholder="Price" class="form-control price test_price" onchange="cal()" disabled>
                                 </div>
                             </div>
                         </div>
@@ -149,7 +151,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     <div class="row">
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" name="total" id="id_total" placeholder="Total" class="form-control" disabled>
+                                <input type="text" name="total" id="id_total" placeholder="Total" class="form-control" readonly>
                                 <label for="id_total">Total</label>
                             </div>
                         </div>
@@ -161,7 +163,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                         </div>
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" name="net_total" id="id_net_total" placeholder="Net Total" class="form-control" disabled>
+                                <input type="text" name="net_total" id="id_net_total" placeholder="Net Total" class="form-control" readonly>
                                 <label for="id_net_total">Net Total</label>
                             </div>
                         </div>
@@ -173,7 +175,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                         </div>
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" name="remaining_balance" id="id_remaining_balance" placeholder="Remaining Balance" class="form-control" disabled>
+                                <input type="text" name="remaining_balance" id="id_remaining_balance" placeholder="Remaining Balance" class="form-control" readonly>
                                 <label for="id_remaining_balance">Remaining Amount</label>
                             </div>
                         </div>
@@ -219,30 +221,10 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                             var rT = returnText.split("~"), a = rT[0], b = rT[1];  //a = tcode, b = tprice
                             $("#tCode"+tid).val(a);
                             $("#tPrice"+tid).val(b);
-
-                            // var total = 5;
-                            // var total = total + parseInt(b);
-                            // var netT = total;
-                            // $("#id_total").val(total);
-                            // $("#id_net_total").val(netT);
-                            // var total_tests ="Total tests = " + index;
-                            // alert (total_tests);
-
-                            // for (n=1; n>=total_tests; n++){
-                            //     document.getElementById("tCode" + n)
-                            //     $("#id_total").val();
-                            // }
                         }
                         sum();
                         disc();
-                        
-                        // mergeTCode();
                     }
-
-                    // var total = b;
-                    // var netT = total;
-                    // $("#id_total").val(total);
-                    // $("#id_net_total").val(netT);
                 }
             
             // Works for first row of adding tests.
@@ -256,15 +238,14 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                 var amount_sum = 0;
                 //calculate total worth of money
                 $('.price').each(function(){
-                //console.log($(this));
                 //checks whether the DOM element is an input element or a div
                     if(this.tagName.toLowerCase() == "input"){
                         amount_sum += Number($(this).val());
                     }
-                    // console.log(Number($(this).val()));
                 });
                 // alert(amount_sum);
                 $("#id_total").val(amount_sum);
+                $("#id_net_total").val(amount_sum);
                 }
 
                 function disc(){
@@ -272,7 +253,6 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     var total = document.getElementById("id_total").value;
                     var nT = total - discount;
                     // alert (nT);
-                    // var netTotal = amount_sum -document.getElementById("id_discount");
                     $("#id_net_total").val(nT);
                     rb();
                 }
@@ -281,7 +261,6 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     var nT = document.getElementById("id_net_total").value;
                     var rB = nT - adv;
                     // alert (nT);
-                    // var netTotal = amount_sum -document.getElementById("id_discount");
                     $("#id_remaining_balance").val(rB);
                 }
 
@@ -292,10 +271,8 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     //console.log($(this));
                     //checks whether the DOM element is an input element or a div
                     if(this.tagName.toLowerCase() == "select"){
-                        tN += $(this).val() + "~";
+                        tN += $(this).val() + ", ";
                     }
-                    // console.log(Number($(this).val()));
-
                 });
                 console.log(tN);
                 $("#tNh").val(tN);
@@ -304,7 +281,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                 var tC = []
                 $('.test_code').each(function(){
                     if(this.tagName.toLowerCase() == "input"){
-                        tC += $(this).val() + "~";
+                        tC += $(this).val() + ", ";
                     }
                 });
                 console.log(tC);
@@ -314,32 +291,20 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                 var tP = []
                 $('.test_price').each(function(){
                     if(this.tagName.toLowerCase() == "input"){
-                        tP += $(this).val() + "~";
+                        tP += $(this).val() + ", ";
                     }
                 });
                 console.log(tP);
                 $("#tPh").val(tP);
                 // alert (tN);
         }
-                
-            // })
-            
-
         </script>
-        <?php
-
-
-        ?>
-
     </body>
 
 </html>
 
 <?php
-
-// $testNameConca = $_GET["tN"];
-// $testCodeConca = $_GET["tC"];
-// $testPriceConca = $_GET["tP"];
+error_reporting(0);
 
     if(isset($_POST['save'])){
 
@@ -358,29 +323,10 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
         $advance=$_POST['advance'];
         $remainingAmt=$_POST['remaining_balance'];
 
-        //$testNameConca = 
-        //$testCodeConca = $_GET["tC"];
-        //$testPriceConca = $_GET["tP"];
-
-        
-
-
-        // echo $name;
-        // echo $age;
-        // echo $sex;
-        // echo $address;
-        // echo $mobile;
-        // echo $referredby;
-        //echo $testNameConca;
-
-        $insertquery = "INSERT into patients (pname,age,sex,paddress,mobile,referredBy,tName,tCode,tPrice,total,discount,netTotal,advance,remainingAmt) values('$name','$age','$sex','$address','$mobile','$referredby','$testName','$testCode','$testPrice','$total','$disc','$netTotal','$advance','$remainingAmt')";
-            if(mysqli_query($con,$insertquery))
-            {
+        $insertquery = "INSERT into patients (pname, age, sex, paddress, mobile, referredBy, tName, tCode, tPrice, total, discount, netTotal, advance, remainingAmt) values('$name','$age','$sex','$address','$mobile','$referredby','$testName','$testCode','$testPrice','$total','$disc','$netTotal','$advance','$remainingAmt')";
+            if(mysqli_query($con,$insertquery)) {
                 echo"<h3>Data Inserted</h3>";
-                //header("location:../../tests.php");
             }
-        
-        //echo <script>alert('Hello Name');</script>;
     }
 
 ?>
