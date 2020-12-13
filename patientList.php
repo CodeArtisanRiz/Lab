@@ -79,7 +79,7 @@
                                     <!-- HyperLink for Editing/Updating data in database, by passing every data in a variable. -->
                                     <td><a href="docUpdate.php?ids=<?php echo $res['pid']?>&dn=<?php echo $res['pname']?>&qu=<?php echo $res['quali']?>&sp=<?php echo $res['special']?>&mb=<?php echo $res['mobile']?>&rc=<?php echo $res['refcent'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                                     <!--HyperLink for Deleting data in database through Doctor's ID (did). -->
-                                    <td><a href="assets/process/docDel.php?ids=<?php echo $res['pid']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                    <!-- <td><a href="assets/process/docDel.php?ids=<?php echo $res['pid']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td> -->
                                 
                                 </tr>
                             <?php
