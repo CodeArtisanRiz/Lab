@@ -45,8 +45,8 @@
                                 <th scope="col ">Net Total</th>
                                 <th scope="col ">Advance</th> -->
                                 <th scope="col ">Remaining amount</th>
-                                
-                                <th scope="col ">Details</th>
+                                <th scope="col ">Edit</th>
+                                <th scope="col ">Delete</th>
 
                             </tr>
                         </thead>
@@ -54,7 +54,7 @@
 
 <!-- PHP Query for fetching Patients's data from database and displaying in the <table> format. -->
                         <?php
-                            $selectquery = " SELECT * from patients ";
+                            $selectquery = "SELECT * from patients ORDER BY pid DESC";
 
                             $query = mysqli_query($con,$selectquery);
 
@@ -77,9 +77,8 @@
                                     <td><?php echo $res['remainingAmt']; ?></td>
 
                                     <!-- HyperLink for Editing/Updating data in database, by passing every data in a variable. -->
-                                    <td><a href="docUpdate.php?ids=<?php echo $res['pid']?>&dn=<?php echo $res['pname']?>&qu=<?php echo $res['quali']?>&sp=<?php echo $res['special']?>&mb=<?php echo $res['mobile']?>&rc=<?php echo $res['refcent'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
-                                    <!--HyperLink for Deleting data in database through Doctor's ID (did). -->
-                                    <!-- <td><a href="assets/process/docDel.php?ids=<?php echo $res['pid']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td> -->
+                                    <td><a href="invoice.php?id=<?php echo $res['pid']?>&date=<?php echo $res['date']?>&time=<?php echo $res['time']?>&name=<?php echo $res['pname']?>&age=<?php echo $res['age']?>&sex=<?php echo $res['sex'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+                                     <!-- <td><a href="assets/process/docDel.php?ids=<?php echo $res['pid']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td> -->
                                 
                                 </tr>
                             <?php
