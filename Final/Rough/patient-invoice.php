@@ -1,28 +1,31 @@
 <?php
 include 'assets/conn/conn.php';
 
-
-// $dn = $_GET[''];
-
 $patient_id = $_GET['id'];
+$patientQuery = " SELECT * FROM patients WHERE pid = $patient_id";
 
-$date = $_GET['date'];
-$time = $_GET['time'];
-$patientName = $_GET['name'];
-$patientAddress = $_GET['patientAddress'];
-$patientPhone = $_GET['mobile'];
-$tName = $_GET['tests'];
-// $testCode = $_GET[''];
-$total = $_GET['sex'];
-$discount = $_GET['discount'];
-$advance = $_GET['advance'];
-$netTotal = $_GET['nTotal'];
+$query = mysqli_query($con, $patientQuery);
+while($res = mysqli_fetch_assoc($query)){
+	$date = $res['date'];
+	$time = $res['time'];
+	$patientName = $res['pname'];
+	$age = $res['age'];
+	$sex = $res['sex'];
+	$patientAddress = $res['paddress'];
+	$patientPhone = $res['mobile'];
+	$referralDoc = $res['referredBy'];
+	$total = $res['total'];
+	$discount = $res['discount'];
+	$netTotal = $res['netTotal'];
+	$testNames = $res['tName'];
+	$testCodes = $res['tCode'];
+	$testRates = $res['tPrice'];
+}
+
 $labName ="Apollo Diagnostics";
 $labAddress = "Sbg Point";
 $labPhone = "9999999999";
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -120,6 +123,9 @@ $labPhone = "9999999999";
 									<ul class="list-unstyled mb-0 ">
 										<li>Time: <span><?php echo $time; ?></span></li>
 									</ul>
+									<ul class="list-unstyled mb-0 ">
+										<li>Referred by : <b>Dr. <?php echo $referralDoc; ?></b></li>
+									</ul>
 								</div>
 							</div>
 						</div>
@@ -155,7 +161,7 @@ $labPhone = "9999999999";
 								<ul class="list-unstyled mb-0 ">
 									<li><h5 class="mb-0 "><strong><?php echo $patientName; ?></strong></h5></li>
 									<li><?php echo $patientAddress; ?></li>
-									<li><?php echo $patientPhone; ?></li>
+									<li>+<?php echo $patientPhone; ?></li>
 								</ul>
 								<!-- <h6>Payment Details</h6>
 								<ul class="list-unstyled invoice-payment-details mb-0 ">
@@ -203,27 +209,7 @@ $labPhone = "9999999999";
 								
 						</div>
 
-						<!-- <div class="table-responsive "> -->
-							<!-- <table>
-								<thead>
-									<tr>
-										
-									
-										</th>
-										<th>
-										<th><table id="table_code"  class="table ">
-										<tr>
-											<th>Test Code</th>
-										</tr>
-									</table></th>
-										</th>
-										<th></th>
-										
-									</tr>
-								</thead>
-								
-							</table> -->
-						<!-- </div> -->
+						
 
 						<div>
 							<div class="row invoice-payment ">
@@ -231,7 +217,7 @@ $labPhone = "9999999999";
 								</div>
 								<div class="col-sm-5 ">
 									<div class="m-b-20 ">
-										<h6>Total due</h6>
+										<!-- <h6>Total:</h6> -->
 										<div class="table-responsive no-border ">
 											<table class="table mb-0 ">
 												<tbody>
@@ -246,6 +232,10 @@ $labPhone = "9999999999";
 													<tr>
 														<th>Net Total:</th>
 														<td class="text-right text-primary "><?php echo $netTotal ?></h5></td>
+													</tr>
+													<tr>
+														<th>Signature :</th>
+														<td class="text-right "></h5></td>
 													</tr>
 												</tbody>
 											</table>
@@ -305,9 +295,19 @@ $labPhone = "9999999999";
 		<script  src="assets/js/script.js "></script>
 		
 		<script>
-		var serial = ["B1", "B2", "B3", "B4", "B5", "B6"]
-		
-		
+		var serial = [];
+		var tNList = "<?php echo $testNames; ?>"
+		var tests = tNList.split(",");
+		var tCList = "<?php echo $testCodes; ?>"
+		var code = tCList.split(",");
+		var tRList = "<?php echo $testRates; ?>"
+		var rate = tRList.split(",");
+		var count = tests.length - 1;
+
+		for (var l = 1; l <= count; l++ ){
+			serial.push(l);
+		}
+
         for (var i = 0; i < serial.length; i++) {
             // create a new row
             var newRow = table_sl.insertRow(table_sl.length);
@@ -320,7 +320,6 @@ $labPhone = "9999999999";
             }
         }
 
-		var tests = ["B1", "B2", "B3", "B4", "B5", "B6"]
         for (var i = 0; i < tests.length; i++) {
             // create a new row
             var newRow = table_tests.insertRow(table_tests.length);
@@ -333,9 +332,6 @@ $labPhone = "9999999999";
             }
         }
 
-
-        var code = ["c1", "c2", "c3", "c4", "c5", "c6"]
-
         for (var i = 0; i < code.length; i++) {
             // create a new row
             var newRow = table_code.insertRow(table_code.length);
@@ -347,7 +343,6 @@ $labPhone = "9999999999";
                 cell.innerHTML = code[i];
             }
         }
-        var rate = ["r1", "r2", "r3", "r4", "r5", "r6"]
 
         for (var i = 0; i < code.length; i++) {
             // create a new row

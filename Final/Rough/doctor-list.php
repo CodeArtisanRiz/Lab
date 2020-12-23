@@ -1,5 +1,5 @@
 <?php 
-   include 'assets/conn/conn.php';  // This file setsup connection from database.
+   include 'assets/conn/conn.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
