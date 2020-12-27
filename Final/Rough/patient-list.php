@@ -50,20 +50,13 @@
 						<!-- <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30"> -->
 					</a>
                 </div>
-				<!-- /Logo -->
-
-				
-				
 				<!-- Mobile Menu Toggle -->
 				<a class="mobile_btn" id="mobile_btn">
 					<i class="fa fa-bars"></i>
 				</a>
-				<!-- /Mobile Menu Toggle -->
-				
-				<!-- Header Right Menu -->
-				<ul class="nav user-menu">
-				<!-- /Header Right Menu -->
-				
+
+                
+                
             </div>
 			<!-- /Header -->
 			
@@ -80,24 +73,35 @@
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
                 <div class="content container-fluid">
-				
+				<!-- <div class="top-nav-search">
+					<form>
+						<input id="myInput" type="text" class="form-control" placeholder="Search here">
+						<button class="btn" type="submit"><i class="fa fa-search"></i></button>
+					</form>
+				</div> -->
 					<!-- Page Header -->
 					<div class="page-header">
 						<div class="row">
-							<div class="col-sm-12">
+							<div class="col-sm-6">
 								<h3 class="page-title">Patient List</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
 									<li class="breadcrumb-item active">Patient List</li>
 								</ul>
-							</div>
+                                </div>
 						</div>
+                        
 					</div>
+                    
+                    
 					<!-- /Page Header -->
 					
 					<div class="row">
+                        <div class="col-sm-3">
+                            <input id="myInput" type="text" class="form-control" placeholder="Search here">
+                        </div>
 						<div class="col-sm-12" id="patientList">
-						<table class="table ">
+                        <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col ">Patient Id</th>
@@ -114,23 +118,26 @@
                                 <th scope="col ">Net Total</th>
                                 <th scope="col ">Advance</th> -->
                                 <th scope="col ">Remaining amount</th>
-                                <th scope="col ">Edit</th>
-                                <th scope="col ">Delete</th>
+                                <th scope="col ">Modify</th>
+                                <th scope="col ">Invoice</th>
 
                             </tr>
                         </thead>
+                        </table>
+                        <table class="table " id="myTable">
                         <tbody>
 
-<!-- PHP Query for fetching Patients's data from database and displaying in the <table> format. -->
                         <?php
-                            $selectquery = " SELECT * from patients ORDER BY pid DESC";
 
-                            $query = mysqli_query($con,$selectquery);
+                            $query = " SELECT * from patients ORDER BY pid DESC";
+                            // $query = " SELECT * from patients WHERE mobile LIKE '%{$name1}%'";
+                            $result = mysqli_query($con,$query);
 
-                            $nums = mysqli_num_rows($query);
+                            $nums = mysqli_num_rows($result);
 
-                            while($res = mysqli_fetch_assoc($query)){
+                            while($res = mysqli_fetch_assoc($result)){
                             ?>
+                            <div id="filter">
                                 <tr>
                                     <th scope="row ">#PAT<?php echo $res['pid']; ?></th>
                                     <td><?php echo $res['date']; ?></td>
@@ -146,11 +153,16 @@
                                     <td><?php echo $res['remainingAmt']; ?></td>
 
                                     <!-- HyperLink for Editing/Updating data in database, by passing every data in a variable. -->
-                                    <td><a href="patient-invoice.php?id=<?php
+                                    <td><a href="#clear" data-toggle="modal" class="fa fa-edit"></a></td>
+
+                                    <!-- <a href="#clear" data-toggle="modal" class="btn btn-primary float-right mt-2">Add</a> -->
+
+                                    <td><a id="invoice-btn" href="patient-invoice.php?id=<?php
                                      echo $res['pid']
                                      ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                                    
                                 </tr>
+                                </div>
                             <?php
                             }
                             ?>
@@ -165,6 +177,81 @@
 		
         </div>
 		<!-- /Main Wrapper -->
+
+
+
+
+
+
+        <!-- Add Modal -->
+			<div class="modal fade" id="clear" aria-hidden="true" role="dialog">
+				<div class="modal-dialog modal-dialog-centered" role="document" >
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Add Doctor</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+                        <form action="assets/process/DocAdd.php" method="POST">
+
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                <input type="text" id="id_name" class="form-control" name="dname" placeholder="Doctor Name" required="required" oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">
+                                <label for="id_name">Doctor Name</label>
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                <input class="form-control" name="qualification" id="id_qualification" type="text" placeholder="Qualification*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
+                                <label for="id_qualification">Qualification</label>
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                <input class="form-control" name="specialization" id="id_specialization" type="text" placeholder="Specialization*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
+                                <label for="id_specialization">Specialization</label>
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                <input class="form-control" name="phone" id="id_phone" type="number" placeholder="Phone*" min="999999999 " required="required" oninvalid="this.setCustomValidity('Enter Phone')" oninput="setCustomValidity('')" onkeypress="if(this.value.length==10) return false;">
+                                <label for="id_phone">Phone</label>
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                <input class="form-control" name="refcent" id="id_referral" type="number" step="any" placeholder="Referral %*" required="required" oninvalid="this.setCustomValidity('Enter Referral %')" oninput="setCustomValidity('')">
+                                <label for="id_referral">Referral %</label>
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-12"> -->
+                            <!-- <button type="submit" name="submit" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button> -->
+                            <!-- <div class="validate "></div> -->
+                        <!-- </div> -->
+                        <div class="col-12">
+                            <button type="submit" name="submit" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
+                            <div class="validate "></div>
+                        </div>
+                    </form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+            <!-- end of clear Modal -->
 		
 		<!-- jQuery -->
         <script src="assets/js/jquery-3.2.1.min.js"></script>
@@ -182,5 +269,19 @@
 			$("#sidebar-menu").load("sidebar.html");
 			// $("#patientList").load("temp/patientList.php");
 		</script>
+
+        <!-- Search -->
+        <script>
+            $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+            });
+        </script> 
+        
+
     </body>
 </html>

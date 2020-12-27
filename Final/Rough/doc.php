@@ -179,9 +179,6 @@
 						<div class="modal-body">
                         <form action="assets/process/DocAdd.php" method="POST">
 
-<!-- A Div for adding new Doctor Records into Database. -->
-                        <!-- <h3 class="display-7">Add Doctor</h3> -->
-
                         <div class="col-12">
                             <div class="form-label-group">
                                 <input type="text" id="id_name" class="form-control" name="dname" placeholder="Doctor Name" required="required" oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">

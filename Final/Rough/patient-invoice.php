@@ -2,10 +2,9 @@
 include 'assets/conn/conn.php';
 
 $patient_id = $_GET['id'];
-$patientQuery = " SELECT * FROM patients WHERE pid = $patient_id";
-
-$query = mysqli_query($con, $patientQuery);
-while($res = mysqli_fetch_assoc($query)){
+$patientQuery = "SELECT * FROM patients WHERE pid = $patient_id";
+$pQuery = mysqli_query($con, $patientQuery);
+while($res = mysqli_fetch_assoc($pQuery)){
 	$date = $res['date'];
 	$time = $res['time'];
 	$patientName = $res['pname'];
@@ -21,10 +20,21 @@ while($res = mysqli_fetch_assoc($query)){
 	$testCodes = $res['tCode'];
 	$testRates = $res['tPrice'];
 }
+$centreQuery = "SELECT * FROM centre";
+$cQuery = mysqli_query($con, $centreQuery);
+while ($res = mysqli_fetch_assoc($cQuery)){
+	$cid = $res['cid'];
+	$labName = $res['lab_name'];
+	$centreName = $res['centre_name'];
+	$centreUhid = $res['centre_uhid'];
+	$centreAddress = $res['centre_address'];
+	$centrePhone = $res['centre_phone'];
+}
 
-$labName ="Apollo Diagnostics";
-$labAddress = "Sbg Point";
-$labPhone = "9999999999";
+
+$leadGenerated = "#000";
+$empID = "#222";
+$reportDeliveryMode ="eMail";
 ?>
 
 <!DOCTYPE html>
@@ -112,7 +122,7 @@ $labPhone = "9999999999";
 
                     <div class="row">
                         <div class="col-sm-6 m-b-20">
-                            <!-- <img alt="Logo" class="inv-logo img-fluid" src="assets/img/logo.png"> -->
+                            <img alt="Logo" class="inv-logo img-fluid" src="assets/img/logo.png">
 							</div>
 							<div class="col-sm-6 m-b-20 ">
 								<div class="invoice-details ">
@@ -129,32 +139,17 @@ $labPhone = "9999999999";
 								</div>
 							</div>
 						</div>
-						<div class="row ">
-							<div class="col-sm-12 m-b-20 ">
-								<!-- <ul class="list-unstyled mb-0 ">
-									<li>Doccure Hospital</li>
-									<li>3864 Quiet Valley Lane,</li>
-									<li>Sherman Oaks, CA, 91403</li>
-									<li>GST No:</li>
-								</ul> -->
-							</div>
-						</div>
+						
 						<div class="row ">
 							<div class="col-sm-6 col-lg-7 col-xl-8 m-b-20 ">
 								<ul class="list-unstyled mb-0 ">
 									<li><strong><?php echo $labName; ?></strong></li>
-									<li><?php echo $labAddress; ?></li>
-									<li><?php echo $labPhone; ?></li>
+									<li><strong><?php echo $centreName; ?></strong></li>
+									<li><?php echo $centreUhid; ?></li>
+									<li><?php echo $centreAddress; ?></li>
+									<li><?php echo $centrePhone; ?></li>
 								</ul>
-								<!-- <h6>Invoice to</h6>
-								<ul class="list-unstyled mb-0 ">
-									<li><h5 class="mb-0 "><strong>Charlene Reed</strong></h5></li>
-									<li>4417 Goosetown Drive</li>
-									<li>Taylorsville, NC, 28681</li>
-									<li>United States</li>
-									<li>8286329170</li>
-									<li><a href="# ">charlenereed@example.com</a></li>
-								</ul> -->
+								
 							</div>
 							<div class="col-sm-6 col-lg-5 col-xl-4 m-b-20 ">
 								<h6>Invoice to</h6>
