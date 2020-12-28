@@ -159,74 +159,74 @@
                             <div class="card-body">
 
 
-                            <form action="" method="POST">
-<div class="col-12">
-    <div class="form-label-group">
-        <input type="text" id="id_t_id" class="form-control" name="tid" value="TEST<?php echo "$tids"; ?>" disabled placeholder="Test code" required="required" oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">
-        <label for="t_code">Test ID</label>
-        <div class="validate"></div>
-    </div>
-</div>
+                <form action="" method="POST">
+                <div class="col-12">
+                    <div class="form-label-group">
+                        <input type="text" id="id_t_id" class="form-control" name="tid" value="TEST<?php echo "$tids"; ?>" disabled placeholder="Test code" required="required" oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">
+                        <label for="t_code">Test ID</label>
+                        <div class="validate"></div>
+                    </div>
+                </div>
 
-<div class="col-12">
-    <div class="form-label-group">
-        <input type="text" id="id_t_code" class="form-control" name="tcode" value="<?php echo "$tcode"; ?>" placeholder="Test code" required="required" oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">
-        <label for="t_code">Test code</label>
-        <div class="validate"></div>
-    </div>
-</div>
+                <div class="col-12">
+                    <div class="form-label-group">
+                        <input type="text" id="id_t_code" class="form-control" name="tcode" value="<?php echo "$tcode"; ?>" placeholder="Test code" required="required" oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">
+                        <label for="t_code">Test code</label>
+                        <div class="validate"></div>
+                    </div>
+                </div>
 
 
-<div class="col-12">
-    <div class="form-label-group">
-        <input class="form-control" name="tname" id="t_name" type="text" value="<?php echo "$tname"; ?>" placeholder="Test name*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
-        <label for="t_name">Test name</label>
-        <div class="validate"></div>
-    </div>
-</div>
+                <div class="col-12">
+                    <div class="form-label-group">
+                        <input class="form-control" name="tname" id="t_name" type="text" value="<?php echo "$tname"; ?>" placeholder="Test name*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
+                        <label for="t_name">Test name</label>
+                        <div class="validate"></div>
+                    </div>
+                </div>
 
-<div class="col-12">
-    <div class="form-group">
-        <div class="select-menu">
-            <!-- <label for="id_vial">Vial</label> -->
-            <select name="vial" id="id_vial" value="<?php echo "$vial"; ?>" class="custom-select">
+                <div class="col-12">
+                    <div class="form-group">
+                        <div class="select-menu">
+                            <!-- <label for="id_vial">Vial</label> -->
+                            <select name="vial" id="id_vial" value="<?php echo "$vial"; ?>" class="custom-select">
 
-                <option value="<?php echo "$vial"; ?>" selected><?php echo "$vial"; ?></option>
+                                <option value="<?php echo "$vial"; ?>" selected><?php echo "$vial"; ?></option>
 
-                <option value="" disabled>Select Vial Type</option>
-                <option value="Yellow Vial">Yellow Vial</option>
-                <option value="Red Vial">Red Vial</option>
-                <option value="Purple Vial (EDTA)">Purple Vial (EDTA)</option>
-                <option value="Grey Vial">Grey Vial</option>
-                <option value="Black Vial">Black Vial</option>
-                <option value="Blue Vial">Blue Vial</option>
-                <option value="Urine Container">Urine Container</option>
-            </select>
-        </div>
-    </div>
-</div>
+                                <option value="" disabled>Select Vial Type</option>
+                                <option value="Yellow Vial">Yellow Vial</option>
+                                <option value="Red Vial">Red Vial</option>
+                                <option value="Purple Vial (EDTA)">Purple Vial (EDTA)</option>
+                                <option value="Grey Vial">Grey Vial</option>
+                                <option value="Black Vial">Black Vial</option>
+                                <option value="Blue Vial">Blue Vial</option>
+                                <option value="Urine Container">Urine Container</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
-<div class="col-12">
-    <div class="form-label-group">
-        <input class="form-control" name="tcp" id="t_cp" value="<?php echo "$cp"; ?>" type="number" placeholder="Phone*" required="required" oninvalid="this.setCustomValidity('Enter CP')" oninput="setCustomValidity('')">
-        <label for="t_cp">Cost</label>
-        <div class="validate"></div>
-    </div>
-</div>
+                <div class="col-12">
+                    <div class="form-label-group">
+                        <input class="form-control" name="tcp" id="t_cp" value="<?php echo "$cp"; ?>" type="number" placeholder="Phone*" required="required" oninvalid="this.setCustomValidity('Enter CP')" oninput="setCustomValidity('')">
+                        <label for="t_cp">Cost</label>
+                        <div class="validate"></div>
+                    </div>
+                </div>
 
-<div class="col-12">
-    <div class="form-label-group">
-        <input class="form-control" name="trate" id="t_rate" value="<?php echo "$sp"; ?>" type="number" placeholder="Rate*" required="required" oninvalid="this.setCustomValidity('Enter Rate')" oninput="setCustomValidity('')">
-        <label for="t_rate">Rate</label>
-        <div class="validate"></div>
-    </div>
-</div>
+                <div class="col-12">
+                    <div class="form-label-group">
+                        <input class="form-control" name="trate" id="t_rate" value="<?php echo "$sp"; ?>" type="number" placeholder="Rate*" required="required" oninvalid="this.setCustomValidity('Enter Rate')" oninput="setCustomValidity('')">
+                        <label for="t_rate">Rate</label>
+                        <div class="validate"></div>
+                    </div>
+                </div>
 
-<div class="col-12">
-    <button type="submit " id="id_addBtn" name= "update" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Update</button>
-    <div class="validate "></div>
-</div>
-</form>
+                <div class="col-12">
+                    <button type="submit " id="id_addBtn" name= "update" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Update</button>
+                    <div class="validate "></div>
+                </div>
+                </form>
 
 
 

@@ -7,7 +7,7 @@
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Blank Page</title>
+        <title>Lab Patient List</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
@@ -101,7 +101,7 @@
                             <input id="myInput" type="text" class="form-control" placeholder="Search here">
                         </div>
 						<div class="col-sm-12" id="patientList">
-                        <table class="table">
+                        <table class="table " id="myTable">
                         <thead>
                             <tr>
                                 <th scope="col ">Patient Id</th>
@@ -123,8 +123,6 @@
 
                             </tr>
                         </thead>
-                        </table>
-                        <table class="table " id="myTable">
                         <tbody>
 
                         <?php
@@ -138,7 +136,7 @@
                             while($res = mysqli_fetch_assoc($result)){
                             ?>
                             <div id="filter">
-                                <tr>
+                                <tr class="list">
                                     <th scope="row ">#PAT<?php echo $res['pid']; ?></th>
                                     <td><?php echo $res['date']; ?></td>
                                     <!-- <td><?php echo $res['time']; ?></td> -->
@@ -153,8 +151,12 @@
                                     <td><?php echo $res['remainingAmt']; ?></td>
 
                                     <!-- HyperLink for Editing/Updating data in database, by passing every data in a variable. -->
-                                    <td><a href="#clear" data-toggle="modal" class="fa fa-edit"></a></td>
+                                    <td><a href="#update" data-toggle="modal" class="fa fa-edit"></a></td>
 
+
+                                    <td><a id="invoice-btn" href="assets/process/patientUpdate.php?id=<?php
+                                     echo $res['pid']
+                                     ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                                     <!-- <a href="#clear" data-toggle="modal" class="btn btn-primary float-right mt-2">Add</a> -->
 
                                     <td><a id="invoice-btn" href="patient-invoice.php?id=<?php
@@ -183,8 +185,8 @@
 
 
 
-        <!-- Add Modal -->
-			<div class="modal fade" id="clear" aria-hidden="true" role="dialog">
+        <!-- Update Modal -->
+			<div class="modal fade" id="update" aria-hidden="true" role="dialog">
 				<div class="modal-dialog modal-dialog-centered" role="document" >
 					<div class="modal-content">
 						<div class="modal-header">
@@ -198,14 +200,14 @@
 
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" id="id_name" class="form-control" name="dname" placeholder="Doctor Name" required="required" oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">
-                                <label for="id_name">Doctor Name</label>
+                                <input type="text" id="modalPatientId" class="form-control" name="dname" placeholder="Doctor Name">
+                                <label for="modalPatientId">Patient Id</label>
                                 <div class="validate"></div>
                             </div>
                         </div>
 
 
-                        <div class="col-12">
+                        <!-- <div class="col-12">
                             <div class="form-label-group">
                                 <input class="form-control" name="qualification" id="id_qualification" type="text" placeholder="Qualification*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
                                 <label for="id_qualification">Qualification</label>
@@ -235,7 +237,7 @@
                                 <label for="id_referral">Referral %</label>
                                 <div class="validate"></div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- <div class="col-12"> -->
                             <!-- <button type="submit" name="submit" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button> -->
@@ -273,14 +275,22 @@
         <!-- Search -->
         <script>
             $(document).ready(function(){
-            $("#myInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                $("#myInput").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable .list").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
                 });
             });
-            });
         </script> 
+
+        <!-- <script>
+        function abc(){
+            var p_id = "<?php echo $res['pid']; ?>";
+            // document.getElementById('modalPatientId').val = p_id;
+            p_id = document.getElementById("modalPatientId").value;
+        }
+        </script> -->
         
 
     </body>
