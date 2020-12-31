@@ -119,6 +119,7 @@
                                 <th scope="col ">Advance</th> -->
                                 <th scope="col ">Remaining amount</th>
                                 <th scope="col ">Modify</th>
+                                <th scope="col ">Finalize</th>
                                 <th scope="col ">Invoice</th>
 
                             </tr>
@@ -147,20 +148,20 @@
                                     <td><?php echo $res['mobile']; ?></td>
                                     <td><?php echo $res['referredBy']; ?></td>
                                     <td><?php echo $res['total']; ?></td>
-                                    
                                     <td><?php echo $res['remainingAmt']; ?></td>
 
                                     <!-- HyperLink for Editing/Updating data in database, by passing every data in a variable. -->
-                                    <td><a href="#update" data-toggle="modal" class="fa fa-edit"></a></td>
-
-
-                                    <td><a id="invoice-btn" href="assets/process/patientUpdate.php?id=<?php
-                                     echo $res['pid']
-                                     ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
-                                    <!-- <a href="#clear" data-toggle="modal" class="btn btn-primary float-right mt-2">Add</a> -->
+                                    <td><a onclick="putVal(
+                                    <?php echo $res['pid']; ?>,<?php echo $res['total']; ?> ,<?php echo $res['remainingAmt']; ?> ,<?php echo $res['discount']; ?>, <?php echo $res['netTotal']; ?> 
+                                    )" href="#update" data-toggle="modal" class="fa fa-edit"></a></td>
+                                    <!-- this.value, this.id -->
+                                    <td>
+                                    <a onclick="" href="assets/process/patientFinalize.php?id=<?php echo $res['pid'];
+                                    ?> "><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                    </td>
 
                                     <td><a id="invoice-btn" href="patient-invoice.php?id=<?php
-                                     echo $res['pid']
+                                     echo $res['pid'];
                                      ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                                    
                                 </tr>
@@ -184,67 +185,67 @@
 
 
 
-
+        
         <!-- Update Modal -->
 			<div class="modal fade" id="update" aria-hidden="true" role="dialog">
 				<div class="modal-dialog modal-dialog-centered" role="document" >
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title">Add Doctor</h5>
+							<h5 class="modal-title">Update patient details</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
 						<div class="modal-body">
-                        <form action="assets/process/DocAdd.php" method="POST">
+                        <form action="" method="POST">
+
+                        
+
+
 
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" id="modalPatientId" class="form-control" name="dname" placeholder="Doctor Name">
-                                <label for="modalPatientId">Patient Id</label>
+                                <input type="text" id="mPatientId" class="form-control" name="mPatientId" placeholder="Patient Id" readonly>
+                                <label for="mPatientId">Patient Id</label>
                                 <div class="validate"></div>
                             </div>
                         </div>
-
-
-                        <!-- <div class="col-12">
-                            <div class="form-label-group">
-                                <input class="form-control" name="qualification" id="id_qualification" type="text" placeholder="Qualification*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
-                                <label for="id_qualification">Qualification</label>
-                                <div class="validate"></div>
-                            </div>
-                        </div>
-
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input class="form-control" name="specialization" id="id_specialization" type="text" placeholder="Specialization*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
-                                <label for="id_specialization">Specialization</label>
+                                <input type="text" id="mPatientTotal" class="form-control" name="mPatientTotal" placeholder="Total" readonly>
+                                <label for="mPatientTotal">Total</label>
                                 <div class="validate"></div>
                             </div>
                         </div>
-
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input class="form-control" name="phone" id="id_phone" type="number" placeholder="Phone*" min="999999999 " required="required" oninvalid="this.setCustomValidity('Enter Phone')" oninput="setCustomValidity('')" onkeypress="if(this.value.length==10) return false;">
-                                <label for="id_phone">Phone</label>
+                                <input type="text" id="mPatientRA" class="form-control" name="mPatientRA" placeholder="Remaining Amount" readonly>
+                                <label for="mPatientRA">Remaining Amount</label>
                                 <div class="validate"></div>
                             </div>
                         </div>
 
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input class="form-control" name="refcent" id="id_referral" type="number" step="any" placeholder="Referral %*" required="required" oninvalid="this.setCustomValidity('Enter Referral %')" oninput="setCustomValidity('')">
-                                <label for="id_referral">Referral %</label>
+                                <input type="text" id="mPatientAD" class="form-control" name="mPatientAD" placeholder="Additional Discount" value="0" onchange="calcAD()">
+                                <label for="mPatientAD">Additional Discount</label>
                                 <div class="validate"></div>
                             </div>
-                        </div> -->
+                        </div>
 
-                        <!-- <div class="col-12"> -->
-                            <!-- <button type="submit" name="submit" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button> -->
-                            <!-- <div class="validate "></div> -->
-                        <!-- </div> -->
                         <div class="col-12">
-                            <button type="submit" name="submit" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
+                            <div class="form-label-group">
+                                <input type="text" id="mPatientPA" class="form-control" name="mPatientPA" placeholder="Payable Amount" readonly>
+                                <label for="mPatientPA">Payable Amount</label>
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+
+                        <input type="text" hidden id="hiddenInputD" class="form-control" name="hiddenInputD">
+                        <input type="text" hidden id="hiddenInputNT" class="form-control" name="hiddenInputNT">
+                                
+                        <div class="col-12">
+                            <button type="submit" name="updatePatient" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Paid</button>
                             <div class="validate "></div>
                         </div>
                     </form>
@@ -254,6 +255,12 @@
 			</div>
 
             <!-- end of clear Modal -->
+
+
+
+
+
+         
 		
 		<!-- jQuery -->
         <script src="assets/js/jquery-3.2.1.min.js"></script>
@@ -284,14 +291,77 @@
             });
         </script> 
 
-        <!-- <script>
-        function abc(){
-            var p_id = "<?php echo $res['pid']; ?>";
-            // document.getElementById('modalPatientId').val = p_id;
-            p_id = document.getElementById("modalPatientId").value;
-        }
-        </script> -->
-        
 
+            <!-- Passing id of selected column to update model -->
+            <!-- <script src="assets/js/passData.js"></script> -->
+            <script>
+             function putVal(postId, postTotal, postRA, discount, nTotal){
+
+                document.getElementById("mPatientId").value = postId;
+                document.getElementById("mPatientTotal").value = postTotal;
+                document.getElementById("mPatientRA").value = postRA;
+                document.getElementById("mPatientAD").value = "0";
+                document.getElementById("mPatientPA").value = postRA;
+                document.getElementById("hiddenInputD").value = discount;
+                document.getElementById("hiddenInputNT").value = nTotal;
+                // calcAD();
+                }
+             function calcAD(){
+                var reAmount = document.getElementById("mPatientRA").value;
+                var aDiscount = document.getElementById("mPatientAD").value;
+                var payableAmount = reAmount - aDiscount;
+                document.getElementById("mPatientPA").value = payableAmount;
+             }
+             </script>
+             <script>
+             alert(<?php echo $postId; ?>)
+             </script>
     </body>
 </html>
+
+
+<?php
+    
+    if(isset($_POST['updatePatient'])){
+      
+        $submitId=($_POST['mPatientId']);
+        echo $postId;
+        $submitTotal=trim($_POST['mPatientTotal']);                       //trim is used to omitt white space at first and last
+        $RA=trim($_POST['mPatientRA']);
+        $submitAD=trim($_POST['mPatientAD']);
+        $submitPA=trim($_POST['mPatientPA']);
+        $submitRA="0";
+        $discount = trim($_POST['hiddenInputD']);
+        $totalDiscount = $submitAD + $discount;
+        $netTotal = trim($_POST['hiddenInputNT']);
+        $submitNT = $netTotal - $submitAD;
+
+        // if(empty($submitId) || empty($submitTotal) || empty($submitTotal) || empty($submitRA) || empty($submitAD) || empty($submitPA))
+        // {
+        //     echo '<script>alert("Please fill up the empty fields..");</script>' ;
+
+        // }
+        // else{
+            $update = " UPDATE patients SET pid='$submitId',netTotal='$submitNT',remainingAmt='$submitRA', discount='$totalDiscount',paid_later='$submitPA' WHERE pid='$submitId' ";
+            $res = mysqli_query($con,$update);
+
+            if($res){
+                // echo '<script>alert("Record Updated..");</script>' ;
+                ?>
+                <script>
+                window.location.replace("patient-list.php");
+                </script>
+                <?php
+            }
+            else{
+                echo '<script>alert("Error. Record Not Updated..");</script>' ;
+            }
+
+        }
+        
+    // }
+    // else {
+
+    // }
+    // echo 'Not Working';
+?>

@@ -2,11 +2,19 @@
     include '../../assets/conn/conn.php';
 
     $id = $_GET['id'];
-    // $dn = $_GET['dn'];
-    // $qu = $_GET['qu'];
-    // $sp = $_GET['sp'];
-    // $mb = $_GET['mb'];
-    // $rc = $_GET['rc'];
+
+                            $query = " SELECT * from patients where pid = $id";
+                            // $query = " SELECT * from patients WHERE mobile LIKE '%{$name1}%'";
+                            $result = mysqli_query($con,$query);
+
+                            $nums = mysqli_num_rows($result);
+
+                            while($res = mysqli_fetch_assoc($result)){
+
+                                $remainingAmt = $res['remainingAmt'];
+                                $total = $res['total'];
+                            }
+
     
 ?>
 
@@ -39,16 +47,16 @@
 
                             <div class="col-12">
                                 <div class="form-label-group">
-                                    <input type="text" id="id_name" class="form-control" name="did" value="<?php echo "$id"; ?>" placeholder="Doctor ID" va required="required" disabled oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">
+                                    <input type="text" id="id_did" class="form-control" name="did" value="<?php echo "$id"; ?>" placeholder="Patient ID" va required="required" disabled oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">
                                     <label for="id_did">Patient ID</label>
                                     <div class="validate"></div>
                                 </div>
                             </div>
 
-                            <!-- <div class="col-12">
+                                <div class="col-12">
                                 <div class="form-label-group">
-                                    <input type="text" id="id_name" class="form-control" name="dname" value="<?php echo "$dn"; ?>" placeholder="Doctor Name" va required="required" oninvalid="this.setCustomValidity('Enter Doctor Name')" oninput="setCustomValidity('')">
-                                    <label for="id_name">Doctor Name</label>
+                                    <input type="text" id="id_name" class="form-control" name="dname" value="<?php echo "$total"; ?>" placeholder="Total">
+                                    <label for="id_name">Total</label>
                                     <div class="validate"></div>
                                 </div>
                             </div>
@@ -56,36 +64,12 @@
 
                             <div class="col-12">
                                 <div class="form-label-group">
-                                    <input class="form-control" name="qualification" value="<?php echo "$qu"; ?>" id="id_qualification" type="text" placeholder="Qualification*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
-                                    <label for="id_qualification">Qualification</label>
+                                    <input class="form-control" name="remaining" value="<?php echo "$remainingAmt"; ?>" id="id_remaining" type="text">
+                                    <label for="id_remaining">Remaining Amount</label>
                                     <div class="validate"></div>
                                 </div>
                             </div>
-
-                            <div class="col-12">
-                                <div class="form-label-group">
-                                    <input class="form-control" name="specialization" value="<?php echo "$sp"; ?>" id="id_specialization" type="text" placeholder="Specialization*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
-                                    <label for="id_specialization">Specialization</label>
-                                    <div class="validate"></div>
-                                </div>
-                            </div> -->
-
-                            <!-- <div class="col-12">
-                                <div class="form-label-group">
-                                    <input class="form-control" name="phone" value="<?php echo "$mb"; ?>" id="id_phone" type="number" placeholder="Phone*" min="999999999 " required="required" oninvalid="this.setCustomValidity('Enter Phone')" oninput="setCustomValidity('')" onkeypress="if(this.value.length==10) return false;">
-                                    <label for="id_phone">Phone</label>
-                                    <div class="validate"></div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-label-group">
-                                    <input class="form-control" name="refcent" value="<?php echo "$rc"; ?>" id="id_referral" type="number" step="any" placeholder="Referral %*" required="required" oninvalid="this.setCustomValidity('Enter Referral %')" oninput="setCustomValidity('')">
-                                    <label for="id_referral">Referral %</label>
-                                    <div class="validate"></div>
-                                </div>
-                            </div> -->
-
+                            
                             <div class="col-12">
                                 <button type="submit" name="update" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Update</button>
                                 <div class="validate "></div>
