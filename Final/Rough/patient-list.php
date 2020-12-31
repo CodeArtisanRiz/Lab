@@ -330,7 +330,7 @@
         $RA=trim($_POST['mPatientRA']);
         $submitAD=trim($_POST['mPatientAD']);
         $submitPA=trim($_POST['mPatientPA']);
-        $submitRA="0";
+        $submitRA= "0";
         $discount = trim($_POST['hiddenInputD']);
         $totalDiscount = $submitAD + $discount;
         $netTotal = trim($_POST['hiddenInputNT']);
@@ -342,7 +342,7 @@
 
         // }
         // else{
-            $update = " UPDATE patients SET pid='$submitId',netTotal='$submitNT',remainingAmt='$submitRA', discount='$totalDiscount',paid_later='$submitPA' WHERE pid='$submitId' ";
+            $update = " UPDATE patients SET netTotal='$submitNT', remainingAmt='$submitRA', discount='$totalDiscount', paid_later='$submitPA' WHERE pid='$submitId' ";
             $res = mysqli_query($con,$update);
 
             if($res){
@@ -358,10 +358,4 @@
             }
 
         }
-        
-    // }
-    // else {
-
-    // }
-    // echo 'Not Working';
 ?>
