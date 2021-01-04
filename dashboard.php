@@ -118,7 +118,40 @@
         <div class="sidebar" id="sidebar">
             <div class="sidebar-inner slimscroll">
                 <div id="sidebar-menu" class="sidebar-menu">
-                    <!-- sidebar here -->
+                    <ul>
+                        <li class="menu-title">
+                            <span>Main</span>
+                        </li>
+                        <li class="active">
+                            <a href="Dashboard.php"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+                        </li>
+                        <li>
+                            <a href="doc.php"><i class="fe fe-user-plus"></i> <span>Doctors</span></a>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fe fe-user"></i> <span> Patients</span> <span class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a href="invoice-report.html"><i class="fe fe-user-plus"></i> New Patient</a></li>
+                                <li><a href="invoice-report.html"><i class="fe fe-user-plus"></i> All Patients</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="tests.php"><i class="fe fe-user"></i> <span>Tests</span></a>
+                        </li>
+                        <li>
+                            <a href="profile.html"><i class="fe fe-user-plus"></i> <span>Profile</span></a>
+                        </li>
+                        <li>
+                            <a href="settings.html"><i class="fe fe-vector"></i> <span>Settings</span></a>
+                        </li>
+                        <!-- <li class="submenu">
+                            <a href="#"><i class="fe fe-document"></i> <span> Reports</span> <span class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a href="invoice-report.html">Invoice Reports</a></li>
+                            </ul>
+                        </li> -->
+
+                    </ul>
                 </div>
             </div>
         </div>
@@ -288,9 +321,9 @@
 
     <!-- Custom JS -->
     <script src="assets/js/script.js"></script>
-    <script>
-		$("#sidebar-menu").load("sidebar.html");
-	</script>
+    <!-- <script>
+        $("#sidebar-menu").load("sidebar.html");
+    </script> -->
 
 </body>
 

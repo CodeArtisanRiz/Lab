@@ -1,35 +1,229 @@
-<!-- This file performs adding new Test Records and shows the lists of added Tests from Database. -->
-
 <?php 
-   include 'assets/conn/conn.php';  // This file setsup connection from database.
+   include 'assets/conn/conn.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab - Tests</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
-    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Lab - Test List</title>
+
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png"> -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="assets/css/feathericon.min.css">
+
+    <!-- Datatables CSS -->
+    <link rel="stylesheet" href="assets/plugins/datatables/datatables.min.css">
+
+    <!-- Select2 Plugin -->
     <link rel="stylesheet" href="assets/css/select2.min.css" />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style2.css">
+
+
+    <!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
 </head>
 
 <body>
-    <section>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+
+        <!-- Header -->
+        <div class="header">
+        <a href="javascript:void(0);" id="toggle_btn">
+            <i class="fe fe-text-align-left"></i>
+        </a>
+            <!-- Logo -->
+            <div class="header-left">
+                <a href="index.html" class="logo">
+                    <!-- <img src="assets/img/logo.png" alt="Logo"> -->
+                </a>
+                <a href="index.html" class="logo logo-small">
+                    <!-- <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30"> -->
+                </a>
+            </div>
+            <!-- /Logo -->
+
+            
 
 
-        <div class="container my-5">
-            <div class="row">
 
-                <div class="col-4 jumbotron add">
-                    <form action="assets/process/TestAdd.php" method="POST">
+            <!-- Mobile Menu Toggle -->
+            <a class="mobile_btn" id="mobile_btn">
+                <i class="fa fa-bars"></i>
+            </a>
+            <!-- /Mobile Menu Toggle -->
+
+            <!-- Header Right Menu -->
+            <ul class="nav user-menu">
 
 
-<!-- A Div for adding new Test Records into Database. -->
-                        <h3 class="display-7">Add Test</h3>
+            </ul>
+            <!-- /Header Right Menu -->
+
+        </div>
+        <!-- /Header -->
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">
+                            <span>Main</span>
+                        </li>
+                        <li>
+                            <a href="Dashboard.php"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+                        </li>
+                        <li>
+                            <a href="doc.php"><i class="fe fe-user-plus"></i> <span>Doctors</span></a>
+                        </li>
+                        <li>
+                            <a href="patients.html"><i class="fe fe-user"></i> <span>Patients</span></a>
+                        </li>
+                        <li class="active">
+                            <a href="tests.php"><i class="fe fe-user"></i> <span>Tests</span></a>
+                        </li>
+                        <!-- <li>
+                            <a href="appointment-list.html"><i class="fe fe-layout"></i> <span>Appointments</span></a>
+                        </li>
+                        <li>
+                            <a href="specialities.html"><i class="fe fe-users"></i> <span>Specialities</span></a>
+                        </li>
+
+
+                        <li>
+                            <a href="transactions-list.html"><i class="fe fe-activity"></i> <span>Transactions</span></a>
+                        </li> -->
+                        <li>
+                            <a href="profile.html"><i class="fe fe-user-plus"></i> <span>Profile</span></a>
+                        </li>
+                        <li>
+                            <a href="settings.html"><i class="fe fe-vector"></i> <span>Settings</span></a>
+                        </li>
+                        <!-- <li class="submenu">
+                            <a href="#"><i class="fe fe-document"></i> <span> Reports</span> <span class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a href="invoice-report.html">Invoice Reports</a></li>
+                            </ul>
+                        </li> -->
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Sidebar -->
+
+        <!-- Page Wrapper -->
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+            <div class="col-sm-12 col">
+			    <a href="#Add_Tests" data-toggle="modal" class="btn btn-primary float-right mt-2">Add</a>
+			</div>
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3 class="page-title">List of Tests</h3>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="Dashboard.php">Dashboard</a></li>
+                                <!-- <li class="breadcrumb-item"><a href="javascript:(0);">Users</a></li> -->
+                                <li class="breadcrumb-item active">Tests</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Header -->
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <div class="table-responsive">
+                                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th scope="col ">ID</th>
+                                <th scope="col ">Test code</th>
+                                <th scope="col ">Test name</th>
+                                <th scope="col ">Vial type</th>
+                                <th scope="col ">Cost</th>
+                                <th scope="col ">Rate</th>
+                                <th scope="col ">Edit</th>
+                                <th scope="col ">Delete</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+<!-- PHP Query for fetching Test's data from database and displaying in the <table> format. -->
+                        <?php
+                            $selectquery = "SELECT * FROM tests ";
+
+                            $query = mysqli_query($con, $selectquery);
+
+                            $nums = mysqli_num_rows($query);
+
+                            while($res = mysqli_fetch_assoc($query)){
+                            ?>
+                                <tr>
+                                    <th scope="row ">TEST<?php echo $res['tid']; ?></th>
+                                    <td><?php echo $res['tcode']; ?></td>
+                                    <td><?php echo $res['tname']; ?></td>
+                                    <td><?php echo $res['vial_type']; ?></td>
+                                    <td><?php echo $res['c_price']; ?></td>
+                                    <td><?php echo $res['s_price']; ?></td>
+                                    <!--HyperLink for Edditing/Updating data in database, by passing every data in a variable. -->
+                                    <td><a href="assets/process/testUpdate.php?ids=<?php echo $res['tid']?>&tc=<?php echo $res['tcode']?>&tn=<?php echo $res['tname']?>&vt=<?php echo $res['vial_type']?>&cp=<?php echo $res['c_price']?>&sp=<?php echo $res['s_price'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+                                    <!--HyperLink for Deleting data in database through Doctor's ID (did). -->
+                                    <td><a href="assets/process/testDel.php?ids=<?php echo $res['tid']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- /Page Wrapper -->
+
+    </div>
+    <!-- Add Modal -->
+			<div class="modal fade" id="Add_Tests" aria-hidden="true" role="dialog">
+				<div class="modal-dialog modal-dialog-centered" role="document" >
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Add Tests</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+                        <form action="assets/process/TestAdd.php" method="POST">
+
 
                         <div class="col-12">
                             <div class="form-label-group">
@@ -87,71 +281,29 @@
                             <div class="validate "></div>
                         </div>
                     </form>
-                </div>
+						</div>
+					</div>
+				</div>
+			</div>
+    <!-- /Main Wrapper -->
 
-<!-- A Div for displaying added Test's Records from Database after adding. -->               
-                <div class="col-8 jumbotron doc-list ">
-                    <h3 class="display-7 ">List of Tests</h3>
-                    <table class="table ">
-                        <thead>
-                            <tr>
-                                <th scope="col ">Sl</th>
-                                <th scope="col ">Test code</th>
-                                <th scope="col ">Test name</th>
-                                <th scope="col ">Vial type</th>
-                                <th scope="col ">Cost</th>
-                                <th scope="col ">Rate</th>
-                                <th scope="col " colspan="2">Operations</th>
+    <!-- jQuery -->
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
 
-                            </tr>
-                        </thead>
-                        <tbody>
+    <!-- Bootstrap Core JS -->
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
 
-<!-- PHP Query for fetching Test's data from database and displaying in the <table> format. -->
-                        <?php
-                            $selectquery = "select * from tests ";
+    <!-- Slimscroll JS -->
+    <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-                            $query = mysqli_query($con,$selectquery);
+    <!-- Datatables JS -->
+    <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="assets/plugins/datatables/datatables.min.js"></script>
 
-                            $nums = mysqli_num_rows($query);
+    <!-- Custom JS -->
+    <script src="assets/js/script.js"></script>
 
-                            while($res = mysqli_fetch_assoc($query)){
-                            ?>
-                                <tr>
-                                    <th scope="row "><?php echo $res['tid']; ?></th>
-                                    <td><?php echo $res['tcode']; ?></td>
-                                    <td><?php echo $res['tname']; ?></td>
-                                    <td><?php echo $res['vial_type']; ?></td>
-                                    <td><?php echo $res['c_price']; ?></td>
-                                    <td><?php echo $res['s_price']; ?></td>
-                                    <!--HyperLink for Edditing/Updating data in database, by passing every data in a variable. -->
-                                    <td><a href="assets/process/testUpdate.php?ids=<?php echo $res['tid']?>&tc=<?php echo $res['tcode']?>&tn=<?php echo $res['tname']?>&vt=<?php echo $res['vial_type']?>&cp=<?php echo $res['c_price']?>&sp=<?php echo $res['s_price'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
-                                    <!--HyperLink for Deleting data in database through Doctor's ID (did). -->
-                                    <td><a href="assets/process/testDel.php?ids=<?php echo $res['tid']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-    </section>
-
-
-
-    <script src="assets/js/check_phone.js"></script>
-    <script src="https://use.fontawesome.com/0a050084c3.js"></script>
-    <!-- <script src="assets/js/dropdown.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="assets/js/select2.min.js"></script>
-    <script>
-        $("#id_vial").select2({
-            placeholder: "Select Vial",
-            allowClear: false,
-        });
-    </script>
 </body>
 
 </html>

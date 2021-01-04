@@ -7,9 +7,9 @@ $val = $_GET['selectvalue'];
 
 //$val = 'Hello7';
 
-$selectquery = " SELECT * FROM tests WHERE tname= '$val' ";
+$selectquery = " SELECT * from tests where tname= '$val' ";
 
-$query = mysqli_query($con, $selectquery);
+$query = mysqli_query($con,$selectquery);
 
 $nums = mysqli_num_rows($query);
 
