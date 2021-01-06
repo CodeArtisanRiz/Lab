@@ -1,5 +1,6 @@
 <?php 
    include 'assets/conn/conn.php';
+   include 'assets/process/docUpdate.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -166,6 +167,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                        
 
 <!-- PHP Query for fetching Doctor's data from database and displaying in the <table> format. -->
                         <?php
@@ -184,8 +186,16 @@
                                     <td><?php echo $res['special']; ?></td>
                                     <td><?php echo $res['mobile']; ?></td>
                                     <td><?php echo $res['refcent']; ?> %</td>
+                                    <!-- Edit Entry -->
+                                    <td><a onclick="putVal(
+                                    '<?php echo $res['did']; ?>' , '<?php echo $res['dname']; ?>' , '<?php echo $res['quali'] ?>' , '<?php echo $res['special']; ?>' , '<?php echo $res['mobile']; ?>' , '<?php echo $res['refcent']; ?>')" 
+                                    href="#updateDoc" data-toggle="modal" class="fa fa-edit"></a></td>
+
+
+
+
 <!--HyperLink for Editing/Updating data in database, by passing every data in a variable. -->
-                                    <td><a href="assets/process/docUpdate.php?ids=<?php echo $res['did']?>&dn=<?php echo $res['dname']?>&qu=<?php echo $res['quali']?>&sp=<?php echo $res['special']?>&mb=<?php echo $res['mobile']?>&rc=<?php echo $res['refcent'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+                                    <!-- <td><a href="assets/process/docUpdate.php?ids=<?php echo $res['did']?>&dn=<?php echo $res['dname']?>&qu=<?php echo $res['quali']?>&sp=<?php echo $res['special']?>&mb=<?php echo $res['mobile']?>&rc=<?php echo $res['refcent'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td> -->
 <!--HyperLink for Deleting data in database through Doctor's ID (did). -->
                                     <td><a href="assets/process/docDel.php?ids=<?php echo $res['did']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
@@ -274,6 +284,81 @@
 					</div>
 				</div>
 			</div>
+
+            <!-- Update Modal -->
+
+            <div class="modal fade" id="updateDoc" aria-hidden="true" role="dialog">
+				<div class="modal-dialog modal-dialog-centered" role="document" >
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Update Doctor</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+                        <form action="" method="POST">
+
+                        <div class="col-12">
+                                <div class="form-label-group">
+                                    <input type="text" id="docUpdateID" class="form-control" name="docUpdateID" placeholder="Doctor ID" required="required" readonly>
+                                    <label for="id_did">Doctor ID</label>
+                                    <div class="validate"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-label-group">
+                                    <input type="text" id="docUpdateName" class="form-control" name="docUpdateName" placeholder="Doctor Name" required="required">
+                                    <label for="id_name">Doctor Name</label>
+                                    <div class="validate"></div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-12">
+                                <div class="form-label-group">
+                                    <input class="form-control" name="docUpdateQualification" id="docUpdateQualification" type="text" placeholder="Qualification*" required="required">
+                                    <label for="id_qualification">Qualification</label>
+                                    <div class="validate"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-label-group">
+                                    <input class="form-control" name="docUpdateSpecialization" id="docUpdateSpecialization" type="text" placeholder="Specialization*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')">
+                                    <label for="id_specialization">Specialization</label>
+                                    <div class="validate"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-label-group">
+                                    <input class="form-control" name="docUpdatePhone" id="docUpdatePhone" type="number" placeholder="Phone*" min="999999999 " required="required" oninvalid="this.setCustomValidity('Enter Phone')" onkeypress="if(this.value.length==10) return false;">
+                                    <label for="id_phone">Phone</label>
+                                    <div class="validate"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-label-group">
+                                    <input class="form-control" name="docUpdateReferral" id="docUpdateReferral" type="number" step="any" placeholder="Referral %*" required="required">
+                                    <label for="id_referral">Referral %</label>
+                                    <div class="validate"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <button type="submit" name="updateDoc" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Update</button>
+                                <div class="validate "></div>
+                            </div>
+                    </form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+            <!-- End of Update Modal -->
     <!-- /Main Wrapper -->
 
     <!-- jQuery -->
@@ -292,6 +377,19 @@
 
     <!-- Custom JS -->
     <script src="assets/js/script.js"></script>
+
+    <script>
+        function putVal(forwardedId, forwardedDN, forwardedDQ, forwardedDS, forwardedDP, forwardedDR){
+
+            document.getElementById("docUpdateID").value = forwardedId;
+            document.getElementById("docUpdateName").value = forwardedDN;
+            document.getElementById("docUpdateQualification").value = forwardedDQ;
+            document.getElementById("docUpdateSpecialization").value = forwardedDS;
+            document.getElementById("docUpdatePhone").value = forwardedDP;
+            document.getElementById("docUpdateReferral").value = forwardedDR;
+
+        }
+    </script>
 
 </body>
 
