@@ -1,9 +1,9 @@
 <?php 
    include 'assets/conn/conn.php';
+   include 'assets/process/testUpdate.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
@@ -31,11 +31,6 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/style2.css">
 
-
-    <!--[if lt IE 9]>
-			<script src="assets/js/html5shiv.min.js"></script>
-			<script src="assets/js/respond.min.js"></script>
-		<![endif]-->
 </head>
 
 <body>
@@ -58,10 +53,6 @@
                 </a>
             </div>
             <!-- /Logo -->
-
-            
-
-
 
             <!-- Mobile Menu Toggle -->
             <a class="mobile_btn" id="mobile_btn">
@@ -99,29 +90,12 @@
                         <li class="active">
                             <a href="tests.php"><i class="fe fe-user"></i> <span>Tests</span></a>
                         </li>
-                        <!-- <li>
-                            <a href="appointment-list.html"><i class="fe fe-layout"></i> <span>Appointments</span></a>
-                        </li>
-                        <li>
-                            <a href="specialities.html"><i class="fe fe-users"></i> <span>Specialities</span></a>
-                        </li>
-
-
-                        <li>
-                            <a href="transactions-list.html"><i class="fe fe-activity"></i> <span>Transactions</span></a>
-                        </li> -->
                         <li>
                             <a href="profile.html"><i class="fe fe-user-plus"></i> <span>Profile</span></a>
                         </li>
                         <li>
                             <a href="settings.html"><i class="fe fe-vector"></i> <span>Settings</span></a>
                         </li>
-                        <!-- <li class="submenu">
-                            <a href="#"><i class="fe fe-document"></i> <span> Reports</span> <span class="menu-arrow"></span></a>
-                            <ul style="display: none;">
-                                <li><a href="invoice-report.html">Invoice Reports</a></li>
-                            </ul>
-                        </li> -->
 
                     </ul>
                 </div>
@@ -142,7 +116,6 @@
                             <h3 class="page-title">List of Tests</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="Dashboard.php">Dashboard</a></li>
-                                <!-- <li class="breadcrumb-item"><a href="javascript:(0);">Users</a></li> -->
                                 <li class="breadcrumb-item active">Tests</li>
                             </ul>
                         </div>
@@ -166,13 +139,12 @@
                                 <th scope="col ">Cost</th>
                                 <th scope="col ">Rate</th>
                                 <th scope="col ">Edit</th>
+                                <!-- <th scope="col ">Edit in diff</th> -->
                                 <th scope="col ">Delete</th>
-
                             </tr>
                         </thead>
                         <tbody>
 
-<!-- PHP Query for fetching Test's data from database and displaying in the <table> format. -->
                         <?php
                             $selectquery = "SELECT * FROM tests ";
 
@@ -189,9 +161,13 @@
                                     <td><?php echo $res['vial_type']; ?></td>
                                     <td><?php echo $res['c_price']; ?></td>
                                     <td><?php echo $res['s_price']; ?></td>
-                                    <!--HyperLink for Edditing/Updating data in database, by passing every data in a variable. -->
-                                    <td><a href="assets/process/testUpdate.php?ids=<?php echo $res['tid']?>&tc=<?php echo $res['tcode']?>&tn=<?php echo $res['tname']?>&vt=<?php echo $res['vial_type']?>&cp=<?php echo $res['c_price']?>&sp=<?php echo $res['s_price'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
-                                    <!--HyperLink for Deleting data in database through Doctor's ID (did). -->
+                                <!-- Edit Entry -->
+                                    <td><a onclick="putVal(
+                                    '<?php echo $res['tid']; ?>' , '<?php echo $res['tcode']; ?>' , '<?php echo $res['tname'] ?>' , '<?php echo $res['vial_type']; ?>' , '<?php echo $res['c_price']; ?>' , '<?php echo $res['s_price']; ?>')" 
+                                    href="#updateTest" data-toggle="modal" class="fa fa-edit"></a></td>
+                                <!-- Edit in Diff -->
+                                    <!-- <td><a href="assets/process/testUpdateOld.php?ids=<?php echo $res['tid']?>&tc=<?php echo $res['tcode']?>&tn=<?php echo $res['tname']?>&vt=<?php echo $res['vial_type']?>&cp=<?php echo $res['c_price']?>&sp=<?php echo $res['s_price'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td> -->
+                                <!-- Delete Entry -->
                                     <td><a href="assets/process/testDel.php?ids=<?php echo $res['tid']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
                             <?php
@@ -211,7 +187,7 @@
         <!-- /Page Wrapper -->
 
     </div>
-    <!-- Add Modal -->
+<!-- Add Modal -->
 			<div class="modal fade" id="Add_Tests" aria-hidden="true" role="dialog">
 				<div class="modal-dialog modal-dialog-centered" role="document" >
 					<div class="modal-content">
@@ -277,7 +253,7 @@
                         </div>
 
                         <div class="col-12">
-                            <button type="submit " id="id_addBtn" name= "submit" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
+                            <button type="submit " id="id_addBtn" name= "submitUpdate" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
                             <div class="validate "></div>
                         </div>
                     </form>
@@ -285,6 +261,82 @@
 					</div>
 				</div>
 			</div>
+<!-- End of Add Modal -->
+
+<!-- Update modal -->
+            <div class="modal fade" id="updateTest" aria-hidden="true" role="dialog">
+				<div class="modal-dialog modal-dialog-centered" role="document" >
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Update Test</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+                        <form action="" method="POST">
+
+                            <input type="text" hidden id="testUpdateID" name="testUpdateID">
+
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                <input type="text" id="testUpdateTC" name="testUpdateTC" class="form-control" placeholder="Test code" required="required">
+                                <label for="t_code">Test code</label>
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                <input id="testUpdateTN" class="form-control" name="testUpdateTN" type="text" placeholder="Test name*" required="required" >
+                                <label for="t_name">Test name</label>
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-group">
+                                <div class="">
+                                    <select name="testUpdateVT" id="testUpdateVT" class="form-control">
+                                        <option value="" readonly selected="">Select Vial Type</option>
+                                        <option value="Yellow Vial">Yellow Vial</option>
+                                        <option value="Red Vial">Red Vial</option>
+                                        <option value="Purple Vial (EDTA)">Purple Vial (EDTA)</option>
+                                        <option value="Grey Vial">Grey Vial</option>
+                                        <option value="Black Vial">Black Vial</option>
+                                        <option value="Blue Vial">Blue Vial</option>
+                                        <option value="Urine Container">Urine Container</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                <input id="testUpdateCP" class="form-control" name="testUpdateCP"  type="number" placeholder="Cost*" required="required">
+                                <label for="t_cp">Cost</label>
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                <input id="testUpdateRate" class="form-control" name="testUpdateRate" type="number" placeholder="Rate*" required="required">
+                                <label for="t_rate">Rate</label>
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <button type="submit " id="updateTest" name= "updateTest" class="btn btn-primary btn-xl text-uppercase center" value="Send ">Update</button>
+                            <div class="validate "></div>
+                        </div>
+                    </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            <!-- end update -->
     <!-- /Main Wrapper -->
 
     <!-- jQuery -->
@@ -304,6 +356,20 @@
     <!-- Custom JS -->
     <script src="assets/js/script.js"></script>
 
-</body>
+    <script>
+        function putVal(forwardedId, forwardedTC, forwardedTN, forwardedVT, forwardedCP, forwardedSP){
 
+            document.getElementById("testUpdateID").value = forwardedId;
+            document.getElementById("testUpdateTC").value = forwardedTC;
+            document.getElementById("testUpdateTN").value = forwardedTN;
+            document.getElementById("testUpdateVT").value = forwardedVT;
+            document.getElementById("testUpdateCP").value = forwardedCP;
+            document.getElementById("testUpdateRate").value = forwardedSP;
+
+        }
+    </script>
+
+</body>
 </html>
+
+

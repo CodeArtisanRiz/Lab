@@ -1,5 +1,6 @@
 <?php 
    include 'assets/conn/conn.php';
+   include 'assets/process/patientUpdate.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,33 +9,29 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
         <title>Lab Patient List</title>
-		
+
 		<!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
-		
+
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-		
+
 		<!-- Fontawesome CSS -->
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-		
+
 		<!-- Feathericon CSS -->
         <link rel="stylesheet" href="assets/css/feathericon.min.css">
-		
+
 		<!-- Main CSS -->
 		<link rel="stylesheet" href="assets/css/style.css">
 		<link rel="stylesheet" href="assets/css/style2.css">
-		
-		<!--[if lt IE 9]>
-			<script src="assets/js/html5shiv.min.js"></script>
-			<script src="assets/js/respond.min.js"></script>
-		<![endif]-->
+
     </head>
     <body>
-	
-		<!-- Main Wrapper -->
+
+<!-- Main Wrapper -->
         <div class="main-wrapper">
-		
+
 			<!-- Header -->
             <div class="header">
 			<a href="javascript:void(0);" id="toggle_btn">
@@ -42,7 +39,7 @@
 				</a>
 				<!-- Logo -->
                 <div class="header-left">
-				
+
                     <a href="index.html" class="logo">
 						<!-- <img src="assets/img/logo.png" alt="Logo"> -->
 					</a>
@@ -55,12 +52,10 @@
 					<i class="fa fa-bars"></i>
 				</a>
 
-                
-                
             </div>
 			<!-- /Header -->
-			
-			<!-- Sidebar -->
+
+<!-- Sidebar -->
             <div class="sidebar" id="sidebar">
                 <div class="sidebar-inner slimscroll">
 					<div id="sidebar-menu" class="sidebar-menu">
@@ -68,34 +63,31 @@
 					</div>
                 </div>
             </div>
-			<!-- /Sidebar -->
-			
+<!-- End of Sidebar -->
+
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
                 <div class="content container-fluid">
-				<!-- <div class="top-nav-search">
-					<form>
-						<input id="myInput" type="text" class="form-control" placeholder="Search here">
-						<button class="btn" type="submit"><i class="fa fa-search"></i></button>
-					</form>
-				</div> -->
-					<!-- Page Header -->
+                    <div class="col-sm-12 col">
+                        <a href="patient-new.php" class="btn btn-primary float-right mt-2">Add</a>
+                    </div>
+
+<!-- Page Header -->
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-6">
 								<h3 class="page-title">Patient List</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+									<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
 									<li class="breadcrumb-item active">Patient List</li>
 								</ul>
                                 </div>
 						</div>
-                        
+
 					</div>
-                    
-                    
-					<!-- /Page Header -->
-					
+
+<!-- /Page Header -->
+
 					<div class="row">
                         <div class="col-sm-3">
                             <input id="myInput" type="text" class="form-control" placeholder="Search here">
@@ -150,20 +142,15 @@
                                     <td><?php echo $res['total']; ?></td>
                                     <td><?php echo $res['remainingAmt']; ?></td>
 
-                                    <!-- HyperLink for Editing/Updating data in database, by passing every data in a variable. -->
+<!-- Modify Patient -->
                                     <td><a onclick="putVal(
-                                    <?php echo $res['pid']; ?>,<?php echo $res['total']; ?> ,<?php echo $res['remainingAmt']; ?> ,<?php echo $res['discount']; ?>, <?php echo $res['netTotal']; ?> 
-                                    )" href="#update" data-toggle="modal" class="fa fa-edit"></a></td>
-                                    <!-- this.value, this.id -->
-                                    <td>
-                                    <a onclick="" href="assets/process/patientFinalize.php?id=<?php echo $res['pid'];
-                                    ?> "><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                    '<?php echo $res['pid']; ?>' , '<?php echo $res['total']; ?>' , '<?php echo $res['remainingAmt']; ?>' , '<?php echo $res['discount']; ?>' , '<?php echo $res['netTotal']; ?>')"
+                                    href="#update" data-toggle="modal" class="fa fa-edit"></a></td>
+<!-- Finalize Patient -->
+                                    <td><a onclick="" href="assets/process/patientFinalize.php?id=<?php echo $res['pid']; ?> "><i class="fa fa-edit" aria-hidden="true"></i></a>
                                     </td>
-
-                                    <td><a id="invoice-btn" href="patient-invoice.php?id=<?php
-                                     echo $res['pid'];
-                                     ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
-                                   
+<!-- Patient Invoice -->
+                                    <td><a id="invoice-btn" href="patient-invoice.php?id=<?php echo $res['pid']; ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                                 </tr>
                                 </div>
                             <?php
@@ -171,22 +158,15 @@
                             ?>
                         </tbody>
                     </table>
-						</div>			
+						</div>
 					</div>
-					
-				</div>			
+				</div>
 			</div>
 			<!-- /Page Wrapper -->
-		
         </div>
-		<!-- /Main Wrapper -->
+<!-- /Main Wrapper -->
 
-
-
-
-
-        
-        <!-- Update Modal -->
+<!-- Update Modal -->
 			<div class="modal fade" id="update" aria-hidden="true" role="dialog">
 				<div class="modal-dialog modal-dialog-centered" role="document" >
 					<div class="modal-content">
@@ -198,11 +178,6 @@
 						</div>
 						<div class="modal-body">
                         <form action="" method="POST">
-
-                        
-
-
-
                         <div class="col-12">
                             <div class="form-label-group">
                                 <input type="text" id="mPatientId" class="form-control" name="mPatientId" placeholder="Patient Id" readonly>
@@ -243,7 +218,7 @@
 
                         <input type="text" hidden id="hiddenInputD" class="form-control" name="hiddenInputD">
                         <input type="text" hidden id="hiddenInputNT" class="form-control" name="hiddenInputNT">
-                                
+
                         <div class="col-12">
                             <button type="submit" name="updatePatient" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Paid</button>
                             <div class="validate "></div>
@@ -254,32 +229,24 @@
 				</div>
 			</div>
 
-            <!-- end of clear Modal -->
+<!-- End of Update Modal -->
 
 
-
-
-
-         
-		
-		<!-- jQuery -->
+<!-- jQuery -->
         <script src="assets/js/jquery-3.2.1.min.js"></script>
-		
-		<!-- Bootstrap Core JS -->
+<!-- Bootstrap Core JS -->
         <script src="assets/js/popper.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
-		
-		<!-- Slimscroll JS -->
+<!-- Slimscroll JS -->
         <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-		
-		<!-- Custom JS -->
+<!-- Custom JS -->
 		<script  src="assets/js/script.js"></script>
 		<script>
 			$("#sidebar-menu").load("sidebar.html");
 			// $("#patientList").load("temp/patientList.php");
 		</script>
 
-        <!-- Search -->
+<!-- Search -->
         <script>
             $(document).ready(function(){
                 $("#myInput").on("keyup", function() {
@@ -291,75 +258,32 @@
             });
         </script> 
 
-
-            <!-- Passing id of selected column to update model -->
-            <!-- <script src="assets/js/passData.js"></script> -->
             <script>
-             function putVal(postId, postTotal, postRA, discount, nTotal){
+                function putVal(postId, postTotal, postRA, discount, nTotal){
 
-                document.getElementById("mPatientId").value = postId;
-                document.getElementById("mPatientTotal").value = postTotal;
-                document.getElementById("mPatientRA").value = postRA;
-                document.getElementById("mPatientAD").value = "0";
-                document.getElementById("mPatientPA").value = postRA;
-                document.getElementById("hiddenInputD").value = discount;
-                document.getElementById("hiddenInputNT").value = nTotal;
-                // calcAD();
+                    document.getElementById("mPatientId").value = postId;
+                    document.getElementById("mPatientTotal").value = postTotal;
+                    document.getElementById("mPatientRA").value = postRA;
+                    document.getElementById("mPatientAD").value = "0";
+                    document.getElementById("mPatientPA").value = postRA;
+                    document.getElementById("hiddenInputD").value = discount;
+                    document.getElementById("hiddenInputNT").value = nTotal;
+                    }
+                function calcAD(){
+                    var reAmount = document.getElementById("mPatientRA").value;
+                    var aDiscount = document.getElementById("mPatientAD").value;
+                    var payableAmount = reAmount - aDiscount;
+                    document.getElementById("mPatientPA").value = payableAmount;
                 }
-             function calcAD(){
-                var reAmount = document.getElementById("mPatientRA").value;
-                var aDiscount = document.getElementById("mPatientAD").value;
-                var payableAmount = reAmount - aDiscount;
-                document.getElementById("mPatientPA").value = payableAmount;
-             }
              </script>
+
              <script>
-             alert(<?php echo $postId; ?>)
+                alert(<?php echo $postId; ?>)
              </script>
+
              <script>
-			$("#sidebar-menu").load("sidebar.html");
-		</script>
+			    $("#sidebar-menu").load("sidebar.html");
+		    </script>
+
     </body>
 </html>
-
-
-<?php
-    
-    if(isset($_POST['updatePatient'])){
-      
-        $submitId=($_POST['mPatientId']);
-        echo $postId;
-        $submitTotal=trim($_POST['mPatientTotal']);                       //trim is used to omitt white space at first and last
-        $RA=trim($_POST['mPatientRA']);
-        $submitAD=trim($_POST['mPatientAD']);
-        $submitPA=trim($_POST['mPatientPA']);
-        $submitRA= "0";
-        $discount = trim($_POST['hiddenInputD']);
-        $totalDiscount = $submitAD + $discount;
-        $netTotal = trim($_POST['hiddenInputNT']);
-        $submitNT = $netTotal - $submitAD;
-
-        // if(empty($submitId) || empty($submitTotal) || empty($submitTotal) || empty($submitRA) || empty($submitAD) || empty($submitPA))
-        // {
-        //     echo '<script>alert("Please fill up the empty fields..");</script>' ;
-
-        // }
-        // else{
-            $update = " UPDATE patients SET netTotal='$submitNT', remainingAmt='$submitRA', discount='$totalDiscount', paid_later='$submitPA' WHERE pid='$submitId' ";
-            $res = mysqli_query($con,$update);
-
-            if($res){
-                // echo '<script>alert("Record Updated..");</script>' ;
-                ?>
-                <script>
-                window.location.replace("patient-list.php");
-                </script>
-                <?php
-            }
-            else{
-                echo '<script>alert("Error. Record Not Updated..");</script>' ;
-            }
-
-        }
-        
-?>
