@@ -377,6 +377,9 @@
 
     <!-- Custom JS -->
     <script src="assets/js/script.js"></script>
+    <script>
+        $("#sidebar-menu").load("sidebar.html");
+    </script>
 
     <script>
         function putVal(forwardedId, forwardedDN, forwardedDQ, forwardedDS, forwardedDP, forwardedDR){
