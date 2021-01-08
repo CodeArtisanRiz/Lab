@@ -243,3 +243,14 @@ body {
     background: var(--bhover);
     color: #fff;
 }
+
+
+/* .a4 {
+    size: a4;
+    width: 210mm;
+    height: 297cm;
+    padding: 2cm;
+    margin: 1cm auto;
+    border: 1px black solid;
+    border-radius: 5px;
+} */
