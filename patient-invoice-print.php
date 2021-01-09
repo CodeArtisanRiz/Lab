@@ -153,36 +153,22 @@ $reportDeliveryMode ="eMail";
 						<!-- <p class="text-muted mb-0 ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum ligula, cursus blandit risus. Maecenas eget metus non tellus dignissim aliquam ut a ex. Maecenas sed vehicula dui, ac suscipit lacus. Sed finibus leo vitae lorem interdum, eu scelerisque tellus fermentum. Curabitur sit amet lacinia lorem. Nullam finibus pellentesque libero.</p> -->
 					</div>
 
-					<div>
-						<div class="row invoice-payment ">
-							<div class="col-sm-7 ">
+
+					<div class="row">
+						<div class="col-9 p-1">
+							<div class="d-flex flex-column align-items-end">
+								<span><strong>Total:</strong></span>
+								<span><strong>Discount:</strong></span>
+								<span><strong>Net Total:</strong></span>
+								<span><strong>Autorized Signature:</strong></span>
 							</div>
-							<div class="col-sm-5 ">
-								<div class="m-b-20 ">
-									<!-- <h6>Total:</h6> -->
-									<div class="table-responsive no-border ">
-										<table class="table mb-0 ">
-											<tbody>
-												<tr>
-													<th>Total:</th>
-													<td class="text-right"><?php echo $total ?></td>
-												</tr>
-												<tr>
-													<th>Discount: </th>
-													<td class="text-right "><?php echo $discount ?></td>
-												</tr>
-												<tr>
-													<th>Net Total:</th>
-													<td class="text-right text-primary "><?php echo $netTotal ?></h5></td>
-												</tr>
-												<tr>
-													<th>Authorized signature :</th>
-													<th class="text-right text-primary">			</h5></th>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
+						</div>
+						<div class="col-3 p-1">
+							<div class="d-flex flex-column align-items-start">
+								<span>₹ <?php echo $total ?></span>
+								<span>₹ <?php echo $discount ?></span>
+								<span>₹ <?php echo $netTotal ?></span>
+								<span></span>
 							</div>
 						</div>
 					</div>
