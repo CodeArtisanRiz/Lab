@@ -132,75 +132,6 @@ $reportDeliveryMode ="eMail";
 								
 							</div>
 						</div>
-							
-
-						<div class="row">
-							<div class="col-md-2">
-							<table id="table_sl" class="table">
-										<tr>
-											<th>Serial</th>
-										</tr>
-									</table>
-							</div>
-							<div class="col-md-5">
-							<table id="table_tests"  class="table">
-										<tr>
-											<th>Investigations</th>
-										</tr>
-									</table>
-							</div>
-							<div class="col-md-3">
-							<table id="table_code"  class="table">
-										<tr>
-											<th>Investigation Code</th>
-										</tr>
-									</table>
-							</div>
-							<div class="col-md-2">
-							<table id="table_rs"  class="table">
-										<tr>
-											<th>Amount</th>
-										</tr>
-									</table>
-							</div>
-								
-						</div>
-
-						
-
-						<div>
-							<div class="row invoice-payment ">
-								<div class="col-sm-7 ">
-								</div>
-								<div class="col-sm-5 ">
-									<div class="m-b-20 ">
-										<!-- <h6>Total:</h6> -->
-										<div class="table-responsive no-border ">
-											<table class="table mb-0 ">
-												<tbody>
-													<tr>
-														<th>Total:</th>
-														<td class="text-right"><?php echo $total ?></td>
-													</tr>
-													<tr>
-														<th>Discount: </th>
-														<td class="text-right "><?php echo $discount ?></td>
-													</tr>
-													<tr>
-														<th>Net Total:</th>
-														<td class="text-right text-primary "><?php echo $netTotal ?></h5></td>
-													</tr>
-													<tr>
-														<th>Authorized signature :</th>
-														<th class="text-right text-primary">			</h5></th>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
 						
 						<!--  -->
 						<table class="table">
@@ -220,6 +151,40 @@ $reportDeliveryMode ="eMail";
 					<div class="invoice-info ">
 						<h5>Other information</h5>
 						<!-- <p class="text-muted mb-0 ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum ligula, cursus blandit risus. Maecenas eget metus non tellus dignissim aliquam ut a ex. Maecenas sed vehicula dui, ac suscipit lacus. Sed finibus leo vitae lorem interdum, eu scelerisque tellus fermentum. Curabitur sit amet lacinia lorem. Nullam finibus pellentesque libero.</p> -->
+					</div>
+
+					<div>
+						<div class="row invoice-payment ">
+							<div class="col-sm-7 ">
+							</div>
+							<div class="col-sm-5 ">
+								<div class="m-b-20 ">
+									<!-- <h6>Total:</h6> -->
+									<div class="table-responsive no-border ">
+										<table class="table mb-0 ">
+											<tbody>
+												<tr>
+													<th>Total:</th>
+													<td class="text-right"><?php echo $total ?></td>
+												</tr>
+												<tr>
+													<th>Discount: </th>
+													<td class="text-right "><?php echo $discount ?></td>
+												</tr>
+												<tr>
+													<th>Net Total:</th>
+													<td class="text-right text-primary "><?php echo $netTotal ?></h5></td>
+												</tr>
+												<tr>
+													<th>Authorized signature :</th>
+													<th class="text-right text-primary">			</h5></th>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 
 					</div>
@@ -258,54 +223,6 @@ $reportDeliveryMode ="eMail";
 		for (var l = 1; l <= count; l++ ){
 			serial.push(l);
 		}
-
-        for (var i = 0; i < serial.length; i++) {
-            // create a new row
-            var newRow = table_sl.insertRow(table_sl.length);
-            for (var j = 0; j < 1; j++) {
-                // create a new cell
-                var cell = newRow.insertCell(j);
-
-                // add value to the cell
-                cell.innerHTML = serial[i];
-            }
-        }
-
-        for (var i = 0; i < tests.length; i++) {
-            // create a new row
-            var newRow = table_tests.insertRow(table_tests.length);
-            for (var j = 0; j < 1; j++) {
-                // create a new cell
-                var cell = newRow.insertCell(j);
-
-                // add value to the cell
-                cell.innerHTML = tests[i];
-            }
-        }
-
-        for (var i = 0; i < code.length; i++) {
-            // create a new row
-            var newRow = table_code.insertRow(table_code.length);
-            for (var j = 0; j < 1; j++) {
-                // create a new cell
-                var cell = newRow.insertCell(j);
-
-                // add value to the cell
-                cell.innerHTML = code[i];
-            }
-        }
-
-        for (var i = 0; i < code.length; i++) {
-            // create a new row
-            var newRow = table_rs.insertRow(table_rs.length);
-            for (var j = 0; j < 1; j++) {
-                // create a new cell
-                var cell = newRow.insertCell(j);
-
-                // add value to the cell
-                cell.innerHTML = rate[i];
-            }
-        }
 		//
 		for (var i = 0; i < serial.length; i++){
 			var newRow = tl.insertRow(tl.length);
