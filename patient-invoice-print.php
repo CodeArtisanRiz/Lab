@@ -180,7 +180,7 @@ $reportDeliveryMode ="eMail";
 												<tbody>
 													<tr>
 														<th>Total:</th>
-														<td class="text-right "><?php echo $total ?></td>
+														<td class="text-right"><?php echo $total ?></td>
 													</tr>
 													<tr>
 														<th>Discount: </th>
@@ -192,7 +192,7 @@ $reportDeliveryMode ="eMail";
 													</tr>
 													<tr>
 														<th>Authorized signature :</th>
-														<td class="text-right "></h5></td>
+														<th class="text-right text-primary">			</h5></th>
 													</tr>
 												</tbody>
 											</table>

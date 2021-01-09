@@ -187,13 +187,16 @@ textarea.form-control {
 	2. Table
 -----------------------*/
 
-.table {
+
+/* .table {
     color: #333;
     max-width: 100%;
     margin-bottom: 0;
     width: 100%;
-}
+} */
 
+
+/* 
 .table-striped>tbody>tr:nth-of-type(2n+1) {
     background-color: #f8f9fa;
 }
@@ -206,9 +209,10 @@ textarea.form-control {
 .table.no-border>thead>tr>th {
     border-top: 0;
     padding: 10px 8px;
-}
+} */
 
-.table-nowrap td,
+
+/* .table-nowrap td,
 .table-nowrap th {
     white-space: nowrap
 }
@@ -224,9 +228,10 @@ table.table td h2 {
     margin: 0;
     padding: 0;
     vertical-align: middle;
-}
+} */
 
-table.table td h2.table-avatar {
+
+/* table.table td h2.table-avatar {
     align-items: center;
     display: inline-flex;
     font-size: inherit;
@@ -250,8 +255,10 @@ table.table td h2 span {
     display: block;
     font-size: 12px;
     margin-top: 3px;
-}
+} */
 
+
+/* 
 .table thead {
     background-color: #f8f9fa;
     border-bottom: 1px solid rgba(0, 0, 0, 0.03);
@@ -268,8 +275,10 @@ table.table td h2 span {
 
 .table tbody tr:last-child {
     border-color: transparent;
-}
+} */
 
+
+/* 
 .table.table-center td,
 .table.table-center th {
     vertical-align: middle;
@@ -306,7 +315,7 @@ table.table td h2 span {
 .table-bordered th,
 .table-bordered td {
     border-color: rgba(0, 0, 0, 0.05);
-}
+} */
 
 .card-table .card-body {
     padding: 0;
