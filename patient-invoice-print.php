@@ -135,7 +135,7 @@ $reportDeliveryMode ="eMail";
 						
 						<!--  -->
 						<table class="table">
-							<thead class="thead-dark">
+							<thead class="text-center thead-dark">
 								<tr>
 								<th scope="col">#</th>
 								<th scope="col">Investigations</th>
@@ -143,19 +143,21 @@ $reportDeliveryMode ="eMail";
 								<th scope="col">Amount</th>
 								</tr>
 							</thead>
-							<tbody id="tl">
+							<tbody class="text-center" id="tl">
 							</tbody>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 						</table>
+					
 						<!--  -->
 
-					<div class="invoice-info ">
-						<h5>Other information</h5>
-						<!-- <p class="text-muted mb-0 ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum ligula, cursus blandit risus. Maecenas eget metus non tellus dignissim aliquam ut a ex. Maecenas sed vehicula dui, ac suscipit lacus. Sed finibus leo vitae lorem interdum, eu scelerisque tellus fermentum. Curabitur sit amet lacinia lorem. Nullam finibus pellentesque libero.</p> -->
-					</div>
+					
 
 
-					<div class="row">
-						<div class="col-9 p-1">
+					<!-- <div class="row">
+						<div class="table col-9 p-1">
 							<div class="d-flex flex-column align-items-end">
 								<span><strong>Total:</strong></span>
 								<span><strong>Discount:</strong></span>
@@ -171,11 +173,56 @@ $reportDeliveryMode ="eMail";
 								<span></span>
 							</div>
 						</div>
-					</div>
+					</div> -->
 
+					<div class="row invoice-payment	 ">
+								<div class="col-6 ">
+								</div>
+								<div class="col-6 ">
+									<div class="m-b-20 ">
+										<!-- <h6>Total:</h6> -->
+										<div class="table-responsive no-border ">
+											<table class="table mb-0 ">
+												<!-- <thead>
+												<th>Payment: </th>
+												<td></td>
+												</thead> -->
+												<tbody>
+													<tr>
+														<th>Total:</th>
+														<th class="text-left"><?php echo $total ?></th>
+													</tr>
+													<tr>
+														<th>Discount: </th>
+														<th class="text-left"><?php echo $discount ?></th>
+													</tr>
+													<tr>
+														<th>Net Total:</th>
+														<th class="text-left text-primary "><?php echo $netTotal ?></h5></th>
+													</tr>
+													<tr>
+														<th>Authorized signature :</th>
+														<th class="text-left text-primary"></h5></th>
+													</tr>
+													<tr>
+													<th></th>
+													<!-- <th></th> -->
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="invoice-info ">
+								<h5 class=" mb-0 "><b>Other information: </b>
+								<span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum ligula, cursus blandit risus.</span></h5>
+							</div>
 					</div>
+					
 					<!-- /Invoice Container -->					
-				</div>			
+				</div>
+							
 			<!-- </div> -->
 			<!-- /Page Wrapper -->
 			

@@ -60,67 +60,33 @@ $reportDeliveryMode ="eMail";
     <!-- Main CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <!--[if lt IE 9]>
-			<script src="assets/js/html5shiv.min.js"></script>
-			<script src="assets/js/respond.min.js"></script>
-		<![endif]-->
+    <style type="text/css" media="print">
+		@page {
+			/* size: auto; */
+			margin: 0;
+			margin-top: 50px;
+
+		}
+	</style>
+		
 </head>
 
 <body>
-<header>
-	<h1>hello</h1>
-</header>
+
     <!-- Main Wrapper -->
-    <div class="main-wrapper" id="all">
+    <div class="main-wrapper">
 
-        <!-- Header -->
-        <div class="header">
-
-            <a href="javascript:void(0);" id="toggle_btn">
-                <i class="fe fe-text-align-left"></i>
-            </a>
-            <!-- Logo -->
-            <div class="header-left">
-                <a href="index.html" class="logo">
-                    <!-- <img src="assets/img/logo.png" alt="Logo"> -->
-                </a>
-                <a href="index.html" class="logo logo-small">
-                    <!-- <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30"> -->
-                </a>
-            </div>
-            <!-- /Logo -->
-
-
-
-
-
-            <!-- Mobile Menu Toggle -->
-            <a class="mobile_btn" id="mobile_btn">
-                <i class="fa fa-bars"></i>
-            </a>
-            <!-- /Mobile Menu Toggle -->
-
-            <!-- /Header Right Menu -->
-
-        </div>
+      
         <!-- /Header -->
 
         <!-- Sidebar -->
-        <div class="sidebar" id="sidebar">
-            <div class="sidebar-inner slimscroll">
-                <div id="sidebar-menu" class="sidebar-menu">
-
-                </div>
-            </div>
-        </div>
+        
         <!-- /Sidebar -->
 
         <!-- Page Wrapper -->
-        <div class="page-wrapper">
-            <div class="content container-fluid">
-			<div class="col-sm-12 col">
-			    <button class="btn btn-primary float-right mt-2" onclick="printInvoice();">Print</button>
-			</div>
+        <!-- <div class="page-wrapper"> -->
+            <div class="container-fluid">
+			
 
                 <!-- Invoice Container -->
                 <div class="invoice-container" id="printDiv">
@@ -170,28 +136,29 @@ $reportDeliveryMode ="eMail";
 
 						<div class="row">
 							<div class="col-md-2">
-							<table id="table_sl" class="table ">
+							<table id="table_sl" class="table">
 										<tr>
-											<th>Serial</th>
+											<th>#</th>
 										</tr>
 									</table>
+									
 							</div>
 							<div class="col-md-5">
-							<table id="table_tests"  class="table ">
+							<table id="table_tests"  class="table">
 										<tr>
 											<th>Investigations</th>
 										</tr>
 									</table>
 							</div>
 							<div class="col-md-3">
-							<table id="table_code"  class="table ">
+							<table id="table_code"  class="table">
 										<tr>
 											<th>Investigation Code</th>
 										</tr>
 									</table>
 							</div>
 							<div class="col-md-2">
-							<table id="table_rs"  class="table ">
+							<table id="table_rs"  class="table">
 										<tr>
 											<th>Amount</th>
 										</tr>
@@ -214,7 +181,7 @@ $reportDeliveryMode ="eMail";
 												<tbody>
 													<tr>
 														<th>Total:</th>
-														<td class="text-right "><?php echo $total ?></td>
+														<td class="text-right"><?php echo $total ?></td>
 													</tr>
 													<tr>
 														<th>Discount: </th>
@@ -225,8 +192,8 @@ $reportDeliveryMode ="eMail";
 														<td class="text-right text-primary "><?php echo $netTotal ?></h5></td>
 													</tr>
 													<tr>
-														<th>Signature :</th>
-														<td class="text-right "></h5></td>
+														<th>Authorized signature :</th>
+														<th class="text-right text-primary">			</h5></th>
 													</tr>
 												</tbody>
 											</table>
@@ -236,7 +203,7 @@ $reportDeliveryMode ="eMail";
 							</div>
 							<div class="invoice-info ">
 								<h5>Other information</h5>
-								<p class="text-muted mb-0 ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum ligula, cursus blandit risus. Maecenas eget metus non tellus dignissim aliquam ut a ex. Maecenas sed vehicula dui, ac suscipit lacus. Sed finibus leo vitae lorem interdum, eu scelerisque tellus fermentum. Curabitur sit amet lacinia lorem. Nullam finibus pellentesque libero.</p>
+								<!-- <p class="text-muted mb-0 ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum ligula, cursus blandit risus. Maecenas eget metus non tellus dignissim aliquam ut a ex. Maecenas sed vehicula dui, ac suscipit lacus. Sed finibus leo vitae lorem interdum, eu scelerisque tellus fermentum. Curabitur sit amet lacinia lorem. Nullam finibus pellentesque libero.</p> -->
 							</div>
 						</div>
 						
@@ -244,10 +211,10 @@ $reportDeliveryMode ="eMail";
 					<!-- /Invoice Container -->
 					
 				</div>			
-			</div>
+			<!-- </div> -->
 			<!-- /Page Wrapper -->
 			
-        </div>
+        <!-- </div> -->
 		<!-- /Main Wrapper -->
 
 
@@ -308,6 +275,7 @@ $reportDeliveryMode ="eMail";
 
                 // add value to the cell
                 cell.innerHTML = serial[i];
+				
             }
         }
 
@@ -347,22 +315,19 @@ $reportDeliveryMode ="eMail";
             }
         }
 	</script>
-	<script>
+	<!-- <script>
 			$("#sidebar-menu ").load("sidebar.html ");
-	</script>
+	</script> -->
     <!-- Print -->
-	<script>
-		$(function() {
-			$("header,footer").hide();
-			var a = document.getElementByTagName('header');
-			a.hide();
-			window.print();
-		});
+	<!-- <script>
 		
-		function printInvoice(){
-			
-		}
-	</script>
+		
+		window.print();
+		setTimeout(function () {
+			window.location.replace("patient-list.php");	
+		},1);
+		
+	</script> -->
 	</body>
 
 </html>

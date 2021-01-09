@@ -150,7 +150,7 @@
                                     <td><a onclick="" href="assets/process/patientFinalize.php?id=<?php echo $res['pid']; ?> "><i class="fa fa-edit" aria-hidden="true"></i></a>
                                     </td>
 <!-- Patient Invoice -->
-                                    <td><a id="invoice-btn" href="patient-invoice-print.php?id=<?php echo $res['pid']; ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+                                    <td><a id="invoice-btn" href="patient-invoice.php?id=<?php echo $res['pid']; ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                                 </tr>
                                 </div>
                             <?php
