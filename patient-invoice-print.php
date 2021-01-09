@@ -132,7 +132,7 @@ $reportDeliveryMode ="eMail";
 								
 							</div>
 						</div>
-						
+							
 
 						<div class="row">
 							<div class="col-md-2">
@@ -200,15 +200,30 @@ $reportDeliveryMode ="eMail";
 									</div>
 								</div>
 							</div>
-							<div class="invoice-info ">
-								<h5>Other information</h5>
-								<!-- <p class="text-muted mb-0 ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum ligula, cursus blandit risus. Maecenas eget metus non tellus dignissim aliquam ut a ex. Maecenas sed vehicula dui, ac suscipit lacus. Sed finibus leo vitae lorem interdum, eu scelerisque tellus fermentum. Curabitur sit amet lacinia lorem. Nullam finibus pellentesque libero.</p> -->
-							</div>
 						</div>
 						
+						<!--  -->
+						<table class="table">
+							<thead class="thead-dark">
+								<tr>
+								<th scope="col">#</th>
+								<th scope="col">Investigations</th>
+								<th scope="col">Investigation Code</th>
+								<th scope="col">Amount</th>
+								</tr>
+							</thead>
+							<tbody id="tl">
+							</tbody>
+						</table>
+						<!--  -->
+
+					<div class="invoice-info ">
+						<h5>Other information</h5>
+						<!-- <p class="text-muted mb-0 ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum ligula, cursus blandit risus. Maecenas eget metus non tellus dignissim aliquam ut a ex. Maecenas sed vehicula dui, ac suscipit lacus. Sed finibus leo vitae lorem interdum, eu scelerisque tellus fermentum. Curabitur sit amet lacinia lorem. Nullam finibus pellentesque libero.</p> -->
 					</div>
-					<!-- /Invoice Container -->
-					
+
+					</div>
+					<!-- /Invoice Container -->					
 				</div>			
 			<!-- </div> -->
 			<!-- /Page Wrapper -->
@@ -216,27 +231,6 @@ $reportDeliveryMode ="eMail";
         <!-- </div> -->
 		<!-- /Main Wrapper -->
 
-
-
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
 		<!-- jQuery -->
         <script src="assets/js/jquery-3.2.1.min.js "></script>
 		
@@ -312,6 +306,24 @@ $reportDeliveryMode ="eMail";
                 cell.innerHTML = rate[i];
             }
         }
+		//
+		for (var i = 0; i < serial.length; i++){
+			var newRow = tl.insertRow(tl.length);
+			for (var j = 0; j < 1; j++) {
+                // create a new cell
+                var cell = newRow.insertCell(j);
+				var cell2 = newRow.insertCell(j);
+				var cell3 = newRow.insertCell(j);
+				var cell4 = newRow.insertCell(j);
+
+                // add value to the cell
+				cell4.innerHTML = serial[i];
+                cell2.innerHTML = code[i];
+				cell3.innerHTML = tests[i];
+				cell.innerHTML = rate[i];
+            }
+		}
+		//
 	</script>
 	<!-- <script>
 			$("#sidebar-menu ").load("sidebar.html ");
@@ -320,10 +332,10 @@ $reportDeliveryMode ="eMail";
 	<script>
 		
 		
-		window.print();
-		setTimeout(function () {
-			window.location.replace("patient-list.php");	
-		},1);
+		// window.print();
+		// setTimeout(function () {
+		// 	window.location.replace("patient-list.php");	
+		// },1);
 		
 	</script>
 	</body>
