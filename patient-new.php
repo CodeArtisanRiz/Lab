@@ -153,7 +153,25 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 													<label for="id_time">Time</label>
 												</div> -->
 											</div>
-											<div class="col-12">
+											<!-- <div class="col-6">
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox" name="" id="collectionCharge">
+													<label for="collectionCharge">Collection Charge</label>
+												</div>
+											</div -->
+											<div class="col-6">
+												<div class="form-label-group">
+												<select class="form-control custom-select" id="id_col_mode" name="colMode">
+													<option disabled selected>Collection Mode</option>
+													<option>Home Collection</option>
+													<option>Centre Collection</option>
+												</select>
+													<!-- <input type="text" name="sex" id="" placeholder="Sex" class="form-control">
+													<label for="">Sex</label> -->
+												</div>
+											</div>
+											
+											<div class="col-6">
 												<div class="form-label-group">
 												<select class="form-control custom-select" id="id_sex" name="sex">
 													<option disabled selected>Sex</option>
@@ -165,7 +183,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 													<label for="">Sex</label> -->
 												</div>
 											</div>
-											<div class="col-12">
+											<div class="col-6">
 												<div class="form-label-group">
 												<select class="form-control custom-select" id="ref_doc" name="referredby">
 											<option disabled selected>Referred by</option>
@@ -175,10 +193,25 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 												echo "<option value'". $data['dname']."'>".$data['dname']."</option>";
 											}
 											?>
-											</select>
+												</select>
 												</div>
 											</div>
+											<div class="col-6">
+												<div class="form-label-group">
+												<select class="form-control custom-select" id="id_del_mode" name="delMode">
+													<option disabled selected>Delivery</option> Mode</option>
+													<option>Centre Visit</option>
+													<option>Email</option>
+													<option>Home Delivery</option>
+												</select>
+													<!-- <input type="text" name="sex" id="" placeholder="Sex" class="form-control">
+													<label for="">Sex</label> -->
+												</div>
+											</div>
+										
 										</div>
+										
+
 									</div>
 								</div>
 								</div>
@@ -195,7 +228,8 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 											</div>
 											<div class="col-6">
 												<div class="form-label-group">
-													<select class="form-control test_name custom-select" id="1" onchange="putVal(this.value, this.id)">
+												<!-- <label for="1">Test Name</label> -->
+													<select class="form-control test_name custom-select" id="1"  onchange="putVal(this.value, this.id)">
 													<option disabled selected>Test Name</option>
 													<?php
 													while ($data = mysqli_fetch_array($t_records))
@@ -204,17 +238,20 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 													}
 													?>
 													</select>
+													
 												</div>
 											</div>
 											<div class="col-2">
 												<div class="form-label-group">
-													<input type="text" name="testcode" class="form-control test_code" id="tCode1" placeholder="Test Code" disabled>
+													<input type="text" name="testcode" class="form-control test_code" id="tCode1" placeholder="Test Code" readonly>
+													<label for="tCode1">Test Code</label>
 												</div>
 											</div>
 
 											<div class="col-2">
 												<div class="form-label-group">
-													<input type="tel" name="price" id="tPrice1" placeholder="Price" class="form-control price test_price" onchange="cal()" disabled>
+													<input type="tel" name="price" id="tPrice1" placeholder="Price" class="form-control price test_price" onchange="cal()" readonly>
+													<label for="tPrice1">Test Rate</label>
 												</div>
 											</div>
 										</div>
@@ -434,9 +471,10 @@ error_reporting(0);
         $disc=$_POST['discount'];
         $netTotal=$_POST['net_total'];
         $advance=$_POST['advance'];
-        $remainingAmt=$_POST['remaining_balance'];
-
-        $insertquery = "INSERT into patients (pname, age, sex, paddress, mobile, referredBy, tName, tCode, tPrice, total, discount, netTotal, advance, remainingAmt) values('$name','$age','$sex','$address','$mobile','$referredby','$testName','$testCode','$testPrice','$total','$disc','$netTotal','$advance','$remainingAmt')";
+		$remainingAmt=$_POST['remaining_balance'];
+		$colMode = $_POST['colMode'];
+		$delMode = $_POST['delMode'];
+        $insertquery = "INSERT into patients (pname, age, sex, paddress, mobile, referredBy, tName, tCode, tPrice, total, discount, netTotal, advance, remainingAmt, col_mode, del_mode) values('$name','$age','$sex','$address','$mobile','$referredby','$testName','$testCode','$testPrice','$total','$disc','$netTotal','$advance','$remainingAmt','$colMode','$delMode')";
             if(mysqli_query($con,$insertquery)) {
                 // echo"<h3>Data Inserted</h3>";
             }

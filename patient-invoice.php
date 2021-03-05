@@ -1,6 +1,6 @@
 <?php
 include 'assets/conn/conn.php';
-
+$collChrg = "50";
 $patient_id = $_GET['id'];
 $patientQuery = "SELECT * FROM patients WHERE pid = $patient_id";
 $pQuery = mysqli_query($con, $patientQuery);
@@ -26,7 +26,8 @@ while ($res = mysqli_fetch_assoc($cQuery)){
 	$cid = $res['cid'];
 	$labName = $res['lab_name'];
 	$centreName = $res['centre_name'];
-	$centreUhid = $res['centre_uhid'];
+	// $centreUhid = $res['centre_uhid'];
+	$centreUhid = "GSTIN: 18BJRPM0629L1ZN";
 	$centreAddress = $res['centre_address'];
 	$centrePhone = $res['centre_phone'];
 }
@@ -179,9 +180,13 @@ $reportDeliveryMode ="eMail";
 										<div class="table-responsive no-border ">
 											<table class="table mb-0 ">
 												<tbody>
+												<tr>
+														<th>Home Collection Charges:</th>
+														<td class="text-right"><?php echo $collChrg ?></td>
+													</tr>
 													<tr>
 														<th>Total:</th>
-														<td class="text-right"><?php echo $total ?></td>
+														<td class="text-right"><?php echo $total + $collChrg?></td>
 													</tr>
 													<tr>
 														<th>Discount: </th>
@@ -189,7 +194,7 @@ $reportDeliveryMode ="eMail";
 													</tr>
 													<tr>
 														<th>Net Total:</th>
-														<td class="text-right text-primary "><?php echo $netTotal ?></h5></td>
+														<td class="text-right text-primary "><?php echo $netTotal + $collChrg?></h5></td>
 													</tr>
 													<tr>
 														<th>Authorized signature :</th>
@@ -202,7 +207,7 @@ $reportDeliveryMode ="eMail";
 								</div>
 							</div>
 							<div class="invoice-info ">
-								<h5>Other information</h5>
+								<!-- <h5>Other information</h5> -->
 								<!-- <p class="text-muted mb-0 ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum ligula, cursus blandit risus. Maecenas eget metus non tellus dignissim aliquam ut a ex. Maecenas sed vehicula dui, ac suscipit lacus. Sed finibus leo vitae lorem interdum, eu scelerisque tellus fermentum. Curabitur sit amet lacinia lorem. Nullam finibus pellentesque libero.</p> -->
 							</div>
 						</div>

@@ -1,6 +1,6 @@
 <?php
 include 'assets/conn/conn.php';
-
+$collChrg = "50";
 $patient_id = $_GET['id'];
 $patientQuery = "SELECT * FROM patients WHERE pid = $patient_id";
 $pQuery = mysqli_query($con, $patientQuery);
@@ -27,6 +27,9 @@ while ($res = mysqli_fetch_assoc($cQuery)){
 	$labName = $res['lab_name'];
 	$centreName = $res['centre_name'];
 	$centreUhid = $res['centre_uhid'];
+	// $centreUhid = "GSTIN: 18BJRPM0629L1ZN";
+	// $gstIN = "GSTIN: 18BJRPM0629L1ZN";
+	$gstIN = $res['centre_GSTIN'];
 	$centreAddress = $res['centre_address'];
 	$centrePhone = $res['centre_phone'];
 }
@@ -116,7 +119,8 @@ $reportDeliveryMode ="eMail";
 								<ul class="list-unstyled mb-0 ">
 									<li><strong><?php echo $labName; ?></strong></li>
 									<li><strong><?php echo $centreName; ?></strong></li>
-									<li><?php echo $centreUhid; ?></li>
+									<li>UHID : <?php echo $centreUhid; ?></li>
+									<li>GSTIN : <?php echo $gstIN; ?></li>
 									<li><?php echo $centreAddress; ?></li>
 									<li><?php echo $centrePhone; ?></li>
 								</ul>
@@ -189,8 +193,12 @@ $reportDeliveryMode ="eMail";
 												</thead> -->
 												<tbody>
 													<tr>
+														<th>Home Collection Charges:</th>
+														<td class="text-left"><?php echo $collChrg ?></td>
+													</tr>
+													<tr>
 														<th>Total:</th>
-														<th class="text-left"><?php echo $total ?></th>
+														<th class="text-left"><?php echo $total + $collChrg ?></th>
 													</tr>
 													<tr>
 														<th>Discount: </th>
@@ -198,7 +206,7 @@ $reportDeliveryMode ="eMail";
 													</tr>
 													<tr>
 														<th>Net Total:</th>
-														<th class="text-left text-primary "><?php echo $netTotal ?></h5></th>
+														<th class="text-left text-primary "><?php echo $netTotal + $collChrg?></h5></th>
 													</tr>
 													<tr>
 														<th>Authorized signature :</th>
@@ -215,8 +223,8 @@ $reportDeliveryMode ="eMail";
 								</div>
 							</div>
 							<div class="invoice-info ">
-								<h5 class=" mb-0 "><b>Other information: </b>
-								<span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum ligula, cursus blandit risus.</span></h5>
+								<!-- <h5 class=" mb-0 "><b>Other information: </b>
+								<span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum ligula, cursus blandit risus.</span></h5> -->
 							</div>
 					</div>
 					
@@ -282,10 +290,10 @@ $reportDeliveryMode ="eMail";
 	<script>
 		
 		
-		// window.print();
-		// setTimeout(function () {
-		// 	window.location.replace("patient-list.php");	
-		// },1);
+		window.print();
+		setTimeout(function () {
+			window.location.replace("patient-list.php");	
+		},1);
 		
 	</script>
 	</body>

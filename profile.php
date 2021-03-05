@@ -1,6 +1,6 @@
 <?php 
    include 'assets/conn/conn.php';
-   include 'assets/process/patientUpdate.php'
+   include 'assets/process/profileUpdate.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +8,7 @@
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Lab Patient List</title>
+        <title>Lab Profile</title>
 
 		<!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
@@ -68,18 +68,18 @@
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
                 <div class="content container-fluid">
-                    <div class="col-sm-12 col">
+                    <!-- <div class="col-sm-12 col">
                         <a href="patient-new.php" class="btn btn-primary float-right mt-2">Add</a>
-                    </div>
+                    </div> -->
 
 <!-- Page Header -->
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-6">
-								<h3 class="page-title">Patient List</h3>
+								<h3 class="page-title">Profile</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">Patient List</li>
+									<li class="breadcrumb-item active">Profile</li>
 								</ul>
                                 </div>
 						</div>
@@ -89,30 +89,23 @@
 <!-- /Page Header -->
 
 					<div class="row">
-                        <div class="col-sm-3">
+                        <!-- <div class="col-sm-3">
                             <input id="myInput" type="text" class="form-control" placeholder="Search here">
-                        </div>
+                        </div> -->
 						<div class="col-sm-12" id="patientList">
                         <table class="table " id="myTable">
                         <thead>
                             <tr>
-                                <th scope="col ">Patient Id</th>
-                                <th scope="col ">Date</th>
-                                <!-- <th scope="col ">Time</th> -->
-                                <th scope="col ">Name</th>
-                                <th scope="col ">Age</th>
-                                <th scope="col ">Sex</th>
+                                <th scope="col ">ID</th>
+                                <th scope="col ">Lab Name</th>
+                                <th scope="col ">Centre Name</th>
+                                <th scope="col ">UHID</th>
+                                <th scope="col ">GSTIN</th>
                                 <th scope="col ">Address</th>
-                                <th scope="col ">Mobile</th>
-                                <th scope="col ">Referred by</th>
-                                <th scope="col ">Total</th>
-                                <!-- <th scope="col ">Discount</th>
-                                <th scope="col ">Net Total</th>
-                                <th scope="col ">Advance</th> -->
-                                <th scope="col ">Remaining amount</th>
+                                <th scope="col ">Phone</th>
+                                <th scope="col ">Pickup Charge</th>
+                                <th scope="col ">Report Delivery Charge</th>
                                 <th scope="col ">Modify</th>
-                                <th scope="col ">Finalize</th>
-                                <th scope="col ">Invoice</th>
 
                             </tr>
                         </thead>
@@ -120,8 +113,7 @@
 
                         <?php
 
-                            $query = " SELECT * from patients ORDER BY pid DESC";
-                            // $query = " SELECT * from patients WHERE mobile LIKE '%{$name1}%'";
+                            $query = " SELECT * from profile";
                             $result = mysqli_query($con,$query);
 
                             $nums = mysqli_num_rows($result);
@@ -130,28 +122,31 @@
                             ?>
                             <div id="filter">
                                 <tr class="list">
-                                    <th scope="row ">#PAT<?php echo $res['pid']; ?></th>
-                                    <td><?php echo $res['date']; ?></td>
-                                    <!-- <td><?php echo $res['time']; ?></td> -->
-                                    <td><?php echo $res['pname']; ?></td>
-                                    <td><?php echo $res['age']; ?></td>
-                                    <td><?php echo $res['sex']; ?></td>
-                                    <td><?php echo $res['paddress']; ?></td>
-                                    <td><?php echo $res['mobile']; ?></td>
-                                    <td><?php echo $res['referredBy']; ?></td>
-                                    <td><?php echo $res['total']; ?></td>
-                                    <td><?php echo $res['remainingAmt']; ?></td>
+                                    <th scope="row "><?php echo $res['cid']; ?></th>
+                                    <td><?php echo $res['lab_name']; ?></td>
+                                    <td><?php echo $res['centre_name']; ?></td>
+                                    <td><?php echo $res['centre_uhid']; ?></td>
+                                    <td><?php echo $res['centre_GSTIN']; ?></td>
+                                    <td><?php echo $res['centre_address']; ?></td>
+                                    <td><?php echo $res['centre_phone']; ?></td>
+                                    <td><?php echo $res['pickup']; ?></td>
+                                    <td><?php echo $res['delivery']; ?></td>
 
 <!-- Modify Patient -->
                                     <td><a onclick="putVal(
-                                    '<?php echo $res['pid']; ?>' , '<?php echo $res['total']; ?>' , '<?php echo $res['remainingAmt']; ?>' , '<?php echo $res['discount']; ?>' , '<?php echo $res['netTotal']; ?>')"
+                                    '<?php echo $res['cid']; ?>' ,
+                                    '<?php echo $res['lab_name']; ?>' ,
+                                    '<?php echo $res['centre_name']; ?>' ,
+                                    '<?php echo $res['centre_uhid']; ?>' ,
+                                    '<?php echo $res['centre_GSTIN']; ?>' ,
+                                    '<?php echo $res['centre_address']; ?>' ,
+                                    '<?php echo $res['centre_phone']; ?>' ,
+                                    '<?php echo $res['pickup']; ?>' ,
+                                    '<?php echo $res['delivery']; ?>'
+                                    
+                                    )"
                                     href="#update" data-toggle="modal" class="fa fa-edit"></a></td>
-<!-- Finalize Patient -->
-                                    <td><a onclick="" href="assets/process/patientFinalize.php?id=<?php echo $res['pid']; ?> "><i class="fa fa-edit" aria-hidden="true"></i></a>
-                                    </td>
-<!-- Patient Invoice -->
-                                    <td><a id="invoice-btn" href="patient-invoice-print.php?id=<?php echo $res['pid']; ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
-                                </tr>
+                                    </tr>
                                 </div>
                             <?php
                             }
@@ -180,47 +175,73 @@
                         <form action="" method="POST">
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" id="mPatientId" class="form-control" name="mPatientId" placeholder="Patient Id" readonly>
-                                <label for="mPatientId">Patient Id</label>
+                                <input type="text" id="labId" class="form-control" name="labId" readonly>
+                                <label for="labId">Id</label>
                                 <div class="validate"></div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" id="mPatientTotal" class="form-control" name="mPatientTotal" placeholder="Total" readonly>
-                                <label for="mPatientTotal">Total</label>
+                                <input type="text" id="labName" class="form-control" name="labName">
+                                <label for="labName">Lab Name</label>
                                 <div class="validate"></div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" id="mPatientRA" class="form-control" name="mPatientRA" placeholder="Remaining Amount" readonly>
-                                <label for="mPatientRA">Remaining Amount</label>
+                                <input type="text" id="centreName" class="form-control" name="centreName">
+                                <label for="centreName">Centre Name</label>
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                <input type="text" id="uhid" class="form-control" name="uhid">
+                                <label for="uhid">UHID</label>
                                 <div class="validate"></div>
                             </div>
                         </div>
 
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" id="mPatientAD" class="form-control" name="mPatientAD" placeholder="Additional Discount" value="0" onchange="calcAD()">
-                                <label for="mPatientAD">Additional Discount</label>
+                                <input type="text" id="gstin" class="form-control" name="gstin">
+                                <label for="gstin">GSTIN</label>
                                 <div class="validate"></div>
                             </div>
                         </div>
-
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" id="mPatientPA" class="form-control" name="mPatientPA" placeholder="Payable Amount" readonly>
-                                <label for="mPatientPA">Payable Amount</label>
+                                <input type="text" id="address" class="form-control" name="address">
+                                <label for="address">Address</label>
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                <input type="text" id="phone" class="form-control" name="phone">
+                                <label for="phone">Phone</label>
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                <input type="text" id="pickup" class="form-control" name="pickup">
+                                <label for="pickup">Home Pickup Charge</label>
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                <input type="text" id="delivery" class="form-control" name="delivery">
+                                <label for="delivery">Home Delivery Charge</label>
                                 <div class="validate"></div>
                             </div>
                         </div>
 
-                        <input type="text" hidden id="hiddenInputD" class="form-control" name="hiddenInputD">
-                        <input type="text" hidden id="hiddenInputNT" class="form-control" name="hiddenInputNT">
+                        
 
                         <div class="col-12">
-                            <button type="submit" name="updatePatient" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Paid</button>
+                            <button type="submit" name="updateProfile" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Update</button>
                             <div class="validate "></div>
                         </div>
                     </form>
@@ -259,22 +280,18 @@
         </script> 
 
             <script>
-                function putVal(postId, postTotal, postRA, discount, nTotal){
+                function putVal(labId, labName, centreName, uhid, gstin, address, phone, pickup, delivery){
 
-                    document.getElementById("mPatientId").value = postId;
-                    document.getElementById("mPatientTotal").value = postTotal;
-                    document.getElementById("mPatientRA").value = postRA;
-                    document.getElementById("mPatientAD").value = "0";
-                    document.getElementById("mPatientPA").value = postRA;
-                    document.getElementById("hiddenInputD").value = discount;
-                    document.getElementById("hiddenInputNT").value = nTotal;
+                    document.getElementById("labId").value = labId;
+                    document.getElementById("labName").value = labName;
+                    document.getElementById("centreName").value = centreName;
+                    document.getElementById("uhid").value = uhid;
+                    document.getElementById("gstin").value = gstin;
+                    document.getElementById("address").value = address;
+                    document.getElementById("phone").value = phone;
+                    document.getElementById("pickup").value = pickup;
+                    document.getElementById("delivery").value = delivery;
                     }
-                function calcAD(){
-                    var reAmount = document.getElementById("mPatientRA").value;
-                    var aDiscount = document.getElementById("mPatientAD").value;
-                    var payableAmount = reAmount - aDiscount;
-                    document.getElementById("mPatientPA").value = payableAmount;
-                }
              </script>
 
              <script>
