@@ -72,7 +72,16 @@
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
                 <div class="content container-fluid">
-
+                    
+                        <div class="col-sm-3 float-right">
+                        <!-- Filter -->
+                        <input type="month" id="date-input" class="form-control" required>
+                        <button id="submit" class="btn float-right">Submit</button>
+                        </div>
+                        <div class="col-sm-3 float-right">
+                        <!-- Search -->
+                        <input id="myInput" type="text" class="form-control" placeholder="Search here">
+                        </div>
 <!-- Page Header -->
 					<div class="page-header">
 						<div class="row">
@@ -88,29 +97,31 @@
 					</div>
 
 <!-- /Page Header -->
-
-					<div class="row">
-                        <div class="col-sm-3">
-                            <input id="myInput" type="text" class="form-control" placeholder="Search here">
-                        </div>
-                        
-                        <div class="col-sm-2">
+<div class="row col-12">
+    <br>
+</div>
+					<div class="row col-12">
+                        <!-- <div class="col-sm-2">
                             <input type="date" format="mm-yyyy" id="date-input" class="form-control" required placeholder="hjhjb">
+                        </div>
+
+                        <div class="col-sm-2">
+                        <button id="submit" class="btn">Submit</button>
+                        </div> -->
+                        <!-- <div class="col-sm-2">
+                            <input type="month" id="date-input" class="form-control" required>
                         </div>
 
                         <div class="col-sm-2">
                         <button id="submit" class="btn">Submit</button>
                         </div>
 
-                        <div class="col-sm-2">
-                            <input type="month" format="mm-yyyy" id="date-input" class="form-control" required placeholder="hjhjb">
-                        </div>
-
-                        <div class="col-sm-2">
-                        <button id="submit1" class="btn">Submit</button>
-                        </div>
+                        <div class="col-sm-3">
+                            <input id="myInput" type="text" class="form-control" placeholder="Search here">
+                        </div> -->
 
 
+                        <br>
 						<div class="col-sm-12" id="patientList">
                         <table class="table " id="myTable">
                         <thead>
@@ -285,6 +296,7 @@
             </script>
 
         <script type="text/javascript">
+            
             var day, month, year;
             $('#submit').on('click', function(){
             var date = new Date($('#date-input').val());
@@ -292,27 +304,16 @@
             var year = date.getFullYear();
             if (month > 10){
                 var date = ([year, month].join('-'));
-                alert (date);
-            }
-            else {
-                var date = ([year, month].join('-0'));
-                alert (date);
-            }
-            });
-
-
-
-            $('#submit1').on('click', function(){
-            var date = new Date($('#date-input').val());
-            var month = date.getMonth() + 1;
-            var year = date.getFullYear();
-            if (month > 10){
-                var date = ([year, month].join('-'));
             }
             else {
                 var date = ([year, month].join('-0'));
             }
-            alert (date);
+            // alert (date);
+            // var value = $(this).val().toLowerCase();
+                    $("#myTable .list").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(date) > -1)
+                    });
+
             });
         </script>
 
