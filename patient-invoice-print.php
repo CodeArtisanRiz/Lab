@@ -1,6 +1,5 @@
 <?php
 include 'assets/conn/conn.php';
-$collChrg = "50";
 $patient_id = $_GET['id'];
 $patientQuery = "SELECT * FROM patients WHERE pid = $patient_id";
 $pQuery = mysqli_query($con, $patientQuery);
@@ -20,18 +19,18 @@ while($res = mysqli_fetch_assoc($pQuery)){
 	$testCodes = $res['tCode'];
 	$testRates = $res['tPrice'];
 }
-$centreQuery = "SELECT * FROM centre";
+$centreQuery = "SELECT * FROM profile";
 $cQuery = mysqli_query($con, $centreQuery);
 while ($res = mysqli_fetch_assoc($cQuery)){
 	$cid = $res['cid'];
 	$labName = $res['lab_name'];
 	$centreName = $res['centre_name'];
 	$centreUhid = $res['centre_uhid'];
-	// $centreUhid = "GSTIN: 18BJRPM0629L1ZN";
-	// $gstIN = "GSTIN: 18BJRPM0629L1ZN";
 	$gstIN = $res['centre_GSTIN'];
 	$centreAddress = $res['centre_address'];
 	$centrePhone = $res['centre_phone'];
+	$collChrg = $res['pickup'];
+	$delChrg = $res['delivery'];
 }
 
 

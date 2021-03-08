@@ -335,7 +335,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 		<!-- Custom JS -->
 		<script  src="assets/js/script.js"></script>
 		<script>
-			$("#sidebar-menu").load("sidebar.html");
+			$("#sidebar-menu").load("sidebar.php");
 		</script>
 
 

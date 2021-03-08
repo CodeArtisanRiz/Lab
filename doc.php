@@ -76,55 +76,13 @@
         </div>
         <!-- /Header -->
 
-        <!-- Sidebar -->
         <div class="sidebar" id="sidebar">
             <div class="sidebar-inner slimscroll">
                 <div id="sidebar-menu" class="sidebar-menu">
-                    <ul>
-                        <li class="menu-title">
-                            <span>Main</span>
-                        </li>
-                        <li>
-                            <a href="Dashboard.php"><i class="fe fe-home"></i> <span>Dashboard</span></a>
-                        </li>
-                        <li class="active">
-                            <a href="doc.php"><i class="fe fe-user-plus"></i> <span>Doctors</span></a>
-                        </li>
-                        <li>
-                            <a href="patients.html"><i class="fe fe-user"></i> <span>Patients</span></a>
-                        </li>
-                        <li>
-                            <a href="tests.php"><i class="fe fe-user"></i> <span>Tests</span></a>
-                        </li>
-                        <!-- <li>
-                            <a href="appointment-list.html"><i class="fe fe-layout"></i> <span>Appointments</span></a>
-                        </li>
-                        <li>
-                            <a href="specialities.html"><i class="fe fe-users"></i> <span>Specialities</span></a>
-                        </li>
-
-
-                        <li>
-                            <a href="transactions-list.html"><i class="fe fe-activity"></i> <span>Transactions</span></a>
-                        </li> -->
-                        <li>
-                            <a href="profile.html"><i class="fe fe-user-plus"></i> <span>Profile</span></a>
-                        </li>
-                        <li>
-                            <a href="settings.html"><i class="fe fe-vector"></i> <span>Settings</span></a>
-                        </li>
-                        <!-- <li class="submenu">
-                            <a href="#"><i class="fe fe-document"></i> <span> Reports</span> <span class="menu-arrow"></span></a>
-                            <ul style="display: none;">
-                                <li><a href="invoice-report.html">Invoice Reports</a></li>
-                            </ul>
-                        </li> -->
-
-                    </ul>
+                    
                 </div>
             </div>
         </div>
-        <!-- /Sidebar -->
 
         <!-- Page Wrapper -->
         <div class="page-wrapper">
@@ -163,6 +121,7 @@
                                 <th scope="col ">Mobile</th>
                                 <th scope="col ">Referral %</th>
                                 <th scope="col ">Edit</th>
+                                <th scope="col ">Patient List</th>
                                 <th scope="col ">Delete</th>
                             </tr>
                         </thead>
@@ -192,10 +151,8 @@
                                     href="#updateDoc" data-toggle="modal" class="fa fa-edit"></a></td>
 
 
-
-
-<!--HyperLink for Editing/Updating data in database, by passing every data in a variable. -->
-                                    <!-- <td><a href="assets/process/docUpdate.php?ids=<?php echo $res['did']?>&dn=<?php echo $res['dname']?>&qu=<?php echo $res['quali']?>&sp=<?php echo $res['special']?>&mb=<?php echo $res['mobile']?>&rc=<?php echo $res['refcent'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td> -->
+                                    <td><a href="docData.php?doc=<?php echo $res['dname']; ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+                                
 <!--HyperLink for Deleting data in database through Doctor's ID (did). -->
                                     <td><a href="assets/process/docDel.php?ids=<?php echo $res['did']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
@@ -378,7 +335,7 @@
     <!-- Custom JS -->
     <script src="assets/js/script.js"></script>
     <script>
-        $("#sidebar-menu").load("sidebar.html");
+        $("#sidebar-menu").load("sidebar.php");
     </script>
 
     <script>

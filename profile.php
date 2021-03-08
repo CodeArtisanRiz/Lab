@@ -263,7 +263,7 @@
 <!-- Custom JS -->
 		<script  src="assets/js/script.js"></script>
 		<script>
-			$("#sidebar-menu").load("sidebar.html");
+			$("#sidebar-menu").load("sidebar.php");
 			// $("#patientList").load("temp/patientList.php");
 		</script>
 

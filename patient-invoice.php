@@ -20,7 +20,7 @@ while($res = mysqli_fetch_assoc($pQuery)){
 	$testCodes = $res['tCode'];
 	$testRates = $res['tPrice'];
 }
-$centreQuery = "SELECT * FROM centre";
+$centreQuery = "SELECT * FROM profile";
 $cQuery = mysqli_query($con, $centreQuery);
 while ($res = mysqli_fetch_assoc($cQuery)){
 	$cid = $res['cid'];

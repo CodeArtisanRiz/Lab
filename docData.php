@@ -1,6 +1,9 @@
 <?php 
    include 'assets/conn/conn.php';
-   include 'assets/process/patientUpdate.php'
+   include 'assets/process/patientUpdate.php';
+
+    $docName= ($_GET['doc']);
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +18,7 @@
 
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-
+        
 		<!-- Fontawesome CSS -->
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
@@ -69,15 +72,12 @@
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
                 <div class="content container-fluid">
-                    <div class="col-sm-12 col">
-                        <a href="patient-new.php" class="btn btn-primary float-right mt-2">Add</a>
-                    </div>
 
 <!-- Page Header -->
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-6">
-								<h3 class="page-title">Patient List</h3>
+								<h3 class="page-title">Patients under Dr. <?php  echo $docName; ?> </h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
 									<li class="breadcrumb-item active">Patient List</li>
@@ -93,36 +93,43 @@
                         <div class="col-sm-3">
                             <input id="myInput" type="text" class="form-control" placeholder="Search here">
                         </div>
+                        
+                        <div class="col-sm-2">
+                            <input type="date" format="mm-yyyy" id="date-input" class="form-control" required placeholder="hjhjb">
+                        </div>
+
+                        <div class="col-sm-2">
+                        <button id="submit" class="btn">Submit</button>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <input type="month" format="mm-yyyy" id="date-input" class="form-control" required placeholder="hjhjb">
+                        </div>
+
+                        <div class="col-sm-2">
+                        <button id="submit1" class="btn">Submit</button>
+                        </div>
+
+
 						<div class="col-sm-12" id="patientList">
                         <table class="table " id="myTable">
                         <thead>
                             <tr>
                                 <th scope="col ">Patient Id</th>
                                 <th scope="col ">Date</th>
-                                <!-- <th scope="col ">Time</th> -->
                                 <th scope="col ">Name</th>
                                 <th scope="col ">Age</th>
                                 <th scope="col ">Sex</th>
-                                <th scope="col ">Address</th>
-                                <th scope="col ">Mobile</th>
-                                <th scope="col ">Referred by</th>
-                                <th scope="col ">Total</th>
-                                <!-- <th scope="col ">Discount</th>
-                                <th scope="col ">Net Total</th>
-                                <th scope="col ">Advance</th> -->
-                                <th scope="col ">Remaining amount</th>
-                                <th scope="col ">Modify</th>
-                                <th scope="col ">Finalize</th>
-                                <th scope="col ">Invoice</th>
-
+                                <th scope="col ">Investigations</th>
+                                <th scope="col ">Amount</th> 
+                                <th scope="col ">Doc Fee</th> 
                             </tr>
                         </thead>
                         <tbody>
 
                         <?php
 
-                            $query = " SELECT * from patients ORDER BY pid DESC";
-                            // $query = " SELECT * from patients WHERE mobile LIKE '%{$name1}%'";
+                            $query = " SELECT * from patients WHERE referredBy = '$docName' ";
                             $result = mysqli_query($con,$query);
 
                             $nums = mysqli_num_rows($result);
@@ -133,25 +140,13 @@
                                 <tr class="list">
                                     <th scope="row ">#PAT<?php echo $res['pid']; ?></th>
                                     <td><?php echo $res['date']; ?></td>
-                                    <!-- <td><?php echo $res['time']; ?></td> -->
                                     <td><?php echo $res['pname']; ?></td>
                                     <td><?php echo $res['age']; ?></td>
                                     <td><?php echo $res['sex']; ?></td>
-                                    <td><?php echo $res['paddress']; ?></td>
-                                    <td><?php echo $res['mobile']; ?></td>
-                                    <td><?php echo $res['referredBy']; ?></td>
+                                    <td><?php echo $res['tName']; ?></td>
                                     <td><?php echo $res['total']; ?></td>
+                                    <!-- change remainingAmt to docFee -->
                                     <td><?php echo $res['remainingAmt']; ?></td>
-
-<!-- Modify Patient -->
-                                    <td><a onclick="putVal(
-                                    '<?php echo $res['pid']; ?>' , '<?php echo $res['total']; ?>' , '<?php echo $res['remainingAmt']; ?>' , '<?php echo $res['discount']; ?>' , '<?php echo $res['netTotal']; ?>')"
-                                    href="#update" data-toggle="modal" class="fa fa-edit"></a></td>
-<!-- Finalize Patient -->
-                                    <td><a onclick="" href="assets/process/patientFinalize.php?id=<?php echo $res['pid']; ?> "><i class="fa fa-edit" aria-hidden="true"></i></a>
-                                    </td>
-<!-- Patient Invoice -->
-                                    <td><a id="invoice-btn" href="patient-invoice-print.php?id=<?php echo $res['pid']; ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                                 </tr>
                                 </div>
                             <?php
@@ -238,7 +233,7 @@
 <!-- Bootstrap Core JS -->
         <script src="assets/js/popper.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
-<!-- Slimscroll JS -->
+        <!-- Slimscroll JS -->
         <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <!-- Custom JS -->
 		<script  src="assets/js/script.js"></script>
@@ -283,8 +278,43 @@
              </script>
 
              <script>
-			    $("#sidebar-menu").load("sidebar.html");
+			    $("#sidebar-menu").load("sidebar.php");
 		    </script>
+            <script>
+                alert(<?php echo $sDocName; ?>)
+            </script>
+
+        <script type="text/javascript">
+            var day, month, year;
+            $('#submit').on('click', function(){
+            var date = new Date($('#date-input').val());
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            if (month > 10){
+                var date = ([year, month].join('-'));
+                alert (date);
+            }
+            else {
+                var date = ([year, month].join('-0'));
+                alert (date);
+            }
+            });
+
+
+
+            $('#submit1').on('click', function(){
+            var date = new Date($('#date-input').val());
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            if (month > 10){
+                var date = ([year, month].join('-'));
+            }
+            else {
+                var date = ([year, month].join('-0'));
+            }
+            alert (date);
+            });
+        </script>
 
     </body>
 </html>
