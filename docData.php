@@ -132,6 +132,7 @@
                                 <th scope="col ">Age</th>
                                 <th scope="col ">Sex</th>
                                 <th scope="col ">Investigations</th>
+                                <th  scope="col ">Finalized</th>
                                 <th scope="col ">Amount</th> 
                                 <th scope="col ">Doc Fee</th> 
                             </tr>
@@ -155,6 +156,8 @@
                                     <td><?php echo $res['age']; ?></td>
                                     <td><?php echo $res['sex']; ?></td>
                                     <td><?php echo $res['tName']; ?></td>
+                                    <td><?php echo $res['finalize_date']; ?></td>
+                                    <!-- <td><?php echo $res['finalizeDate']; ?></td> -->
                                     <td><?php echo $res['total']; ?></td>
                                     <!-- change remainingAmt to docFee -->
                                     <td><?php echo $res['remainingAmt']; ?></td>
@@ -303,13 +306,11 @@
             var month = date.getMonth() + 1;
             var year = date.getFullYear();
             if (month > 10){
-                var date = ([year, month].join('-'));
+                var date = ([year, month].join('/'));
             }
             else {
-                var date = ([year, month].join('-0'));
+                var date = ([year, month].join('/0'));
             }
-            // alert (date);
-            // var value = $(this).val().toLowerCase();
                     $("#myTable .list").filter(function() {
                     $(this).toggle($(this).text().toLowerCase().indexOf(date) > -1)
                     });
