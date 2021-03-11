@@ -185,7 +185,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 											</div>
 											<div class="col-6">
 												<div class="form-label-group">
-												<select class="form-control custom-select" id="ref_doc" name="referredby" onchange="docValue(this.value);">
+												<select class="form-control custom-select" id="ref_doc" name="referredby" onchange="putVal(this.value, this.id)">
 											<option disabled selected>Referred by</option>
 											<?php
 											while ($data = mysqli_fetch_array($d_records))
@@ -229,7 +229,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 											<div class="col-6">
 												<div class="form-label-group">
 												<!-- <label for="1">Test Name</label> -->
-													<select class="form-control test_name custom-select" id="1"  onchange="putVal(this.value, this.id)">
+													<select class="form-control test_name custom-select" id="1"  onchange="putVal2(this.value, this.id)">
 													<option disabled selected>Test Name</option>
 													<?php
 													while ($data = mysqli_fetch_array($t_records))
@@ -306,7 +306,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 								<input type="text" name="tName" hidden id="tNh">
 								<input type="text" name="tCode" hidden id="tCh">
 								<input type="text" name="tPrice" hidden id="tPh">
-								<!-- <input type="text" name="docName" id="dN"> -->
+								<input type="text" name="docFeePercent" id="docFeePercent">
 
 								
 							</form>
@@ -362,21 +362,44 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 
             <script>
             
-			// $('#ref_doc').on('change', function() {
-			// 	var doc = ($(this).find(":selected").val() );
-			// 	alert (doc);
-			// 	$("#dN").val(doc);
-				
+			// $('#ref_doc').on('change', function(doc) {
+				// var doc = ($(this).find(":selected").val() );
+				// alert (doc);
+				// $("#dN").val(doc);
 
+				// const ajaxDocFee = new XMLHttpRequest();
+                //     ajaxDocFee.open('GET','assets/process/getDocFee.php?selectvalue='+doc, 'TRUE');
+                //     ajaxDocFee.send();
+                //     ajaxDocFee.onreadystatechange = function(){
+                //         if(ajaxDocFee.readyState == 4 && ajaxDocFee.status == 200){
+                //             var returnText = ajaxDocFee.responseText;
+                //             alert (returnText);
+                //         }
+                //     }
 			// });
-                // Onchange function for selecting option from test name.
-                function putVal(data, tid){
+
+
+			function putVal(docName, did){
+				// alert(docName);
                     const ajaxreq = new XMLHttpRequest();
-                    ajaxreq.open('GET','assets/process/getData.php?selectvalue='+data, 'TRUE');
+                    ajaxreq.open('GET','assets/process/getDocFee.php?selectvalue='+docName, 'TRUE');
                     ajaxreq.send();
                     ajaxreq.onreadystatechange = function(){
                         if(ajaxreq.readyState == 4 && ajaxreq.status == 200){
                             var returnText = ajaxreq.responseText;
+                            alert (returnText);
+							$("#docFeePercent").val(returnText);
+                        }
+                    }
+                }
+                // Onchange function for selecting option from test name.
+                function putVal2(data, tid){
+                    const ajaxValReq = new XMLHttpRequest();
+                    ajaxValReq.open('GET','assets/process/getData.php?selectvalue='+data, 'TRUE');
+                    ajaxValReq.send();
+                    ajaxValReq.onreadystatechange = function(){
+                        if(ajaxValReq.readyState == 4 && ajaxValReq.status == 200){
+                            var returnText = ajaxValReq.responseText;
                             // alert (returnText);
                             var rT = returnText.split("~"), a = rT[0], b = rT[1];  //a = tcode, b = tprice
                             $("#tCode"+tid).val(a);
@@ -486,26 +509,9 @@ error_reporting(0);
 		$remainingAmt=$_POST['remaining_balance'];
 		$colMode = $_POST['colMode'];
 		$delMode = $_POST['delMode'];
-		
-		
-
-
-		// $result = mysql_query("SELECT 'refcent' FROM doctor WHERE did = '1'");
-		// $row = mysql_fetch_row($con, $result);
-
-		// echo $row[0]; // 42
-		// $docPercent = $row[0];
-
-
-		// $teacher_name = $row['teacher_name'];
-		// $docFeeQuery = "SELECT * FROM doctor WHERE dName = $referredby";
-		// $ddQuery = mysqli_query($con, $docFeeQuery);
-		// while($res = mysqli_fetch_assoc($ddQuery)){
-		// 	$docPercent = $row['refcent'];
-		// }
-
+		$docPercent = $_POST['docFeePercent'];
 //  Temp hardcoded Value
-		$docPercent = 20;
+		// $docPercent = 20;
 //  This Section requires fixing
 
 		// $result = mysql_query("SELECT * FROM doctor WHERE dName = '$referredby'");
