@@ -306,7 +306,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 								<input type="text" name="tName" hidden id="tNh">
 								<input type="text" name="tCode" hidden id="tCh">
 								<input type="text" name="tPrice" hidden id="tPh">
-								<input type="text" name="docFeePercent" id="docFeePercent">
+								<input type="text" name="docFeePercent" hidden id="docFeePercent">
 
 								
 							</form>
@@ -315,10 +315,10 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 						</section>
 
 		
-						</div>			
+						</div>
 					</div>
 					
-				</div>			
+				</div>
 			</div>
 			<!-- /Page Wrapper -->
 		
@@ -341,16 +341,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 			$("#sidebar-menu").load("sidebar.php");
 		</script>
 
-
-
-
-
-
-
-
-
-
-<script src="assets/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+		<script src="assets/js/jquery-3.1.1.min.js" type="text/javascript"></script>
         <script src="assets/js/duplicator.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
@@ -361,24 +352,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 
 
             <script>
-            
-			// $('#ref_doc').on('change', function(doc) {
-				// var doc = ($(this).find(":selected").val() );
-				// alert (doc);
-				// $("#dN").val(doc);
-
-				// const ajaxDocFee = new XMLHttpRequest();
-                //     ajaxDocFee.open('GET','assets/process/getDocFee.php?selectvalue='+doc, 'TRUE');
-                //     ajaxDocFee.send();
-                //     ajaxDocFee.onreadystatechange = function(){
-                //         if(ajaxDocFee.readyState == 4 && ajaxDocFee.status == 200){
-                //             var returnText = ajaxDocFee.responseText;
-                //             alert (returnText);
-                //         }
-                //     }
-			// });
-
-
+// Onchange function for selecting option from Referred Doctor List.
 			function putVal(docName, did){
 				// alert(docName);
                     const ajaxreq = new XMLHttpRequest();
@@ -387,12 +361,12 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     ajaxreq.onreadystatechange = function(){
                         if(ajaxreq.readyState == 4 && ajaxreq.status == 200){
                             var returnText = ajaxreq.responseText;
-                            alert (returnText);
+                            // alert (returnText);
 							$("#docFeePercent").val(returnText);
                         }
                     }
                 }
-                // Onchange function for selecting option from test name.
+// Onchange function for selecting option from test name.
                 function putVal2(data, tid){
                     const ajaxValReq = new XMLHttpRequest();
                     ajaxValReq.open('GET','assets/process/getData.php?selectvalue='+data, 'TRUE');
@@ -443,6 +417,9 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                     var rB = nT - adv;
                     // alert (nT);
                     $("#id_remaining_balance").val(rB);
+					// if(rB>0){
+						// alert ("Remaining Amt: " + rB);
+					// }
                 }
 
                 function mergeTCode() {
@@ -489,8 +466,6 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 <?php
 error_reporting(0);
 
-// $docPercent = ;
-
     if(isset($_POST['save'])){
 
         $name=$_POST['name']; 
@@ -510,14 +485,13 @@ error_reporting(0);
 		$colMode = $_POST['colMode'];
 		$delMode = $_POST['delMode'];
 		$docPercent = $_POST['docFeePercent'];
-//  Temp hardcoded Value
-		// $docPercent = 20;
-//  This Section requires fixing
-
-		// $result = mysql_query("SELECT * FROM doctor WHERE dName = '$referredby'");
-			// $dataDoc = mysqli_fetch_array($d_records);
-			// $docPercent = $dataDoc['refcent'];
-
+		if($remainingAmt<0.0011){
+			$paymentStatus = "clear";
+			$finalizeDate = date("Y/m/d");
+		}else {
+			$paymentStatus = "not clear";
+			$finalizeDate = "";
+		}
 
 		function getDocFee($totalAmount, $percent){
 			return ($percent / 100) * $totalAmount;
@@ -526,7 +500,7 @@ error_reporting(0);
 		$docFee = getDocFee ($total, $docPercent);
 
 
-        $insertquery = "INSERT into patients (pname, age, sex, paddress, mobile, referredBy, tName, tCode, tPrice, total, discount, netTotal, advance, remainingAmt, col_mode, del_mode, doc_fee) values('$name','$age','$sex','$address','$mobile','$referredby','$testName','$testCode','$testPrice','$total','$disc','$netTotal','$advance','$remainingAmt','$colMode','$delMode','$docFee')";
+        $insertquery = "INSERT into patients (pname, age, sex, paddress, mobile, referredBy, tName, tCode, tPrice, total, discount, netTotal, advance, remainingAmt, col_mode, del_mode,finalize_date, payment_status, doc_fee) values('$name','$age','$sex','$address','$mobile','$referredby','$testName','$testCode','$testPrice','$total','$disc','$netTotal','$advance','$remainingAmt','$colMode','$delMode','$finalizeDate','$paymentStatus','$docFee')";
             if(mysqli_query($con,$insertquery)) {
 				?>
                 <script>
