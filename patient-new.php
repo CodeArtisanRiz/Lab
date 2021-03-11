@@ -359,10 +359,6 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 
             <script>
 
-
-			
-
-
 // Onchange function for selecting option from Collection Mode.
 			function putVal3(colMode, colId){
 				// alert(colMode);
@@ -379,8 +375,8 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                         }
                     }
                 }
-// Onchange function for selecting option from Collection Mode.
-function putValDel(delMode, colId){
+// Onchange function for selecting option from Delivery Mode.
+			function putValDel(delMode, colId){
 				// alert(colMode);
                     const ajaxreq = new XMLHttpRequest();
                     ajaxreq.open('GET','assets/process/getDelFee.php?selectvalue='+delMode, 'TRUE');
