@@ -103,8 +103,11 @@
                                 <th scope="col ">GSTIN</th>
                                 <th scope="col ">Address</th>
                                 <th scope="col ">Phone</th>
-                                <th scope="col ">Pickup Charge</th>
-                                <th scope="col ">Report Delivery Charge</th>
+                                <th scope="col ">Home Collection</th>
+                                <th scope="col ">Centre Collection</th>
+                                <th scope="col ">Report Home Delivery</th>
+                                <th scope="col ">Report Email</th>
+                                <th scope="col ">Report Centre Collection</th>
                                 <th scope="col ">Modify</th>
 
                             </tr>
@@ -129,8 +132,12 @@
                                     <td><?php echo $res['centre_GSTIN']; ?></td>
                                     <td><?php echo $res['centre_address']; ?></td>
                                     <td><?php echo $res['centre_phone']; ?></td>
-                                    <td><?php echo $res['pickup']; ?></td>
-                                    <td><?php echo $res['delivery']; ?></td>
+                                    <td><?php echo $res['home_collection']; ?></td>
+                                    <td><?php echo $res['centre_collection']; ?></td>
+                                    <td><?php echo $res['report_home_delivery']; ?></td>
+                                    <td><?php echo $res['report_email']; ?></td>
+                                    <td><?php echo $res['report_home_delivery']; ?></td>
+                                    <td><?php echo $res['report_centre_collection']; ?></td>
 
 <!-- Modify Patient -->
                                     <td><a onclick="putVal(
@@ -141,9 +148,11 @@
                                     '<?php echo $res['centre_GSTIN']; ?>' ,
                                     '<?php echo $res['centre_address']; ?>' ,
                                     '<?php echo $res['centre_phone']; ?>' ,
-                                    '<?php echo $res['pickup']; ?>' ,
-                                    '<?php echo $res['delivery']; ?>'
-                                    
+                                    '<?php echo $res['home_collection']; ?>' ,
+                                    '<?php echo $res['centre_collection']; ?>' ,
+                                    '<?php echo $res['report_email']; ?>',
+                                    '<?php echo $res['report_home_delivery']; ?>',
+                                    '<?php echo $res['report_centre_collection']; ?>'
                                     )"
                                     href="#update" data-toggle="modal" class="fa fa-edit"></a></td>
                                     </tr>
@@ -289,8 +298,8 @@
                     document.getElementById("gstin").value = gstin;
                     document.getElementById("address").value = address;
                     document.getElementById("phone").value = phone;
-                    document.getElementById("pickup").value = pickup;
-                    document.getElementById("delivery").value = delivery;
+                    document.getElementById("home_collection").value = pickup;
+                    document.getElementById("report_home_delivery").value = delivery;
                     }
              </script>
 

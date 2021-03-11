@@ -161,7 +161,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 											</div -->
 											<div class="col-6">
 												<div class="form-label-group">
-												<select class="form-control custom-select" id="id_col_mode" name="colMode">
+												<select class="form-control custom-select" id="id_col_mode" name="colMode" onchange="putVal3(this.value, this.id)">
 													<option disabled selected>Collection Mode</option>
 													<option>Home Collection</option>
 													<option>Centre Collection</option>
@@ -198,7 +198,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 											</div>
 											<div class="col-6">
 												<div class="form-label-group">
-												<select class="form-control custom-select" id="id_del_mode" name="delMode">
+												<select class="form-control custom-select" id="id_del_mode" name="delMode" onchange="putValDel(this.value, this.id)">
 													<option disabled selected>Delivery</option> Mode</option>
 													<option>Centre Visit</option>
 													<option>Email</option>
@@ -294,8 +294,12 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 											</div>
 										</div>
 									</div>
-								</div>
 
+
+
+									
+								</div>
+								
 								<!-- <a href=""><input id = "id_save"class="btn float-right my-2" name="save" value="Save" onclick="mergeTCode()"></a> -->
 
 
@@ -307,6 +311,8 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 								<input type="text" name="tCode" hidden id="tCh">
 								<input type="text" name="tPrice" hidden id="tPh">
 								<input type="text" name="docFeePercent" hidden id="docFeePercent">
+								<input type="text" name="colFee"  id="colFee">
+								<input type="text" name="delFee"  id="delFee">
 
 								
 							</form>
@@ -352,6 +358,43 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 
 
             <script>
+
+
+			
+
+
+// Onchange function for selecting option from Collection Mode.
+			function putVal3(colMode, colId){
+				// alert(colMode);
+                    const ajaxreq = new XMLHttpRequest();
+                    ajaxreq.open('GET','assets/process/getColFee.php?selectvalue='+colMode, 'TRUE');
+                    ajaxreq.send();
+                    ajaxreq.onreadystatechange = function(){
+                        if(ajaxreq.readyState == 4 && ajaxreq.status == 200){
+                            var returnText = ajaxreq.responseText;
+                            // alert (returnText);
+							$("#colFee").val(returnText);
+						sum();
+                        disc();
+                        }
+                    }
+                }
+// Onchange function for selecting option from Collection Mode.
+function putValDel(delMode, colId){
+				// alert(colMode);
+                    const ajaxreq = new XMLHttpRequest();
+                    ajaxreq.open('GET','assets/process/getDelFee.php?selectvalue='+delMode, 'TRUE');
+                    ajaxreq.send();
+                    ajaxreq.onreadystatechange = function(){
+                        if(ajaxreq.readyState == 4 && ajaxreq.status == 200){
+                            var returnText = ajaxreq.responseText;
+                            // alert (returnText);
+							$("#delFee").val(returnText);
+						sum();
+                        disc();
+                        }
+                    }
+                }
 // Onchange function for selecting option from Referred Doctor List.
 			function putVal(docName, did){
 				// alert(docName);
@@ -390,7 +433,9 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
             });
             // $("#calc").bind("click", function(){
                 function sum() {
-                var amount_sum = 0;
+					var colAmount = parseFloat(document.getElementById("colFee").value);
+					var delAmount = parseFloat(document.getElementById("delFee").value);
+                var amount_sum = colAmount + delAmount;
                 //calculate total worth of money
                 $('.price').each(function(){
                 //checks whether the DOM element is an input element or a div
@@ -483,9 +528,12 @@ error_reporting(0);
         $advance=$_POST['advance'];
 		$remainingAmt=$_POST['remaining_balance'];
 		$colMode = $_POST['colMode'];
+		$colFee = $_POST['colFee'];
 		$delMode = $_POST['delMode'];
+		$delFee = $_POST['delFee'];
+
 		$docPercent = $_POST['docFeePercent'];
-		if($remainingAmt<0.0011){
+		if($remainingAmt==0){
 			$paymentStatus = "clear";
 			$finalizeDate = date("Y/m/d");
 		}else {
@@ -500,7 +548,7 @@ error_reporting(0);
 		$docFee = getDocFee ($total, $docPercent);
 
 
-        $insertquery = "INSERT into patients (pname, age, sex, paddress, mobile, referredBy, tName, tCode, tPrice, total, discount, netTotal, advance, remainingAmt, col_mode, del_mode,finalize_date, payment_status, doc_fee) values('$name','$age','$sex','$address','$mobile','$referredby','$testName','$testCode','$testPrice','$total','$disc','$netTotal','$advance','$remainingAmt','$colMode','$delMode','$finalizeDate','$paymentStatus','$docFee')";
+        $insertquery = "INSERT into patients (pname, age, sex, paddress, mobile, referredBy, tName, tCode, tPrice, total, discount, netTotal, advance, remainingAmt, col_mode, del_mode,finalize_date, payment_status, doc_fee, col_fee, del_fee) values('$name','$age','$sex','$address','$mobile','$referredby','$testName','$testCode','$testPrice','$total','$disc','$netTotal','$advance','$remainingAmt','$colMode','$delMode','$finalizeDate','$paymentStatus','$docFee','$colFee','$delFee')";
             if(mysqli_query($con,$insertquery)) {
 				?>
                 <script>
