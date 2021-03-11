@@ -111,6 +111,7 @@
                                 <th scope="col ">Net Total</th>
                                 <th scope="col ">Advance</th> -->
                                 <th scope="col ">Remaining amount</th>
+                                <th scope="col ">Payment Status</th>
                                 <th scope="col ">Modify</th>
                                 <th scope="col ">Finalize</th>
                                 <th scope="col ">Invoice</th>
@@ -142,6 +143,7 @@
                                     <td><?php echo $res['referredBy']; ?></td>
                                     <td><?php echo $res['total']; ?></td>
                                     <td><?php echo $res['remainingAmt']; ?></td>
+                                    <td><?php echo $res['payment_status']; ?></td>
 
 <!-- Modify Patient -->
                                     <td><a onclick="putVal(

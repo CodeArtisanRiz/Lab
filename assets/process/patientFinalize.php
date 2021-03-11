@@ -30,7 +30,7 @@ echo $paidLater;
 $r=0;
 
 
-$update = " UPDATE patients set remainingAmt='$r', paid_later='$remainingAmount', finalize_date = '$currentDate' WHERE pid='$patient_id' ";
+$update = " UPDATE patients set remainingAmt='$r', paid_later='$remainingAmount', finalize_date = '$currentDate', payment_status = 'clear' WHERE pid='$patient_id' ";
                                     
             $res = mysqli_query($con, $update);
 

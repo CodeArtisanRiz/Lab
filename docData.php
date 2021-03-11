@@ -141,7 +141,7 @@
 
                         <?php
 
-                            $query = " SELECT * from patients WHERE referredBy = '$docName' ";
+                            $query = " SELECT * from patients WHERE referredBy = '$docName' AND payment_status = 'clear' ORDER BY pid DESC";
                             $result = mysqli_query($con,$query);
 
                             $nums = mysqli_num_rows($result);

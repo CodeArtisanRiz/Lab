@@ -185,7 +185,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 											</div>
 											<div class="col-6">
 												<div class="form-label-group">
-												<select class="form-control custom-select" id="ref_doc" name="referredby">
+												<select class="form-control custom-select" id="ref_doc" name="referredby" onchange="docValue(this.value);">
 											<option disabled selected>Referred by</option>
 											<?php
 											while ($data = mysqli_fetch_array($d_records))
@@ -306,6 +306,9 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 								<input type="text" name="tName" hidden id="tNh">
 								<input type="text" name="tCode" hidden id="tCh">
 								<input type="text" name="tPrice" hidden id="tPh">
+								<!-- <input type="text" name="docName" id="dN"> -->
+
+								
 							</form>
 
 
@@ -359,6 +362,13 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 
             <script>
             
+			// $('#ref_doc').on('change', function() {
+			// 	var doc = ($(this).find(":selected").val() );
+			// 	alert (doc);
+			// 	$("#dN").val(doc);
+				
+
+			// });
                 // Onchange function for selecting option from test name.
                 function putVal(data, tid){
                     const ajaxreq = new XMLHttpRequest();
@@ -456,6 +466,8 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 <?php
 error_reporting(0);
 
+// $docPercent = ;
+
     if(isset($_POST['save'])){
 
         $name=$_POST['name']; 
@@ -474,9 +486,47 @@ error_reporting(0);
 		$remainingAmt=$_POST['remaining_balance'];
 		$colMode = $_POST['colMode'];
 		$delMode = $_POST['delMode'];
-        $insertquery = "INSERT into patients (pname, age, sex, paddress, mobile, referredBy, tName, tCode, tPrice, total, discount, netTotal, advance, remainingAmt, col_mode, del_mode) values('$name','$age','$sex','$address','$mobile','$referredby','$testName','$testCode','$testPrice','$total','$disc','$netTotal','$advance','$remainingAmt','$colMode','$delMode')";
+		
+		
+
+
+		// $result = mysql_query("SELECT 'refcent' FROM doctor WHERE did = '1'");
+		// $row = mysql_fetch_row($con, $result);
+
+		// echo $row[0]; // 42
+		// $docPercent = $row[0];
+
+
+		// $teacher_name = $row['teacher_name'];
+		// $docFeeQuery = "SELECT * FROM doctor WHERE dName = $referredby";
+		// $ddQuery = mysqli_query($con, $docFeeQuery);
+		// while($res = mysqli_fetch_assoc($ddQuery)){
+		// 	$docPercent = $row['refcent'];
+		// }
+
+//  Temp hardcoded Value
+		$docPercent = 20;
+//  This Section requires fixing
+
+		// $result = mysql_query("SELECT * FROM doctor WHERE dName = '$referredby'");
+			// $dataDoc = mysqli_fetch_array($d_records);
+			// $docPercent = $dataDoc['refcent'];
+
+
+		function getDocFee($totalAmount, $percent){
+			return ($percent / 100) * $totalAmount;
+		}
+
+		$docFee = getDocFee ($total, $docPercent);
+
+
+        $insertquery = "INSERT into patients (pname, age, sex, paddress, mobile, referredBy, tName, tCode, tPrice, total, discount, netTotal, advance, remainingAmt, col_mode, del_mode, doc_fee) values('$name','$age','$sex','$address','$mobile','$referredby','$testName','$testCode','$testPrice','$total','$disc','$netTotal','$advance','$remainingAmt','$colMode','$delMode','$docFee')";
             if(mysqli_query($con,$insertquery)) {
-                // echo"<h3>Data Inserted</h3>";
+				?>
+                <script>
+                window.location.replace("patient-list.php");
+                </script>
+                <?php
             }
     }
 
