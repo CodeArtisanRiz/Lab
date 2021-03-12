@@ -157,10 +157,8 @@
                                     <td><?php echo $res['sex']; ?></td>
                                     <td><?php echo $res['tName']; ?></td>
                                     <td><?php echo $res['finalize_date']; ?></td>
-                                    <!-- <td><?php echo $res['finalizeDate']; ?></td> -->
                                     <td><?php echo $res['total']; ?></td>
-                                    <!-- change remainingAmt to docFee -->
-                                    <td><?php echo $res['remainingAmt']; ?></td>
+                                    <td><?php echo $res['doc_fee']; ?></td>
                                 </tr>
                                 </div>
                             <?php
