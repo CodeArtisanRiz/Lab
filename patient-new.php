@@ -528,6 +528,8 @@ error_reporting(0);
 		$delMode = $_POST['delMode'];
 		$delFee = $_POST['delFee'];
 
+		$totalWDF = $total-$colFee-$delFee;
+
 		$docPercent = $_POST['docFeePercent'];
 		if($remainingAmt==0){
 			$paymentStatus = "clear";
@@ -541,7 +543,7 @@ error_reporting(0);
 			return ($percent / 100) * $totalAmount;
 		}
 
-		$docFee = getDocFee ($total, $docPercent);
+		$docFee = getDocFee ($totalWDF, $docPercent);
 
 
         $insertquery = "INSERT into patients (pname, age, sex, paddress, mobile, referredBy, tName, tCode, tPrice, total, discount, netTotal, advance, remainingAmt, col_mode, del_mode,finalize_date, payment_status, doc_fee, col_fee, del_fee) values('$name','$age','$sex','$address','$mobile','$referredby','$testName','$testCode','$testPrice','$total','$disc','$netTotal','$advance','$remainingAmt','$colMode','$delMode','$finalizeDate','$paymentStatus','$docFee','$colFee','$delFee')";
