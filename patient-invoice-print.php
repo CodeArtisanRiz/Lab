@@ -18,6 +18,10 @@ while($res = mysqli_fetch_assoc($pQuery)){
 	$testNames = $res['tName'];
 	$testCodes = $res['tCode'];
 	$testRates = $res['tPrice'];
+	$colMode = $res['col_mode'];
+	$colCharge = $res['col_fee'];
+	$delMode = $res['del_mode'];
+	$delCharge = $res['del_fee'];
 }
 $centreQuery = "SELECT * FROM profile";
 $cQuery = mysqli_query($con, $centreQuery);
@@ -29,8 +33,6 @@ while ($res = mysqli_fetch_assoc($cQuery)){
 	$gstIN = $res['centre_GSTIN'];
 	$centreAddress = $res['centre_address'];
 	$centrePhone = $res['centre_phone'];
-	$collChrg = $res['pickup'];
-	$delChrg = $res['delivery'];
 }
 
 
@@ -192,12 +194,17 @@ $reportDeliveryMode ="eMail";
 												</thead> -->
 												<tbody>
 													<tr>
-														<th>Home Collection Charges:</th>
-														<td class="text-left"><?php echo $collChrg ?></td>
+														<th><?php echo $colMode?>: </th>
+														<td class="text-left"><?php echo $colCharge ?></td>
+													</tr>
+													<tr>
+													<tr>
+														<th>Report Delivery - <?php echo $delMode?></th>
+														<td class="text-left"><?php echo $delCharge ?></td>
 													</tr>
 													<tr>
 														<th>Total:</th>
-														<th class="text-left"><?php echo $total + $collChrg ?></th>
+														<th class="text-left"><?php echo $total + $colCharge + $delCharge?></th>
 													</tr>
 													<tr>
 														<th>Discount: </th>
@@ -205,7 +212,7 @@ $reportDeliveryMode ="eMail";
 													</tr>
 													<tr>
 														<th>Net Total:</th>
-														<th class="text-left text-primary "><?php echo $netTotal + $collChrg?></h5></th>
+														<th class="text-left text-primary "><?php echo $netTotal + $colCharge + $delCharge?></h5></th>
 													</tr>
 													<tr>
 														<th>Authorized signature :</th>

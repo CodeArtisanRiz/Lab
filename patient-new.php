@@ -202,7 +202,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 													<option disabled selected>Delivery</option> Mode</option>
 													<option>Centre Visit</option>
 													<option>Email</option>
-													<option>Home Delivery</option>
+													<option>Home</option>
 												</select>
 													<!-- <input type="text" name="sex" id="" placeholder="Sex" class="form-control">
 													<label for="">Sex</label> -->

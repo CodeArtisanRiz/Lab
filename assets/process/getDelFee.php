@@ -22,7 +22,7 @@ if($val=="Centre Visit"){
                 $returnCode = $res['report_email'];
             }
         }
-    else if($val=="Home Delivery"){
+    else if($val=="Home"){
         $nums = mysqli_num_rows($query);
             while($res = mysqli_fetch_array($query)){
                 $returnCode = $res['report_home_delivery'];
