@@ -3,8 +3,16 @@
    include 'assets/process/patientUpdate.php';
 
     $docName= ($_GET['doc']);
-    
-?>
+
+    $docFeeQuery = " SELECT SUM(doc_fee) AS value_sum from patients WHERE referredBy = '$docName' AND payment_status = 'clear' ORDER BY pid DESC";
+    $resultDocFee = mysqli_query($con,$docFeeQuery);
+
+    // $nums = mysqli_num_rows($resultDocFee);
+
+    while($res = mysqli_fetch_assoc($resultDocFee)){
+        $totalDocFee = $res['value_sum'];
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
     
@@ -28,6 +36,7 @@
 		<!-- Main CSS -->
 		<link rel="stylesheet" href="assets/css/style.css">
 		<link rel="stylesheet" href="assets/css/style2.css">
+        
 
     </head>
     <body>
@@ -76,12 +85,13 @@
                         <div class="col-sm-3 float-right">
                         <!-- Filter -->
                         <input type="month" id="date-input" class="form-control" required>
-                        <button id="submit" class="btn float-right">Submit</button>
+                        <button id="submit" class="btn float-right" onclick="putVal()">Submit</button>
                         </div>
                         <div class="col-sm-3 float-right">
                         <!-- Search -->
                         <input id="myInput" type="text" class="form-control" placeholder="Search here">
                         </div>
+                        
 <!-- Page Header -->
 					<div class="page-header">
 						<div class="row">
@@ -97,10 +107,15 @@
 					</div>
 
 <!-- /Page Header -->
+<div class="col-sm-3 float-right">
+    <!-- <button id="print" class="btn float-right">Print</button> -->
+    <a class="btn float-right" onclick="" href="doc-invoice-print.php?id=<?php echo $docName; ?> ">Print</a>
+</div>
 <div class="row col-12">
     <br>
 </div>
 					<div class="row col-12">
+                    
                         <!-- <div class="col-sm-2">
                             <input type="date" format="mm-yyyy" id="date-input" class="form-control" required placeholder="hjhjb">
                         </div>
@@ -123,7 +138,7 @@
 
                         <br>
 						<div class="col-sm-12" id="patientList">
-                        <table class="table " id="myTable">
+                        <table class="table" id="myTable">
                         <thead>
                             <tr>
                                 <th scope="col ">Patient Id</th>
@@ -144,7 +159,7 @@
                             $query = " SELECT * from patients WHERE referredBy = '$docName' AND payment_status = 'clear' ORDER BY pid DESC";
                             $result = mysqli_query($con,$query);
 
-                            $nums = mysqli_num_rows($result);
+                            // $nums = mysqli_num_rows($result);
 
                             while($res = mysqli_fetch_assoc($result)){
                             ?>
@@ -158,7 +173,7 @@
                                     <td><?php echo $res['tName']; ?></td>
                                     <td><?php echo $res['finalize_date']; ?></td>
                                     <td><?php echo $res['total']; ?></td>
-                                    <td><?php echo $res['doc_fee']; ?></td>
+                                    <td class="fee"><?php echo $res['doc_fee']; ?></td>
                                 </tr>
                                 </div>
                             <?php
@@ -166,6 +181,11 @@
                             ?>
                         </tbody>
                     </table>
+                    <input type="text" id="total" value="docFee">
+                    <!-- <span id="val"></span> -->
+
+                    
+                            <!-- <input type="text" value="<?php echo $totalDocFee; ?>"> -->
 						</div>
 					</div>
 				</div>
@@ -174,68 +194,6 @@
         </div>
 <!-- /Main Wrapper -->
 
-<!-- Update Modal -->
-			<div class="modal fade" id="update" aria-hidden="true" role="dialog">
-				<div class="modal-dialog modal-dialog-centered" role="document" >
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title">Update patient details</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-                        <form action="" method="POST">
-                        <div class="col-12">
-                            <div class="form-label-group">
-                                <input type="text" id="mPatientId" class="form-control" name="mPatientId" placeholder="Patient Id" readonly>
-                                <label for="mPatientId">Patient Id</label>
-                                <div class="validate"></div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-label-group">
-                                <input type="text" id="mPatientTotal" class="form-control" name="mPatientTotal" placeholder="Total" readonly>
-                                <label for="mPatientTotal">Total</label>
-                                <div class="validate"></div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-label-group">
-                                <input type="text" id="mPatientRA" class="form-control" name="mPatientRA" placeholder="Remaining Amount" readonly>
-                                <label for="mPatientRA">Remaining Amount</label>
-                                <div class="validate"></div>
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="form-label-group">
-                                <input type="text" id="mPatientAD" class="form-control" name="mPatientAD" placeholder="Additional Discount" value="0" onchange="calcAD()">
-                                <label for="mPatientAD">Additional Discount</label>
-                                <div class="validate"></div>
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="form-label-group">
-                                <input type="text" id="mPatientPA" class="form-control" name="mPatientPA" placeholder="Payable Amount" readonly>
-                                <label for="mPatientPA">Payable Amount</label>
-                                <div class="validate"></div>
-                            </div>
-                        </div>
-
-                        <input type="text" hidden id="hiddenInputD" class="form-control" name="hiddenInputD">
-                        <input type="text" hidden id="hiddenInputNT" class="form-control" name="hiddenInputNT">
-
-                        <div class="col-12">
-                            <button type="submit" name="updatePatient" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Paid</button>
-                            <div class="validate "></div>
-                        </div>
-                    </form>
-						</div>
-					</div>
-				</div>
-			</div>
 
 <!-- End of Update Modal -->
 
@@ -254,6 +212,15 @@
 			// $("#patientList").load("temp/patientList.php");
 		</script>
 
+
+
+
+
+
+
+
+
+
 <!-- Search -->
         <script>
             $(document).ready(function(){
@@ -266,38 +233,9 @@
             });
         </script> 
 
-            <script>
-                function putVal(postId, postTotal, postRA, discount, nTotal){
-
-                    document.getElementById("mPatientId").value = postId;
-                    document.getElementById("mPatientTotal").value = postTotal;
-                    document.getElementById("mPatientRA").value = postRA;
-                    document.getElementById("mPatientAD").value = "0";
-                    document.getElementById("mPatientPA").value = postRA;
-                    document.getElementById("hiddenInputD").value = discount;
-                    document.getElementById("hiddenInputNT").value = nTotal;
-                    }
-                function calcAD(){
-                    var reAmount = document.getElementById("mPatientRA").value;
-                    var aDiscount = document.getElementById("mPatientAD").value;
-                    var payableAmount = reAmount - aDiscount;
-                    document.getElementById("mPatientPA").value = payableAmount;
-                }
-             </script>
-
-             <script>
-                alert(<?php echo $postId; ?>)
-             </script>
-
-             <script>
-			    $("#sidebar-menu").load("sidebar.php");
-		    </script>
-            <script>
-                alert(<?php echo $sDocName; ?>)
-            </script>
+<!-- Filter -->
 
         <script type="text/javascript">
-            
             var day, month, year;
             $('#submit').on('click', function(){
             var date = new Date($('#date-input').val());
@@ -305,16 +243,44 @@
             var year = date.getFullYear();
             if (month > 10){
                 var date = ([year, month].join('/'));
-            }
-            else {
+            } else {
                 var date = ([year, month].join('/0'));
-            }
-                    $("#myTable .list").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(date) > -1)
-                    });
-
+                    }
+                $("#myTable .list").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(date) > -1)
+                });
             });
         </script>
+
+        
+
+
+
+
+<!-- Total Calc -->
+
+
+<script type="text/javascript">
+    $(function() {
+
+       var TotalValue = 0;
+
+       $("tr .fee").each(function(index,value){
+         currentRow = parseFloat($(this).text());
+         TotalValue += currentRow
+       });
+
+       document.getElementById('total').innerHTML = TotalValue;
+       alert(TotalValue);
+
+});
+
+        // function putVal(){
+                
+        // }
+</script>
+
+
 
     </body>
 </html>

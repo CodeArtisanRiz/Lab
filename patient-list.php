@@ -127,7 +127,7 @@
                             // $query = " SELECT * from patients WHERE mobile LIKE '%{$name1}%'";
                             $result = mysqli_query($con,$query);
 
-                            $nums = mysqli_num_rows($result);
+                            // $nums = mysqli_num_rows($result);
 
                             while($res = mysqli_fetch_assoc($result)){
                             ?>
@@ -141,7 +141,7 @@
                                     <td><?php echo $res['sex']; ?></td>
                                     <td><?php echo $res['paddress']; ?></td>
                                     <td><?php echo $res['mobile']; ?></td>
-                                    <td><?php echo $res['referredBy']; ?></td>
+                                    <td>Dr. <?php echo $res['referredBy']; ?></td>
                                     <td><?php echo $res['total']; ?></td>
                                     <td><?php echo $res['remainingAmt']; ?></td>
                                     <td><?php echo $res['doc_fee']; ?></td>
@@ -225,7 +225,7 @@
                         <input type="text" hidden id="hiddenInputNT" class="form-control" name="hiddenInputNT">
 
                         <div class="col-12">
-                            <button type="submit" name="updatePatient" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Paid</button>
+                            <button type="submit" name="updatePatient" id="id_addBtn" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Update</button>
                             <div class="validate "></div>
                         </div>
                     </form>
