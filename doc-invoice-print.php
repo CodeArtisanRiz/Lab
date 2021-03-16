@@ -1,28 +1,15 @@
 <?php
 include 'assets/conn/conn.php';
-$patient_id = $_GET['id'];
-$patientQuery = "SELECT * FROM patients WHERE pid = $patient_id";
-$pQuery = mysqli_query($con, $patientQuery);
-while($res = mysqli_fetch_assoc($pQuery)){
-	$date = $res['date'];
-	$time = $res['time'];
-	$patientName = $res['pname'];
-	$age = $res['age'];
-	$sex = $res['sex'];
-	$patientAddress = $res['paddress'];
-	$patientPhone = $res['mobile'];
-	$referralDoc = $res['referredBy'];
-	$total = $res['total'];
-	$discount = $res['discount'];
-	$netTotal = $res['netTotal'];
-	$testNames = $res['tName'];
-	$testCodes = $res['tCode'];
-	$testRates = $res['tPrice'];
-	$colMode = $res['col_mode'];
-	$colCharge = $res['col_fee'];
-	$delMode = $res['del_mode'];
-	$delCharge = $res['del_fee'];
-}
+$patient_id = "1";
+$docName = ($_GET['did']);
+$date = ($_GET['did']);
+$year = "2021";
+$month = "3";
+
+$query = " SELECT * from patients WHERE YEAR(finalize_date) = '$year' AND MONTH(finalize_date) = '$month' AND referredBy = '$docName' AND payment_status = 'clear'";
+$result = mysqli_query($con,$query);
+
+
 $centreQuery = "SELECT * FROM profile";
 $cQuery = mysqli_query($con, $centreQuery);
 while ($res = mysqli_fetch_assoc($cQuery)){
@@ -34,11 +21,6 @@ while ($res = mysqli_fetch_assoc($cQuery)){
 	$centreAddress = $res['centre_address'];
 	$centrePhone = $res['centre_phone'];
 }
-
-
-$leadGenerated = "#000";
-$empID = "#222";
-$reportDeliveryMode ="eMail";
 ?>
 
 <!DOCTYPE html>
@@ -101,16 +83,13 @@ $reportDeliveryMode ="eMail";
 							</div>
 							<div class="col-sm-6 m-b-20 ">
 								<div class="invoice-details ">
-									<h3 class="text-uppercase ">Invoice - #PAT<?php echo $patient_id; ?></h3>
+									<h3 class="text-uppercase ">Statement For : </h3>
 									<ul class="list-unstyled mb-0 ">
-										<li>Date: <span><?php echo $date; ?></span></li>
+										<li><span><?php echo $date; ?></span></li>
 									</ul>
-									<ul class="list-unstyled mb-0 ">
+									<!-- <ul class="list-unstyled mb-0 ">
 										<li>Time: <span><?php echo $time; ?></span></li>
-									</ul>
-									<ul class="list-unstyled mb-0 ">
-										<li>Referred by : <b>Dr. <?php echo $referralDoc; ?></b></li>
-									</ul>
+									</ul> -->
 								</div>
 							</div>
 						</div>
@@ -130,9 +109,8 @@ $reportDeliveryMode ="eMail";
 							<div class="col-sm-6 col-lg-5 col-xl-4 m-b-20 ">
 								<h6>Invoice to</h6>
 								<ul class="list-unstyled mb-0 ">
-									<li><h5 class="mb-0 "><strong><?php echo $patientName; ?></strong></h5></li>
-									<li><?php echo $patientAddress; ?></li>
-									<li>+<?php echo $patientPhone; ?></li>
+									<li><h5 class="mb-0 "><strong>Dr. <?php echo $docName; ?></strong></h5></li>
+									
 								</ul>
 								
 							</div>
@@ -140,45 +118,51 @@ $reportDeliveryMode ="eMail";
 						
 						<!--  -->
 						<table class="table">
-							<thead class="text-center thead-dark">
+						<tbody class="text-center" id="tl">
+							<thead class="thead-dark">
 								<tr>
 								<th scope="col">#</th>
+								<th scope="col">Patient Name</th>
 								<th scope="col">Investigations</th>
-								<th scope="col">Investigation Code</th>
+								<!-- <th scope="col">Investigation Code</th> -->
 								<th scope="col">Amount</th>
+								<th scope="col">Doc Fee</th>
 								</tr>
 							</thead>
-							<tbody class="text-center" id="tl">
+							<?php
+							// $query = " SELECT * from patients WHERE referredBy = '$docName' AND payment_status = 'clear' AND finalize_date=''";
+							$index = 0;
+							while($res = mysqli_fetch_assoc($result)){
+								$index = $index + 1;
+							?>
+							
+                            <div id="filter">
+                                <tr class="list">
+								
+									<td><?php echo $index ?></td>
+                                    <td><?php echo $res['pname']; ?></td>
+                                    <td><?php echo $res['tName']; ?></td>
+                                    <!-- <td><?php echo $res['tCode']; ?></td> -->
+                                    <td><?php echo $res['total']; ?></td>
+                                    <th class="fee"><?php echo $res['doc_fee']; ?></td>
+                                </tr>
+                                </div>
+                            <?php
+                            }
+							?>
 							</tbody>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<tfoot>
+                            <tr>
+                                <td scope="col "></th>
+                                <td scope="col "></th>
+                                <td scope="col "></th>
+                                <td class="text-right" scope="col "><b>Total:</b></th>
+                                <th scope="col "></th>
+                                
+                            </tr>
+                        </tfoot>
 						</table>
-					
-						<!--  -->
 
-					
-
-
-					<!-- <div class="row">
-						<div class="table col-9 p-1">
-							<div class="d-flex flex-column align-items-end">
-								<span><strong>Total:</strong></span>
-								<span><strong>Discount:</strong></span>
-								<span><strong>Net Total:</strong></span>
-								<span><strong>Autorized Signature:</strong></span>
-							</div>
-						</div>
-						<div class="col-3 p-1">
-							<div class="d-flex flex-column align-items-start">
-								<span>₹ <?php echo $total ?></span>
-								<span>₹ <?php echo $discount ?></span>
-								<span>₹ <?php echo $netTotal ?></span>
-								<span></span>
-							</div>
-						</div>
-					</div> -->
 
 					<div class="row invoice-payment	 ">
 								<div class="col-6 ">
@@ -186,55 +170,15 @@ $reportDeliveryMode ="eMail";
 								<div class="col-6 ">
 									<div class="m-b-20 ">
 										<!-- <h6>Total:</h6> -->
-										<div class="table-responsive no-border ">
-											<table class="table mb-0 ">
-												<!-- <thead>
-												<th>Payment: </th>
-												<td></td>
-												</thead> -->
-												<tbody>
-													<tr>
-														<th><?php echo $colMode?>: </th>
-														<td class="text-left"><?php echo $colCharge ?></td>
-													</tr>
-													<tr>
-													<tr>
-														<th>Report Delivery - <?php echo $delMode?></th>
-														<td class="text-left"><?php echo $delCharge ?></td>
-													</tr>
-													<tr>
-														<th>Total:</th>
-														<th class="text-left"><?php echo $total + $colCharge + $delCharge?></th>
-													</tr>
-													<tr>
-														<th>Discount: </th>
-														<th class="text-left"><?php echo $discount ?></th>
-													</tr>
-													<tr>
-														<th>Net Total:</th>
-														<th class="text-left text-primary "><?php echo $netTotal + $colCharge + $delCharge?></h5></th>
-													</tr>
-													<tr>
-														<th>Authorized signature :</th>
-														<th class="text-left text-primary"></h5></th>
-													</tr>
-													<tr>
-													<th></th>
-													<!-- <th></th> -->
-													</tr>
-												</tbody>
-											</table>
-										</div>
+										
 									</div>
 								</div>
 							</div>
 							<div class="invoice-info ">
-								<!-- <h5 class=" mb-0 "><b>Other information: </b>
-								<span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum ligula, cursus blandit risus.</span></h5> -->
+								<h5 class=" mb-0 text-right"><b>Thankyou for your kind support. </b>
+								<!-- <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum ligula, cursus blandit risus.</span></h5> -->
 							</div>
 					</div>
-					
-					<!-- /Invoice Container -->					
 				</div>
 							
 			<!-- </div> -->
@@ -256,52 +200,27 @@ $reportDeliveryMode ="eMail";
 		<!-- Custom JS -->
 		<script src="assets/js/script.js "></script>
 		<script  src="assets/js/script.js "></script>
-		
-		<script>
-		var serial = [];
-		var tNList = "<?php echo $testNames; ?>"
-		var tests = tNList.split(",");
-		var tCList = "<?php echo $testCodes; ?>"
-		var code = tCList.split(",");
-		var tRList = "<?php echo $testRates; ?>"
-		var rate = tRList.split(",");
-		var count = tests.length - 1;
 
-		for (var l = 1; l <= count; l++ ){
-			serial.push(l);
-		}
-		//
-		for (var i = 0; i < serial.length; i++){
-			var newRow = tl.insertRow(tl.length);
-			for (var j = 0; j < 1; j++) {
-                // create a new cell
-                var cell = newRow.insertCell(j);
-				var cell2 = newRow.insertCell(j);
-				var cell3 = newRow.insertCell(j);
-				var cell4 = newRow.insertCell(j);
 
-                // add value to the cell
-				cell4.innerHTML = serial[i];
-                cell2.innerHTML = code[i];
-				cell3.innerHTML = tests[i];
-				cell.innerHTML = rate[i];
-            }
-		}
-		//
+	<!-- Calculate total -->
+	<script>
+			$(document).ready(function() {
+				$('table thead th').each(function(i) {
+					calculateColumn(i);
+				});
+			});
+
+			function calculateColumn(index) {
+				var total = 0;
+				$('table tr').each(function() {
+					var value = parseInt($('th', this).eq(index).text());
+					if (!isNaN(value)) {
+						total += value;
+					}
+				});
+				$('table tfoot th').eq(index).text(total);
+			}
 	</script>
-	<!-- <script>
-			$("#sidebar-menu ").load("sidebar.html ");
-	</script> -->
-    <!-- Print -->
-	<!-- <script>
-		
-		
-		window.print();
-		setTimeout(function () {
-			window.location.replace("patient-list.php");	
-		},1);
-		
-	</script> -->
 	</body>
 
 </html>

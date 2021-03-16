@@ -3,6 +3,7 @@
    include 'assets/process/patientUpdate.php';
 
     $docName= ($_GET['doc']);
+    // $abc= ($_GET['ex']);
 
     $docFeeQuery = " SELECT SUM(doc_fee) AS value_sum from patients WHERE referredBy = '$docName' AND payment_status = 'clear' ORDER BY pid DESC";
     $resultDocFee = mysqli_query($con,$docFeeQuery);
@@ -99,7 +100,9 @@
 								<h3 class="page-title">Patients under Dr. <?php  echo $docName; ?> </h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">Patient List</li>
+                                    <li class="breadcrumb-item"><a href="doc.php">Doctors</a></li>
+                                    <li class="breadcrumb-item"><?php echo $docName;?></a></li>
+									<!-- <li class="breadcrumb-item active">Patient List</li> -->
 								</ul>
                                 </div>
 						</div>
@@ -109,7 +112,7 @@
 <!-- /Page Header -->
 <div class="col-sm-3 float-right">
     <!-- <button id="print" class="btn float-right">Print</button> -->
-    <a class="btn float-right" onclick="" href="doc-invoice-print.php?id=<?php echo $docName; ?> ">Print</a>
+    <button class="btn float-right" onclick="print()">Print</button>
 </div>
 <div class="row col-12">
     <br>
@@ -153,6 +156,19 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <!-- <tfoot>
+                            <tr>
+                                <td scope="col "></th>
+                                <td scope="col "></th>
+                                <td scope="col "></th>
+                                <td scope="col "></th>
+                                <td scope="col "></th>
+                                <td scope="col "></th>
+                                <td  scope="col "></th>
+                                <td scope="col "></th> 
+                                <th scope="col ">Doc Fee</th> 
+                            </tr>
+                        </tfoot> -->
 
                         <?php
 
@@ -165,7 +181,7 @@
                             ?>
                             <div id="filter">
                                 <tr class="list">
-                                    <th scope="row ">#PAT<?php echo $res['pid']; ?></th>
+                                    <td scope="row ">#PAT<?php echo $res['pid']; ?></th>
                                     <td><?php echo $res['date']; ?></td>
                                     <td><?php echo $res['pname']; ?></td>
                                     <td><?php echo $res['age']; ?></td>
@@ -173,7 +189,7 @@
                                     <td><?php echo $res['tName']; ?></td>
                                     <td><?php echo $res['finalize_date']; ?></td>
                                     <td><?php echo $res['total']; ?></td>
-                                    <td class="fee"><?php echo $res['doc_fee']; ?></td>
+                                    <th class="fee"><?php echo $res['doc_fee']; ?></td>
                                 </tr>
                                 </div>
                             <?php
@@ -181,7 +197,7 @@
                             ?>
                         </tbody>
                     </table>
-                    <input type="text" id="total" value="docFee">
+                    <!-- <input type="text" id="DocFeeTotal" value="docFee"> -->
                     <!-- <span id="val"></span> -->
 
                     
@@ -219,7 +235,9 @@
 
 
 
-
+<!-- <script>
+alert(<?php echo $abc?>);
+</script> -->
 
 <!-- Search -->
         <script>
@@ -247,20 +265,39 @@
                 var date = ([year, month].join('/0'));
                     }
                 $("#myTable .list").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(date) > -1)
+                $(this).toggle($(this).text().toLowerCase().indexOf(date) > -1);
+                    // calculateColumn(i);
+                    var pDate = date;
                 });
             });
         </script>
 
-        
+
+<!-- Calculate total -->
+<!-- <script>
+        $(document).ready(function() {
+            $('table thead th').each(function(i) {
+                calculateColumn(i);
+            });
+        });
+
+        function calculateColumn(index) {
+            var total = 0;
+            $('table tr').each(function() {
+                var value = parseInt($('th', this).eq(index).text());
+                if (!isNaN(value)) {
+                    total += value;
+                }
+            });
+            $('table tfoot th').eq(index).text('Total: ' + total);
+        }
+    </script> -->
 
 
 
 
-<!-- Total Calc -->
-
-
-<script type="text/javascript">
+<!-- Total Doc Fee Calc -->
+<!-- <script type="text/javascript">
     $(function() {
 
        var TotalValue = 0;
@@ -270,17 +307,25 @@
          TotalValue += currentRow
        });
 
-       document.getElementById('total').innerHTML = TotalValue;
-       alert(TotalValue);
+        //    alert(TotalValue);
+        $("#DocFeeTotal").val(TotalValue);
 
-});
+    });
 
-        // function putVal(){
-                
+
+</script> -->
+
+<script>
+    function print() {
+        // var abc = null;
+        // if(abc=a){
+        window.location="doc-invoice-print.php?did=<?php echo $docName; ?>&ex='abc'"
         // }
+        // else{
+            // alert("Select Month.");
+        // }
+    }
 </script>
-
-
 
     </body>
 </html>
