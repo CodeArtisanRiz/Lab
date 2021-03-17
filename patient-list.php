@@ -93,6 +93,15 @@
                         <div class="col-sm-3">
                             <input id="myInput" type="text" class="form-control" placeholder="Search here">
                         </div>
+                        <div class="col-sm-3">
+                        <!-- Filter -->
+                        <input type="month" id="date-input" class="form-control" required>
+                        </div>
+                        <div class="col-sm-1">
+                        <button id="submit" class="btn float-right" onclick="putVal()">Submit</button>
+                        </div>
+                        </div>
+                        
 						<div class="col-sm-12" id="patientList">
                         <table class="table " id="myTable">
                         <thead>
@@ -262,6 +271,25 @@
                 });
             });
         </script> 
+
+        <!-- Filter -->
+
+        <script type="text/javascript">
+            var day, month, year;
+            $('#submit').on('click', function(){
+            var date = new Date($('#date-input').val());
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            if (month > 10){
+                var date = ([year, month].join('-'));
+            } else {
+                var date = ([year, month].join('-0'));
+                    }
+                $("#myTable .list").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(date) > -1);
+                });
+            });
+        </script>
 
             <script>
                 function putVal(postId, postTotal, postRA, discount, nTotal){

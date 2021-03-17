@@ -1,9 +1,9 @@
 <?php
 include 'assets/conn/conn.php';
-$patient_id = "1";
-$docName = ($_GET['did']);
-$year = "2021";
-$month = "3";
+// $patient_id = "1";
+$docName = $_GET['did'];
+$year = $_GET['year'];
+$month = $_GET['month'];
 $MonthList = array("January", "February", "March","April", "May", "June","July", "August", "September","October", "November", "December");
 
 $patientQuery = " SELECT * from patients WHERE YEAR(finalize_date) = '$year' AND MONTH(finalize_date) = '$month' AND referredBy = '$docName' AND payment_status = 'clear'";
@@ -90,7 +90,7 @@ while ($res = mysqli_fetch_assoc($cQuery)){
 							<div class="col-sm-6 m-b-20 ">
 								<div class="invoice-details ">
 									<h3 class="text-uppercase">Statement For : </h3>
-									<h3 class=""><?php echo $MonthList[$month - 1];?> <?php echo $year;?></h3>
+									<h3 class=""><?php echo $MonthList[$month-1];?> <?php echo $year;?></h3>
 									<!-- <ul class="list-unstyled text">
 										<li></li>
 									</ul> -->
@@ -228,6 +228,7 @@ while ($res = mysqli_fetch_assoc($cQuery)){
 				$('table tfoot th').eq(index).text(total);
 			}
 	</script>
-	</body>
+</body>
 
 </html>
+

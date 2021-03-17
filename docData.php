@@ -111,8 +111,18 @@
 
 <!-- /Page Header -->
 <div class="col-sm-3 float-right">
-    <!-- <button id="print" class="btn float-right">Print</button> -->
-    <button class="btn float-right" onclick="print()">Print</button>
+    
+
+    <form action="" method="Post">
+    <input type="text" name="monthVal" id="monthVal" required hidden>
+    <input type="text" name="yearVal" id="yearVal" required hidden>
+    <button type submit name="submit" onclick="printPopup()" class="btn float-right">Print</button>
+    <!-- <button type submit name="submit" class="btn float-right" onclick="print()">Print</button> -->
+    </form>
+
+
+
+    
 </div>
 <div class="row col-12">
     <br>
@@ -211,8 +221,6 @@
 <!-- /Main Wrapper -->
 
 
-<!-- End of Update Modal -->
-
 
 <!-- jQuery -->
         <script src="assets/js/jquery-3.2.1.min.js"></script>
@@ -227,17 +235,6 @@
 			$("#sidebar-menu").load("sidebar.php");
 			// $("#patientList").load("temp/patientList.php");
 		</script>
-
-
-
-
-
-
-
-
-<!-- <script>
-alert(<?php echo $abc?>);
-</script> -->
 
 <!-- Search -->
         <script>
@@ -267,65 +264,37 @@ alert(<?php echo $abc?>);
                 $("#myTable .list").filter(function() {
                 $(this).toggle($(this).text().toLowerCase().indexOf(date) > -1);
                     // calculateColumn(i);
-                    var pDate = date;
+                    $("#monthVal").val(month);
+                    $("#yearVal").val(year);
                 });
             });
         </script>
 
 
-<!-- Calculate total -->
-<!-- <script>
-        $(document).ready(function() {
-            $('table thead th').each(function(i) {
-                calculateColumn(i);
-            });
-        });
-
-        function calculateColumn(index) {
-            var total = 0;
-            $('table tr').each(function() {
-                var value = parseInt($('th', this).eq(index).text());
-                if (!isNaN(value)) {
-                    total += value;
-                }
-            });
-            $('table tfoot th').eq(index).text('Total: ' + total);
+    <!-- <script>
+        function printPopup(){
+            alert("Select Month & Year first.");
         }
     </script> -->
 
-
-
-
-<!-- Total Doc Fee Calc -->
-<!-- <script type="text/javascript">
-    $(function() {
-
-       var TotalValue = 0;
-
-       $("tr .fee").each(function(index,value){
-         currentRow = parseFloat($(this).text());
-         TotalValue += currentRow
-       });
-
-        //    alert(TotalValue);
-        $("#DocFeeTotal").val(TotalValue);
-
-    });
-
-
-</script> -->
-
-<script>
-    function print() {
-        // var abc = null;
-        // if(abc=a){
-        window.location="doc-invoice-print.php?did=<?php echo $docName; ?>&ex='abc'"
-        // }
-        // else{
-            // alert("Select Month.");
-        // }
-    }
-</script>
-
     </body>
 </html>
+
+
+
+
+<?php
+// error_reporting(0);
+
+    if(isset($_POST['submit'])){
+
+        $month=$_POST['monthVal'];
+        $year=$_POST['yearVal'];
+            ?>
+                <script>
+                    window.location.replace("doc-invoice-print.php?did=<?php echo $docName; ?> &year=<?php echo $year; ?>  &month=<?php echo $month; ?>");
+                </script>
+            <?php
+    }
+
+?>
