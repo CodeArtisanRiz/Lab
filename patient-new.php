@@ -87,7 +87,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 								<h3 class="page-title">New Patient</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                    <li class="breadcrumb-item"><a href="patient-list.php">Patient List</a></li>
+                                    <li class="breadcrumb-item"><a href="patient-list.php">Patients</a></li>
 									<li class="breadcrumb-item active">New Patient</li>
 								</ul>
 							</div>
@@ -110,13 +110,13 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 											</div>
 											<div class="col-12">
 												<div class="form-label-group">
-													<input type="text" id="id_name" class="form-control" placeholder="Name" name="name">
+													<input type="text" id="id_name" class="form-control" placeholder="Name" name="name" required>
 													<label for="id_name">Name</label>
 												</div>
 											</div>
 											<div class="col-12">
 												<div class="form-label-group">
-													<input type="text" id="id_address" name="address" class="form-control" placeholder="Address">
+													<input type="text" id="id_address" name="address" class="form-control" placeholder="Address" required>
 													<label for="id_address">Address</label>
 												</div>
 											</div>
@@ -125,21 +125,22 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 									</div>
 									<div class="col">
 										<div class="row">
-											<div class="col-12">
-												<!-- <div class="form-label-group">
-													<input type="date" name="date" id="id_date" class="form-control">
-													<label for="id_date">Date</label>
-												</div> -->
-											</div>
-											<div class="col-12">
+											
+											<div class="col-4">
 												<div class="form-label-group">
-													<input type="text" class="form-control" name="age" id="id_age" placeholder="Age">
+													<input type="text" class="form-control" name="age" id="id_age" placeholder="Age" required>
 													<label for="id_age">Age</label>
+												</div>
+											</div>
+											<div class="col-8">
+												<div class="form-label-group">
+													<input type="email" name="email" id="id_email" class="form-control" placeholder="Email" required>
+													<label for="id_email">Email</label>
 												</div>
 											</div>
 											<div class="col-12">
 												<div class="form-label-group">
-													<input type="tel" class="form-control" name="mobile" id="id_mobile" placeholder="Mobile">
+													<input type="tel" class="form-control" name="mobile" id="id_mobile" placeholder="Mobile" required>
 													<label for="id_mobile">Mobile</label>
 												</div>
 											</div>
@@ -147,40 +148,24 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 									</div>
 									<div class="col">
 										<div class="row">
-											<div class="col-12">
-												<!-- <div class="form-label-group">
-													<input type="time" name="time" id="id_time" class="form-control">
-													<label for="id_time">Time</label>
-												</div> -->
-											</div>
-											<!-- <div class="col-6">
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" name="" id="collectionCharge">
-													<label for="collectionCharge">Collection Charge</label>
-												</div>
-											</div -->
 											<div class="col-6">
 												<div class="form-label-group">
-												<select class="form-control custom-select" id="id_col_mode" name="colMode" onchange="putVal3(this.value, this.id)">
+												<select class="form-control custom-select" id="id_col_mode" name="colMode" onchange="putVal3(this.value, this.id)" required>
 													<option disabled selected>Collection Mode</option>
 													<option>Home Collection</option>
 													<option>Centre Collection</option>
 												</select>
-													<!-- <input type="text" name="sex" id="" placeholder="Sex" class="form-control">
-													<label for="">Sex</label> -->
 												</div>
 											</div>
 											
 											<div class="col-6">
 												<div class="form-label-group">
-												<select class="form-control custom-select" id="id_sex" name="sex">
+												<select class="form-control custom-select" id="id_sex" name="sex" required>
 													<option disabled selected>Sex</option>
 													<option>Male</option>
 													<option>Female</option>
 													<option>Other</option>
 												</select>
-													<!-- <input type="text" name="sex" id="" placeholder="Sex" class="form-control">
-													<label for="">Sex</label> -->
 												</div>
 											</div>
 											<div class="col-6">
@@ -198,7 +183,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 											</div>
 											<div class="col-6">
 												<div class="form-label-group">
-												<select class="form-control custom-select" id="id_del_mode" name="delMode" onchange="putValDel(this.value, this.id)">
+												<select class="form-control custom-select" id="id_del_mode" name="delMode" onchange="putValDel(this.value, this.id)" required>
 													<option disabled selected>Delivery</option> Mode</option>
 													<option>Centre Visit</option>
 													<option>Email</option>
@@ -254,6 +239,13 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 													<label for="tPrice1">Test Rate</label>
 												</div>
 											</div>
+
+											<!-- <div class="col-2">
+												<div class="form-label-group">
+													<input type="number" name="cost" id="tCost1" placeholder="Cost" class="form-control cost test_cost" readonly>
+													<label for="tCost1">Test Cost</label>
+												</div>
+											</div> -->
 										</div>
 									</div>
 								</div>
@@ -299,20 +291,15 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 
 									
 								</div>
-								
-								<!-- <a href=""><input id = "id_save"class="btn float-right my-2" name="save" value="Save" onclick="mergeTCode()"></a> -->
-
-
 								<button type="submit " id="id_addBtn" name= "save" class="btn btn-primary btn-xl text-uppercase center " onclick="mergeTCode()">Submit</button>
 								
-								<!-- <input id= "id_save" value="Save" > -->
-
+								
 								<input type="text" name="tName" hidden id="tNh">
 								<input type="text" name="tCode" hidden id="tCh">
 								<input type="text" name="tPrice" hidden id="tPh">
 								<input type="text" name="docFeePercent" hidden id="docFeePercent">
-								<input type="text" name="colFee"  id="colFee">
-								<input type="text" name="delFee"  id="delFee">
+								<input type="text" name="colFee" hidden id="colFee">
+								<input type="text" name="delFee" hidden id="delFee">
 
 								
 							</form>
@@ -414,9 +401,10 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
                         if(ajaxValReq.readyState == 4 && ajaxValReq.status == 200){
                             var returnText = ajaxValReq.responseText;
                             // alert (returnText);
-                            var rT = returnText.split("~"), a = rT[0], b = rT[1];  //a = tcode, b = tprice
+                            var rT = returnText.split("~"), a = rT[0], b = rT[1]; c = rT[2];  //a = tcode, b = tprice, c=tcost
                             $("#tCode"+tid).val(a);
                             $("#tPrice"+tid).val(b);
+							$("#tCost"+tid).val(c);
                         }
                         sum();
                         disc();
@@ -512,6 +500,7 @@ error_reporting(0);
         $name=$_POST['name']; 
         $address=$_POST['address'];
         $age=$_POST['age']; 
+		$email=$_POST['email']; 
         $mobile=$_POST['mobile'];
         $sex=$_POST['sex']; 
         $referredby=$_POST['referredby'];
@@ -546,7 +535,7 @@ error_reporting(0);
 		$docFee = getDocFee ($totalWDF, $docPercent);
 
 
-        $insertquery = "INSERT into patients (pname, age, sex, paddress, mobile, referredBy, tName, tCode, tPrice, total, discount, netTotal, advance, remainingAmt, col_mode, del_mode,finalize_date, payment_status, doc_fee, col_fee, del_fee) values('$name','$age','$sex','$address','$mobile','$referredby','$testName','$testCode','$testPrice','$total','$disc','$netTotal','$advance','$remainingAmt','$colMode','$delMode','$finalizeDate','$paymentStatus','$docFee','$colFee','$delFee')";
+        $insertquery = "INSERT into patients (pname, age, email, sex, paddress, mobile, referredBy, tName, tCode, tPrice, total, discount, netTotal, advance, remainingAmt, col_mode, del_mode,finalize_date, payment_status, doc_fee, col_fee, del_fee) values('$name','$age','$email','$sex','$address','$mobile','$referredby','$testName','$testCode','$testPrice','$total','$disc','$netTotal','$advance','$remainingAmt','$colMode','$delMode','$finalizeDate','$paymentStatus','$docFee','$colFee','$delFee')";
             if(mysqli_query($con,$insertquery)) {
 				?>
                 <script>

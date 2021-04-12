@@ -72,36 +72,13 @@
 
         <!-- Sidebar -->
         <div class="sidebar" id="sidebar">
-            <div class="sidebar-inner slimscroll">
-                <div id="sidebar-menu" class="sidebar-menu">
-                    <ul>
-                        <li class="menu-title">
-                            <span>Main</span>
-                        </li>
-                        <li>
-                            <a href="Dashboard.php"><i class="fe fe-home"></i> <span>Dashboard</span></a>
-                        </li>
-                        <li>
-                            <a href="doc.php"><i class="fe fe-user-plus"></i> <span>Doctors</span></a>
-                        </li>
-                        <li>
-                            <a href="patients.html"><i class="fe fe-user"></i> <span>Patients</span></a>
-                        </li>
-                        <li class="active">
-                            <a href="tests.php"><i class="fe fe-user"></i> <span>Tests</span></a>
-                        </li>
-                        <li>
-                            <a href="profile.html"><i class="fe fe-user-plus"></i> <span>Profile</span></a>
-                        </li>
-                        <li>
-                            <a href="settings.html"><i class="fe fe-vector"></i> <span>Settings</span></a>
-                        </li>
-
-                    </ul>
+                <div class="sidebar-inner slimscroll">
+					<div id="sidebar-menu" class="sidebar-menu">
+						<!-- Sidebar goes here -->
+					</div>
                 </div>
             </div>
-        </div>
-        <!-- /Sidebar -->
+<!-- End of Sidebar -->
 
         <!-- Page Wrapper -->
         <div class="page-wrapper">
@@ -368,6 +345,10 @@
 
         }
     </script>
+    <script>
+			$("#sidebar-menu").load("sidebar.php");
+			// $("#patientList").load("temp/patientList.php");
+		</script>
 
 </body>
 </html>

@@ -311,12 +311,9 @@
              </script>
 
              <script>
-                alert(<?php echo $postId; ?>)
+                alert(<?php echo $postId; ?>);
              </script>
 
-             <script>
-			    $("#sidebar-menu").load("sidebar.html");
-		    </script>
 
     </body>
 </html>

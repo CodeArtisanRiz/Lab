@@ -4,6 +4,17 @@
    $testQuery = "SELECT * FROM tests";
    $patientQuery = "SELECT * FROM patients";
 
+   $clearPatientQuery = " SELECT * from patients WHERE payment_status = 'clear'";
+   $unclearPatientQuery = " SELECT * from patients WHERE payment_status = 'not clear'";
+//    $resultRevenueFee = mysqli_query($con, $collectedRevenueQuery);
+
+    // $nums = mysqli_num_rows($resultDocFee);
+
+    // while($res = mysqli_fetch_assoc($resultRevenueFee)){
+    //     $totalRevenueFee = $res['value_sum'];
+    // }
+    
+
 
 //    Count no of doctors in doctor table
     $docCount = mysqli_query($con, $docQuery);
@@ -21,16 +32,25 @@
                 $tests = $row;
               }
     }
-//    Count no of patients in patient table
-    $patientCount = mysqli_query($con, $patientQuery);
-    if ($patientCount) {
-        $row = mysqli_num_rows($patientCount);
+//    Count no of clear patients in patient table
+    $clearPatientCount = mysqli_query($con, $clearPatientQuery);
+    if ($clearPatientCount) {
+        $row = mysqli_num_rows($clearPatientCount);
             if ($row) {
-                $patients = $row;
+                $clearPatients = $row;
+              }
+    }
+
+//    Count no of unclear patients in patient table
+    $unclearPatientCount = mysqli_query($con, $unclearPatientQuery);
+    if ($unclearPatientCount) {
+        $row = mysqli_num_rows($unclearPatientCount);
+            if ($row) {
+                $unclearPatients = $row;
               }
     }
 //    Calculate total sp in patient table
-    $totalCount = mysqli_query($con, $patientQuery);
+    $totalCount = mysqli_query($con, $clearPatientQuery);
         $totalRevenue = 0;
         while ($num = mysqli_fetch_assoc ($totalCount)){
             $totalRevenue += $num['total'];
@@ -195,7 +215,9 @@
 										</span>
                                     <div class="dash-count">
                                     <!-- change h6 to h1 -->
-                                    <h4><?php echo $patients; ?></h4>
+                                    <h5>Clear: <?php echo $clearPatients; ?></h5>
+                                    <h5>Unclear: <?php echo $unclearPatients; ?></h5>
+                                    <!-- <h4>Total: <?php echo $clearPatients + $unclearPatients; ?></h4> -->
                                         <!-- <h6>add patients table uncomment the pcount fn then echo no of pat..</h6> -->
                                     </div>
                                 </div>

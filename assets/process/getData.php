@@ -17,9 +17,10 @@ $nums = mysqli_num_rows($query);
         //echo $res['tcode'];
         $returnCode = $res['tcode'];
         $returnPrice = $res['s_price'];
+        $returnCost = $res['c_price'];
     }
 
-$returnval =$returnCode. "~" .$returnPrice;   //concatenating two variables in single variable.
+$returnval =$returnCode. "~" .$returnPrice. "~" .$returnCost;   //concatenating two variables in single variable.
 
 echo $returnval;
 
