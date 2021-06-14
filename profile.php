@@ -108,7 +108,7 @@
                                 <th scope="col ">Report Home Delivery</th>
                                 <th scope="col ">Report Email</th>
                                 <th scope="col ">Report Centre Collection</th>
-                                
+
                                 <th scope="col ">Modify</th>
 
                             </tr>
@@ -137,7 +137,6 @@
                                     <td><?php echo $res['centre_collection']; ?></td>
                                     <td><?php echo $res['report_home_delivery']; ?></td>
                                     <td><?php echo $res['report_email']; ?></td>
-                                    <td><?php echo $res['report_home_delivery']; ?></td>
                                     <td><?php echo $res['report_centre_collection']; ?></td>
 
 <!-- Modify Patient -->
