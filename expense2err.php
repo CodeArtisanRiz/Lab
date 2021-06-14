@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Lab - Test List</title>
+    <title>Lab - Expense</title>
 
     <!-- Favicon -->
     <!-- <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png"> -->
@@ -90,10 +90,10 @@
                 <div class="page-header">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h3 class="page-title">List of Tests</h3>
+                            <h3 class="page-title">List of Expenses</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="Dashboard.php">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Tests</li>
+                                <li class="breadcrumb-item active">Expenses</li>
                             </ul>
                         </div>
                     </div>
@@ -110,11 +110,10 @@
                         <thead>
                             <tr>
                                 <th scope="col ">ID</th>
-                                <th scope="col ">Test code</th>
-                                <th scope="col ">Test name</th>
-                                <th scope="col ">Vial type</th>
-                                <th scope="col ">Cost</th>
-                                <th scope="col ">Rate</th>
+                                <th scope="col ">Date</th>
+                                <th scope="col ">Time</th>
+                                <th scope="col ">Name</th>
+                                <th scope="col ">Amount</th>
                                 <th scope="col ">Edit</th>
                                 <!-- <th scope="col ">Edit in diff</th> -->
                                 <th scope="col ">Delete</th>
@@ -123,7 +122,7 @@
                         <tbody>
 
                         <?php
-                            $selectquery = "SELECT * FROM tests ";
+                            $selectquery = "SELECT * FROM expense ";
 
                             $query = mysqli_query($con, $selectquery);
 
@@ -132,20 +131,20 @@
                             while($res = mysqli_fetch_assoc($query)){
                             ?>
                                 <tr>
-                                    <th scope="row ">TEST<?php echo $res['tid']; ?></th>
-                                    <td><?php echo $res['tcode']; ?></td>
-                                    <td><?php echo $res['tname']; ?></td>
-                                    <td><?php echo $res['vial_type']; ?></td>
-                                    <td><?php echo $res['c_price']; ?></td>
-                                    <td><?php echo $res['s_price']; ?></td>
+                                    <th scope="row ">Expense_<?php echo $res['e_id']; ?></th>
+                                    <td><?php echo $res['e_date']; ?></td>
+                                    <td><?php echo $res['e_time']; ?></td>
+                                    <td><?php echo $res['e_name']; ?></td>
+                                    <td><?php echo $res['e_amount']; ?></td>
+                                    
                                 <!-- Edit Entry -->
                                     <td><a onclick="putVal(
-                                    '<?php echo $res['tid']; ?>' , '<?php echo $res['tcode']; ?>' , '<?php echo $res['tname'] ?>' , '<?php echo $res['vial_type']; ?>' , '<?php echo $res['c_price']; ?>' , '<?php echo $res['s_price']; ?>')" 
+                                    '<?php echo $res['e_name']; ?>' , '<?php echo $res['e_amount'] ?>')" 
                                     href="#updateTest" data-toggle="modal" class="fa fa-edit"></a></td>
                                 <!-- Edit in Diff -->
                                     <!-- <td><a href="assets/process/testUpdateOld.php?ids=<?php echo $res['tid']?>&tc=<?php echo $res['tcode']?>&tn=<?php echo $res['tname']?>&vt=<?php echo $res['vial_type']?>&cp=<?php echo $res['c_price']?>&sp=<?php echo $res['s_price'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td> -->
                                 <!-- Delete Entry -->
-                                    <td><a href="assets/process/testDel.php?ids=<?php echo $res['tid']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                    <td><a href="assets/process/expenseDel.php?e_id=<?php echo $res['e_id']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
                             <?php
                             }
@@ -230,7 +229,7 @@
                         </div>
 
                         <div class="col-12">
-                            <button type="submit " id="id_addBtn" name= "submit" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
+                            <button type="submit " id="id_addBtn" name= "submitUpdate" class="btn btn-primary btn-xl text-uppercase center " onclick="return checkEmpty()" value="Send ">Add</button>
                             <div class="validate "></div>
                         </div>
                     </form>
