@@ -137,9 +137,9 @@
                             ?>
                                 <tr>
                                     <th scope="row ">Expense_<?php echo $res['e_id']; ?></th>
+                                    <td><?php echo $res['e_name']; ?></td>
                                     <td><?php echo $res['e_date']; ?></td>
                                     <td><?php echo $res['e_time']; ?></td>
-                                    <td><?php echo $res['e_name']; ?></td>
                                     <td><?php echo $res['e_amount']; ?></td>
                                     
                                 <!-- Edit Entry -->
