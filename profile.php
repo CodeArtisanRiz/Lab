@@ -96,7 +96,7 @@
                         <table class="table " id="myTable">
                         <thead>
                             <tr>
-                                <th scope="col ">ID</th>
+                                <!-- <th scope="col ">ID</th> -->
                                 <th scope="col ">Lab Name</th>
                                 <th scope="col ">Centre Name</th>
                                 <th scope="col ">UHID</th>
@@ -126,7 +126,7 @@
                             ?>
                             <div id="filter">
                                 <tr class="list">
-                                    <th scope="row "><?php echo $res['cid']; ?></th>
+                                    <!-- <th scope="row "><?php echo $res['cid']; ?></th> -->
                                     <td><?php echo $res['lab_name']; ?></td>
                                     <td><?php echo $res['centre_name']; ?></td>
                                     <td><?php echo $res['centre_uhid']; ?></td>
@@ -175,7 +175,7 @@
 				<div class="modal-dialog modal-dialog-centered" role="document" >
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title">Update patient details</h5>
+							<h5 class="modal-title">Update Profile</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
@@ -184,7 +184,7 @@
                         <form action="" method="POST">
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input type="text" id="labId" class="form-control" name="labId" readonly>
+                                <input type="text" id="labId" class="form-control" name="labId" hidden>
                                 <label for="labId">Id</label>
                                 <div class="validate"></div>
                             </div>
