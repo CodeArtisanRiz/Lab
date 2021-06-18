@@ -1,5 +1,14 @@
 <?php 
-   include 'assets/conn/conn.php';
+include './assets/conn/conn.php';
+if(!$con){
+    die(' Please Check Your Connection'.mysqli_error($con));
+}
+session_start();
+    if(isset($_SESSION['User'])){}
+    else {
+        header("location:login.php");
+    }
+
    $docQuery = "SELECT * FROM doctor";
    $testQuery = "SELECT * FROM tests";
    $patientQuery = "SELECT * FROM patients";

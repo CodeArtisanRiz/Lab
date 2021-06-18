@@ -41,6 +41,9 @@
         <li>
             <a href="settings.html"><i class="fe fe-vector"></i> <span>Settings</span></a>
         </li>
+        <li>
+            <a href="./assets/process/logout.php"><i class="fe fe-vector"></i> <span>Logout</span></a>
+        </li>
         <!-- <li class="submenu">
             <a href="#"><i class="fe fe-document"></i> <span> Reports</span> <span class="menu-arrow"></span></a>
             <ul style="display: none;">

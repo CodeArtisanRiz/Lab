@@ -189,7 +189,7 @@ $reportDeliveryMode ="eMail";
 														<td class="text-right"><?php echo $total + $collChrg?></td>
 													</tr>
 													<tr>
-														<th>Discount: </th>
+														<th>Concession: </th>
 														<td class="text-right "><?php echo $discount ?></td>
 													</tr>
 													<tr>

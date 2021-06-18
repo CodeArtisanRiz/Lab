@@ -207,7 +207,7 @@ $reportDeliveryMode ="eMail";
 														<th class="text-left"><?php echo $total + $colCharge + $delCharge?></th>
 													</tr>
 													<tr>
-														<th>Discount: </th>
+														<th>Concession: </th>
 														<th class="text-left"><?php echo $discount ?></th>
 													</tr>
 													<tr>
