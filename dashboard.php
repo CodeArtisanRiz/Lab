@@ -4,7 +4,16 @@ if(!$con){
     die(' Please Check Your Connection'.mysqli_error($con));
 }
 session_start();
-    if(isset($_SESSION['User'])){}
+    if(isset($_SESSION['User'])){
+      $uname=$_SESSION['User']; 
+      $query="select * from users where UName='$uname' ";
+      $sql = mysqli_query($con,$query); 
+      if(mysqli_num_rows($sql)>0){
+        while($row=mysqli_fetch_assoc($sql)){
+          $userName=$row['UName'];
+        }
+      }
+    }
     else {
         header("location:login.php");
     }
@@ -171,7 +180,7 @@ session_start();
                 <div class="page-header">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h3 class="page-title">Welcome Admin!</h3>
+                            <h3 class="page-title">Welcome <?php echo $userName; ?></h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item active">Dashboard</li>
                             </ul>
@@ -281,7 +290,7 @@ session_start();
                                 <h4 class="card-title">Revenue</h4>
                             </div>
                             <div class="card-body">
-                                <div id="morrisArea"></div>
+                                <!-- <div id="morrisArea"></div> -->
                             </div>
                         </div>
                         <!-- /Sales Chart -->
@@ -295,7 +304,7 @@ session_start();
                                 <h4 class="card-title">Status</h4>
                             </div>
                             <div class="card-body">
-                                <div id="morrisLine"></div>
+                                <!-- <div id="morrisLine"></div> -->
                             </div>
                         </div>
                         <!-- /Invoice Chart -->
@@ -325,12 +334,10 @@ session_start();
     <script src="assets/plugins/raphael/raphael.min.js"></script>
     <script src="assets/plugins/morris/morris.min.js"></script>
     <script src="assets/js/chart.morris.js"></script>
-
-    <!-- Custom JS -->
-    <script src="assets/js/script.js"></script>
     <script>
-        $("#sidebar-menu").load("sidebar.php");
+        $("#sidebar-menu").load("./assets/process/sidebar.html");
     </script>
+    
 
 </body>
 

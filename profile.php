@@ -4,10 +4,19 @@
     die(' Please Check Your Connection'.mysqli_error($con));
 }
 session_start();
-    if(isset($_SESSION['User'])){}
-    else {
-        header("location:login.php");
+if(isset($_SESSION['User'])){
+    $uname=$_SESSION['User']; 
+    $query="select * from users where UName='$uname' ";
+    $sql = mysqli_query($con,$query); 
+    if(mysqli_num_rows($sql)>0){
+      while($row=mysqli_fetch_assoc($sql)){
+        $userName=$row['UName'];
+      }
     }
+  }
+  else {
+      header("location:login.php");
+  }
    include 'assets/process/profileUpdate.php'
 ?>
 <!DOCTYPE html>
@@ -278,10 +287,9 @@ session_start();
 <!-- Slimscroll JS -->
         <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <!-- Custom JS -->
-		<script  src="assets/js/script.js"></script>
+		<!-- <script  src="assets/js/script.js"></script> -->
 		<script>
-			$("#sidebar-menu").load("sidebar.php");
-			// $("#patientList").load("temp/patientList.php");
+			$("#sidebar-menu").load("./assets/process/sidebar.html");
 		</script>
 
 <!-- Search -->

@@ -4,10 +4,19 @@ if(!$con){
     die(' Please Check Your Connection'.mysqli_error($con));
 }
 session_start();
-    if(isset($_SESSION['User'])){}
-    else {
-        header("location:login.php");
-    }
+if(isset($_SESSION['User'])){
+	$uname=$_SESSION['User']; 
+	$query="select * from users where UName='$uname' ";
+	$sql = mysqli_query($con,$query); 
+	if(mysqli_num_rows($sql)>0){
+	  while($row=mysqli_fetch_assoc($sql)){
+		$userName=$row['UName'];
+	  }
+	}
+  }
+  else {
+	  header("location:login.php");
+  }
 // $patient_id = "1";
 $docName = $_GET['did'];
 $year = $_GET['year'];
