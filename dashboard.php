@@ -204,7 +204,7 @@ session_start();
                                 <div class="dash-widget-info">
                                     <h6 class="text-muted">Doctors</h6>
                                     <div class="progress progress-sm">
-                                        <div class="progress-bar bg-primary w-50"></div>
+                                        <div class="progress-bar bg-primary w-100"></div>
                                     </div>
                                 </div>
                             </div>
@@ -226,7 +226,7 @@ session_start();
 
                                     <h6 class="text-muted">Tests</h6>
                                     <div class="progress progress-sm">
-                                        <div class="progress-bar bg-danger w-50"></div>
+                                        <div class="progress-bar bg-danger w-100"></div>
                                     </div>
                                 </div>
                             </div>
@@ -252,7 +252,7 @@ session_start();
 
                                     <h6 class="text-muted">Patients</h6>
                                     <div class="progress progress-sm">
-                                        <div class="progress-bar bg-success w-50"></div>
+                                        <div class="progress-bar bg-success w-100"></div>
                                     </div>
                                 </div>
                             </div>
@@ -274,7 +274,7 @@ session_start();
 
                                     <h6 class="text-muted">Revenue</h6>
                                     <div class="progress progress-sm">
-                                        <div class="progress-bar bg-warning w-50"></div>
+                                        <div class="progress-bar bg-warning w-100"></div>
                                     </div>
                                 </div>
                             </div>
