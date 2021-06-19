@@ -39,9 +39,6 @@
             <a href="expense.php"><i class="fe fe-user-plus"></i> <span>Expense</span></a>
         </li>
         <li>
-            <a href="settings.html"><i class="fe fe-vector"></i> <span>Settings</span></a>
-        </li>
-        <li>
             <a href="./assets/process/logout.php"><i class="fe fe-vector"></i> <span>Logout</span></a>
         </li>
         <!-- <li class="submenu">

@@ -29,24 +29,31 @@ session_start();
     $docCount = mysqli_query($con, $docQuery);
     if ($docCount) {
         $row = mysqli_num_rows($docCount);
-            if ($row) {
+            if ($row != 0) {
                 $docs = $row;
+              }
+              else {
+                  $docs = 0;
               }
     }
 //    Count no of tests in tests table
     $testCount = mysqli_query($con, $testQuery);
     if ($testCount) {
         $row = mysqli_num_rows($testCount);
-            if ($row) {
+            if ($row !=0) {
                 $tests = $row;
+              } else {
+                  $tests = 0;
               }
     }
 //    Count no of clear patients in patient table
     $clearPatientCount = mysqli_query($con, $clearPatientQuery);
     if ($clearPatientCount) {
         $row = mysqli_num_rows($clearPatientCount);
-            if ($row) {
+            if ($row != 0) {
                 $clearPatients = $row;
+              } else {
+                $clearPatients = 0;
               }
     }
 
@@ -54,8 +61,10 @@ session_start();
     $unclearPatientCount = mysqli_query($con, $unclearPatientQuery);
     if ($unclearPatientCount) {
         $row = mysqli_num_rows($unclearPatientCount);
-            if ($row) {
+            if ($row != 0) {
                 $unclearPatients = $row;
+              } else {
+                $unclearPatients = 0;
               }
     }
 //    Calculate total sp in patient table

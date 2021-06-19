@@ -22,6 +22,8 @@ while($res = mysqli_fetch_assoc($pQuery)){
 	$colCharge = $res['col_fee'];
 	$delMode = $res['del_mode'];
 	$delCharge = $res['del_fee'];
+	$advanceAmount = $res['advance'];
+	$remainingAmount = $res['remainingAmt'];
 }
 $centreQuery = "SELECT * FROM profile";
 $cQuery = mysqli_query($con, $centreQuery);
@@ -193,6 +195,7 @@ $reportDeliveryMode ="eMail";
 												<td></td>
 												</thead> -->
 												<tbody>
+													
 													<tr>
 														<th><?php echo $colMode?>: </th>
 														<td class="text-left"><?php echo $colCharge ?></td>
@@ -204,7 +207,8 @@ $reportDeliveryMode ="eMail";
 													</tr>
 													<tr>
 														<th>Total:</th>
-														<th class="text-left"><?php echo $total + $colCharge + $delCharge?></th>
+														<!-- <th class="text-left"><?php echo $total + $colCharge + $delCharge?></th>    calc already done-->
+														<th class="text-left"><?php echo $total?></th>
 													</tr>
 													<tr>
 														<th>Concession: </th>
@@ -212,15 +216,20 @@ $reportDeliveryMode ="eMail";
 													</tr>
 													<tr>
 														<th>Net Total:</th>
-														<th class="text-left text-primary "><?php echo $netTotal + $colCharge + $delCharge?></h5></th>
+														<!-- <th class="text-left text-primary "><?php echo $netTotal + $colCharge + $delCharge?></th> -->
+														<th class="text-left text-primary "><?php echo $netTotal?></th>
+													</tr>
+													<tr>
+														<th>Advance:</th>
+														<th class="text-left text-primary "><?php echo $advanceAmount ?></th>
+													</tr>
+													<tr>
+														<th>Remaining:</th>
+														<th class="text-left text-primary "><?php echo $remainingAmount ?></th>
 													</tr>
 													<tr>
 														<th>Authorized signature :</th>
-														<th class="text-left text-primary"></h5></th>
-													</tr>
-													<tr>
-													<th></th>
-													<!-- <th></th> -->
+														<th class="text-left text-primary"></th>
 													</tr>
 												</tbody>
 											</table>
