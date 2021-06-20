@@ -552,7 +552,7 @@ error_reporting(0);
 		$docFee = getDocFee ($totalWDF, $docPercent);
 
 
-        $insertquery = "INSERT into patients (pname, age, email, sex, paddress, mobile, referredBy, tName, tCode, tPrice, total, discount, netTotal, advance, remainingAmt, col_mode, del_mode,finalize_date, payment_status, doc_fee, col_fee, del_fee) values('$name','$age','$email','$sex','$address','$mobile','$referredby','$testName','$testCode','$testPrice','$total','$disc','$netTotal','$advance','$remainingAmt','$colMode','$delMode','$finalizeDate','$paymentStatus','$docFee','$colFee','$delFee')";
+        $insertquery = "INSERT into patients (pname, age, email, sex, paddress, mobile, referredBy, tName, tCode, tPrice, total, discount, netTotal, advance, remainingAmt, col_mode, del_mode,finalize_date, payment_status, doc_fee, col_fee, del_fee, loggedUser) values('$name','$age','$email','$sex','$address','$mobile','$referredby','$testName','$testCode','$testPrice','$total','$disc','$netTotal','$advance','$remainingAmt','$colMode','$delMode','$finalizeDate','$paymentStatus','$docFee','$colFee','$delFee','$userName')";
             if(mysqli_query($con,$insertquery)) {
 				?>
                 <script>
