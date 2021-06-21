@@ -157,7 +157,7 @@ if(isset($_SESSION['User'])){
                             ?>
                                 <tr>
                                     <th scope="row ">DOC<?php echo $res['did']; ?></th>
-                                    <td>Dr. <?php echo $res['dname']; ?></td>
+                                    <td><?php echo $res['dname']; ?></td>
                                     <td><?php echo $res['quali']; ?></td>
                                     <td><?php echo $res['special']; ?></td>
                                     <td><?php 
@@ -221,8 +221,8 @@ if(isset($_SESSION['User'])){
 
                         <div class="col-12">
                             <div class="form-label-group">
-                                <!-- <input class="form-control" name="qualification" id="id_qualification" type="text" placeholder="Qualification" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name"> -->
-                                <input class="form-control" name="qualification" id="id_qualification" type="text" placeholder="Qualification">
+                                <input class="form-control" name="qualification" id="id_qualification" type="text" placeholder="Qualification" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')">
+                                <!-- <input class="form-control" name="qualification" id="id_qualification" type="text" placeholder="Qualification"> -->
                                 <label for="id_qualification">Qualification</label>
                                 <div class="validate"></div>
                             </div>

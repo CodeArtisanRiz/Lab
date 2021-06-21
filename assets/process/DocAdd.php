@@ -2,13 +2,13 @@
     include '../conn/conn.php';
 
     if(isset($_POST['submit'])){
-        $dname=trim($_POST['dname']);
+        $dname= "Dr. " . trim($_POST['dname']);
         $qualification=trim($_POST['qualification']);
         $specialization=trim($_POST['specialization']);
         $mobile=trim($_POST['phone']);
         $refcent=trim($_POST['refcent']);
 
-        if(empty($dname))
+        if(empty($dname || $qualification))
         {
             echo '<script>alert("Please fill up the empty fields..");</script>' ;
             header("location:../../doc.php");

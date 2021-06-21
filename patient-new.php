@@ -189,6 +189,7 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 												<div class="form-label-group">
 												<select class="form-control custom-select" id="ref_doc" name="referredby" onchange="putVal(this.value, this.id)">
 											<option disabled selected>Referred by</option>
+											<!-- <option>Self</option> -->
 											<?php
 											while ($data = mysqli_fetch_array($d_records))
 											{

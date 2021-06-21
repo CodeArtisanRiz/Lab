@@ -326,9 +326,9 @@ if(isset($_SESSION['User'])){
                 }
              </script>
 
-             <script>
+             <!-- <script>
                 alert(<?php echo $postId; ?>);
-             </script>
+             </script> -->
 
 
     </body>
