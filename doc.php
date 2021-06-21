@@ -25,7 +25,7 @@ if(isset($_SESSION['User'])){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Lab - Doctor List</title>
+    <title>Lab - Doctors</title>
 
     <!-- Favicon -->
     <!-- <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png"> -->
@@ -111,7 +111,7 @@ if(isset($_SESSION['User'])){
                 <div class="page-header">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h3 class="page-title">List of Doctors</h3>
+                            <h3 class="page-title">Doctors</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="Dashboard.php">Dashboard</a></li>
                                 <!-- <li class="breadcrumb-item"><a href="javascript:(0);">Users</a></li> -->
@@ -160,7 +160,13 @@ if(isset($_SESSION['User'])){
                                     <td>Dr. <?php echo $res['dname']; ?></td>
                                     <td><?php echo $res['quali']; ?></td>
                                     <td><?php echo $res['special']; ?></td>
-                                    <td><?php echo $res['mobile']; ?></td>
+                                    <td><?php 
+                                    if($res['mobile'] == "0"){
+                                        echo "";
+                                    } else {
+                                    echo $res['mobile'];
+                                    }
+                                    ?></td>
                                     <td><?php echo $res['refcent']; ?> %</td>
                                     <!-- Edit Entry -->
                                     <td><a onclick="putVal(
@@ -215,7 +221,8 @@ if(isset($_SESSION['User'])){
 
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input class="form-control" name="qualification" id="id_qualification" type="text" placeholder="Qualification*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
+                                <!-- <input class="form-control" name="qualification" id="id_qualification" type="text" placeholder="Qualification" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name"> -->
+                                <input class="form-control" name="qualification" id="id_qualification" type="text" placeholder="Qualification">
                                 <label for="id_qualification">Qualification</label>
                                 <div class="validate"></div>
                             </div>
@@ -223,7 +230,8 @@ if(isset($_SESSION['User'])){
 
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input class="form-control" name="specialization" id="id_specialization" type="text" placeholder="Specialization*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name">
+                                <!-- <input class="form-control" name="specialization" id="id_specialization" type="text" placeholder="Specialization*" required="required" oninvalid="this.setCustomValidity('Enter Qualification')" oninput="setCustomValidity('')" id="name"> -->
+                                <input class="form-control" name="specialization" id="id_specialization" type="text" placeholder="Specialization">
                                 <label for="id_specialization">Specialization</label>
                                 <div class="validate"></div>
                             </div>
@@ -231,7 +239,8 @@ if(isset($_SESSION['User'])){
 
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input class="form-control" name="phone" id="id_phone" type="number" placeholder="Phone*" min="999999999 " required="required" oninvalid="this.setCustomValidity('Enter Phone')" oninput="setCustomValidity('')" onkeypress="if(this.value.length==10) return false;">
+                                <!-- <input class="form-control" name="phone" id="id_phone" type="number" placeholder="Phone*" min="999999999 " required="required" oninvalid="this.setCustomValidity('Enter Phone')" oninput="setCustomValidity('')" onkeypress="if(this.value.length==10) return false;"> -->
+                                <input class="form-control" name="phone" id="id_phone" type="number" placeholder="Phone">
                                 <label for="id_phone">Phone</label>
                                 <div class="validate"></div>
                             </div>
@@ -239,7 +248,7 @@ if(isset($_SESSION['User'])){
 
                         <div class="col-12">
                             <div class="form-label-group">
-                                <input class="form-control" name="refcent" id="id_referral" type="number" step="any" placeholder="Referral %*" required="required" oninvalid="this.setCustomValidity('Enter Referral %')" oninput="setCustomValidity('')">
+                                <input class="form-control" name="refcent" id="id_referral" type="number" placeholder="Referral %">
                                 <label for="id_referral">Referral %</label>
                                 <div class="validate"></div>
                             </div>

@@ -8,7 +8,7 @@
         $mobile=trim($_POST['phone']);
         $refcent=trim($_POST['refcent']);
 
-        if(empty($dname) || empty($qualification) || empty($specialization) || empty($mobile) || empty($refcent))
+        if(empty($dname))
         {
             echo '<script>alert("Please fill up the empty fields..");</script>' ;
             header("location:../../doc.php");
@@ -18,7 +18,6 @@
             $insertquery = "insert into doctor(dname,mobile,quali,special,refcent) values('$dname','$mobile','$qualification','$specialization','$refcent')";
             if(mysqli_query($con,$insertquery))
             {
-                // echo"<h3>Data Inserted</h3>";
                 header("location:../../doc.php");
             }
         }
