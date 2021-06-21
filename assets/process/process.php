@@ -5,7 +5,7 @@ session_start();
     {
        if(empty($_POST['UName']) || empty($_POST['Password']))
        {
-            header("location:index.php?Empty= Please Fill in the Blanks");
+            header("location:./../../login.php?Empty= Please Fill in the Blanks");
        }
        else
        {
@@ -20,7 +20,7 @@ session_start();
             }
             else
             {
-                header("location:index.php?Invalid= Please Enter Correct User Name and Password");
+                header("location:./../../login.php?Invalid= Please Enter Correct User Name and Password");
                
             }
        }

@@ -1,8 +1,8 @@
 <?php
 //      localhost
-//      $con=mysqli_connect('localhost','root','','pathology');
+     $con=mysqli_connect('localhost','root','','pathology');
 //      server
-    $con=mysqli_connect('localhost','u478474012_techno3gamma','Brainkraft1@','u478474012_lab');
+    // $con=mysqli_connect('localhost','u478474012_techno3gamma','Brainkraft1@','u478474012_lab');
         
     if(!$con)
     {
