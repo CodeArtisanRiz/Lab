@@ -224,6 +224,7 @@ if(isset($_SESSION['User'])){
                                         <option value="Grey Vial">Grey Vial</option>
                                         <option value="Black Vial">Black Vial</option>
                                         <option value="Blue Vial">Blue Vial</option>
+                                        <option value="Blue Vial">Sky Vial</option>
                                         <option value="Urine Container">Urine Container</option>
                                     </select>
                                 </div>

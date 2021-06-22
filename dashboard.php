@@ -11,6 +11,7 @@ session_start();
       if(mysqli_num_rows($sql)>0){
         while($row=mysqli_fetch_assoc($sql)){
           $userName=$row['UName'];
+          $userFirstName=$row['FirstName'];
         }
       }
     }
@@ -180,7 +181,7 @@ session_start();
                 <div class="page-header">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h3 class="page-title">Welcome <?php echo $userName; ?></h3>
+                            <h3 class="page-title">Welcome <?php echo $userFirstName; ?></h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item active">Dashboard</li>
                             </ul>
@@ -192,70 +193,76 @@ session_start();
                 <div class="row">
                     <div class="col-xl-3 col-sm-6 col-12">
                         <div class="card">
-                            <div class="card-body">
-                                <div class="dash-widget-header">
-                                    <span class="dash-widget-icon text-primary border-primary">
-											<i class="fe fe-users"></i>
-										</span>
-                                    <div class="dash-count">
-                                        <h4><?php echo $docs; ?></h4>
+                            <a href="doc.php">
+                                <div class="card-body">
+                                    <div class="dash-widget-header">
+                                        <span class="dash-widget-icon text-primary border-primary">
+                                                <i class="fe fe-users"></i>
+                                            </span>
+                                        <div class="dash-count">
+                                            <h4><?php echo $docs; ?></h4>
+                                        </div>
+                                    </div>
+                                    <div class="dash-widget-info">
+                                        <h6 class="text-muted">Doctors</h6>
+                                        <div class="progress progress-sm">
+                                            <div class="progress-bar bg-primary w-100"></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="dash-widget-info">
-                                    <h6 class="text-muted">Doctors</h6>
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-primary w-100"></div>
-                                    </div>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
 
                     <div class="col-xl-3 col-sm-6 col-12">
                         <div class="card">
-                            <div class="card-body">
-                                <div class="dash-widget-header">
-                                    <span class="dash-widget-icon text-danger border-danger">
-											<i class="fe fe-money"></i>
-										</span>
-                                    <div class="dash-count">
-                                        <h4><?php echo $tests; ?></h4>
+                            <a href="tests.php">
+                                <div class="card-body">
+                                    <div class="dash-widget-header">
+                                        <span class="dash-widget-icon text-danger border-danger">
+                                                <i class="fe fe-money"></i>
+                                            </span>
+                                        <div class="dash-count">
+                                            <h4><?php echo $tests; ?></h4>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="dash-widget-info">
+                                    <div class="dash-widget-info">
 
-                                    <h6 class="text-muted">Tests</h6>
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-danger w-100"></div>
+                                        <h6 class="text-muted">Tests</h6>
+                                        <div class="progress progress-sm">
+                                            <div class="progress-bar bg-danger w-100"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
 
                     <div class="col-xl-3 col-sm-6 col-12">
                         <div class="card">
-                            <div class="card-body">
-                                <div class="dash-widget-header">
-                                    <span class="dash-widget-icon text-success">
-											<i class="fe fe-credit-card"></i>
-										</span>
-                                    <div class="dash-count">
-                                    <!-- change h6 to h1 -->
-                                    <h5>Clear: <?php echo $clearPatients; ?></h5>
-                                    <h5>Unclear: <?php echo $unclearPatients; ?></h5>
-                                    <!-- <h4>Total: <?php echo $clearPatients + $unclearPatients; ?></h4> -->
-                                        <!-- <h6>add patients table uncomment the pcount fn then echo no of pat..</h6> -->
+                            <a href="patient-list.php">
+                                <div class="card-body" >
+                                    <div class="dash-widget-header">
+                                        <span class="dash-widget-icon text-success">
+                                                <i class="fe fe-credit-card"></i>
+                                            </span>
+                                        <div class="dash-count">
+                                        <!-- change h6 to h1 -->
+                                        <h5>Clear: <?php echo $clearPatients; ?></h5>
+                                        <h5>Unclear: <?php echo $unclearPatients; ?></h5>
+                                        <!-- <h4>Total: <?php echo $clearPatients + $unclearPatients; ?></h4> -->
+                                            <!-- <h6>add patients table uncomment the pcount fn then echo no of pat..</h6> -->
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="dash-widget-info">
+                                    <div class="dash-widget-info">
 
-                                    <h6 class="text-muted">Patients</h6>
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-success w-100"></div>
+                                        <h6 class="text-muted">Patients</h6>
+                                        <div class="progress progress-sm">
+                                            <div class="progress-bar bg-success w-100"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
 
@@ -337,7 +344,6 @@ session_start();
     <script>
         $("#sidebar-menu").load("./assets/process/sidebar.html");
     </script>
-    
 
 </body>
 
