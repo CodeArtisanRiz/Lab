@@ -151,13 +151,13 @@ $d_records = mysqli_query($con, "SELECT * From doctor");
 											</div>
 											<div class="col-8">
 												<div class="form-label-group">
-													<input type="email" name="email" id="id_email" class="form-control" placeholder="Email" required>
+													<input type="email" name="email" id="id_email" class="form-control" placeholder="Email">
 													<label for="id_email">Email</label>
 												</div>
 											</div>
 											<div class="col-12">
 												<div class="form-label-group">
-													<input type="tel" class="form-control" name="mobile" id="id_mobile" placeholder="Mobile" required>
+													<input type="tel" class="form-control" name="mobile" id="id_mobile" placeholder="Mobile">
 													<label for="id_mobile">Mobile</label>
 												</div>
 											</div>
