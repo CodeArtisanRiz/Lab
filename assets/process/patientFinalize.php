@@ -21,7 +21,13 @@ while($res = mysqli_fetch_assoc($pQuery)){
     $testRates = $res['tPrice'];
     $remainingAmount = $res['remainingAmt'];
     $paidLater = $res['paid_later'];
+    $finalizeDate = $res['finalizeDate'];
+    
+    if($finalizeDate != null){
+        $currentDate = $res['finalizeDate'];
+    }else {
     $currentDate = date("Y/m/d");
+    }
 }
 
 echo $remainingAmount;
@@ -30,8 +36,15 @@ echo $paidLater;
 $r=0;
 
 
-$update = " UPDATE patients set remainingAmt='$r', paid_later='$remainingAmount', finalize_date = '$currentDate', payment_status = 'clear' WHERE pid='$patient_id' ";
-                                    
+$update = " UPDATE patients set 
+remainingAmt='$r', 
+paid_later='$remainingAmount', 
+finalize_date = '$currentDate', 
+payment_status = 'clear',
+finalizeDate = '$currentDate'
+WHERE pid='$patient_id' ";
+
+
             $res = mysqli_query($con, $update);
 
             if($res){

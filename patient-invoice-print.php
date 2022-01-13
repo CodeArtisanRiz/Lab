@@ -306,9 +306,9 @@ $reportDeliveryMode ="eMail";
 		
 		
 		window.print();
-		setTimeout(function () {
-			window.location.replace("patient-list.php");	
-		},1);
+		// setTimeout(function () {
+		// 	window.location.replace("patient-list.php");	
+		// },1);
 		
 	</script>
 	</body>

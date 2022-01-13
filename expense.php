@@ -154,14 +154,16 @@ if(isset($_SESSION['User'])){
                             ?>
                                 <tr>
                                     <th scope="row ">Expense_<?php echo $res['e_id']; ?></th>
-                                    <td><?php echo $res['e_name']; ?></td>
-                                    <td><?php echo $res['e_date']; ?></td>
-                                    <td><?php echo $res['e_time']; ?></td>
-                                    <td><?php echo $res['e_amount']; ?></td>
+                                    <td><?php echo $res['name']; ?></td>
+                                    <td><?php echo $res['date']; ?></td>
+                                    <td><?php echo $res['time']; ?></td>
+                                    <td><?php echo $res['amount']; ?></td>
                                     
                                 <!-- Edit Entry -->
                                     <td><a onclick="putVal(
-                                    '<?php echo $res['e_id']; ?>','<?php echo $res['e_name']; ?>' , '<?php echo $res['e_amount'] ?>')" 
+                                    '<?php echo $res['e_id']; ?>',
+                                    '<?php echo $res['name']; ?>' , 
+                                    '<?php echo $res['amount'] ?>')" 
                                     href="#updateExpense" data-toggle="modal" class="fa fa-edit"></a></td>
                                 <!-- Edit in Diff -->
                                     <!-- <td><a href="assets/process/testUpdateOld.php?ids=<?php echo $res['tid']?>&tc=<?php echo $res['tcode']?>&tn=<?php echo $res['tname']?>&vt=<?php echo $res['vial_type']?>&cp=<?php echo $res['c_price']?>&sp=<?php echo $res['s_price'] ?>"><i class="fa fa-edit" aria-hidden="true"></i></a></td> -->

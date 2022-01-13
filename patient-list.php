@@ -132,10 +132,13 @@ if(isset($_SESSION['User'])){
                                 <th scope="col ">Address</th>
                                 <th scope="col ">Mobile</th>
                                 <th scope="col ">Referred by</th>
-                                <th scope="col ">Total</th>
-                                <!-- <th scope="col ">Discount</th>
-                                <th scope="col ">Net Total</th>
-                                <th scope="col ">Advance</th> -->
+                                <th scope="col ">Total Amount</th>
+                                
+                                <th scope="col ">Discount</th>
+                                <th scope="col ">Net Amount</th>
+                                <!-- <th scope="col ">Net Total</th>-->
+                                <th scope="col ">Advance</th> 
+                                <th scope="col ">Paid Later</th>
                                 <th scope="col ">Remaining amount</th>
                                 <th scope="col ">Doc Fee</th>
                                 <th scope="col ">Payment Status</th>
@@ -169,6 +172,10 @@ if(isset($_SESSION['User'])){
                                     <td><?php echo $res['mobile']; ?></td>
                                     <td>Dr. <?php echo $res['referredBy']; ?></td>
                                     <td><?php echo $res['total']; ?></td>
+                                    <td><?php echo $res['discount']; ?></td>
+                                    <td><?php echo $res['netTotal']; ?></td>
+                                    <td><?php echo $res['advance']; ?></td>
+                                    <td><?php echo $res['paid_later']; ?></td>
                                     <td><?php echo $res['remainingAmt']; ?></td>
                                     <td><?php echo $res['doc_fee']; ?></td>
                                     <td><?php echo $res['payment_status']; ?></td>
@@ -326,9 +333,9 @@ if(isset($_SESSION['User'])){
                 }
              </script>
 
-             <!-- <script>
-                alert(<?php echo $postId; ?>);
-             </script> -->
+            //  <script>
+                // alert(<?php echo $postId; ?>);
+            //  </script>
 
 
     </body>
